@@ -1,10 +1,31 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Home } from './pages/Home/Home'
 
-createRoot(document.getElementById('root')).render(
+const root = createRoot(document.getElementById('root'))
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  }
+],
+  {
+    future: {
+      v7_skipActionErrorRevalidation: true,
+      v7_fetcherPersist: true,
+      v7_relativeSplatPath: true,
+      v7_normalizeFormMethod: true,
+      v7_skipActionStatusRevalidation: true,
+      v7_partialHydration: true,
+    }
+  },
+)
+
+root.render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <RouterProvider router={router} future={{ v7_startTransition: true, }}
+    />
+  </StrictMode>
 )
