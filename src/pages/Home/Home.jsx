@@ -84,7 +84,7 @@ export function Home() {
         a.download = filename
         document.body.appendChild(a)
         a.style = 'display:none'
-        // a.click()
+        a.click()
         a.remove()
         setPdf(a)
     }
@@ -330,9 +330,13 @@ export function Home() {
                         </label>
                         <input onChange={handleChange} type="checkbox" name="dieciocho_3" id="dieciocho_3" />
                     </div>
-                    <button onClick={handleSubmitEvent}>Submit</button>
+                    <button onClick={handleSubmitEvent}>Download PDF</button>
                 </form>
             </div>
+            <hr />
+            <a href={pdf} target="_blank" rel="noopener noreferrer">
+                Ver PDF
+            </a>
             <div>
                 <object data={pdf} type="application/pdf" width='100%' height='800vh'></object>
             </div>
