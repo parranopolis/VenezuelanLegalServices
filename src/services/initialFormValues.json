@@ -1,261 +1,662 @@
 {
     "Applicant": {
         "PDFTextField2": {
-            "Alien_Number": "N/A",
-            "SSN": "N/A",
-            "USCIS_Name": "N/A",
-            "Complete_Last_Name": "N/A",
-            "First_Name": "N/A",
-            "Middle_Name": "N/A",
-            "City": "N/A",
-            "Another_Name": "N/A",
-            "Street_Number_and_Name": "N/A",
-            "Apt_Number": "N/A",
-            "State": "N/A",
-            "Zip_Code": "N/A",
-            "phone_Number_1": "N/A",
-            "In_Care_of": "N/A",
-            "Street_Number_and_Name_POX": "N/A",
-            "City_POX": "N/A",
-            "State_POX": "N/A",
-            "Zip_Code_POX": "N/A",
-            "Date_Of_Birth": "N/A",
-            "City_and_Country_of_Birth": "N/A",
-            "Present_Nacionality": "N/A",
-            "Nationality_at_Birth": "N/A",
-            "Race_Ethnic_Tribal_Group": "N/A",
-            "Religion": "N/A",
-            "Leave_Your_Country": "N/A",
-            "I-94_Number": "N/A",
-            "Each_Entry_Date_1": "N/A",
-            "Each_Entry_Date_2": "N/A",
-            "Each_Entry_Date_3": "N/A",
-            "Each_Entry_Place_1": "N/A",
-            "Each_Entry_Place_2": "N/A",
-            "Each_Entry_Place_3": "N/A",
-            "Each_Entry_Status_1": "N/A",
-            "Each_Entry_Status_2": "N/A",
-            "Each_Entry_Status_3": "N/A",
-            "Each_Entry_Date_Expires": "N/A",
-            "Passport_Country": "N/A",
-            "Passport_Number": "N/A",
-            "Passport_Expiration_Day": "N/A",
-            "Travel_Document_Number": "N/A",
-            "Native_Language": "N/A",
-            "Other_Language": "N/A",
-            "SSN_1": "N/A",
-            "phone_Number_2": "N/A",
-            "BG_Number_Street": "N/A",
-            "BG_Number_Street1": "N/A",
-            "BG_City": "N/A",
-            "BG_City2": "N/A",
-            "BG_State": "N/A",
-            "BG_State2": "N/A",
-            "BG_Country": "N/A",
-            "BG_Country2": "N/A",
-            "BG_Date_From": "N/A",
-            "BG_Date_From2": "N/A",
-            "BG_Date_To": "N/A",
-            "BG_Date_To2": "N/A",
-            "BG_Number_Street_5Y": "N/A",
-            "BG_Number_Street_5Y-1": "N/A",
-            "BG_Number_Street_5Y-2": "N/A",
-            "BG_Number_Street_5Y-3": "N/A",
-            "BG_Number_Street_5Y-4": "N/A",
-            "BG_School": "N/A",
-            "BG_School2": "N/A",
-            "BG_School3": "N/A",
-            "BG_School4": "N/A",
-            "BG_Employment_Addres": "N/A",
-            "BG_Employment_Addres1": "N/A",
-            "BG_Employment_Addres2": "N/A",
-            "BG_City_5Y": "N/A",
-            "BG_City_5Y-1": "N/A",
-            "BG_City_5Y-2": "N/A",
-            "BG_City_5Y-3": "N/A",
-            "BG_City_5Y-4": "N/A",
-            "BG_State_5Y": "N/A",
-            "BG_State_5Y-1": "N/A",
-            "BG_State_5Y-2": "N/A",
-            "BG_State_5Y-3": "N/A",
-            "BG_State_5Y-4": "N/A",
-            "BG_Country_5Y": "N/A",
-            "BG_Country_5Y-1": "N/A",
-            "BG_Country_5Y-2": "N/A",
-            "BG_Country_5Y-3": "N/A",
-            "BG_Country_5Y-4": "N/A",
-            "BG_Date_From_5Y": "N/A",
-            "BG_Date_From_5Y1": "N/A",
-            "BG_Date_From_5Y2": "N/A",
-            "BG_Date_From_5Y3": "N/A",
-            "BG_Date_From_5Y4": "N/A",
-            "BG_Date_To_5Y": "N/A",
-            "BG_Date_To_5Y1": "N/A",
-            "BG_Date_To_5Y2": "N/A",
-            "BG_Date_To_5Y3": "N/A",
-            "BG_Date_To_5Y4": "N/A",
-            "BG_Type_School": "N/A",
-            "BG_Type_School2": "N/A",
-            "BG_Type_School3": "N/A",
-            "BG_Type_School4": "N/A",
-            "BG_Location": "N/A",
-            "BG_Location2": "N/A",
-            "BG_Location3": "N/A",
-            "BG_Location4": "N/A",
-            "BG_Education_From": "N/A",
-            "BG_Education_From-1": "N/A",
-            "BG_Education_From-2": "N/A",
-            "BG_Education_From-3": "N/A",
-            "BG_Education_To": "N/A",
-            "BG_Education_To-1": "N/A",
-            "BG_Education_To-2": "N/A",
-            "BG_Education_To-3": "N/A",
-            "BG_Employment_Occupation": "N/A",
-            "BG_Employment_Occupation1": "N/A",
-            "BG_Employment_Occupation2": "N/A",
-            "BG_Employment_Date_From": "N/A",
-            "BG_Employment_Date_From1": "N/A",
-            "BG_Employment_Date_From2": "N/A",
-            "BG_Employment_Date_To": "N/A",
-            "BG_Employment_Date_To1": "N/A",
-            "BG_Employment_Date_To2": "N/A",
-            "Parents_Mother": "N/A",
-            "Parents_Father": "N/A",
-            "Sibling": "N/A",
-            "Sibling1": "N/A",
-            "Sibling2": "N/A",
-            "Sibling3": "N/A",
-            "Parent_Mother_Address": "N/A",
-            "Parent_Father_Address": "N/A",
-            "Sibling_Address": "N/A",
-            "Sibling_Address1": "N/A",
-            "Sibling_Address2": "N/A",
-            "Sibling_Address3": "N/A",
-            "Parent_Mother_Current_Location": "N/A",
-            "Parent_Father_Current_Location": "N/A",
-            "Sibling_Current_Location": "N/A",
-            "Sibling_Current_Location1": "N/A",
-            "Sibling_Current_Location2": "N/A",
-            "Sibling_Current_Location3": "N/A",
-            "Mistreatment_Explenation": "N/A",
-            "fear_mistreatment_Explanation": "N/A",
-            "Family_Crimes_Explanation": "N/A",
-            "Family_Group_Link_Explanation": "N/A",
-            "Family_Group_Link_isActive_Explanation": "N/A",
-            "Afraid_of_Torture_Explanation": "N/A",
-            "Family_Applied_asylum_Explanation": "N/A",
-            "Stay_and_Legal_Status_Other_Countries_Explanation": "N/A",
-            "Discriminatory_Actions_Against_Others_Explanation": "N/A",
-            "Return_Country__you_Fear_Explanation": "N/A",
-            "Expire_Time_Asaylum_Applicat_Explanation": "N/A",
-            "Crimes_In_USA_Explanation": "N/A",
-            "Print_Complete_Name": "N/A",
-            "Family_Help_Fill_out_Name1": "N/A",
-            "Family_Help_Fil_out_Relationship1": "N/A",
-            "Family_Help_Fil_out_Relationship2": "N/A",
-            "Family_Help_Fill_out_Name2": "N/A",
-            "Today_Day": "N/A"
+            "Alien_Number": {
+                "value": "N/A",
+                "label": "Numero A",
+                "explanation": "Lo puede encontrar en el documento de la corte"
+            },
+            "SSN": {
+                "value": "N/A",
+                "label": " Numero de Seguro Social (si lo tiene)",
+                "explanation": ""
+            },
+            "USCIS_Name": {
+                "value": "N/A",
+                "label": "Numero de USCIS",
+                "explanation": ""
+            },
+            "Complete_Last_Name": {
+                "value": "N/A",
+                "label": "Apellidos (Todos)",
+                "explanation": ""
+            },
+            "First_Name": {
+                "value": "N/A",
+                "label": "Primer Nombre",
+                "explanation": ""
+            },
+            "Middle_Name": {
+                "value": "N/A",
+                "label": "Segundo Nombre",
+                "explanation": ""
+            },
+            "City": {
+                "value": "N/A",
+                "label": "Ciudad",
+                "explanation": ""
+            },
+            "Another_Name": {
+                "value": "N/A",
+                "label": "Otros Nombres Usados",
+                "explanation": ""
+            },
+            "Street_Number_and_Name": {
+                "value": "N/A",
+                "label": "Numero de Calle y Nombre",
+                "explanation": ""
+            },
+            "Apt_Number": {
+                "value": "N/A",
+                "label": "Numero de Apartamento",
+                "explanation": ""
+            },
+            "State": {
+                "value": "N/A",
+                "label": "Estado",
+                "explanation": ""
+            },
+            "Zip_Code": {
+                "value": "N/A",
+                "label": "Codigo de Area (zip code)",
+                "explanation": ""
+            },
+            "phone_Number_1": {
+                "value": "N/A",
+                "label": "Numero de Telefono Personal",
+                "explanation": ""
+            },
+            "In_Care_of": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Street_Number_and_Name_POX": {
+                "value": "N/A",
+                "label": "Nombre y Numero de Calle del POX ",
+                "explanation": "Es una ubicacion segura donde podemos enviar sus documentos"
+            },
+            "City_POX": {
+                "value": "N/A",
+                "label": "Ciudad del POX",
+                "explanation": ""
+            },
+            "State_POX": {
+                "value": "N/A",
+                "label": "Estado del POX",
+                "explanation": ""
+            },
+            "Zip_Code_POX": {
+                "value": "N/A",
+                "label": "Codigo de Area del POX",
+                "explanation": ""
+            },
+            "Date_Of_Birth": {
+                "value": "N/A",
+                "label": "Fecha de Nacimiento",
+                "explanation": ""
+            },
+            "City_and_Country_of_Birth": {
+                "value": "N/A",
+                "label": "Ciudad donde Nació",
+                "explanation": ""
+            },
+            "Present_Nacionality": {
+                "value": "N/A",
+                "label": "Nacionalidad Actual",
+                "explanation": ""
+            },
+            "Nationality_at_Birth": {
+                "value": "N/A",
+                "label": "Nacionalidad al Nacer",
+                "explanation": ""
+            },
+            "Race_Ethnic_Tribal_Group": {
+                "value": "N/A",
+                "label": "Raza | Tribu | Grupo",
+                "explanation": "Pertenece a alguna raza?"
+            },
+            "Religion": {
+                "value": "N/A",
+                "label": "Religión",
+                "explanation": ""
+            },
+            "Leave_Your_Country": {
+                "value": "N/A",
+                "label": "Cuando Se fue de su país? (mes/día,año)",
+                "explanation": ""
+            },
+            "I-94_Number": {
+                "value": "N/A",
+                "label": "Numero de I-94 (si lo tiene)",
+                "explanation": ""
+            },
+            "Each_Entry_Date_1": {
+                "value": "N/A",
+                "label": "Fecha (mes/día/año)",
+                "explanation": ""
+            },
+            "Each_Entry_Date_2": {
+                "value": "N/A",
+                "label": "Fecha (mes/día/año)",
+                "explanation": ""
+            },
+            "Each_Entry_Date_3": {
+                "value": "N/A",
+                "label": "Fecha (mes/día/año)",
+                "explanation": ""
+            },
+            "Each_Entry_Place_1": {
+                "value": "N/A",
+                "label": "Lugar donde entró",
+                "explanation": ""
+            },
+            "Each_Entry_Place_2": {
+                "value": "N/A",
+                "label": "Lugar donde entró",
+                "explanation": ""
+            },
+            "Each_Entry_Place_3": {
+                "value": "N/A",
+                "label": "Lugar donde entró",
+                "explanation": ""
+            },
+            "Each_Entry_Status_1": {
+                "value": "N/A",
+                "label": "Status al entrar",
+                "explanation": ""
+            },
+            "Each_Entry_Status_2": {
+                "value": "N/A",
+                "label": "Status al entrar",
+                "explanation": ""
+            },
+            "Each_Entry_Status_3": {
+                "value": "N/A",
+                "label": "Status al entrar",
+                "explanation": ""
+            },
+            "Each_Entry_Date_Expires": {
+                "value": "N/A",
+                "label": "Cuando se vence el status (mes/día/año)",
+                "explanation": ""
+            },
+            "Passport_Country": {
+                "value": "N/A",
+                "label": "Ultimo país que emitio su Pasaporte",
+                "explanation": ""
+            },
+            "Passport_Number": {
+                "value": "N/A",
+                "label": "Numero de Pasaporte",
+                "explanation": ""
+            },
+            "Travel_Document_Number": {
+                "value": "N/A",
+                "label": "Numero de documento de viaje",
+                "explanation": ""
+            },
+            "Passport_Expiration_Day": {
+                "value": "N/A",
+                "label": "Fecha de Vencimiento de su pasaporte",
+                "explanation": ""
+            },
+            "Native_Language": {
+                "value": "N/A",
+                "label": "Idioma Nativo",
+                "explanation": ""
+            },
+            "Other_Language": {
+                "value": "N/A",
+                "label": "Qué otro idioma habla con fluides?",
+                "explanation": ""
+            }
         },
         "PDFRadioGroup2": {
-            "Marital_Status": null,
-            "English": null,
-            "Gender": null,
-            "Mistreatment": null,
-            "fear_mistreatment": null,
-            "Family_Crimes": null,
-            "Family_Group_Link": null,
-            "Family_Group_Link_isActive": null,
-            "Afraid_of_Torture": null,
-            "Family_Applied_asylum": null,
-            "Stay_Other_Countries": null,
-            "Legal_Status_Other_Coutries": null,
-            "Discriminatory_Actions_Against_Others": null,
-            "Return_Country__you_Fear": null,
-            "Expire_Time_Asaylum_Applicat": null,
-            "Crimes_In_USA": null,
-            "Someone_else_help_fill_out": null,
-            "Person_Available_to_assist_you": null
+            "Marital_Status": {
+                "value": null,
+                "label": "Estado Civil",
+                "explanation": ""
+            },
+            "English": {
+                "value": null,
+                "label": "Es fluido en Inglés?",
+                "explanation": ""
+            },
+            "Gender": {
+                "value": null,
+                "label": "Género",
+                "explanation": ""
+            },
+            "Mistreatment": {
+                "value": null,
+                "label": "Maltrato Recibido",
+                "explanation": ""
+            },
+            "fear_mistreatment": {
+                "value": null,
+                "label": "Miedo a Maltrato",
+                "explanation": ""
+            },
+            "Family_Crimes": {
+                "value": null,
+                "label": "Crímenes Familiares",
+                "explanation": ""
+            },
+            "Family_Group_Link": {
+                "value": null,
+                "label": "Vínculo con Grupo Familiar",
+                "explanation": ""
+            },
+            "Family_Group_Link_isActive": {
+                "value": null,
+                "label": "Vínculo Familiar Activo",
+                "explanation": ""
+            },
+            "Afraid_of_Torture": {
+                "value": null,
+                "label": "Temor a Tortura",
+                "explanation": ""
+            },
+            "Family_Applied_asylum": {
+                "value": null,
+                "label": "Familia Aplicó al Asilo",
+                "explanation": ""
+            },
+            "Stay_Other_Countries": {
+                "value": null,
+                "label": "Estancia en Otros Países",
+                "explanation": ""
+            },
+            "Legal_Status_Other_Coutries": {
+                "value": null,
+                "label": "Estatus Legal en Otros Países",
+                "explanation": ""
+            },
+            "Discriminatory_Actions_Against_Others": {
+                "value": null,
+                "label": "Acciones Discriminatorias Contra Otros",
+                "explanation": ""
+            },
+            "Return_Country__you_Fear": {
+                "value": null,
+                "label": "Retorno al País que Temes",
+                "explanation": ""
+            },
+            "Expire_Time_Asaylum_Applicat": {
+                "value": null,
+                "label": "Tiempo de Expiración de la Solicitud de Asilo",
+                "explanation": ""
+            },
+            "Crimes_In_USA": {
+                "value": null,
+                "label": "Crímenes en USA",
+                "explanation": ""
+            },
+            "Someone_else_help_fill_out": {
+                "value": null,
+                "label": "Alguien Más Ayudó a Llenar",
+                "explanation": ""
+            },
+            "Person_Available_to_assist_you": {
+                "value": null,
+                "label": "Persona Disponible para Asistirle",
+                "explanation": ""
+            },
+            "Dieciocho": {
+                "value": null,
+                "label": "Seleccione la que aplique",
+                "explanation": ""
+            }
         },
         "PDFCheckBox2": {
-            "dieciocho": false,
-            "dieciocho_3": false,
-            "dieciocho_2": false,
-            "Obligatorio": false,
-            "marital_Status": false,
-            "Parent_Mother_Deceased": false,
-            "Parent_Father_Deceased": false,
-            "Sibling_Deceased": false,
-            "Sibling_Deceased1": false,
-            "Sibling_Deceased2": false,
-            "Sibling_Deceased3": false,
-            "WYA_Race": false,
-            "WYA_Religion": false,
-            "WYA_Nationality": false,
-            "WYA_Political_Opinion": false,
-            "WYA_Member_Particular_Group": false,
-            "WYA_Torture": false,
-            "Checkbox_39": false,
-            "Checkbox_40": false
+            "dieciocho": {
+                "value": false,
+                "label": "Es Mayor de 18 Años",
+                "explanation": ""
+            },
+            "dieciocho_3": {
+                "value": false,
+                "label": "Marcador Alternativo",
+                "explanation": ""
+            },
+            "dieciocho_2": {
+                "value": false,
+                "label": "Marcador de Consentimiento",
+                "explanation": ""
+            },
+            "Obligatorio": {
+                "value": false,
+                "label": "Campo Obligatorio",
+                "explanation": ""
+            },
+            "marital_Status": {
+                "value": false,
+                "label": "Estado Civil Confirmado",
+                "explanation": ""
+            },
+            "Parent_Mother_Deceased": {
+                "value": false,
+                "label": "Madre Fallecida",
+                "explanation": ""
+            },
+            "Parent_Father_Deceased": {
+                "value": false,
+                "label": "Padre Fallecido",
+                "explanation": ""
+            },
+            "Sibling_Deceased": {
+                "value": false,
+                "label": "Hermano/a Fallecido/a",
+                "explanation": ""
+            },
+            "Sibling_Deceased1": {
+                "value": false,
+                "label": "Segundo Hermano/a Fallecido/a",
+                "explanation": ""
+            },
+            "Sibling_Deceased2": {
+                "value": false,
+                "label": "Tercer Hermano/a Fallecido/a",
+                "explanation": ""
+            },
+            "Sibling_Deceased3": {
+                "value": false,
+                "label": "Cuarto Hermano/a Fallecido/a",
+                "explanation": ""
+            },
+            "WYA_Race": {
+                "value": false,
+                "label": "Pertenencia a Raza",
+                "explanation": ""
+            },
+            "WYA_Religion": {
+                "value": false,
+                "label": "Pertenencia a Religión",
+                "explanation": ""
+            },
+            "WYA_Nationality": {
+                "value": false,
+                "label": "Pertenencia a Nacionalidad",
+                "explanation": ""
+            },
+            "WYA_Political_Opinion": {
+                "value": false,
+                "label": "Opinión Política",
+                "explanation": ""
+            },
+            "WYA_Member_Particular_Group": {
+                "value": false,
+                "label": "Miembro de un Grupo Particular",
+                "explanation": ""
+            },
+            "WYA_Torture": {
+                "value": false,
+                "label": "Víctima de Tortura",
+                "explanation": ""
+            },
+            "Checkbox_39": {
+                "value": false,
+                "label": "Checkbox 39",
+                "explanation": ""
+            },
+            "Checkbox_40": {
+                "value": false,
+                "label": "Checkbox 40",
+                "explanation": ""
+            }
         }
     },
     "Spouse": {
         "PDFTextField2": {
-            "Spouse_Alien_Number": "N/A",
-            "Spouse_Passport_Number": "N/A",
-            "Spouse_Date_of_Birth": "N/A",
-            "Spouse_SSN": "N/A",
-            "Spouse_Complete_Last_Name": "N/A",
-            "Spouse_First_Name": "N/A",
-            "Spouse_Middle_Name": "N/A",
-            "Spouse_Other_Names": "N/A",
-            "Spouse_Date_og_Marriage": "N/A",
-            "Spouse_Place_Marriage": "N/A",
-            "Spouse_City_Country_of_Birth": "N/A",
-            "Spouse_Nationality": "N/A",
-            "Spouse_Race": "N/A",
-            "Spouse_Last_Entry": "N/A",
-            "Spouse_Current_Status": "N/A",
-            "Spouse_Date_Last_Entry": "N/A",
-            "Spouse_Expiration_Date_Stay": "N/A",
-            "Spouse_I-94_Number": "N/A",
-            "Spouse_Status_Last_Admitted": "N/A",
-            "Spouse_Previous_arrival": "N/A",
-            "Spouse_Specific_Location": "N/A"
+            "Spouse_Alien_Number": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Passport_Number": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Date_of_Birth": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_SSN": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Complete_Last_Name": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_First_Name": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Middle_Name": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Other_Names": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Date_og_Marriage": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Place_Marriage": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_City_Country_of_Birth": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Nationality": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Race": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Last_Entry": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Current_Status": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Date_Last_Entry": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Expiration_Date_Stay": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_I-94_Number": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Status_Last_Admitted": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Previous_arrival": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Spouse_Specific_Location": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            }
         },
         "PDFRadioGroup2": {
-            "Spouse_Gender": null,
-            "Spouse_Location_US": null,
-            "Spouse_Court": null,
-            "Spouse_Include_Application": null
+            "Spouse_Gender": {
+                "value": null,
+                "label": "Género del Cónyuge",
+                "explanation": ""
+            },
+            "Spouse_Location_US": {
+                "value": null,
+                "label": "Ubicación del Cónyuge en EE. UU.",
+                "explanation": ""
+            },
+            "Spouse_Court": {
+                "value": null,
+                "label": "Procedimiento Judicial del Cónyuge",
+                "explanation": ""
+            },
+            "Spouse_Include_Application": {
+                "value": null,
+                "label": "Incluir Cónyuge en la Solicitud",
+                "explanation": ""
+            }
         }
     },
     "Children": {
         "PDFTextField2": {
-            "Children_Total": "N/A",
-            "Children_Alien_Number": "N/A",
-            "Children_Passport_Number": "N/A",
-            "Children_Marital_Status": "N/A",
-            "Children_SSN": "N/A",
-            "Children_Complete_Last_Name": "N/A",
-            "Children_City_Country_of_Birth": "N/A",
-            "Children_Place_Last_Entry": "N/A",
-            "Children_Current_Status": "N/A",
-            "Children_Expiration_Day_Stay": "N/A",
-            "Children_First_Name": "N/A",
-            "Children_Nationality": "N/A",
-            "Children_Date_Last_Entry": "N/A",
-            "Children_Middle_Name": "N/A",
-            "Children_Race": "N/A",
-            "Children_Date_of_Birth": "N/A",
-            "Children_I-94_Number": "N/A",
-            "Children_Status_Last_Admitted": "N/A",
-            "Children_Specify_Location": "N/A"
+            "Children_Total": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Alien_Number": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Passport_Number": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Marital_Status": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_SSN": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Complete_Last_Name": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_City_Country_of_Birth": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Place_Last_Entry": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Current_Status": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Expiration_Day_Stay": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_First_Name": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Nationality": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Date_Last_Entry": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Middle_Name": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Race": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Date_of_Birth": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_I-94_Number": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Status_Last_Admitted": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            },
+            "Children_Specify_Location": {
+                "value": "N/A",
+                "label": "",
+                "explanation": ""
+            }
         },
         "PDFRadioGroup2": {
-            "Children_Court": null,
-            "Children_Included": null,
-            "Children_Gender": null,
-            "Children_Location": null
+            "Children_Court": {
+                "value": null,
+                "label": "Procedimiento Judicial del Hijo",
+                "explanation": ""
+            },
+            "Children_Included": {
+                "value": null,
+                "label": "Hijos Incluidos en la Solicitud",
+                "explanation": ""
+            },
+            "Children_Gender": {
+                "value": null,
+                "label": "Género del Hijo",
+                "explanation": ""
+            },
+            "Children_Location": {
+                "value": null,
+                "label": "Ubicación del Hijo",
+                "explanation": ""
+            }
         }
     }
 }

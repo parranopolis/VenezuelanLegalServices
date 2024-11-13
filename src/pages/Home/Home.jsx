@@ -196,8 +196,13 @@ export function Home() {
                     <button onClick={handleSubmitEvent}>submit</button>
                 </form>
             </div> */}
-
-            <div>
+            {/* <hr />
+            <hr />
+            <hr />
+            <hr />
+            <hr />
+            <hr /> */}
+            {/* <div>
                 <form>
                     <span className="h4">Información Personal</span>
                     <br />
@@ -336,10 +341,10 @@ export function Home() {
             <hr />
             <a href={pdf} target="_blank" rel="noopener noreferrer">
                 Ver PDF
-            </a>
-            <div>
+            </a> */}
+            {/* <div>
                 <object data={pdf} type="application/pdf" width='100%' height='800vh'></object>
-            </div>
+            </div> */}
         </>
     )
 }
