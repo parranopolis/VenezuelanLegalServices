@@ -11,24 +11,18 @@ export function Forms() {
     const children = formData.Children
     return (
         <>
-            <br />
-            <br />
-            <br />
-            <br />
             <form>
                 <FormContainer formData={applicant} />
-
             </form>
-            <br />
-            <br />
-            <br />
         </>
     )
 }
-
-const FormContainer = ({ formData, handleChange }) => {
+//base form
+const FormContainer = ({ formData }) => {
     const [currentSection, setCurrentSection] = useState(1)
-    const aplicant = [
+
+    //dictionary to segment the fields and their different types that should be displayed together
+    const aplicantPart_A1 = [
         {
             name: 'Identificación',
             fields: {
@@ -118,13 +112,20 @@ const FormContainer = ({ formData, handleChange }) => {
     ]
 
     const renderSection = () => {
-        const currentGroup = aplicant[currentSection - 1]
+        const currentGroup = aplicantPart_A1[currentSection - 1]
         return <FormSection fields={currentGroup} data={formData} />
     }
 
+    // Updates the form displayed on the screen
     const updateCurrentForm = (e) => {
         e.preventDefault()
-        setCurrentSection(parseInt(e.target.name))
+        if (e.target.name === 'last') {
+            if (currentSection == 1) null
+            else setCurrentSection(currentSection - 1)
+        } else if (e.target.name === 'next') {
+            if (currentSection == 8) null
+            else setCurrentSection(currentSection + 1)
+        }
     }
     return (
         <div>
@@ -132,62 +133,27 @@ const FormContainer = ({ formData, handleChange }) => {
                 {renderSection()}
             </div>
             <div>
-                <button name='1' onClick={updateCurrentForm}>Identificacion</button>
-                <button name='2' onClick={updateCurrentForm}>Nombres y Apellidos</button>
-                <button name='3' onClick={updateCurrentForm}>Direccion</button>
-                <button name='4' onClick={updateCurrentForm}>Nacionalidad</button>
-                <button name='5' onClick={updateCurrentForm}>Genero</button>
-                <button name='6' onClick={updateCurrentForm}>Corte</button>
-                <button name='7' onClick={updateCurrentForm}>7</button>
-                <button name='8' onClick={updateCurrentForm}>8</button>
+                <div>
+                    <button onClick={updateCurrentForm} name='last'>Ant  </button>
+                    <span>{currentSection}</span>
+                    <button onClick={updateCurrentForm} name='next'> nex</button>
+                </div>
+                {currentSection === aplicantPart_A1.length ? <button>Enviar</button> : ''}
             </div>
-
         </div>
     )
 }
 
+//decides based on the fields passed what type of input should be displayed
 const FormSection = ({ fields, data }) => {
     return (
         <div>
             {fields.fields.hasOwnProperty('text') ? <InputText data={fields.fields.text} name={fields.name} /> : ''}
             {fields.fields.hasOwnProperty('radio') ? <InputRadio data={fields.fields.radio} name={fields.name} /> : ''}
-
         </div>
     )
 }
-
-
-// const FormSection = ({ fields, data, handleChange }) => {
-//     return (
-//         <div>
-//             {fields.fields.map((fieldkey) => {
-//                 const field = data[fieldkey]
-//                 console.log(field)
-
-//                 return (
-//                     <div key={fieldkey} >
-//                         {/* {fields.extra != undefined ? <FormLabel id={fields.extra.id} message={fields.extra.message} /> : ''} */}
-//                         <br />
-//                         <label htmlFor={fieldkey}>
-//                             {field.label || fieldkey}
-//                         </label>
-//                         <input
-//                             type="text"
-//                             id={fieldkey}
-//                             name={fieldkey}
-//                         />
-//                         {field.explanation && (
-//                             <p>
-//                                 {field.explanation}
-//                             </p>
-//                         )}
-//                     </div>
-//                 )
-//             })}
-//         </div>
-//     )
-// };
-
+//shows inputs of type Text
 function InputText({ data, name }) {
     const { formData } = useContext(initialFormValues)
 
@@ -200,7 +166,6 @@ function InputText({ data, name }) {
                     <div key={field}>
                         <label htmlFor={field}>{property.label}</label>
                         <input type='text' name={field} id={field} placeholder="text" />
-
                     </div>
                 )
             })}
@@ -209,14 +174,11 @@ function InputText({ data, name }) {
 }
 
 
-
-function InputRadio({ data, name }) {
+// shows inputs of type Radio
+function InputRadio({ data }) {
     const { formData } = useContext(initialFormValues)
-    // [{
-    //      'Gender': ['Male', 'Female'],
-    //      'Marital_Status': ['Single', 'Married', 'Divorced', 'Widowed']
-    //  }]
-    const q = data.map((group, groupIndex) => {
+
+    const q = data.map((group) => {
         const w = Object.keys(group).map((key) => {
             const property = findProperty(formData.Applicant.PDFRadioGroup2, key)
             return (
@@ -249,6 +211,7 @@ function InputRadio({ data, name }) {
     )
 }
 
+// checks the passed object if a specific property exists, and if true returns the associated object
 const findProperty = (obj, propertyName) => {
     if (obj.hasOwnProperty(propertyName)) {
         return obj[propertyName]
