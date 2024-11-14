@@ -68,7 +68,12 @@
             },
             "In_Care_of": {
                 "value": "N/A",
-                "label": "",
+                "label": "In care Of",
+                "explanation": ""
+            },
+            "phone_Number_2": {
+                "value": "N/A",
+                "label": "Numero de Telefono",
                 "explanation": ""
             },
             "Street_Number_and_Name_POX": {
@@ -89,6 +94,11 @@
             "Zip_Code_POX": {
                 "value": "N/A",
                 "label": "Codigo de Area del POX",
+                "explanation": ""
+            },
+            "Apt_Number_POX": {
+                "value": "N/A",
+                "label": "Numero de Apt",
                 "explanation": ""
             },
             "Date_Of_Birth": {

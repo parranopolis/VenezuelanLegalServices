@@ -82,6 +82,15 @@ export function Forms() {
             const form = pdfDoc.getForm()
 
             // Modify text fields
+            const textFields = formData.Applicant.PDFTextField2;
+            Object.keys(textFields).forEach((key) => {
+                const field = form.getTextField(key);
+                if (field) {
+                    field.setText(textFields[key].value);
+                }
+            });
+
+            // Modify Radio fields
             const radioFields = formData.Applicant.PDFRadioGroup2;
             Object.keys(radioFields).forEach((key) => {
                 const field = form.getRadioGroup(key);
@@ -91,7 +100,6 @@ export function Forms() {
                 }
             });
 
-            // Modify Radio fields
 
             // const radioFields = formData.Applicant.PDFRadioGroup2
             // Object.keys(radioFields).forEach((key) => {
@@ -128,7 +136,7 @@ export function Forms() {
 }
 //base form
 const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
-    const [currentSection, setCurrentSection] = useState(6)
+    const [currentSection, setCurrentSection] = useState(3)
     const { formData } = useContext(initialFormValues)
 
     //dictionary to segment the fields and their different types that should be displayed together
@@ -150,11 +158,22 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
         },
         {
             name: 'Dirección',
-            fields: { text: ["Street_Number_and_Name", "Apt_Number", "City", "State", "Zip_Code", 'Street_Number_and_Name_POX', 'City_POX', 'State_POX', 'Zip_Code_POX',] }
-        },
-        {
-            name: 'Nacionalidad',
-            fields: { text: ['City_and_Country_of_Birth', 'Present_Nacionality', 'Nationality_at_Birth', 'Race_Ethnic_Tribal_Group', 'Religion', 'phone_Number_1'] }
+            fields: {
+                text: [
+                    "Street_Number_and_Name",
+                    "Apt_Number",
+                    "City",
+                    "State",
+                    "Zip_Code",
+                    "phone_Number_1",
+                    'In_Care_of',
+                    "phone_Number_2",
+                    'Street_Number_and_Name_POX',
+                    'Apt_Number_POX',
+                    'City_POX',
+                    'State_POX',
+                    'Zip_Code_POX',]
+            }
         },
         {
             name: 'Sexo',
@@ -169,6 +188,11 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
                 text: ['Date_Of_Birth']
             }
         },
+        {
+            name: 'Nacionalidad',
+            fields: { text: ['City_and_Country_of_Birth', 'Present_Nacionality', 'Nationality_at_Birth', 'Race_Ethnic_Tribal_Group', 'Religion'] }
+        },
+
         {
             name: 'Corte de Inmigración:',
             fields: {
@@ -187,16 +211,16 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
             name: 'Imformacion de Viaje',
             fields: {
                 text: [
-                    'I-94_Number',
                     'Leave_Your_Country',
+                    'I-94_Number',
                     'Each_Entry_Date_1',
-                    'Each_Entry_Date_2',
-                    'Each_Entry_Date_3',
                     'Each_Entry_Place_1',
-                    'Each_Entry_Place_2',
-                    'Each_Entry_Place_3',
                     'Each_Entry_Status_1',
+                    'Each_Entry_Date_2',
+                    'Each_Entry_Place_2',
                     'Each_Entry_Status_2',
+                    'Each_Entry_Date_3',
+                    'Each_Entry_Place_3',
                     'Each_Entry_Status_3',
                     'Each_Entry_Date_Expires'
                 ]
