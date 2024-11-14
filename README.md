@@ -2,11 +2,11 @@
 
 **🚧 Project Under Construction 🚧**
 
-Welcome to the **Venezuelan Legal Service** repository, a platform in development to facilitate legal processes for Venezuelan citizens. This application aims to simplify procedures like asylum applications, work permits, and TPS, providing users with a secure and organized space for document management and case tracking.
+Welcome to the **Venezuelan Legal Service** repository, a platform developed for an LLC that supports Venezuelans with essential legal processes, such as asylum applications, work permits, and TPS. This application provides a secure, organized space for document management and case tracking, streamlining communication and reminders for key deadlines.
 
 ## 📋 Project Overview
 
-Venezuelan Legal Service is an application designed to support Venezuelan citizens in their legal processes abroad. With a focus on data privacy and security, the app will allow users to store, manage, and share documents securely. It will also integrate notifications for reminders and important deadlines.
+Venezuelan Legal Service is an application designed to support Venezuelan citizens with their legal processes abroad. Focused on data privacy and security, the app allows users to store, manage, and share documents securely. It also integrates notifications for reminders and important deadlines to ensure timely follow-up on cases.
 
 ## 🛠️ Tech Stack
 
