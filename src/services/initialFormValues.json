@@ -54,7 +54,7 @@
             "State": {
                 "value": "N/A",
                 "label": "Estado",
-                "explanation": ""
+                "explanation": "Use Solo 2 Letras"
             },
             "Zip_Code": {
                 "value": "N/A",

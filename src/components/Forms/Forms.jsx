@@ -1,25 +1,64 @@
 import { useContext, useState } from 'react'
 import { initialFormValues } from '../../contexts/InitialValueContext'
-import { last } from 'pdf-lib'
+import { last, PDFRadioGroup, PDFTextField } from 'pdf-lib'
 
 
 export function Forms() {
 
     const { formData, setFormData } = useContext(initialFormValues)
+
+    const handleChange = (e) => {
+        const { name, value, type } = e.target
+
+        setFormData((prevFormData) => {
+            if (type === 'radio') {
+                return {
+                    ...prevFormData,
+                    Applicant: {
+                        ...prevFormData.Applicant,
+                        PDFRadioGroup2: {
+                            ...prevFormData.Applicant.PDFRadioGroup2,
+                            [name]: {
+                                ...prevFormData.Applicant.PDFRadioGroup2[name],
+                                value: value
+                            }
+                        }
+                    }
+                }
+            } else if (type === 'text') {
+                return {
+                    ...prevFormData,
+                    Applicant: {
+                        ...prevFormData.Applicant,
+                        PDFTextField2: {
+                            ...prevFormData.Applicant.PDFTextField2,
+                            [name]: {
+                                ...prevFormData.Applicant.PDFTextField2[name],
+                                value: value
+                            }
+                        }
+                    }
+                }
+            }
+            return prevFormData
+        })
+    }
+
     const applicant = formData.Applicant
     const spouse = formData.Spouse
     const children = formData.Children
     return (
         <>
             <form>
-                <FormContainer formData={applicant} />
+                <FormContainer formDataContex={formData} handleChange={handleChange} />
             </form>
         </>
     )
 }
 //base form
-const FormContainer = ({ formData }) => {
+const FormContainer = ({ formDataContex, handleChange }) => {
     const [currentSection, setCurrentSection] = useState(1)
+    const { formData } = useContext(initialFormValues)
 
     //dictionary to segment the fields and their different types that should be displayed together
     const aplicantPart_A1 = [
@@ -113,7 +152,7 @@ const FormContainer = ({ formData }) => {
 
     const renderSection = () => {
         const currentGroup = aplicantPart_A1[currentSection - 1]
-        return <FormSection fields={currentGroup} data={formData} />
+        return <FormSection fields={currentGroup} formDataContex={formDataContex} handleChange={handleChange} />
     }
 
     // Updates the form displayed on the screen
@@ -127,6 +166,11 @@ const FormContainer = ({ formData }) => {
             else setCurrentSection(currentSection + 1)
         }
     }
+
+    const sent = (e) => {
+        e.preventDefault()
+        console.log(formData.Applicant)
+    }
     return (
         <div>
             <div>
@@ -138,34 +182,40 @@ const FormContainer = ({ formData }) => {
                     <span>{currentSection}</span>
                     <button onClick={updateCurrentForm} name='next'> nex</button>
                 </div>
-                {currentSection === aplicantPart_A1.length ? <button>Enviar</button> : ''}
+                {currentSection === aplicantPart_A1.length ? <button onClick={sent}>Enviar</button> : ''}
+
             </div>
         </div>
     )
 }
 
 //decides based on the fields passed what type of input should be displayed
-const FormSection = ({ fields, data }) => {
+const FormSection = ({ fields, handleChange, formDataContex }) => {
     return (
         <div>
-            {fields.fields.hasOwnProperty('text') ? <InputText data={fields.fields.text} name={fields.name} /> : ''}
-            {fields.fields.hasOwnProperty('radio') ? <InputRadio data={fields.fields.radio} name={fields.name} /> : ''}
+            {fields.fields.hasOwnProperty('text') ? <InputText data={fields.fields.text} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
+            {fields.fields.hasOwnProperty('radio') ? <InputRadio data={fields.fields.radio} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
         </div>
     )
 }
 //shows inputs of type Text
-function InputText({ data, name }) {
-    const { formData } = useContext(initialFormValues)
-
+function InputText({ data, name, handleChange, formDataContex }) {
     return (
         <>
             <span className='h3'>{name}</span>
             {data.map(field => {
-                const property = findProperty(formData.Applicant, field)
+                const property = findProperty(formDataContex.Applicant, field)
                 return (
                     <div key={field}>
                         <label htmlFor={field}>{property.label}</label>
-                        <input type='text' name={field} id={field} placeholder="text" />
+                        <input
+                            type='text'
+                            name={field}
+                            id={field}
+                            placeholder="text"
+                            value={property.value !== 'N/A' ? property.value : ''}
+                            onChange={handleChange}
+                        />
                     </div>
                 )
             })}
@@ -173,19 +223,17 @@ function InputText({ data, name }) {
     )
 }
 
-
 // shows inputs of type Radio
-function InputRadio({ data }) {
-    const { formData } = useContext(initialFormValues)
-
+function InputRadio({ data, handleChange, formDataContex }) {
     const q = data.map((group) => {
         const w = Object.keys(group).map((key) => {
-            const property = findProperty(formData.Applicant.PDFRadioGroup2, key)
+            const property = findProperty(formDataContex.Applicant.PDFRadioGroup2, key)
             return (
                 <div key={key}>
                     <span className='h5'>{property.label}</span>
                     <div>
                         {group[key].map((value) => {
+
                             return (
                                 <div key={value}>
                                     <input
@@ -193,6 +241,8 @@ function InputRadio({ data }) {
                                         id={`${key}_${value}`}
                                         name={key}
                                         value={value}
+                                        checked={property.value === value}
+                                        onChange={handleChange}
                                     />
                                     <label htmlFor={`${key}_${value}`}>{value}</label>
                                 </div>
@@ -217,7 +267,7 @@ const findProperty = (obj, propertyName) => {
         return obj[propertyName]
     } else {
         for (const key of Object.keys(obj)) {
-            if (typeof obj[key] === 'object' && obj[key], propertyName) {
+            if (typeof obj[key] === 'object' && obj[key] !== propertyName) {
                 const resutl = findProperty(obj[key], propertyName)
                 if (resutl) {
                     return resutl
