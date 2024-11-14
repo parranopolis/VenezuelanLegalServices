@@ -1,11 +1,13 @@
 import { useContext, useState } from 'react'
 import { initialFormValues } from '../../contexts/InitialValueContext'
-import { last, PDFRadioGroup, PDFTextField } from 'pdf-lib'
+import i589 from './../../assets/PDF/i-589.pdf'
+import { last, PDFDocument, PDFRadioGroup, PDFTextField } from 'pdf-lib'
 
 
 export function Forms() {
 
     const { formData, setFormData } = useContext(initialFormValues)
+    const [PDFUrl, setPDFUrl] = useState(null)
 
     const handleChange = (e) => {
         const { name, value, type } = e.target
@@ -44,20 +46,89 @@ export function Forms() {
         })
     }
 
+    const downloadBlob = (data, filename, mimeType) => {
+        let blob, url
+        blob = new Blob([data], {
+            type: mimeType
+        })
+        url = window.URL.createObjectURL(blob)
+        downloadURL(url, filename)
+        setTimeout(function () {
+            return window.URL.revokeObjectURL(url)
+        }, 1000)
+
+    }
+
+    const downloadURL = (data, filename) => {
+        let a
+        a = document.createElement('a')
+        a.href = data
+        a.download = filename
+        document.body.appendChild(a)
+        a.style = 'display:none'
+        // a.click()
+        a.remove()
+        setPDFUrl(a)
+    }
+    const modifyPDF = async () => {
+
+        try {
+
+
+            const url = i589
+            const existstingPdfBytes = await fetch(url).then((res) => res.arrayBuffer())
+
+            const pdfDoc = await PDFDocument.load(existstingPdfBytes)
+            const form = pdfDoc.getForm()
+
+            // Modify text fields
+            const radioFields = formData.Applicant.PDFRadioGroup2;
+            Object.keys(radioFields).forEach((key) => {
+                const field = form.getRadioGroup(key);
+                if (field && radioFields[key] && radioFields[key].value) {
+                    // Solo selecciona si hay un valor válido
+                    field.select(radioFields[key].value);
+                }
+            });
+
+            // Modify Radio fields
+
+            // const radioFields = formData.Applicant.PDFRadioGroup2
+            // Object.keys(radioFields).forEach((key) => {
+            //     const fields = form.getRadioGroup(key)
+            //     if (fields) {
+            //         fields.select(radioFields[key].value)
+            //     }
+            // })
+
+            // Save the PDF
+
+            const pdfBytes = await pdfDoc.save()
+
+            downloadBlob(pdfBytes, 'output.pdf', 'application/pdf')
+        } catch (error) {
+            console.error(error)
+        }
+
+    }
+
     const applicant = formData.Applicant
     const spouse = formData.Spouse
     const children = formData.Children
     return (
         <>
             <form>
-                <FormContainer formDataContex={formData} handleChange={handleChange} />
+                <FormContainer formDataContex={formData} handleChange={handleChange} modifyPDF={modifyPDF} />
             </form>
+            <object data={PDFUrl} type="application/pdf" width='100%' height='800vh'></object>
+
+            <iframe src={PDFUrl} width='100%' height={'500px'}></iframe>
         </>
     )
 }
 //base form
-const FormContainer = ({ formDataContex, handleChange }) => {
-    const [currentSection, setCurrentSection] = useState(1)
+const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
+    const [currentSection, setCurrentSection] = useState(6)
     const { formData } = useContext(initialFormValues)
 
     //dictionary to segment the fields and their different types that should be displayed together
@@ -104,9 +175,9 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                 radio: [
                     {
                         "Dieciocho": [
-                            'Nunca he estado en procedimientos judiciales de inmigración',
-                            'Estoy en proceso de procedimientos judiciales de inmigración',
-                            'No estoy ahora en procedimientos judiciales de inmigración, pero he estado en el pasado '
+                            'Nunca he estado en procedimientos judiciales de inmigracion',
+                            'Estoy en proceso de procedimientos judiciales de inmigracion',
+                            'No estoy ahora en procedimientos judiciales de inmigracion, pero he estado en el pasado'
                         ]
                     }
                 ]
@@ -182,8 +253,8 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                     <span>{currentSection}</span>
                     <button onClick={updateCurrentForm} name='next'> nex</button>
                 </div>
-                {currentSection === aplicantPart_A1.length ? <button onClick={sent}>Enviar</button> : ''}
-
+                <button type='button' onClick={modifyPDF}>Enviar</button>
+                {/* {currentSection === aplicantPart_A1.length ? <button type='button' onClick={modifyPDF}>Enviar</button> : ''} */}
             </div>
         </div>
     )
