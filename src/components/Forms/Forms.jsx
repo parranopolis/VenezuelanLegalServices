@@ -1,11 +1,17 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { initialFormValues } from '../../contexts/InitialValueContext'
 import i589 from './../../assets/PDF/i-589.pdf'
 import { last, PDFDocument, PDFRadioGroup, PDFTextField } from 'pdf-lib'
 
+const statusMapping = {
+    'Entregado en La frontera | No expira': 'EWI',
+    'CBP1': 'Parole DT',
+    'Visa de Turista': 'Tourist Visa',
+    'Visa de Estudiante': 'Student Visa',
+    'Parole Humanitario': 'Humanitarian Parole',
+};
 
 export function Forms() {
-
     const { formData, setFormData } = useContext(initialFormValues)
     const [PDFUrl, setPDFUrl] = useState(null)
 
@@ -13,6 +19,11 @@ export function Forms() {
         const { name, value, type } = e.target
 
         setFormData((prevFormData) => {
+            let updatedValue = value
+            if (name == 'Each_Entry_Status_1' || name === 'Each_Entry_Status_2' || name === 'Each_Entry_Status_3') {
+                updatedValue = statusMapping[value] || value
+            }
+
             if (type === 'radio') {
                 return {
                     ...prevFormData,
@@ -27,7 +38,7 @@ export function Forms() {
                         }
                     }
                 }
-            } else if (type === 'text') {
+            } else if (type === 'text' || type == 'select-one') {
                 return {
                     ...prevFormData,
                     Applicant: {
@@ -112,10 +123,10 @@ export function Forms() {
             // Save the PDF
 
             const pdfBytes = await pdfDoc.save()
-
             downloadBlob(pdfBytes, 'output.pdf', 'application/pdf')
         } catch (error) {
-            console.error(error)
+            console.error('Error modifying the PDF:', error);
+            alert('Hubo un error al modificar el PDF. Verifica la consola para más detalles.');
         }
 
     }
@@ -128,15 +139,23 @@ export function Forms() {
             <form>
                 <FormContainer formDataContex={formData} handleChange={handleChange} modifyPDF={modifyPDF} />
             </form>
-            <object data={PDFUrl} type="application/pdf" width='100%' height='800vh'></object>
+            {PDFUrl ? (
+                <div>
+                    <h3>PDF Modificado</h3>
+                    <a href={PDFUrl} download="modified_form.pdf">Descarga una copia aqui</a>
 
-            <iframe src={PDFUrl} width='100%' height={'500px'}></iframe>
+                    <object data={PDFUrl} type="application/pdf" width='100%' height='810vh' >
+
+                    </object>
+                </div>
+            ) : null}
+
         </>
     )
 }
 //base form
 const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
-    const [currentSection, setCurrentSection] = useState(3)
+    const [currentSection, setCurrentSection] = useState(7)
     const { formData } = useContext(initialFormValues)
 
     //dictionary to segment the fields and their different types that should be displayed together
@@ -181,7 +200,12 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
                 radio: [
                     {
                         'Gender': ['Male', 'Female'],
-                        'Marital_Status': ['Single', 'Married', 'Divorced', 'Widowed']
+
+                        'Marital_Status': ['Soltero -> Nunca Casado',
+                            'Casado Legalmente',
+                            'Divorciado',
+                            'Viudo]',
+                        ]
                     },
 
                 ],
@@ -190,7 +214,14 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
         },
         {
             name: 'Nacionalidad',
-            fields: { text: ['City_and_Country_of_Birth', 'Present_Nacionality', 'Nationality_at_Birth', 'Race_Ethnic_Tribal_Group', 'Religion'] }
+            fields: {
+                select: [
+                    {
+                        'Race_Ethnic_Tribal_Group': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico']
+                    }
+                ],
+                text: ['City_and_Country_of_Birth', 'Present_Nacionality', 'Nationality_at_Birth', 'Religion'],
+            }
         },
 
         {
@@ -215,14 +246,18 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
                     'I-94_Number',
                     'Each_Entry_Date_1',
                     'Each_Entry_Place_1',
-                    'Each_Entry_Status_1',
                     'Each_Entry_Date_2',
                     'Each_Entry_Place_2',
-                    'Each_Entry_Status_2',
                     'Each_Entry_Date_3',
                     'Each_Entry_Place_3',
-                    'Each_Entry_Status_3',
                     'Each_Entry_Date_Expires'
+                ],
+                select: [
+                    {
+                        'Each_Entry_Status_1': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+                        'Each_Entry_Status_2': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+                        'Each_Entry_Status_3': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+                    }
                 ]
             }
         }, {
@@ -231,7 +266,6 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
                 text: [
                     'Passport_Country',
                     'Passport_Number',
-                    'Travel_Document_Number',
                     'Passport_Expiration_Day',
                     'Native_Language',
                     'Other_Language'
@@ -290,9 +324,66 @@ const FormSection = ({ fields, handleChange, formDataContex }) => {
         <div>
             {fields.fields.hasOwnProperty('text') ? <InputText data={fields.fields.text} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
             {fields.fields.hasOwnProperty('radio') ? <InputRadio data={fields.fields.radio} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
+            {fields.fields.hasOwnProperty('select') ? <InputSelect data={fields.fields.select} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
         </div>
     )
 }
+
+function InputSelect({ data, formDataContex, handleChange }) {
+    // shows inputs of type Select
+    // const q = data.map((group) => {
+    //     const w = Object.keys(group).map((key) => {
+    //         const property = findProperty(formDataContex.Applicant, key);
+    //         return (
+    //             <div key={key}>
+    //                 <span className="h5">{property.label}</span>
+    //                 <select name={key} value={property.value} onChange={handleChange}>
+    //                     {group[key].map((value) => (
+    //                         <option key={value} value={value}>
+    //                             {value}
+    //                         </option>
+    //                     ))}
+    //                 </select>
+    //             </div>
+    //         );
+    //     });
+    //     return w;
+    // });
+    // return <div>{q}</div>;
+
+
+    return (
+        <>
+            {data.map((group) => {
+                return Object.keys(group).map((key) => {
+                    const property = findProperty(formDataContex.Applicant.PDFTextField2, key);
+                    return (
+                        <div key={key}>
+                            <label htmlFor={key}>{property.label}</label>
+                            <br />
+                            <select
+                                id={key}
+                                name={key}
+                                value={property.value !== 'N/A' ? property.value : ''}
+                                onChange={handleChange}
+                            >
+                                <option value="">Seleccione una opción</option>
+                                {group[key].map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    );
+                });
+            })
+
+            }
+        </>
+    )
+}
+
 //shows inputs of type Text
 function InputText({ data, name, handleChange, formDataContex }) {
     return (
@@ -303,6 +394,8 @@ function InputText({ data, name, handleChange, formDataContex }) {
                 return (
                     <div key={field}>
                         <label htmlFor={field}>{property.label}</label>
+                        <br />
+                        {property.explanation != '' ? <span style={{ color: 'red' }}>{property.explanation}</span> : <span />}
                         <input
                             type='text'
                             name={field}
@@ -311,6 +404,7 @@ function InputText({ data, name, handleChange, formDataContex }) {
                             value={property.value !== 'N/A' ? property.value : ''}
                             onChange={handleChange}
                         />
+                        <hr />
                     </div>
                 )
             })}

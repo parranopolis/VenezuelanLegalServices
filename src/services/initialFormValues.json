@@ -4,7 +4,7 @@
             "Alien_Number": {
                 "value": "N/A",
                 "label": "Numero A",
-                "explanation": "Lo puede encontrar en el documento de la corte"
+                "explanation": "Es un numero de 9 digitos. Puede encontrado en todo documento Relacionado a inmigración"
             },
             "SSN": {
                 "value": "N/A",
@@ -139,7 +139,7 @@
             "I-94_Number": {
                 "value": "N/A",
                 "label": "Numero de I-94 (si lo tiene)",
-                "explanation": ""
+                "explanation": "Si entro con Visa, CBP1, o Parol Humanitario tiene Numero de I-94, y puede ser encontrado en cualquier documento relacionado"
             },
             "Each_Entry_Date_1": {
                 "value": "N/A",
@@ -427,7 +427,7 @@
             "Spouse_Passport_Number": {
                 "value": "N/A",
                 "label": "",
-                "explanation": ""
+                "explanation": "Si no Tiene Pasaporte, Dejar en Blanco"
             },
             "Spouse_Date_of_Birth": {
                 "value": "N/A",
@@ -563,7 +563,7 @@
             "Children_Passport_Number": {
                 "value": "N/A",
                 "label": "",
-                "explanation": ""
+                "explanation": "Si no Tiene Pasaporte, Dejar en Blanco"
             },
             "Children_Marital_Status": {
                 "value": "N/A",
