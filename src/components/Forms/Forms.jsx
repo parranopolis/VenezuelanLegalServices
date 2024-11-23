@@ -2,7 +2,17 @@ import { useContext, useEffect, useState } from 'react'
 import { initialFormValues } from '../../contexts/InitialValueContext'
 import i589 from './../../assets/PDF/i-589.pdf'
 import { PDFDocument } from 'pdf-lib'
-import { Button, Input, Fieldset, Stack } from '@chakra-ui/react'
+import { Button, Input, Fieldset, Box, Link, Strong } from '@chakra-ui/react'
+import {
+    HoverCardArrow,
+    HoverCardContent,
+    HoverCardRoot,
+    HoverCardTrigger,
+} from "@/components/ui/hover-card"
+
+
+import { ToggleTip } from "@/components/ui/toggle-tip"
+import { LuInfo } from "react-icons/lu"
 
 import './Forms.css'
 
@@ -163,7 +173,7 @@ export function Forms() {
 }
 //base form
 const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
-    const [currentSection, setCurrentSection] = useState(6)
+    const [currentSection, setCurrentSection] = useState(1)
     const { formData } = useContext(initialFormValues)
 
     //dictionary to segment the fields and their different types that should be displayed together
@@ -308,7 +318,6 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
         e.preventDefault()
         console.log(formData.Applicant)
     }
-    console.log(currentSection)
     return (
         <article>
             <section className='RenderSection'>
@@ -378,6 +387,7 @@ function InputSelect({ data, formDataContex, handleChange }) {
 
 //shows inputs of type Text
 function InputTextComponent({ data, name, handleChange, formDataContex }) {
+    const [open, setOpen] = useState(false)
     return (
         <>
             <Fieldset.Legend>
@@ -386,10 +396,28 @@ function InputTextComponent({ data, name, handleChange, formDataContex }) {
 
             {data.map(field => {
                 const property = findProperty(formDataContex.Applicant, field)
+                const x = <span className='h6 helpTip'>{property.explanation}</span>
                 return (
                     <Field key={field}>
-                        <label className='h6 opacity' htmlFor={field}>{property.label}</label>
-                        {property.explanation != '' ? <span style={{ color: 'red' }}>{property.explanation}</span> : <span />}
+                        <label className='h6 opacity' htmlFor={field}>{property.label} {property.explanation != '' ? <span>
+                            <ToggleTip content={x}>
+                                <Button size="xs" variant="ghost">
+                                    <LuInfo />
+                                </Button>
+                            </ToggleTip>
+                            {/* <HoverCardRoot size="sm" open={open} onOpenChange={(e) => setOpen(e.open)}>
+                                <HoverCardTrigger asChild>
+                                    <ion-icon name="information-circle-outline"></ion-icon>
+                                </HoverCardTrigger>
+                                <HoverCardContent maxWidth={'250px'}>
+                                    <HoverCardArrow />
+                                    <Box>
+                                        {property.explanation}
+                                    </Box>
+                                </HoverCardContent>
+                            </HoverCardRoot> */}
+                        </span> : ''} </label>
+                        {/* {property.explanation != '' ? <span style={{ color: 'red' }}>{property.explanation}</span> : <span />} */}
                         <Input
                             className='p-large'
                             variant={'subtle'}

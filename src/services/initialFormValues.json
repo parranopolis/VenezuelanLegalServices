@@ -139,7 +139,7 @@
             "I-94_Number": {
                 "value": "N/A",
                 "label": "Numero de I-94 (si lo tiene)",
-                "explanation": "Si entro con Visa, CBP1, o Parol Humanitario tiene Numero de I-94, y puede ser encontrado en cualquier documento relacionado"
+                "explanation": "Si usted entro con Visa, CBP1, o Parol Humanitario tiene Numero de I-94, y puede ser encontrado en cualquier documento relacionado"
             },
             "Each_Entry_Date_1": {
                 "value": "N/A",

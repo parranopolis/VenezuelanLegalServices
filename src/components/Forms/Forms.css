@@ -12,3 +12,9 @@
 .radioOptions input[type="radio"]:checked+label {
     background-color: hsl(172, 67%, 45%);
 }
+
+.helpTip {
+    max-width: 300px;
+    line-height: 1.5rem;
+    text-align: center;
+}
