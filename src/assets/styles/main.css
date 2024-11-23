@@ -85,3 +85,7 @@ html {
     background-color: red;
     margin-bottom: 2rem;
 }
+
+.opacity {
+    opacity: .6;
+}

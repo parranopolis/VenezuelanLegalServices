@@ -2,6 +2,15 @@ import { useContext, useEffect, useState } from 'react'
 import { initialFormValues } from '../../contexts/InitialValueContext'
 import i589 from './../../assets/PDF/i-589.pdf'
 import { last, PDFDocument, PDFRadioGroup, PDFTextField } from 'pdf-lib'
+import { Button, Input, Fieldset, Stack } from '@chakra-ui/react'
+
+import { HStack } from "@chakra-ui/react"
+import { Radio, RadioGroup } from "@/components/ui/radio"
+import { Field } from "@/components/ui/field"
+import {
+    NativeSelectField,
+    NativeSelectRoot,
+} from "@/components/ui/native-select"
 
 const statusMapping = {
     'Entregado en La frontera | No expira': 'EWI',
@@ -155,7 +164,7 @@ export function Forms() {
 }
 //base form
 const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
-    const [currentSection, setCurrentSection] = useState(7)
+    const [currentSection, setCurrentSection] = useState(4)
     const { formData } = useContext(initialFormValues)
 
     //dictionary to segment the fields and their different types that should be displayed together
@@ -204,7 +213,7 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
                         'Marital_Status': ['Soltero -> Nunca Casado',
                             'Casado Legalmente',
                             'Divorciado',
-                            'Viudo]',
+                            'Viudo',
                         ]
                     },
 
@@ -306,12 +315,12 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
                 {renderSection()}
             </div>
             <div>
-                <div>
-                    <button onClick={updateCurrentForm} name='last'>Ant  </button>
+                <div aling='center'>
+                    <Button size={'lg'} variant={'outline'} onClick={updateCurrentForm} name='last'>Ant  </Button>
                     <span>{currentSection}</span>
-                    <button onClick={updateCurrentForm} name='next'> nex</button>
+                    <Button size={'lg'} onClick={updateCurrentForm} name='next'> nex</Button>
                 </div>
-                <button type='button' onClick={modifyPDF}>Enviar</button>
+                <Button size={'lg'} type='button' onClick={modifyPDF}>Enviar</Button>
                 {/* {currentSection === aplicantPart_A1.length ? <button type='button' onClick={modifyPDF}>Enviar</button> : ''} */}
             </div>
         </div>
@@ -322,36 +331,16 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
 const FormSection = ({ fields, handleChange, formDataContex }) => {
     return (
         <div>
-            {fields.fields.hasOwnProperty('text') ? <InputText data={fields.fields.text} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
-            {fields.fields.hasOwnProperty('radio') ? <InputRadio data={fields.fields.radio} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
-            {fields.fields.hasOwnProperty('select') ? <InputSelect data={fields.fields.select} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
+            <Fieldset.Root size={'lg'} maxW={'lg'}>
+                {fields.fields.hasOwnProperty('text') ? <InputTextComponent data={fields.fields.text} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
+                {fields.fields.hasOwnProperty('radio') ? <InputRadio data={fields.fields.radio} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
+                {fields.fields.hasOwnProperty('select') ? <InputSelect data={fields.fields.select} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
+            </Fieldset.Root>
         </div>
     )
 }
 
 function InputSelect({ data, formDataContex, handleChange }) {
-    // shows inputs of type Select
-    // const q = data.map((group) => {
-    //     const w = Object.keys(group).map((key) => {
-    //         const property = findProperty(formDataContex.Applicant, key);
-    //         return (
-    //             <div key={key}>
-    //                 <span className="h5">{property.label}</span>
-    //                 <select name={key} value={property.value} onChange={handleChange}>
-    //                     {group[key].map((value) => (
-    //                         <option key={value} value={value}>
-    //                             {value}
-    //                         </option>
-    //                     ))}
-    //                 </select>
-    //             </div>
-    //         );
-    //     });
-    //     return w;
-    // });
-    // return <div>{q}</div>;
-
-
     return (
         <>
             {data.map((group) => {
@@ -361,20 +350,23 @@ function InputSelect({ data, formDataContex, handleChange }) {
                         <div key={key}>
                             <label htmlFor={key}>{property.label}</label>
                             <br />
-                            <select
+                            <NativeSelectRoot
                                 id={key}
                                 name={key}
                                 value={property.value !== 'N/A' ? property.value : ''}
                                 onChange={handleChange}
                             >
-                                <option value="">Seleccione una opción</option>
-                                {group[key].map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                                <NativeSelectField>
+                                    <option value="">Seleccione una opción</option>
+                                    {group[key].map((option) => (
+                                        <option key={option} value={option}>
+                                            {option}
+                                        </option>
+                                    ))}
+                                </NativeSelectField>
+                            </NativeSelectRoot>
+
+                        </div >
                     );
                 });
             })
@@ -385,27 +377,35 @@ function InputSelect({ data, formDataContex, handleChange }) {
 }
 
 //shows inputs of type Text
-function InputText({ data, name, handleChange, formDataContex }) {
+function InputTextComponent({ data, name, handleChange, formDataContex }) {
     return (
         <>
-            <span className='h3'>{name}</span>
+            <Fieldset.Legend>
+                <span className='h3'>{name}</span>
+            </Fieldset.Legend>
+
             {data.map(field => {
                 const property = findProperty(formDataContex.Applicant, field)
                 return (
+                    // <div key={field}>
                     <div key={field}>
-                        <label htmlFor={field}>{property.label}</label>
-                        <br />
-                        {property.explanation != '' ? <span style={{ color: 'red' }}>{property.explanation}</span> : <span />}
-                        <input
-                            type='text'
-                            name={field}
-                            id={field}
-                            placeholder="text"
-                            value={property.value !== 'N/A' ? property.value : ''}
-                            onChange={handleChange}
-                        />
+                        <Field>
+                            <label className='h6 opacity' htmlFor={field}>{property.label}</label>
+                            {property.explanation != '' ? <span style={{ color: 'red' }}>{property.explanation}</span> : <span />}
+                            <Input
+                                className='p-large'
+                                variant={'subtle'}
+                                name={field}
+                                type='text'
+                                id={field}
+                                value={property.value !== 'N/A' ? property.value : ''}
+                                onChange={handleChange}
+                            />
+                        </Field>
                         <hr />
+                        {/* </div> */}
                     </div>
+
                 )
             })}
         </>
@@ -420,24 +420,35 @@ function InputRadio({ data, handleChange, formDataContex }) {
             return (
                 <div key={key}>
                     <span className='h5'>{property.label}</span>
-                    <div>
+                    <RadioGroup defaultValue="1">
+
                         {group[key].map((value) => {
 
                             return (
-                                <div key={value}>
-                                    <input
+                                <HStack key={value} gap="6">
+                                    <Radio
                                         type="radio"
                                         id={`${key}_${value}`}
                                         name={key}
                                         value={value}
                                         checked={property.value === value}
                                         onChange={handleChange}
-                                    />
-                                    <label htmlFor={`${key}_${value}`}>{value}</label>
-                                </div>
+                                    >{value}</Radio>
+                                    {/* <input
+                                        type="radio"
+                                        id={`${key}_${value}`}
+                                        name={key}
+                                        value={value}
+                                        checked={property.value === value}
+                                        onChange={handleChange}
+                                    /> */}
+                                    {/* <label htmlFor={`${key}_${value}`}>{value}</label> */}
+                                </HStack>
+
                             )
                         })}
-                    </div>
+                    </RadioGroup>
+
                 </div>
             )
         })
