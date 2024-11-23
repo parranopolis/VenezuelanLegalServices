@@ -1,3 +1,14 @@
 .form {
     margin: 3rem auto;
 }
+
+.radioOptions {
+
+    display: flex;
+
+    gap: .5rem;
+}
+
+.radioOptions input[type="radio"]:checked+label {
+    background-color: hsl(172, 67%, 45%);
+}

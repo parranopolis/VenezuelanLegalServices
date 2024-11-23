@@ -103,7 +103,7 @@
             },
             "Date_Of_Birth": {
                 "value": "N/A",
-                "label": "Fecha de Nacimiento",
+                "label": "Fecha de Nacimiento (mes/día/año)",
                 "explanation": ""
             },
             "City_and_Country_of_Birth": {
@@ -208,7 +208,7 @@
             },
             "Passport_Expiration_Day": {
                 "value": "N/A",
-                "label": "Fecha de Vencimiento de su pasaporte",
+                "label": "Fecha de Vencimiento de su pasaporte (mes/dia/año)",
                 "explanation": ""
             },
             "Native_Language": {

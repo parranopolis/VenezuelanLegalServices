@@ -416,7 +416,7 @@ function InputRadio({ data, handleChange, formDataContex }) {
                     <span className='h6 opacity'>{property.label}</span>
                     {group[key].map((value) => {
                         return (
-                            <section key={value}>
+                            <section className='radioOptions' key={value}>
                                 <input
                                     type="radio"
                                     id={`${key}_${value}`}
@@ -425,7 +425,7 @@ function InputRadio({ data, handleChange, formDataContex }) {
                                     checked={property.value === value}
                                     onChange={handleChange}
                                 />
-                                <label htmlFor={`${key}_${value}`}>{value}</label>
+                                <label className='p-large' htmlFor={`${key}_${value}`}>{value}</label>
                             </section>
                         )
                     })}
