@@ -89,3 +89,23 @@ html {
 .opacity {
     opacity: .6;
 }
+
+.container {
+    margin: auto;
+    width: 90%;
+}
+
+.centert {
+    display: flex;
+    justify-content: center;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons {
+    margin-top: 1rem;
+    margin-block-end: 1rem;
+}

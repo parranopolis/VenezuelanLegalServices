@@ -133,7 +133,7 @@
             },
             "Leave_Your_Country": {
                 "value": "N/A",
-                "label": "Cuando Se fue de su país? (mes/día,año)",
+                "label": "Cuando Se fue de su país? (mes/día/año)",
                 "explanation": ""
             },
             "I-94_Number": {
