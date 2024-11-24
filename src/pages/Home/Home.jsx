@@ -1,13 +1,11 @@
-import { Forms } from "../../components/Forms/Forms"
+import { EditDocument } from '../Edit Document/EditDocument'
 import './../../assets/styles/main.css'
 
 export function Home() {
 
     return (
         <>
-            <article className="container">
-                <Forms />
-            </article>
+            <EditDocument />
         </>
     )
 }
