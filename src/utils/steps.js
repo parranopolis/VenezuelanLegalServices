@@ -263,12 +263,12 @@ export const aplicantPart_A_II_Children = [
                 //en "Children_Location" si marca que no, solo debe aparecer esta:
                 'Children_Specify_Location',
                 //pero si marca que Si, debe mostrar los siguientes formularios
-                // 'Children_Last_Entry',
-                // 'Children_Date_Last_Entry',
-                // 'Children_I-94_Number',
-                // 'Children_Status_Last_Admitted',
-                // 'Children_Current_Status',
-                // 'Children_Expiration_Date_Stay',
+                'Children_Place_Last_Entry',
+                'Children_Date_Last_Entry',
+                'Children_I-94_Number',
+                'Children_Status_Last_Admitted',
+                'Children_Current_Status',
+                'Children_Expiration_Day_Stay',
                 // 'Children_Previous_arrival'
             ],
             // select: [
@@ -279,22 +279,22 @@ export const aplicantPart_A_II_Children = [
             // ],
             radio: [
                 { 'Children_Location': ['Yes', 'No'] },
-                // { 'Children_Court': ['Yes', 'No'] }
+                { 'Children_Court': ['Yes', 'No'] }
             ]
         },
     },
-    // {
-    //     name: 'Inclusion',
-    //     fields: {
-    //         radio: [
-    //             { 'Children_Include_Application': ['Yes', 'No'] }
-    //         ],
-    //         //modificar esto
-    //         text: [
-    //             'Children_Nationality'
-    //         ]
-    //     }
-    // },
+    {
+        name: 'Inclusion',
+        fields: {
+            radio: [
+                { 'Children_Included': ['Yes', 'No'] }
+            ],
+            //modificar esto
+            text: [
+                'Children_Nationality'
+            ]
+        }
+    },
 
 ]
 

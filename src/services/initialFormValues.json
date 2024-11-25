@@ -587,17 +587,17 @@
             },
             "Children_Place_Last_Entry": {
                 "value": "N/A",
-                "label": "",
+                "label": "Lugar por donde entro a USA",
                 "explanation": ""
             },
             "Children_Current_Status": {
                 "value": "N/A",
-                "label": "",
+                "label": "Estatus Actual",
                 "explanation": ""
             },
             "Children_Expiration_Day_Stay": {
                 "value": "N/A",
-                "label": "",
+                "label": "Cuando se vence el la estadia autorizada? (mes/día/año)",
                 "explanation": ""
             },
             "Children_First_Name": {
@@ -612,7 +612,7 @@
             },
             "Children_Date_Last_Entry": {
                 "value": "N/A",
-                "label": "",
+                "label": "Fecha de la ultima entrada",
                 "explanation": ""
             },
             "Children_Middle_Name": {
@@ -632,13 +632,13 @@
             },
             "Children_I-94_Number": {
                 "value": "N/A",
-                "label": "",
-                "explanation": ""
+                "label": "Numero de I-94 (si lo tiene)",
+                "explanation": "Es un numero de 9 digitos. Puede encontrado en todo documento Relacionado a inmigración"
             },
             "Children_Status_Last_Admitted": {
                 "value": "N/A",
-                "label": "",
-                "explanation": ""
+                "label": "Estatus Migratorio cuando entró",
+                "explanation": "tipo de visa solo si aplica, de lo contrario dejar en blanco"
             },
             "Children_Specify_Location": {
                 "value": "N/A",

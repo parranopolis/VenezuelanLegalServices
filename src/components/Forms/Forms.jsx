@@ -172,7 +172,7 @@ export function Forms() {
 
 //base form
 const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
-    const [currentSection, setCurrentSection] = useState(5)
+    const [currentSection, setCurrentSection] = useState(6)
     const { formData } = useContext(initialFormValues)
 
     const renderSection = () => {
@@ -352,8 +352,6 @@ function InputRadio({ data, handleChange, formDataContex }) {
 
 // checks the passed object if a specific property exists, and if true returns the associated object
 const findProperty = (obj, propertyName) => {
-    console.log(obj)
-    console.log(propertyName)
     if (obj.hasOwnProperty(propertyName)) {
         return obj[propertyName]
     } else {
