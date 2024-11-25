@@ -352,6 +352,8 @@ function InputRadio({ data, handleChange, formDataContex }) {
 
 // checks the passed object if a specific property exists, and if true returns the associated object
 const findProperty = (obj, propertyName) => {
+    console.log(obj)
+    console.log(propertyName)
     if (obj.hasOwnProperty(propertyName)) {
         return obj[propertyName]
     } else {
