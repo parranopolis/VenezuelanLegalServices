@@ -119,19 +119,185 @@ export const aplicantPart_A_I = [
     }
 ]
 
-export const aplicantPart_A_II = [
+export const aplicantPart_A_II_Spouse = [
     {
-        name: 'Prueba 2',
+        name: 'Identificacion del Conyuge',
         fields: {
-            select: [
-                {
-                    'Race_Ethnic_Tribal_Group': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico']
-                }
-            ],
-            text: ['City_and_Country_of_Birth', 'Present_Nacionality', 'Nationality_at_Birth', 'Religion'],
+            text: ['Spouse_Alien_Number', 'Spouse_Passport_Number', 'Spouse_SSN', 'Spouse_Date_of_Birth'],
+        }
+    }, {
+        name: 'Nombres y Apellidos del Conyuge',
+        fields: {
+            text: ['Spouse_Complete_Last_Name',
+                'Spouse_First_Name',
+                'Spouse_Middle_Name',
+                'Spouse_Other_Names',]
         }
     },
+    {
+        name: 'Información del Matrimonio',
+        fields: {
+            text: [
+                'Spouse_Date_og_Marriage',
+                'Spouse_Place_Marriage',
+                'Spouse_City_Country_of_Birth',
+
+            ]
+        }
+    }, {
+        name: 'Datos Demograficos del Conyuge',
+        fields: {
+            text: [
+                'Spouse_Nationality'
+            ],
+            select: [
+                {
+                    'Spouse_Race': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico']
+                }],
+            radio: [
+                { 'Spouse_Gender': ['Mujer', 'Hombre'] }
+            ]
+        },
+    },
+    {
+        name: 'Ubicación actual de Conyugue',
+        fields: {
+            text: [
+                //en "Spouse_Location_US" si marca que no, solo debe aparecer esta:
+                'Spouse_Specific_Location',
+                //pero si marca que Si, debe mostrar los siguientes formularios
+                'Spouse_Last_Entry',
+                'Spouse_Date_Last_Entry',
+                'Spouse_I-94_Number',
+                'Spouse_Status_Last_Admitted',
+                'Spouse_Current_Status',
+                'Spouse_Expiration_Date_Stay',
+                'Spouse_Previous_arrival'
+            ],
+            // select: [
+            //     {
+            //         //debe ser mostrado con los demas campos si marco si en 'Spouse_Location_US'
+            //         'Spouse_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //     }
+            // ],
+            radio: [
+                { 'Spouse_Location_US': ['Yes', 'No'] },
+                { 'Spouse_Court': ['Yes', 'No'] }
+            ]
+        },
+    },
+    {
+        name: 'Inclusion',
+        fields: {
+            radio: [
+                { 'Spouse_Include_Application': ['Yes', 'No'] }
+            ],
+            //modificar esto
+            text: [
+                'Spouse_Nationality'
+            ]
+        }
+    },
+
 ]
+export const aplicantPart_A_II_Children = [
+    {
+        name: 'Hijos',
+        fields: {
+            radio: [
+                { 'Children': ['Yes', 'No'] }
+            ],
+            text: [
+                //si en children se marca que si, debe mostrarse este campo pero en formato Select
+                'Children_Total',
+            ],
+            select: [{
+                'Children_Total': ['1', '2', '3', '4']
+            }]
+        }
+    },
+    {
+        name: 'Identificacion del hijo 1',
+        fields: {
+            text: [
+                'Children_Alien_Number',
+                'Children_Passport_Number',
+                'Children_SSN',
+                'Children_Date_of_Birth'
+            ],
+            select: [
+                { 'Children_Marital_Status': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] }
+            ]
+        }
+    },
+    {
+        name: 'Nombres del Hijo 1',
+        fields: {
+            text: [
+                'Children_Complete_Last_Name',
+                'Children_First_Name',
+                'Children_Middle_Name',
+            ],
+            radio: [
+                { 'Children_Gender': ['Female', 'Male'] }
+            ]
+        }
+    },
+    {
+        name: 'Demografia',
+        fields: {
+            text: [
+                'Children_City_Country_of_Birth',
+                'Children_Nationality',
+
+            ],
+            select: [
+                { 'Children_Race': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] }
+            ]
+        }
+    },
+    {
+        name: 'Ubicación actual de Niño',
+        fields: {
+            text: [
+                //en "Children_Location" si marca que no, solo debe aparecer esta:
+                'Children_Specify_Location',
+                //pero si marca que Si, debe mostrar los siguientes formularios
+                // 'Children_Last_Entry',
+                // 'Children_Date_Last_Entry',
+                // 'Children_I-94_Number',
+                // 'Children_Status_Last_Admitted',
+                // 'Children_Current_Status',
+                // 'Children_Expiration_Date_Stay',
+                // 'Children_Previous_arrival'
+            ],
+            // select: [
+            //     {
+            //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
+            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //     }
+            // ],
+            radio: [
+                { 'Children_Location': ['Yes', 'No'] },
+                // { 'Children_Court': ['Yes', 'No'] }
+            ]
+        },
+    },
+    // {
+    //     name: 'Inclusion',
+    //     fields: {
+    //         radio: [
+    //             { 'Children_Include_Application': ['Yes', 'No'] }
+    //         ],
+    //         //modificar esto
+    //         text: [
+    //             'Children_Nationality'
+    //         ]
+    //     }
+    // },
+
+]
+
 export const aplicantPart_A_III = [
     {
         name: 'Prueba 3',

@@ -421,107 +421,107 @@
         "PDFTextField2": {
             "Spouse_Alien_Number": {
                 "value": "N/A",
-                "label": "",
-                "explanation": ""
+                "label": "Numero A",
+                "explanation": "Es un numero de 9 digitos. Puede encontrado en todo documento Relacionado a inmigración"
             },
             "Spouse_Passport_Number": {
                 "value": "N/A",
-                "label": "",
+                "label": "Numero de Pasaporte",
                 "explanation": "Si no Tiene Pasaporte, Dejar en Blanco"
             },
             "Spouse_Date_of_Birth": {
                 "value": "N/A",
-                "label": "",
+                "label": "Fecha de Nacimiento (mes/día/año)",
                 "explanation": ""
             },
             "Spouse_SSN": {
                 "value": "N/A",
-                "label": "",
+                "label": " Numero de Seguro Social (si lo tiene)",
                 "explanation": ""
             },
             "Spouse_Complete_Last_Name": {
                 "value": "N/A",
-                "label": "",
+                "label": "Apellidos del Cónyuge (todos)",
                 "explanation": ""
             },
             "Spouse_First_Name": {
                 "value": "N/A",
-                "label": "",
+                "label": "Primer Nombre del Cónyuge",
                 "explanation": ""
             },
             "Spouse_Middle_Name": {
                 "value": "N/A",
-                "label": "",
+                "label": "Segundo Nombre del Cónyuge",
                 "explanation": ""
             },
             "Spouse_Other_Names": {
                 "value": "N/A",
-                "label": "",
-                "explanation": ""
+                "label": "Otros Nombres Usados del Conyugue",
+                "explanation": "Nombres de soltero por ejemplo"
             },
             "Spouse_Date_og_Marriage": {
                 "value": "N/A",
-                "label": "",
+                "label": "Fecha De Matrimonio (mes/día/año)",
                 "explanation": ""
             },
             "Spouse_Place_Marriage": {
                 "value": "N/A",
-                "label": "",
+                "label": "Lugar de Matrimonio",
                 "explanation": ""
             },
             "Spouse_City_Country_of_Birth": {
                 "value": "N/A",
-                "label": "",
+                "label": "País donde se casó",
                 "explanation": ""
             },
             "Spouse_Nationality": {
                 "value": "N/A",
-                "label": "",
+                "label": "Nacionalidad del Conyuge",
                 "explanation": ""
             },
             "Spouse_Race": {
                 "value": "N/A",
-                "label": "",
+                "label": "Raza del Conyuge",
                 "explanation": ""
             },
             "Spouse_Last_Entry": {
                 "value": "N/A",
-                "label": "",
+                "label": "Lugar por donde entro a USA",
                 "explanation": ""
             },
             "Spouse_Current_Status": {
                 "value": "N/A",
-                "label": "",
+                "label": "Estatus Actual del Conyuge",
                 "explanation": ""
             },
             "Spouse_Date_Last_Entry": {
                 "value": "N/A",
-                "label": "",
+                "label": "Fecha de la ultima entrada",
                 "explanation": ""
             },
             "Spouse_Expiration_Date_Stay": {
                 "value": "N/A",
-                "label": "",
+                "label": "Cuando se vence el la estadia autorizada? (mes/día/año)",
                 "explanation": ""
             },
             "Spouse_I-94_Number": {
                 "value": "N/A",
-                "label": "",
-                "explanation": ""
+                "label": "Numero de I-94 (si lo tiene)",
+                "explanation": "Es un numero de 9 digitos. Puede encontrado en todo documento Relacionado a inmigración"
             },
             "Spouse_Status_Last_Admitted": {
                 "value": "N/A",
-                "label": "",
-                "explanation": ""
+                "label": "Estatus Migratorio cuando entró",
+                "explanation": "tipo de visa solo si aplica, de lo contrario dejar en blanco"
             },
             "Spouse_Previous_arrival": {
                 "value": "N/A",
-                "label": "",
+                "label": "Si estuvo en USA antes, ?Cúal fue su ultima entrada?",
                 "explanation": ""
             },
             "Spouse_Specific_Location": {
                 "value": "N/A",
-                "label": "",
+                "label": "Expecifique donde",
                 "explanation": ""
             }
         },
@@ -533,17 +533,17 @@
             },
             "Spouse_Location_US": {
                 "value": null,
-                "label": "Ubicación del Cónyuge en EE. UU.",
+                "label": "Esta esta perosna en EE. UU.",
                 "explanation": ""
             },
             "Spouse_Court": {
                 "value": null,
-                "label": "Procedimiento Judicial del Cónyuge",
+                "label": "Su Conyuge se encuentra en porcesos de Corte?",
                 "explanation": ""
             },
             "Spouse_Include_Application": {
                 "value": null,
-                "label": "Incluir Cónyuge en la Solicitud",
+                "label": "Se incluye su Cónyuge en la Solicitud?",
                 "explanation": ""
             }
         }
@@ -552,37 +552,37 @@
         "PDFTextField2": {
             "Children_Total": {
                 "value": "N/A",
-                "label": "",
+                "label": "Total de Hijos incluidos",
                 "explanation": ""
             },
             "Children_Alien_Number": {
                 "value": "N/A",
-                "label": "",
-                "explanation": ""
+                "label": "Numero A",
+                "explanation": "Es un numero de 9 digitos. Puede encontrado en todo documento Relacionado a inmigración"
             },
             "Children_Passport_Number": {
                 "value": "N/A",
-                "label": "",
+                "label": "Numero de Pasaporte",
                 "explanation": "Si no Tiene Pasaporte, Dejar en Blanco"
             },
             "Children_Marital_Status": {
                 "value": "N/A",
-                "label": "",
+                "label": "Estado Civil",
                 "explanation": ""
             },
             "Children_SSN": {
                 "value": "N/A",
-                "label": "",
+                "label": " Numero de Seguro Social (si lo tiene)",
                 "explanation": ""
             },
             "Children_Complete_Last_Name": {
                 "value": "N/A",
-                "label": "",
+                "label": "Apellidos (Todos)",
                 "explanation": ""
             },
             "Children_City_Country_of_Birth": {
                 "value": "N/A",
-                "label": "",
+                "label": "Ciudad y País de nacimiento",
                 "explanation": ""
             },
             "Children_Place_Last_Entry": {
@@ -602,12 +602,12 @@
             },
             "Children_First_Name": {
                 "value": "N/A",
-                "label": "",
+                "label": "Primer Nombre",
                 "explanation": ""
             },
             "Children_Nationality": {
                 "value": "N/A",
-                "label": "",
+                "label": "Nacionalidad",
                 "explanation": ""
             },
             "Children_Date_Last_Entry": {
@@ -617,17 +617,17 @@
             },
             "Children_Middle_Name": {
                 "value": "N/A",
-                "label": "",
+                "label": "Segundo Nombre",
                 "explanation": ""
             },
             "Children_Race": {
                 "value": "N/A",
-                "label": "",
+                "label": "Raza, Etnia, Grupo Tribal",
                 "explanation": ""
             },
             "Children_Date_of_Birth": {
                 "value": "N/A",
-                "label": "",
+                "label": "Fecha de Nacimiento (mes/día/año)",
                 "explanation": ""
             },
             "Children_I-94_Number": {
@@ -642,7 +642,7 @@
             },
             "Children_Specify_Location": {
                 "value": "N/A",
-                "label": "",
+                "label": "Especifique en donde",
                 "explanation": ""
             }
         },
@@ -664,7 +664,12 @@
             },
             "Children_Location": {
                 "value": null,
-                "label": "Ubicación del Hijo",
+                "label": "Se encuentra este hijo en USA",
+                "explanation": ""
+            },
+            "Children": {
+                "value": null,
+                "label": "Hijos Incluidos en esta Solicitud? ",
                 "explanation": ""
             }
         }

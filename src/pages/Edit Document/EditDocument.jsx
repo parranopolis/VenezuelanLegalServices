@@ -7,10 +7,9 @@ export function EditDocument() {
 
 
         <article className="container">
-            <section><Steps /></section>
+            {/* <section><Steps /></section> */}
             <section>
                 <Forms />
-
             </section>
         </article>
     )

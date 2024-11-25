@@ -4,7 +4,7 @@ import i589 from './../../assets/PDF/i-589.pdf'
 import { PDFDocument } from 'pdf-lib'
 import { Button, Input, Fieldset, Box, Link, Strong } from '@chakra-ui/react'
 
-import { aplicantPart_A_I, aplicantPart_A_II } from '../../utils/steps'
+import { aplicantPart_A_I, aplicantPart_A_II_Spouse, aplicantPart_A_II_Children } from '../../utils/steps'
 
 
 import { ToggleTip } from "@/components/ui/toggle-tip"
@@ -44,12 +44,12 @@ export function Forms() {
             if (type === 'radio') {
                 return {
                     ...prevFormData,
-                    Applicant: {
-                        ...prevFormData.Applicant,
+                    Children: {
+                        ...prevFormData.Children,
                         PDFRadioGroup2: {
-                            ...prevFormData.Applicant.PDFRadioGroup2,
+                            ...prevFormData.Children.PDFRadioGroup2,
                             [name]: {
-                                ...prevFormData.Applicant.PDFRadioGroup2[name],
+                                ...prevFormData.Children.PDFRadioGroup2[name],
                                 value: value
                             }
                         }
@@ -58,12 +58,12 @@ export function Forms() {
             } else if (type === 'text' || type == 'select-one') {
                 return {
                     ...prevFormData,
-                    Applicant: {
-                        ...prevFormData.Applicant,
+                    Children: {
+                        ...prevFormData.Children,
                         PDFTextField2: {
-                            ...prevFormData.Applicant.PDFTextField2,
+                            ...prevFormData.Children.PDFTextField2,
                             [name]: {
-                                ...prevFormData.Applicant.PDFTextField2[name],
+                                ...prevFormData.Children.PDFTextField2[name],
                                 value: value
                             }
                         }
@@ -109,7 +109,7 @@ export function Forms() {
             const form = pdfDoc.getForm()
 
             // Modify text fields
-            const textFields = formData.Applicant.PDFTextField2;
+            const textFields = formData.Children.PDFTextField2;
             Object.keys(textFields).forEach((key) => {
                 const field = form.getTextField(key);
                 if (field) {
@@ -118,7 +118,7 @@ export function Forms() {
             });
 
             // Modify Radio fields
-            const radioFields = formData.Applicant.PDFRadioGroup2;
+            const radioFields = formData.Children.PDFRadioGroup2;
             Object.keys(radioFields).forEach((key) => {
                 const field = form.getRadioGroup(key);
                 if (field && radioFields[key] && radioFields[key].value) {
@@ -128,7 +128,7 @@ export function Forms() {
             });
 
 
-            // const radioFields = formData.Applicant.PDFRadioGroup2
+            // const radioFields = formData.Children.PDFRadioGroup2
             // Object.keys(radioFields).forEach((key) => {
             //     const fields = form.getRadioGroup(key)
             //     if (fields) {
@@ -147,9 +147,9 @@ export function Forms() {
 
     }
 
-    const applicant = formData.Applicant
-    const spouse = formData.Spouse
-    const children = formData.Children
+    // const applicant = formData.Children
+    // const Spouse = formData.Children
+    // const children = formData.Children
     return (
         <>
             <form className='form center'>
@@ -172,11 +172,11 @@ export function Forms() {
 
 //base form
 const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
-    const [currentSection, setCurrentSection] = useState(1)
+    const [currentSection, setCurrentSection] = useState(5)
     const { formData } = useContext(initialFormValues)
 
     const renderSection = () => {
-        const currentGroup = aplicantPart_A_II[currentSection - 1]
+        const currentGroup = aplicantPart_A_II_Children[currentSection - 1]
         return <FormSection fields={currentGroup} formDataContex={formDataContex} handleChange={handleChange} />
     }
 
@@ -194,7 +194,7 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
 
     const sent = (e) => {
         e.preventDefault()
-        console.log(formData.Applicant)
+        console.log(formData.Children)
     }
 
     return (
@@ -210,13 +210,14 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
                     <span className='h4'>{currentSection}</span>
                 </div>
                 <div>
-                    {currentSection === aplicantPart_A_II.length ? <Button type='button' size={'lg'} onClick={modifyPDF}>Siguiente paso</Button> : <Button size={'lg'} onClick={updateCurrentForm} name='next'> Siguiente</Button>}
+                    {currentSection === aplicantPart_A_II_Children.length ? <Button type='button' size={'lg'} onClick={modifyPDF}>Siguiente paso</Button> : <Button size={'lg'} onClick={updateCurrentForm} name='next'> Siguiente</Button>}
                 </div>
             </section>
         </article>
 
     )
 }
+
 
 //decides based on the fields passed what type of input should be displayed
 const FormSection = ({ fields, handleChange, formDataContex }) => {
@@ -234,7 +235,7 @@ function InputSelect({ data, formDataContex, handleChange }) {
         <>
             {data.map((group) => {
                 return Object.keys(group).map((key) => {
-                    const property = findProperty(formDataContex.Applicant.PDFTextField2, key);
+                    const property = findProperty(formDataContex.Children.PDFTextField2, key);
                     return (
                         <section key={key}>
                             <label htmlFor={key} className='h6 opacity'>{property.label}</label>
@@ -274,7 +275,7 @@ function InputTextComponent({ data, name, handleChange, formDataContex }) {
             </Fieldset.Legend>
 
             {data.map(field => {
-                const property = findProperty(formDataContex.Applicant, field)
+                const property = findProperty(formDataContex.Children.PDFTextField2, field)
                 const x = <span className='h6 helpTip'>{property.explanation}</span>
                 return (
                     <Field key={field}>
@@ -317,7 +318,8 @@ function InputTextComponent({ data, name, handleChange, formDataContex }) {
 function InputRadio({ data, handleChange, formDataContex }) {
     const q = data.map((group) => {
         const w = Object.keys(group).map((key) => {
-            const property = findProperty(formDataContex.Applicant.PDFRadioGroup2, key)
+
+            const property = findProperty(formDataContex.Children.PDFRadioGroup2, key)
             return (
                 <section key={key}>
                     <span className='h6 opacity'>{property.label}</span>
