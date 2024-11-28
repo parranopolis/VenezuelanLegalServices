@@ -4,8 +4,7 @@ import i589 from './../../assets/PDF/i-589.pdf'
 import { PDFDocument } from 'pdf-lib'
 import { Button, Input, Fieldset, Box, Link, Strong } from '@chakra-ui/react'
 
-import { aplicantPart_A_I, aplicantPart_A_II_Spouse, aplicantPart_A_II_Children } from '../../utils/steps'
-
+import { findProperty } from '../../utils/functions'
 
 import { ToggleTip } from "@/components/ui/toggle-tip"
 import { LuInfo } from "react-icons/lu"
@@ -17,6 +16,7 @@ import {
     NativeSelectField,
     NativeSelectRoot,
 } from "@/components/ui/native-select"
+import { StepsContext } from '../../contexts/StepsContext'
 
 const statusMapping = {
     'Entregado en La frontera | No expira': 'EWI',
@@ -26,9 +26,9 @@ const statusMapping = {
     'Parole Humanitario': 'Humanitarian Parole',
 };
 
-
 // Form Page
-export function Forms() {
+export function Forms({ onSubmit }) {
+    // console.log(onSubmit)
     const { formData, setFormData } = useContext(initialFormValues)
     const [PDFUrl, setPDFUrl] = useState(null)
 
@@ -44,12 +44,12 @@ export function Forms() {
             if (type === 'radio') {
                 return {
                     ...prevFormData,
-                    Children: {
-                        ...prevFormData.Children,
+                    Spouse: {
+                        ...prevFormData.Spouse,
                         PDFRadioGroup2: {
-                            ...prevFormData.Children.PDFRadioGroup2,
+                            ...prevFormData.Spouse.PDFRadioGroup2,
                             [name]: {
-                                ...prevFormData.Children.PDFRadioGroup2[name],
+                                ...prevFormData.Spouse.PDFRadioGroup2[name],
                                 value: value
                             }
                         }
@@ -58,12 +58,12 @@ export function Forms() {
             } else if (type === 'text' || type == 'select-one') {
                 return {
                     ...prevFormData,
-                    Children: {
-                        ...prevFormData.Children,
+                    Spouse: {
+                        ...prevFormData.Spouse,
                         PDFTextField2: {
-                            ...prevFormData.Children.PDFTextField2,
+                            ...prevFormData.Spouse.PDFTextField2,
                             [name]: {
-                                ...prevFormData.Children.PDFTextField2[name],
+                                ...prevFormData.Spouse.PDFTextField2[name],
                                 value: value
                             }
                         }
@@ -147,13 +147,10 @@ export function Forms() {
 
     }
 
-    // const applicant = formData.Children
-    // const Spouse = formData.Children
-    // const children = formData.Children
     return (
         <>
             <form className='form center'>
-                <FormContainer formDataContex={formData} handleChange={handleChange} modifyPDF={modifyPDF} />
+                <FormContainer onSubmit={onSubmit} formDataContex={formData} handleChange={handleChange} modifyPDF={modifyPDF} />
             </form>
             {PDFUrl ? (
                 <div>
@@ -171,13 +168,39 @@ export function Forms() {
 }
 
 //base form
-const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
-    const [currentSection, setCurrentSection] = useState(6)
-    const { formData } = useContext(initialFormValues)
+const FormContainer = ({ formDataContex, handleChange, modifyPDF, onSubmit }) => {
+    const [currentSection, setCurrentSection] = useState(1)
+    const { handleFormSubmit, formGroups, currentStep } = useContext(StepsContext)
 
     const renderSection = () => {
-        const currentGroup = aplicantPart_A_II_Children[currentSection - 1]
-        return <FormSection fields={currentGroup} formDataContex={formDataContex} handleChange={handleChange} />
+        const group = Object.keys(formGroups[currentStep])
+        const currentForm = Object.values(formGroups[currentStep])
+        const currentGroup = currentForm[0][currentSection - 1]
+        return (
+            <Fieldset.Root size={'lg'} maxW={'100%'} className='fieldset'>
+                {currentGroup.fields.hasOwnProperty('text') ? <InputTextComponent
+                    group={group[0]}
+                    data={currentGroup.fields.text}
+                    name={currentGroup.name}
+                    handleChange={handleChange}
+                    formDataContex={formDataContex}
+                /> : ''}
+                {currentGroup.fields.hasOwnProperty('radio') ? <InputRadio
+                    group={group[0]}
+                    data={currentGroup.fields.radio}
+                    name={currentGroup.name}
+                    handleChange={handleChange}
+                    formDataContex={formDataContex}
+                /> : ''}
+                {currentGroup.fields.hasOwnProperty('select') ? <InputSelect
+                    group={group[0]}
+                    data={currentGroup.fields.select}
+                    name={currentGroup.name}
+                    handleChange={handleChange}
+                    formDataContex={formDataContex}
+                /> : ''}
+            </Fieldset.Root>
+        )
     }
 
     // Updates the form displayed on the screen
@@ -191,12 +214,6 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
             else setCurrentSection(currentSection + 1)
         }
     }
-
-    const sent = (e) => {
-        e.preventDefault()
-        console.log(formData.Children)
-    }
-
     return (
         <article>
             <section className='RenderSection'>
@@ -204,45 +221,57 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF }) => {
             </section>
             <section className='space-between buttons'>
                 <div>
-                    {currentSection === 1 ? '' : <Button size={'lg'} variant={'outline'} onClick={updateCurrentForm} name='last'>Anterior</Button>}
+                    {currentSection === 1 ? '' : <Button
+                        size={'lg'}
+                        variant={'outline'}
+                        onClick={updateCurrentForm}
+                        name='last'>Anterior</Button>}
                 </div>
                 <div>
                     <span className='h4'>{currentSection}</span>
                 </div>
                 <div>
-                    {currentSection === aplicantPart_A_II_Children.length ? <Button type='button' size={'lg'} onClick={modifyPDF}>Siguiente paso</Button> : <Button size={'lg'} onClick={updateCurrentForm} name='next'> Siguiente</Button>}
+                    <Button
+                        size={'lg'}
+                        onClick={updateCurrentForm}
+                        name='next'> Siguiente</Button>
                 </div>
+                <div>
+                    <Button
+                        type='button'
+                        size={'lg'}
+                        onClick={handleFormSubmit}
+                    >Siguiente paso</Button>
+                </div>
+                {/* <div>
+                    {currentSection === aplicantPart_A_I.length ? <Button
+                        type='button'
+                        size={'lg'}
+                        onClick={handleFormSubmit}
+                    >Siguiente paso</Button> : <Button
+                        size={'lg'}
+                        onClick={updateCurrentForm}
+                        name='next'> Siguiente</Button>}
+                </div> */}
             </section>
         </article>
 
     )
 }
-
-
-//decides based on the fields passed what type of input should be displayed
-const FormSection = ({ fields, handleChange, formDataContex }) => {
-    return (
-        <Fieldset.Root size={'lg'} maxW={'100%'} className='fieldset'>
-            {fields.fields.hasOwnProperty('text') ? <InputTextComponent data={fields.fields.text} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
-            {fields.fields.hasOwnProperty('radio') ? <InputRadio data={fields.fields.radio} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
-            {fields.fields.hasOwnProperty('select') ? <InputSelect data={fields.fields.select} name={fields.name} handleChange={handleChange} formDataContex={formDataContex} /> : ''}
-        </Fieldset.Root>
-    )
-}
-
-function InputSelect({ data, formDataContex, handleChange }) {
+function InputSelect({ data, formDataContex, handleChange, group }) {
+    const obj = formDataContex[group].PDFTextField2
     return (
         <>
             {data.map((group) => {
                 return Object.keys(group).map((key) => {
-                    const property = findProperty(formDataContex.Children.PDFTextField2, key);
+                    const property = findProperty(obj, key);
                     return (
                         <section key={key}>
                             <label htmlFor={key} className='h6 opacity'>{property.label}</label>
                             <NativeSelectRoot
                                 id={key}
                                 name={key}
-                                value={property.value !== 'N/A' ? property.value : ''}
+                                // value={property.value !== 'N/A' ? property.value : ''}
                                 onChange={handleChange}
                             >
                                 <NativeSelectField>
@@ -266,8 +295,8 @@ function InputSelect({ data, formDataContex, handleChange }) {
 }
 
 //shows inputs of type Text
-function InputTextComponent({ data, name, handleChange, formDataContex }) {
-    const [open, setOpen] = useState(false)
+function InputTextComponent({ data, name, handleChange, formDataContex, group }) {
+    const obj = formDataContex[group].PDFTextField2
     return (
         <>
             <Fieldset.Legend>
@@ -275,29 +304,20 @@ function InputTextComponent({ data, name, handleChange, formDataContex }) {
             </Fieldset.Legend>
 
             {data.map(field => {
-                const property = findProperty(formDataContex.Children.PDFTextField2, field)
+
+                const property = findProperty(obj, field)
                 const x = <span className='h6 helpTip'>{property.explanation}</span>
                 return (
                     <Field key={field}>
-                        <label className='h6 opacity' htmlFor={field}>{property.label} {property.explanation != '' ? <span>
-                            <ToggleTip content={x}>
-                                <Button size="xs" variant="ghost">
-                                    <LuInfo />
-                                </Button>
-                            </ToggleTip>
-                            {/* <HoverCardRoot size="sm" open={open} onOpenChange={(e) => setOpen(e.open)}>
-                                <HoverCardTrigger asChild>
-                                    <ion-icon name="information-circle-outline"></ion-icon>
-                                </HoverCardTrigger>
-                                <HoverCardContent maxWidth={'250px'}>
-                                    <HoverCardArrow />
-                                    <Box>
-                                        {property.explanation}
-                                    </Box>
-                                </HoverCardContent>
-                            </HoverCardRoot> */}
-                        </span> : ''} </label>
-                        {/* {property.explanation != '' ? <span style={{ color: 'red' }}>{property.explanation}</span> : <span />} */}
+                        <label className='h6 opacity' htmlFor={field}>{property.label}
+                            {property.explanation != '' ? <span>
+                                <ToggleTip content={x}>
+                                    <Button size="xs" variant="ghost">
+                                        <LuInfo />
+                                    </Button>
+                                </ToggleTip>
+                            </span> : ''}
+                        </label>
                         <Input
                             className='p-large'
                             variant={'subtle'}
@@ -316,10 +336,12 @@ function InputTextComponent({ data, name, handleChange, formDataContex }) {
 
 // shows inputs of type Radio
 function InputRadio({ data, handleChange, formDataContex }) {
+    const { formGroups, currentStep } = useContext(StepsContext)
+    const group2 = Object.keys(formGroups[currentStep])
     const q = data.map((group) => {
         const w = Object.keys(group).map((key) => {
 
-            const property = findProperty(formDataContex.Children.PDFRadioGroup2, key)
+            const property = findProperty(formDataContex[group2].PDFRadioGroup2, key)
             return (
                 <section key={key}>
                     <span className='h6 opacity'>{property.label}</span>
@@ -348,21 +370,4 @@ function InputRadio({ data, handleChange, formDataContex }) {
             {q}
         </div>
     )
-}
-
-// checks the passed object if a specific property exists, and if true returns the associated object
-const findProperty = (obj, propertyName) => {
-    if (obj.hasOwnProperty(propertyName)) {
-        return obj[propertyName]
-    } else {
-        for (const key of Object.keys(obj)) {
-            if (typeof obj[key] === 'object' && obj[key] !== propertyName) {
-                const resutl = findProperty(obj[key], propertyName)
-                if (resutl) {
-                    return resutl
-                }
-            }
-        }
-    }
-    return null
 }

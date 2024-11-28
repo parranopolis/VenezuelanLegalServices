@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home } from './pages/Home/Home'
 import { InitialFormValuesProvider } from './contexts/InitialValueContext'
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react"
+import { StepsContext, StepsProvider } from './contexts/StepsContext'
 
 
 const root = createRoot(document.getElementById('root'))
@@ -27,16 +28,14 @@ const router = createBrowserRouter([
 )
 
 root.render(
-  <StrictMode>
-    <ChakraProvider value={defaultSystem}>
-      <InitialFormValuesProvider>
-        {/* <Provider> */}
+  <ChakraProvider value={defaultSystem}>
+    <InitialFormValuesProvider>
+      <StepsProvider>
         <RouterProvider
           router={router}
           future={{ v7_startTransition: true, }}
         />
-        {/* </Provider> */}
-      </InitialFormValuesProvider>
-    </ChakraProvider>
-  </StrictMode>
+      </StepsProvider>
+    </InitialFormValuesProvider>
+  </ChakraProvider>
 )

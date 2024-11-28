@@ -1,4 +1,5 @@
 //dictionary to segment the fields and their different types that should be displayed together
+
 export const aplicantPart_A_I = [
     {
         name: 'Identificación',
@@ -211,9 +212,9 @@ export const aplicantPart_A_II_Children = [
                 //si en children se marca que si, debe mostrarse este campo pero en formato Select
                 'Children_Total',
             ],
-            select: [{
-                'Children_Total': ['1', '2', '3', '4']
-            }]
+            // select: [{
+            //     'Children_Total': ['1', '2', '3', '4']
+            // }]
         }
     },
     {
@@ -298,19 +299,4 @@ export const aplicantPart_A_II_Children = [
 
 ]
 
-export const aplicantPart_A_III = [
-    {
-        name: 'Prueba 3',
-        fields: {
-            radio: [
-                {
-                    "Dieciocho": [
-                        'Nunca he estado en procedimientos judiciales de inmigracion',
-                        'Estoy en proceso de procedimientos judiciales de inmigracion',
-                        'No estoy ahora en procedimientos judiciales de inmigracion, pero he estado en el pasado'
-                    ]
-                }
-            ]
-        }
-    },
-]
+
