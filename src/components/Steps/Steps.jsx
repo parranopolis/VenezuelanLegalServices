@@ -16,7 +16,7 @@ import { StepsContext } from "../../contexts/StepsContext"
 
 export function Steps() {
 
-    const { handleStepClick, currentStep } = useContext(StepsContext)
+    const { handleStepClick, currentStep, formGroups } = useContext(StepsContext)
 
     return (
         <>
@@ -46,6 +46,7 @@ export function Steps() {
                                 Next
                             </Button>
                         </StepsNextTrigger>
+                        {currentStep == formGroups.length - 1 ? <Button>Crear PDF</Button> : ''}
                     </Group>
                 </StepsRoot>
             </Stack></>

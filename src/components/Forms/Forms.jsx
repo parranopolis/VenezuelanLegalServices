@@ -127,15 +127,6 @@ export function Forms({ onSubmit }) {
                 }
             });
 
-
-            // const radioFields = formData.Children.PDFRadioGroup2
-            // Object.keys(radioFields).forEach((key) => {
-            //     const fields = form.getRadioGroup(key)
-            //     if (fields) {
-            //         fields.select(radioFields[key].value)
-            //     }
-            // })
-
             // Save the PDF
 
             const pdfBytes = await pdfDoc.save()
@@ -168,13 +159,12 @@ export function Forms({ onSubmit }) {
 }
 
 //base form
-const FormContainer = ({ formDataContex, handleChange, modifyPDF, onSubmit }) => {
+const FormContainer = ({ formDataContex, handleChange }) => {
     const [currentSection, setCurrentSection] = useState(1)
     const { handleFormSubmit, formGroups, currentStep } = useContext(StepsContext)
-
+    const currentForm = Object.values(formGroups[currentStep])
     const renderSection = () => {
         const group = Object.keys(formGroups[currentStep])
-        const currentForm = Object.values(formGroups[currentStep])
         const currentGroup = currentForm[0][currentSection - 1]
         return (
             <Fieldset.Root size={'lg'} maxW={'100%'} className='fieldset'>
@@ -210,7 +200,7 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF, onSubmit }) =>
             if (currentSection == 1) null
             else setCurrentSection(currentSection - 1)
         } else if (e.target.name === 'next') {
-            if (currentSection == 8) null
+            if (currentSection == currentForm[0].length) null
             else setCurrentSection(currentSection + 1)
         }
     }
@@ -231,28 +221,15 @@ const FormContainer = ({ formDataContex, handleChange, modifyPDF, onSubmit }) =>
                     <span className='h4'>{currentSection}</span>
                 </div>
                 <div>
-                    <Button
-                        size={'lg'}
-                        onClick={updateCurrentForm}
-                        name='next'> Siguiente</Button>
-                </div>
-                <div>
-                    <Button
-                        type='button'
-                        size={'lg'}
-                        onClick={handleFormSubmit}
-                    >Siguiente paso</Button>
-                </div>
-                {/* <div>
-                    {currentSection === aplicantPart_A_I.length ? <Button
+                    {currentSection === currentForm[0].length ? <Button
                         type='button'
                         size={'lg'}
                         onClick={handleFormSubmit}
                     >Siguiente paso</Button> : <Button
                         size={'lg'}
                         onClick={updateCurrentForm}
-                        name='next'> Siguiente</Button>}
-                </div> */}
+                        name='next'>Siguiente</Button>}
+                </div>
             </section>
         </article>
 
