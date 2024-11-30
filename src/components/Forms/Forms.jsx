@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { initialFormValues } from '../../contexts/InitialValueContext'
 import i589 from './../../assets/PDF/i-589.pdf'
 import { PDFDocument } from 'pdf-lib'
-import { Button, Input, Fieldset, Box, Link, Strong } from '@chakra-ui/react'
+import { Button, Input, Fieldset, Box, Link, Strong, Stack } from '@chakra-ui/react'
 
 import { findProperty } from '../../utils/functions'
 
@@ -12,6 +12,7 @@ import { LuInfo } from "react-icons/lu"
 import './Forms.css'
 
 import { Field } from "@/components/ui/field"
+import { Alert } from "@/components/ui/alert"
 import {
     NativeSelectField,
     NativeSelectRoot,
@@ -193,19 +194,46 @@ const FormContainer = ({ formDataContex, handleChange }) => {
         )
     }
 
+    const [isValidated, setIsValidated] = useState(true)
     // Updates the form displayed on the screen
     const updateCurrentForm = (e) => {
         e.preventDefault()
+        const requiredInputs = document.querySelectorAll('.required')
+        let isValid = true
+        let field
+        requiredInputs.forEach(i => {
+            if (i.value.trim() === '') {
+                isValid = false
+                field = i
+            }
+        })
+        setIsValidated(isValid)
+        if (!isValid) {
+            console.log('hay campos requeridos')
+            return;
+        }
         if (e.target.name === 'last') {
             if (currentSection == 1) null
             else setCurrentSection(currentSection - 1)
         } else if (e.target.name === 'next') {
             if (currentSection == currentForm[0].length) null
-            else setCurrentSection(currentSection + 1)
+            else {
+                setCurrentSection(currentSection + 1)
+            }
         }
+
+
     }
     return (
         <article>
+            <section>
+                {isValidated
+                    ? ''
+                    : <Alert status="error" title="Invalid Fields">
+                        Your form has some errors. Please fix them and try again.
+                    </Alert>
+                }
+            </section>
             <section className='RenderSection'>
                 {renderSection()}
             </section>
@@ -225,10 +253,11 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                         type='button'
                         size={'lg'}
                         onClick={handleFormSubmit}
-                    >Siguiente paso</Button> : <Button
-                        size={'lg'}
-                        onClick={updateCurrentForm}
-                        name='next'>Siguiente</Button>}
+                    >Siguiente paso</Button> :
+                        <Button
+                            size={'lg'}
+                            name='next' onClick={updateCurrentForm}>Siguiente</Button>
+                    }
                 </div>
             </section>
         </article>
@@ -274,40 +303,45 @@ function InputSelect({ data, formDataContex, handleChange, group }) {
 //shows inputs of type Text
 function InputTextComponent({ data, name, handleChange, formDataContex, group }) {
     const obj = formDataContex[group].PDFTextField2
+
     return (
-        <>
+        <Stack gap={5}>
             <Fieldset.Legend>
                 <span className='h3'>{name}</span>
             </Fieldset.Legend>
+            {data.map((field) => {
+                if (!field.isShow) {
+                    const property = findProperty(obj, field.name)
+                    const x = <span className='h6 helpTip'>{property.explanation}</span>
+                    return (
+                        <Field
+                            key={field.name}>
+                            <label className='h6 opacity' htmlFor={field}>{property.label}
+                                {field.required ? <span style={{ color: 'red' }}>*</span> : ''}
+                                {property.explanation != '' ? <span>
+                                    <ToggleTip content={x}>
+                                        <Button size="xs" variant="ghost">
+                                            <LuInfo />
+                                        </Button>
+                                    </ToggleTip>
+                                </span> : ''}
+                            </label>
+                            <Input
+                                className={field.required ? 'p-large required' : 'p-large'}
+                                variant={'subtle'}
+                                name={field}
+                                type='text'
+                                id={field}
+                                // value={property.value !== 'N/A' ? property.value : ''}
+                                onChange={handleChange}
+                                required={field.required ? true : false}
+                            />
+                        </Field >
 
-            {data.map(field => {
-
-                const property = findProperty(obj, field)
-                const x = <span className='h6 helpTip'>{property.explanation}</span>
-                return (
-                    <Field key={field}>
-                        <label className='h6 opacity' htmlFor={field}>{property.label}
-                            {property.explanation != '' ? <span>
-                                <ToggleTip content={x}>
-                                    <Button size="xs" variant="ghost">
-                                        <LuInfo />
-                                    </Button>
-                                </ToggleTip>
-                            </span> : ''}
-                        </label>
-                        <Input
-                            className='p-large'
-                            variant={'subtle'}
-                            name={field}
-                            type='text'
-                            id={field}
-                            value={property.value !== 'N/A' ? property.value : ''}
-                            onChange={handleChange}
-                        />
-                    </Field>
-                )
+                    )
+                }
             })}
-        </>
+        </Stack>
     )
 }
 

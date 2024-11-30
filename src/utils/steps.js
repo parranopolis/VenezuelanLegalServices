@@ -5,34 +5,43 @@ export const aplicantPart_A_I = [
         name: 'Identificación',
         fields: {
             text: [
-                'Alien_Number',
-                'SSN',
-                'USCIS_Name'
+                { name: 'Alien_Number', required: false, isShow: false },
+                { name: 'SSN', required: false, isShow: false },
+                { name: 'USCIS_Name', required: false, isShow: false },
             ],
         },
         extra: { id: 'ID', message: 'This is a message' }
     },
     {
         name: 'Nombres y Apellidos',
-        fields: { text: ["First_Name", "Middle_Name", "Complete_Last_Name", 'Another_Name'] }
+        fields: {
+            text: [
+                { name: "First_Name", required: true, isShow: false },
+                { name: "Middle_Name", required: false, isShow: false },
+                { name: "Complete_Last_Name", required: true, isShow: false },
+                { name: "Another_Name", required: false, isShow: false },
+
+            ]
+        }
     },
     {
         name: 'Dirección',
         fields: {
             text: [
-                "Street_Number_and_Name",
-                "Apt_Number",
-                "City",
-                "State",
-                "Zip_Code",
-                "phone_Number_1",
-                'In_Care_of',
-                "phone_Number_2",
-                'Street_Number_and_Name_POX',
-                'Apt_Number_POX',
-                'City_POX',
-                'State_POX',
-                'Zip_Code_POX',]
+                { name: 'Street_Number_and_Name', required: true, isShow: false },
+                { name: 'Apt_Number', required: true, isShow: false },
+                { name: 'City', required: true, isShow: false },
+                { name: 'State', required: true, isShow: false },
+                { name: 'Zip_Code', required: true, isShow: false },
+                { name: 'phone_Number_1', required: true, isShow: false },
+                { name: 'In_Care_of', required: true, isShow: true },
+                { name: 'phone_Number_2', required: true, isShow: true },
+                { name: 'Street_Number_and_Name_POX', required: true, isShow: true },
+                { name: 'Apt_Number_POX', required: true, isShow: true },
+                { name: 'City_POX', required: true, isShow: true },
+                { name: 'State_POX', required: true, isShow: true },
+                { name: 'Zip_Code_POX', required: true, isShow: true },
+            ],
         }
     },
     {
@@ -50,7 +59,7 @@ export const aplicantPart_A_I = [
                 },
 
             ],
-            text: ['Date_Of_Birth']
+            text: [{ name: 'Date_Of_Birth', required: true, isShow: false }]
         }
     },
     {
@@ -61,7 +70,11 @@ export const aplicantPart_A_I = [
                     'Race_Ethnic_Tribal_Group': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico']
                 }
             ],
-            text: ['City_and_Country_of_Birth', 'Present_Nacionality', 'Nationality_at_Birth', 'Religion'],
+            text: [
+                { name: 'City_and_Country_of_Birth', required: true, isShow: false },
+                { name: 'Present_Nacionality', required: true, isShow: false },
+                { name: 'Nationality_at_Birth', required: true, isShow: false },
+                { name: 'Religion', required: true, isShow: false },],
         }
     },
 
@@ -83,15 +96,15 @@ export const aplicantPart_A_I = [
         name: 'Informacion de Viaje',
         fields: {
             text: [
-                'Leave_Your_Country',
-                'I-94_Number',
-                'Each_Entry_Date_1',
-                'Each_Entry_Place_1',
-                'Each_Entry_Date_2',
-                'Each_Entry_Place_2',
-                'Each_Entry_Date_3',
-                'Each_Entry_Place_3',
-                'Each_Entry_Date_Expires'
+                { name: 'Leave_Your_Country', required: true, isShow: false },
+                { name: 'I-94_Number', required: true, isShow: false },
+                { name: 'Each_Entry_Date_1', required: true, isShow: false },
+                { name: 'Each_Entry_Place_1', required: true, isShow: false },
+                { name: 'Each_Entry_Date_2', required: true, isShow: true },
+                { name: 'Each_Entry_Place_2', required: true, isShow: true },
+                { name: 'Each_Entry_Date_3', required: true, isShow: true },
+                { name: 'Each_Entry_Place_3', required: true, isShow: true },
+                { name: 'Each_Entry_Date_Expires', required: true, isShow: true },
             ],
             select: [
                 {
@@ -105,11 +118,11 @@ export const aplicantPart_A_I = [
         name: 'Documento de Viaje',
         fields: {
             text: [
-                'Passport_Country',
-                'Passport_Number',
-                'Passport_Expiration_Day',
-                'Native_Language',
-                'Other_Language'
+                { name: 'Passport_Country', required: true, isShow: false },
+                { name: 'Passport_Number', required: true, isShow: false },
+                { name: 'Passport_Expiration_Day', required: true, isShow: false },
+                { name: 'Native_Language', required: true, isShow: false },
+                { name: 'Other_Language', required: true, isShow: false },
             ],
             radio: [
                 {
@@ -124,24 +137,29 @@ export const aplicantPart_A_II_Spouse = [
     {
         name: 'Identificacion del Conyuge',
         fields: {
-            text: ['Spouse_Alien_Number', 'Spouse_Passport_Number', 'Spouse_SSN', 'Spouse_Date_of_Birth'],
+            text: [
+                { name: 'Spouse_Alien_Number', required: true, isShow: false },
+                { name: 'Spouse_Passport_Number', required: true, isShow: false },
+                { name: 'Spouse_SSN', required: true, isShow: false },
+                { name: 'Spouse_Date_of_Birth', required: true, isShow: false },],
         }
     }, {
         name: 'Nombres y Apellidos del Conyuge',
         fields: {
-            text: ['Spouse_Complete_Last_Name',
-                'Spouse_First_Name',
-                'Spouse_Middle_Name',
-                'Spouse_Other_Names',]
+            text: [
+                { name: 'Spouse_Complete_Last_Name', required: true, isShow: false },
+                { name: 'Spouse_First_Name', required: true, isShow: false },
+                { name: 'Spouse_Middle_Name', required: true, isShow: false },
+                { name: 'Spouse_Other_Names', required: true, isShow: false },]
         }
     },
     {
         name: 'Información del Matrimonio',
         fields: {
             text: [
-                'Spouse_Date_og_Marriage',
-                'Spouse_Place_Marriage',
-                'Spouse_City_Country_of_Birth',
+                { name: 'Spouse_Date_og_Marriage', required: true, isShow: false },
+                { name: 'Spouse_Place_Marriage', required: true, isShow: false },
+                { name: 'Spouse_City_Country_of_Birth', required: true, isShow: false },
 
             ]
         }
@@ -149,7 +167,7 @@ export const aplicantPart_A_II_Spouse = [
         name: 'Datos Demograficos del Conyuge',
         fields: {
             text: [
-                'Spouse_Nationality'
+                { name: 'Spouse_Nationality', required: true, isShow: false }
             ],
             select: [
                 {
@@ -165,15 +183,15 @@ export const aplicantPart_A_II_Spouse = [
         fields: {
             text: [
                 //en "Spouse_Location_US" si marca que no, solo debe aparecer esta:
-                'Spouse_Specific_Location',
+                { name: 'Spouse_Specific_Location', required: true, isShow: false },
                 //pero si marca que Si, debe mostrar los siguientes formularios
-                'Spouse_Last_Entry',
-                'Spouse_Date_Last_Entry',
-                'Spouse_I-94_Number',
-                'Spouse_Status_Last_Admitted',
-                'Spouse_Current_Status',
-                'Spouse_Expiration_Date_Stay',
-                'Spouse_Previous_arrival'
+                { name: 'Spouse_Last_Entry', required: true, isShow: true },
+                { name: 'Spouse_Date_Last_Entry', required: true, isShow: true },
+                { name: 'Spouse_I-9', required: true, isShow: true },
+                { name: 'Spouse_Status_Last_Admitted', required: true, isShow: true },
+                { name: 'Spouse_Current_Status', required: true, isShow: true },
+                { name: 'Spouse_Expiration_Date_Stay', required: true, isShow: true },
+                { name: 'Spouse_Previous_arrival', required: true, isShow: true },
             ],
             // select: [
             //     {
@@ -195,7 +213,7 @@ export const aplicantPart_A_II_Spouse = [
             ],
             //modificar esto
             text: [
-                'Spouse_Nationality'
+                { name: 'Spouse_Nationality', required: true, isShow: false }
             ]
         }
     },
@@ -210,7 +228,7 @@ export const aplicantPart_A_II_Children = [
             ],
             text: [
                 //si en children se marca que si, debe mostrarse este campo pero en formato Select
-                'Children_Total',
+                { name: 'Children_Total', required: true, isShow: false },
             ],
             // select: [{
             //     'Children_Total': ['1', '2', '3', '4']
@@ -221,10 +239,10 @@ export const aplicantPart_A_II_Children = [
         name: 'Identificacion del hijo 1',
         fields: {
             text: [
-                'Children_Alien_Number',
-                'Children_Passport_Number',
-                'Children_SSN',
-                'Children_Date_of_Birth'
+                { name: 'Children_Alien_Number', required: true, isShow: false },
+                { name: 'Children_Passport_Number', required: true, isShow: false },
+                { name: 'Children_SSN', required: true, isShow: false },
+                { name: 'Children_Date_of_Birth', required: true, isShow: false },
             ],
             select: [
                 { 'Children_Marital_Status': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] }
@@ -235,9 +253,9 @@ export const aplicantPart_A_II_Children = [
         name: 'Nombres del Hijo 1',
         fields: {
             text: [
-                'Children_Complete_Last_Name',
-                'Children_First_Name',
-                'Children_Middle_Name',
+                { name: 'Children_Complete_Last_Name', required: true, isShow: false },
+                { name: 'Children_First_Name', required: true, isShow: false },
+                { name: 'Children_Middle_Name', required: true, isShow: false },
             ],
             radio: [
                 { 'Children_Gender': ['Female', 'Male'] }
@@ -248,8 +266,8 @@ export const aplicantPart_A_II_Children = [
         name: 'Demografia',
         fields: {
             text: [
-                'Children_City_Country_of_Birth',
-                'Children_Nationality',
+                { name: 'Children_City_Country_of_Birth', required: true, isShow: false },
+                { name: 'Children_Nationality', required: true, isShow: false },
 
             ],
             select: [
@@ -262,14 +280,14 @@ export const aplicantPart_A_II_Children = [
         fields: {
             text: [
                 //en "Children_Location" si marca que no, solo debe aparecer esta:
-                'Children_Specify_Location',
+                { name: 'Children_Specify_Location', required: true, isShow: false },
                 //pero si marca que Si, debe mostrar los siguientes formularios
-                'Children_Place_Last_Entry',
-                'Children_Date_Last_Entry',
-                'Children_I-94_Number',
-                'Children_Status_Last_Admitted',
-                'Children_Current_Status',
-                'Children_Expiration_Day_Stay',
+                { name: 'Children_Place_Last_Entry', required: true, isShow: false },
+                { name: 'Children_Date_Last_Entry', required: true, isShow: false },
+                { name: 'Children_I-94_Number', required: true, isShow: false },
+                { name: 'Children_Status_Last_Admitted', required: true, isShow: false },
+                { name: 'Children_Current_Status', required: true, isShow: false },
+                { name: 'Children_Expiration_Day_Stay', required: true, isShow: false },
                 // 'Children_Previous_arrival'
             ],
             // select: [
@@ -292,7 +310,7 @@ export const aplicantPart_A_II_Children = [
             ],
             //modificar esto
             text: [
-                'Children_Nationality'
+                { name: 'Children_Nationality', required: true, isShow: false }
             ]
         }
     },

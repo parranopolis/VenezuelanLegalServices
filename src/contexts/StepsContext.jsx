@@ -11,7 +11,7 @@ export const StepsContext = createContext()
 
 export const StepsProvider = ({ children }) => {
     const [currentStep, setCurrentStep] = useState(0)
-    const [isStepsVisible, setIsStepsVisible] = useState(true)
+    const [isStepsVisible, setIsStepsVisible] = useState(false)
     const formGroups = [
         { 'Applicant': aplicantPart_A_I },
         { 'Spouse': aplicantPart_A_II_Spouse },
