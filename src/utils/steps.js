@@ -316,5 +316,16 @@ export const aplicantPart_A_II_Children = [
     },
 
 ]
+export const aplicantPart_A_III_Background = [
+    {
+        name: 'Liste donde vivio antes de venir a los Estados Unidos',
+        fields: {
+            text: [
+                { name: 'BG_Number_Street', required: true, isShow: false },
+                { name: 'BG_City', required: true, isShow: false },
+            ]
+        }
+    },
+]
 
 

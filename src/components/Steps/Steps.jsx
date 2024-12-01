@@ -26,11 +26,13 @@ export function Steps() {
                         <StepsItem index={0} title="Step 1" description='Parte A I' />
                         <StepsItem index={1} title="Step 2" description='Parte A II' />
                         <StepsItem index={2} title="Step 3" description='Parte A III' />
+                        <StepsItem index={3} title="Step 4" description='Parte A IV' />
                     </StepsList>
 
                     <StepsContent index={0}>Informacion Personal</StepsContent>
                     <StepsContent index={1}>Esposa e Hijos</StepsContent>
                     <StepsContent index={2}>Informacion de su historial</StepsContent>
+                    <StepsContent index={3}>asdasd</StepsContent>
                     <StepsCompletedContent>
                         All steps are complete!
                     </StepsCompletedContent>

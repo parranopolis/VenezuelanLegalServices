@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { initialFormValues } from '../../contexts/InitialValueContext'
 import i589 from './../../assets/PDF/i-589.pdf'
-import { PDFDocument } from 'pdf-lib'
+import { PDFCheckBox, PDFDocument, PDFRadioGroup, PDFTextField } from 'pdf-lib'
 import { Button, Input, Fieldset, Box, Link, Strong, Stack } from '@chakra-ui/react'
 
 import { findProperty } from '../../utils/functions'
@@ -99,6 +99,7 @@ export function Forms({ onSubmit }) {
         a.remove()
         setPDFUrl(a)
     }
+
     const modifyPDF = async () => {
 
         try {
