@@ -220,16 +220,6 @@
                 "value": "N/A",
                 "label": "Qué otro idioma habla con fluides?",
                 "explanation": ""
-            },
-            "BG_Number_Street": {
-                "value": "N/A",
-                "label": "Numero de Calle y Nombre",
-                "explanation": ""
-            },
-            "BG_City": {
-                "value": "N/A",
-                "label": "Ciudad o Pueblo",
-                "explanation": ""
             }
         },
         "PDFRadioGroup2": {
@@ -1238,494 +1228,494 @@
         "PDFTextField2": {
             "BG_Number_Street": {
                 "value": "N/A",
-                "label": "BG_Number_Street",
+                "label": "Nombre y Calle",
                 "explanation": ""
             },
             "BG_Number_Street1": {
                 "value": "N/A",
-                "label": "BG_Number_Street1",
+                "label": "Nombre y Calle",
                 "explanation": ""
             },
             "BG_City": {
                 "value": "N/A",
-                "label": "BG_City",
+                "label": "Ciudad o Pueblo",
                 "explanation": ""
             },
             "BG_City2": {
                 "value": "N/A",
-                "label": "BG_City2",
+                "label": "Ciudad o Pueblo",
                 "explanation": ""
             },
             "BG_State": {
                 "value": "N/A",
-                "label": "BG_State",
+                "label": "Departamento, Estado o Provincia",
                 "explanation": ""
             },
             "BG_State2": {
                 "value": "N/A",
-                "label": "BG_State2",
+                "label": "Departamento, Estado o Provincia",
                 "explanation": ""
             },
             "BG_Country": {
                 "value": "N/A",
-                "label": "BG_Country",
+                "label": "País",
                 "explanation": ""
             },
             "BG_Country2": {
                 "value": "N/A",
-                "label": "BG_Country2",
+                "label": "País",
                 "explanation": ""
             },
             "BG_Date_From": {
                 "value": "N/A",
-                "label": "BG_Date_From",
+                "label": "Desde",
                 "explanation": ""
             },
             "BG_Date_From2": {
                 "value": "N/A",
-                "label": "BG_Date_From2",
+                "label": "Desde",
                 "explanation": ""
             },
             "BG_Date_To": {
                 "value": "N/A",
-                "label": "BG_Date_To",
+                "label": "Hasta",
                 "explanation": ""
             },
             "BG_Date_To2": {
                 "value": "N/A",
-                "label": "BG_Date_To2",
+                "label": "Hasta",
                 "explanation": ""
             },
             "BG_Number_Street_5Y": {
                 "value": "N/A",
-                "label": "BG_Number_Street_5Y",
+                "label": "Numero de Calle",
                 "explanation": ""
             },
             "BG_Number_Street_5Y-1": {
                 "value": "N/A",
-                "label": "BG_Number_Street_5Y-1",
+                "label": "Numero de Calle",
                 "explanation": ""
             },
             "BG_Number_Street_5Y-2": {
                 "value": "N/A",
-                "label": "BG_Number_Street_5Y-2",
+                "label": "Numero de Calle",
                 "explanation": ""
             },
             "BG_Number_Street_5Y-3": {
                 "value": "N/A",
-                "label": "BG_Number_Street_5Y-3",
+                "label": "Numero de Calle",
                 "explanation": ""
             },
             "BG_Number_Street_5Y-4": {
                 "value": "N/A",
-                "label": "BG_Number_Street_5Y-4",
+                "label": "Numero de Calle",
                 "explanation": ""
             },
             "BG_School": {
                 "value": "N/A",
-                "label": "BG_School",
+                "label": "Nombre de la Institución",
                 "explanation": ""
             },
             "BG_School2": {
                 "value": "N/A",
-                "label": "BG_School2",
+                "label": "Nombre de la Institución",
                 "explanation": ""
             },
             "BG_School3": {
                 "value": "N/A",
-                "label": "BG_School3",
+                "label": "Nombre de la Institución",
                 "explanation": ""
             },
             "BG_School4": {
                 "value": "N/A",
-                "label": "BG_School4",
+                "label": "Nombre de la Institución",
                 "explanation": ""
             },
             "BG_Employment_Addres": {
                 "value": "N/A",
-                "label": "BG_Employment_Addres",
+                "label": "Dirección del Empleo",
                 "explanation": ""
             },
             "BG_Employment_Addres1": {
                 "value": "N/A",
-                "label": "BG_Employment_Addres1",
+                "label": "Dirección del Empleo",
                 "explanation": ""
             },
             "BG_Employment_Addres2": {
                 "value": "N/A",
-                "label": "BG_Employment_Addres2",
+                "label": "Dirección del Empleo",
                 "explanation": ""
             },
             "BG_City_5Y": {
                 "value": "N/A",
-                "label": "BG_City_5Y",
+                "label": "Ciudad o Pueblo",
                 "explanation": ""
             },
             "BG_City_5Y-1": {
                 "value": "N/A",
-                "label": "BG_City_5Y-1",
+                "label": "Ciudad o Pueblo",
                 "explanation": ""
             },
             "BG_City_5Y-2": {
                 "value": "N/A",
-                "label": "BG_City_5Y-2",
+                "label": "Ciudad o Pueblo",
                 "explanation": ""
             },
             "BG_City_5Y-3": {
                 "value": "N/A",
-                "label": "BG_City_5Y-3",
+                "label": "Ciudad o Pueblo",
                 "explanation": ""
             },
             "BG_City_5Y-4": {
                 "value": "N/A",
-                "label": "BG_City_5Y-4",
+                "label": "Ciudad o Pueblo",
                 "explanation": ""
             },
             "BG_State_5Y": {
                 "value": "N/A",
-                "label": "BG_State_5Y",
+                "label": "Departamento, Estado o Provincia",
                 "explanation": ""
             },
             "BG_State_5Y-1": {
                 "value": "N/A",
-                "label": "BG_State_5Y-1",
+                "label": "Departamento, Estado o Provincia",
                 "explanation": ""
             },
             "BG_State_5Y-2": {
                 "value": "N/A",
-                "label": "BG_State_5Y-2",
+                "label": "Departamento, Estado o Provincia",
                 "explanation": ""
             },
             "BG_State_5Y-3": {
                 "value": "N/A",
-                "label": "BG_State_5Y-3",
+                "label": "Departamento, Estado o Provincia",
                 "explanation": ""
             },
             "BG_State_5Y-4": {
                 "value": "N/A",
-                "label": "BG_State_5Y-4",
+                "label": "Departamento, Estado o Provincia",
                 "explanation": ""
             },
             "BG_Country_5Y": {
                 "value": "N/A",
-                "label": "BG_Country_5Y",
+                "label": "País",
                 "explanation": ""
             },
             "BG_Country_5Y-1": {
                 "value": "N/A",
-                "label": "BG_Country_5Y-1",
+                "label": "País",
                 "explanation": ""
             },
             "BG_Country_5Y-2": {
                 "value": "N/A",
-                "label": "BG_Country_5Y-2",
+                "label": "País",
                 "explanation": ""
             },
             "BG_Country_5Y-3": {
                 "value": "N/A",
-                "label": "BG_Country_5Y-3",
+                "label": "País",
                 "explanation": ""
             },
             "BG_Country_5Y-4": {
                 "value": "N/A",
-                "label": "BG_Country_5Y-4",
+                "label": "País",
                 "explanation": ""
             },
             "BG_Date_From_5Y": {
                 "value": "N/A",
-                "label": "BG_Date_From_5Y",
-                "explanation": ""
+                "label": "Desde",
+                "explanation": "Indique la fecha desde que vivio ahí "
             },
             "BG_Date_From_5Y1": {
                 "value": "N/A",
-                "label": "BG_Date_From_5Y1",
-                "explanation": ""
+                "label": "Desde",
+                "explanation": "Indique la fecha desde que vivio ahí "
             },
             "BG_Date_From_5Y2": {
                 "value": "N/A",
-                "label": "BG_Date_From_5Y2",
-                "explanation": ""
+                "label": "Desde",
+                "explanation": "Indique la fecha desde que vivio ahí "
             },
             "BG_Date_From_5Y3": {
                 "value": "N/A",
-                "label": "BG_Date_From_5Y3",
-                "explanation": ""
+                "label": "Desde",
+                "explanation": "Indique la fecha desde que vivio ahí "
             },
             "BG_Date_From_5Y4": {
                 "value": "N/A",
-                "label": "BG_Date_From_5Y4",
-                "explanation": ""
+                "label": "Desde",
+                "explanation": "Indique la fecha desde que vivio ahí "
             },
             "BG_Date_To_5Y": {
                 "value": "N/A",
-                "label": "BG_Date_To_5Y",
-                "explanation": ""
+                "label": "Hasta",
+                "explanation": "Indique la Fecha de cuando se mudó de esa Ubicación"
             },
             "BG_Date_To_5Y1": {
                 "value": "N/A",
-                "label": "BG_Date_To_5Y1",
-                "explanation": ""
+                "label": "Hasta",
+                "explanation": "Indique la Fecha de cuando se mudó de esa Ubicación"
             },
             "BG_Date_To_5Y2": {
                 "value": "N/A",
-                "label": "BG_Date_To_5Y2",
-                "explanation": ""
+                "label": "Hasta",
+                "explanation": "Indique la Fecha de cuando se mudó de esa Ubicación"
             },
             "BG_Date_To_5Y3": {
                 "value": "N/A",
-                "label": "BG_Date_To_5Y3",
-                "explanation": ""
+                "label": "Hasta",
+                "explanation": "Indique la Fecha de cuando se mudó de esa Ubicación"
             },
             "BG_Date_To_5Y4": {
                 "value": "N/A",
-                "label": "BG_Date_To_5Y4",
-                "explanation": ""
+                "label": "Hasta",
+                "explanation": "Indique la Fecha de cuando se mudó de esa Ubicación"
             },
             "BG_Type_School": {
                 "value": "N/A",
-                "label": "BG_Type_School",
-                "explanation": ""
+                "label": "Tipo de Escuela",
+                "explanation": "Universidad, Educación Media, Básica"
             },
             "BG_Type_School2": {
                 "value": "N/A",
-                "label": "BG_Type_School2",
-                "explanation": ""
+                "label": "Tipo de Escuela",
+                "explanation": "Universidad, Educación Media, Básica"
             },
             "BG_Type_School3": {
                 "value": "N/A",
-                "label": "BG_Type_School3",
-                "explanation": ""
+                "label": "Tipo de Escuela",
+                "explanation": "Universidad, Educación Media, Básica"
             },
             "BG_Type_School4": {
                 "value": "N/A",
-                "label": "BG_Type_School4",
-                "explanation": ""
+                "label": "Tipo de Escuela",
+                "explanation": "Universidad, Educación Media, Básica"
             },
             "BG_Location": {
                 "value": "N/A",
-                "label": "BG_Location",
-                "explanation": ""
+                "label": "Ubicación",
+                "explanation": "direccion general de la Institución"
             },
             "BG_Location2": {
                 "value": "N/A",
-                "label": "BG_Location2",
-                "explanation": ""
+                "label": "Ubicación",
+                "explanation": "direccion general de la Institución"
             },
             "BG_Location3": {
                 "value": "N/A",
-                "label": "BG_Location3",
-                "explanation": ""
+                "label": "Ubicación",
+                "explanation": "direccion general de la Institución"
             },
             "BG_Location4": {
                 "value": "N/A",
-                "label": "BG_Location4",
-                "explanation": ""
+                "label": "Ubicación",
+                "explanation": "direccion general de la Institución"
             },
             "BG_Education_From": {
                 "value": "N/A",
-                "label": "BG_Education_From",
-                "explanation": ""
+                "label": "Desde",
+                "explanation": "Cuando empezo a estudiar"
             },
             "BG_Education_From-1": {
                 "value": "N/A",
-                "label": "BG_Education_From-1",
-                "explanation": ""
+                "label": "Desde",
+                "explanation": "Cuando empezo a estudiar"
             },
             "BG_Education_From-2": {
                 "value": "N/A",
-                "label": "BG_Education_From-2",
-                "explanation": ""
+                "label": "Desde",
+                "explanation": "Cuando empezo a estudiar"
             },
             "BG_Education_From-3": {
                 "value": "N/A",
-                "label": "BG_Education_From-3",
-                "explanation": ""
+                "label": "Desde",
+                "explanation": "Cuando empezo a estudiar"
             },
             "BG_Education_To": {
                 "value": "N/A",
-                "label": "BG_Education_To",
-                "explanation": ""
+                "label": "Hasta",
+                "explanation": "fecha de cuando dejo de Estudiar"
             },
             "BG_Education_To-1": {
                 "value": "N/A",
-                "label": "BG_Education_To-1",
-                "explanation": ""
+                "label": "Hasta",
+                "explanation": "fecha de cuando dejo de Estudiar"
             },
             "BG_Education_To-2": {
                 "value": "N/A",
-                "label": "BG_Education_To-2",
-                "explanation": ""
+                "label": "Hasta",
+                "explanation": "fecha de cuando dejo de Estudiar"
             },
             "BG_Education_To-3": {
                 "value": "N/A",
-                "label": "BG_Education_To-3",
-                "explanation": ""
+                "label": "Hasta",
+                "explanation": "fecha de cuando dejo de Estudiar"
             },
             "BG_Employment_Occupation": {
                 "value": "N/A",
-                "label": "BG_Employment_Occupation",
-                "explanation": ""
+                "label": "A que se dedicaba",
+                "explanation": "Solo ponga el titulo del trabajo. Ejemplo: Abogado, Carpintero, Entrenador, Maestro"
             },
             "BG_Employment_Occupation1": {
                 "value": "N/A",
-                "label": "BG_Employment_Occupation1",
-                "explanation": ""
+                "label": "A que se dedicaba",
+                "explanation": "Solo ponga el titulo del trabajo. Ejemplo: Abogado, Carpintero, Entrenador, Maestro"
             },
             "BG_Employment_Occupation2": {
                 "value": "N/A",
-                "label": "BG_Employment_Occupation2",
-                "explanation": ""
+                "label": "A que se dedicaba",
+                "explanation": "Solo ponga el titulo del trabajo. Ejemplo: Abogado, Carpintero, Entrenador, Maestro"
             },
             "BG_Employment_Date_From": {
                 "value": "N/A",
-                "label": "BG_Employment_Date_From",
+                "label": "Desde",
                 "explanation": ""
             },
             "BG_Employment_Date_From1": {
                 "value": "N/A",
-                "label": "BG_Employment_Date_From1",
+                "label": "Desde",
                 "explanation": ""
             },
             "BG_Employment_Date_From2": {
                 "value": "N/A",
-                "label": "BG_Employment_Date_From2",
+                "label": "Desde",
                 "explanation": ""
             },
             "BG_Employment_Date_To": {
                 "value": "N/A",
-                "label": "BG_Employment_Date_To",
+                "label": "Hasta",
                 "explanation": ""
             },
             "BG_Employment_Date_To1": {
                 "value": "N/A",
-                "label": "BG_Employment_Date_To1",
+                "label": "Hasta",
                 "explanation": ""
             },
             "BG_Employment_Date_To2": {
                 "value": "N/A",
-                "label": "BG_Employment_Date_To2",
+                "label": "Hasta",
                 "explanation": ""
             },
             "Parents_Mother": {
                 "value": "N/A",
-                "label": "Parents_Mother",
+                "label": "Nombre de la Madre",
                 "explanation": ""
             },
             "Parents_Father": {
                 "value": "N/A",
-                "label": "Parents_Father",
+                "label": "Nombre de Padre",
                 "explanation": ""
             },
             "Sibling": {
                 "value": "N/A",
-                "label": "Sibling",
+                "label": "Nombre del hermano/a",
                 "explanation": ""
             },
             "Sibling1": {
                 "value": "N/A",
-                "label": "Sibling1",
+                "label": "Nombre del hermano/a",
                 "explanation": ""
             },
             "Sibling2": {
                 "value": "N/A",
-                "label": "Sibling2",
+                "label": "Nombre del hermano/a",
                 "explanation": ""
             },
             "Sibling3": {
                 "value": "N/A",
-                "label": "Sibling3",
+                "label": "Nombre del hermano/a",
                 "explanation": ""
             },
             "Parent_Mother_Address": {
                 "value": "N/A",
-                "label": "Parent_Mother_Address",
+                "label": "Ciudad o pueblo donde nació la Madre",
                 "explanation": ""
             },
             "Parent_Father_Address": {
                 "value": "N/A",
-                "label": "Parent_Father_Address",
+                "label": "Ciudad o pueblo donde nació el Padre",
                 "explanation": ""
             },
             "Sibling_Address": {
                 "value": "N/A",
-                "label": "Sibling_Address",
+                "label": "Ciudad o pueblo donde nació",
                 "explanation": ""
             },
             "Sibling_Address1": {
                 "value": "N/A",
-                "label": "Sibling_Address1",
+                "label": "Ciudad o pueblo donde nació",
                 "explanation": ""
             },
             "Sibling_Address2": {
                 "value": "N/A",
-                "label": "Sibling_Address2",
+                "label": "Ciudad o pueblo donde nació",
                 "explanation": ""
             },
             "Sibling_Address3": {
                 "value": "N/A",
-                "label": "Sibling_Address3",
+                "label": "Ciudad o pueblo donde nació",
                 "explanation": ""
             },
             "Parent_Mother_Current_Location": {
                 "value": "N/A",
-                "label": "Parent_Mother_Current_Location",
+                "label": "Ubicacion actual de la Madre",
                 "explanation": ""
             },
             "Parent_Father_Current_Location": {
                 "value": "N/A",
-                "label": "Parent_Father_Current_Location",
+                "label": "Ubicacion actual del Padre",
                 "explanation": ""
             },
             "Sibling_Current_Location": {
                 "value": "N/A",
-                "label": "Sibling_Current_Location",
+                "label": "Ubicacion actual",
                 "explanation": ""
             },
             "Sibling_Current_Location1": {
                 "value": "N/A",
-                "label": "Sibling_Current_Location1",
+                "label": "Ubicacion actual",
                 "explanation": ""
             },
             "Sibling_Current_Location2": {
                 "value": "N/A",
-                "label": "Sibling_Current_Location2",
+                "label": "Ubicacion actual",
                 "explanation": ""
             },
             "Sibling_Current_Location3": {
                 "value": "N/A",
-                "label": "Sibling_Current_Location3",
+                "label": "Ubicacion actual",
                 "explanation": ""
             }
         },
         "PDFCheckBox2": {
             "Parent_Mother_Deceased": {
                 "value": false,
-                "label": "Parent_Mother_Deceased",
+                "label": "Madre Fallecida",
                 "explanation": ""
             },
             "Parent_Father_Deceased": {
                 "value": false,
-                "label": "Parent_Father_Deceased",
+                "label": "Padre Fallecido",
                 "explanation": ""
             },
             "Sibling_Deceased": {
                 "value": false,
-                "label": "Sibling_Deceased",
+                "label": "Hermano/a Fallecido/a",
                 "explanation": ""
             },
             "Sibling_Deceased1": {
                 "value": false,
-                "label": "Sibling_Deceased1",
+                "label": "Segundo Hermano/a Fallecido/a",
                 "explanation": ""
             },
             "Sibling_Deceased2": {
                 "value": false,
-                "label": "Sibling_Deceased2",
+                "label": "Tercer Hermano/a Fallecido/a",
                 "explanation": ""
             },
             "Sibling_Deceased3": {
                 "value": false,
-                "label": "Sibling_Deceased3",
+                "label": "Cuarto Hermano/a Fallecido/a",
                 "explanation": ""
             }
         }
@@ -1734,167 +1724,167 @@
         "PDFTextField2": {
             "Mistreatment_Explenation": {
                 "value": "N/A",
-                "label": "Mistreatment_Explenation",
+                "label": "Si la respuesta es 'Si', explique en detalle: 1. Qué sucedió 2. Cuándo se produjo el daño, el maltrato o las amenazas 3. Quién causó el daño, el maltrato o las amenazas 4. Por qué cree que se produjo el daño, el maltrato o las amenazas.;",
                 "explanation": ""
             },
             "fear_mistreatment_Explanation": {
                 "value": "N/A",
-                "label": "fear_mistreatment_Explanation",
+                "label": "Si la respuesta es 'Sí', explique en detalle: 1. Qué daño o maltrato teme; 2. Quién cree que le haría daño o le haría mal; y 3. Por qué cree que le harían o podrían hacerle daño o hacerle maltrato.",
                 "explanation": ""
             },
             "Family_Crimes_Explanation": {
                 "value": "N/A",
-                "label": "Family_Crimes_Explanation",
+                "label": "En caso afirmativo, explique las circunstancias y los motivos de la acción.",
                 "explanation": ""
             },
             "Family_Group_Link_Explanation": {
                 "value": "N/A",
-                "label": "Family_Group_Link_Explanation",
+                "label": "Si es 'Sí', describa para cada persona el nivel de participación, cualquier puesto de liderazgo u otros puestos desempeñados y el tiempo que usted o los miembros de su familia estuvieron involucrados en cada organización o actividad.",
                 "explanation": ""
             },
             "Family_Group_Link_isActive_Explanation": {
                 "value": "N/A",
-                "label": "Family_Group_Link_isActive_Explanation",
+                "label": "Si responde 'Sí', describa para cada persona su nivel actual de participación o el de los miembros de su familia, cualquier puesto de liderazgo u otro puesto que usted o los miembros de su familia ocupan actualmente y el tiempo que usted o los miembros de su familia han estado involucrados en cada organización o grupo.",
                 "explanation": ""
             },
             "Afraid_of_Torture_Explanation": {
                 "value": "N/A",
-                "label": "Afraid_of_Torture_Explanation",
+                "label": "Si es así, explique por qué tiene miedo y describa la naturaleza de la tortura que teme, quién la realizaría y por qué sería infligida.",
                 "explanation": ""
             }
         },
         "PDFCheckBox2": {
             "WYA_Race": {
                 "value": false,
-                "label": "WYA_Race",
+                "label": "Raza",
                 "explanation": ""
             },
             "WYA_Religion": {
                 "value": false,
-                "label": "WYA_Religion",
+                "label": "Religion",
                 "explanation": ""
             },
             "WYA_Nationality": {
                 "value": false,
-                "label": "WYA_Nationality",
+                "label": "Nacionalidad",
                 "explanation": ""
             },
             "WYA_Political_Opinion": {
                 "value": false,
-                "label": "WYA_Political_Opinion",
+                "label": "Opinion Politica",
                 "explanation": ""
             },
             "WYA_Member_Particular_Group": {
                 "value": false,
-                "label": "WYA_Member_Particular_Group",
+                "label": "Miembro de un grupo particular",
                 "explanation": ""
             },
             "WYA_Torture": {
                 "value": false,
-                "label": "WYA_Torture",
-                "explanation": ""
+                "label": "Victima de Tortura",
+                "explanation": "Fue victima de Tortura?"
             }
         },
         "PDFRadioGroup2": {
             "Mistreatment": {
                 "value": null,
-                "label": "Mistreatment",
+                "label": "",
                 "explanation": ""
             },
             "fear_mistreatment": {
                 "value": null,
-                "label": "fear_mistreatment",
+                "label": "",
                 "explanation": ""
             },
             "Family_Crimes": {
                 "value": null,
-                "label": "Family_Crimes",
+                "label": "",
                 "explanation": ""
             },
             "Family_Group_Link": {
                 "value": null,
-                "label": "Family_Group_Link",
+                "label": "",
                 "explanation": ""
             },
             "Family_Group_Link_isActive": {
                 "value": null,
-                "label": "Family_Group_Link_isActive",
+                "label": "",
                 "explanation": ""
             },
             "Afraid_of_Torture": {
                 "value": null,
-                "label": "Afraid_of_Torture",
+                "label": "",
                 "explanation": ""
             }
         }
     },
-    "Additional_Application_Informatio": {
+    "Application_Aditional_Information": {
         "PDFTextField2": {
             "Family_Applied_asylum_Explanation": {
                 "value": "N/A",
-                "label": "Family_Applied_asylum_Explanation",
+                "label": "Si la respuesta es 'Sí', explique la decisión y qué sucedió con el estatus que usted, su cónyuge, sus hijos, sus padres o sus hermanos recibieron como resultado de esa decisión. Indique si usted fue incluido o no en la solicitud de uno de sus padres o cónyuge. De ser así, incluya el número A de su padre o cónyuge en su respuesta. Si un juez de inmigración o la Junta de Apelaciones de Inmigración le ha negado el asilo, describa cualquier cambio en las condiciones en su país o en sus propias circunstancias personales desde la fecha de la negación que pueda afectar su elegibilidad para el asilo.",
                 "explanation": ""
             },
             "Stay_and_Legal_Status_Other_Countries_Explanation": {
                 "value": "N/A",
-                "label": "Stay_and_Legal_Status_Other_Countries_Explanation",
+                "label": "Si responde Sí a una o ambas preguntas (2A y/o 2B), proporcione para cada persona lo siguiente: el nombre de cada país y la duración de la estadía, el estatus de la persona mientras estuvo allí, las razones para partir, si la persona tiene o no derecho a regresar para fines de residencia legal y si la persona solicitó el estatus de refugiado o asilo mientras estuvo allí y, de no ser así, por qué no lo hizo.",
                 "explanation": ""
             },
             "Discriminatory_Actions_Against_Others_Explanation": {
                 "value": "N/A",
-                "label": "Discriminatory_Actions_Against_Others_Explanation",
+                "label": "Si responde 'Sí', describa en detalle cada uno de esos incidentes y su propia participación, la de su cónyuge o la de sus hijos.",
                 "explanation": ""
             },
             "Return_Country__you_Fear_Explanation": {
                 "value": "N/A",
-                "label": "Return_Country__you_Fear_Explanation",
+                "label": "Si responde 'Sí', describa en detalle las circunstancias de su(s) visita(s) (por ejemplo, la(s) fecha(s) del(de los) viaje(s), el(los) propósito(s) del(de los) viaje(s) y el tiempo que permaneció en ese país para la(s) visita(s).)",
                 "explanation": ""
             },
             "Expire_Time_Asaylum_Applicat_Explanation": {
                 "value": "N/A",
-                "label": "Expire_Time_Asaylum_Applicat_Explanation",
+                "label": "Si la respuesta es 'Sí', explique por qué no presentó su solicitud de asilo dentro del primer año después de su llegada. Debe estar preparado para explicar en su entrevista o audiencia por qué no presentó su solicitud de asilo dentro del primer año después de su llegada. Para obtener orientación sobre cómo responder a esta pregunta, consulte las Instrucciones, Parte 1: Instrucciones para la presentación, Sección V. 'Cómo completar el formulario', Parte C.",
                 "explanation": ""
             },
             "Crimes_In_USA_Explanation": {
                 "value": "N/A",
-                "label": "Crimes_In_USA_Explanation",
+                "label": "Si la respuesta es 'Sí', especifique en cada caso lo que ocurrió y las circunstancias, las fechas, la duración de la condena, el lugar, la duración de la detención o prisión, los motivos de la detención o condena, los cargos formales que se presentaron contra usted o sus familiares incluidos en su solicitud y los motivos de su liberación. Adjunte documentos que hagan referencia a estos incidentes, si están disponibles, o una explicación de por qué no están disponibles.",
                 "explanation": ""
             }
         },
         "PDFRadioGroup2": {
             "Family_Applied_asylum": {
                 "value": null,
-                "label": "Family_Applied_asylum",
+                "label": "",
                 "explanation": ""
             },
             "Stay_Other_Countries": {
                 "value": null,
-                "label": "Stay_Other_Countries",
+                "label": "",
                 "explanation": ""
             },
             "Legal_Status_Other_Coutries": {
                 "value": null,
-                "label": "Legal_Status_Other_Coutries",
+                "label": "¿Usted, su cónyuge, sus hijos u otros miembros de su familia, como sus padres o hermanos, alguna vez han solicitado o recibido algún estatus legal en algún país distinto de aquel del cual ahora solicita asilo?",
                 "explanation": ""
             },
             "Discriminatory_Actions_Against_Others": {
                 "value": null,
-                "label": "Discriminatory_Actions_Against_Others",
+                "label": "",
                 "explanation": ""
             },
             "Return_Country__you_Fear": {
                 "value": null,
-                "label": "Return_Country__you_Fear",
+                "label": "",
                 "explanation": ""
             },
             "Expire_Time_Asaylum_Applicat": {
                 "value": null,
-                "label": "Expire_Time_Asaylum_Applicat",
+                "label": "",
                 "explanation": ""
             },
             "Crimes_In_USA": {
                 "value": null,
-                "label": "Crimes_In_USA",
+                "label": "",
                 "explanation": ""
             }
         }

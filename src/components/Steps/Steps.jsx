@@ -17,22 +17,25 @@ import { StepsContext } from "../../contexts/StepsContext"
 export function Steps() {
 
     const { handleStepClick, currentStep, formGroups } = useContext(StepsContext)
-
     return (
         <>
-            <Stack gap="16">
-                <StepsRoot count={3} height="200px" step={currentStep} orientation="vertical">
+            <Stack>
+                <StepsRoot count={formGroups.length} height="700px" step={currentStep} orientation="vertical">
                     <StepsList>
-                        <StepsItem index={0} title="Step 1" description='Parte A I' />
-                        <StepsItem index={1} title="Step 2" description='Parte A II' />
-                        <StepsItem index={2} title="Step 3" description='Parte A III' />
-                        <StepsItem index={3} title="Step 4" description='Parte A IV' />
+                        <StepsItem index={0} title="Informacion Personal" description='Parte A-1' />
+                        <StepsItem index={1} title="Pareja" description='Parte A-2' />
+                        <StepsItem index={2} title="Hijos" description='Parte A-3' />
+                        <StepsItem index={3} title="Historial" description='Parte A-4' />
+                        <StepsItem index={4} title="Información de su Aplicación" description='Parte B-1' />
+                        <StepsItem index={5} title="Información Adicional de su Aplicación" description='Parte C-1' />
                     </StepsList>
 
                     <StepsContent index={0}>Informacion Personal</StepsContent>
-                    <StepsContent index={1}>Esposa e Hijos</StepsContent>
-                    <StepsContent index={2}>Informacion de su historial</StepsContent>
-                    <StepsContent index={3}>asdasd</StepsContent>
+                    <StepsContent index={1}>Pareja</StepsContent>
+                    <StepsContent index={2}>Hijos</StepsContent>
+                    <StepsContent index={3}>Información de su historial</StepsContent>
+                    <StepsContent index={4}>Información sobre su Aplicación</StepsContent>
+                    <StepsContent index={5}>Información Adicional de su Aplicación</StepsContent>
                     <StepsCompletedContent>
                         All steps are complete!
                     </StepsCompletedContent>
@@ -48,7 +51,7 @@ export function Steps() {
                                 Next
                             </Button>
                         </StepsNextTrigger>
-                        {currentStep == formGroups.length - 1 ? <Button>Crear PDF</Button> : ''}
+                        {currentStep == formGroups.length ? <Button>Crear PDF</Button> : ''}
                     </Group>
                 </StepsRoot>
             </Stack></>

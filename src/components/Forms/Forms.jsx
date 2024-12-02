@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from 'react'
 import { initialFormValues } from '../../contexts/InitialValueContext'
 import i589 from './../../assets/PDF/i-589.pdf'
 import { PDFCheckBox, PDFDocument, PDFRadioGroup, PDFTextField } from 'pdf-lib'
-import { Button, Input, Fieldset, Box, Link, Strong, Stack } from '@chakra-ui/react'
+import { Button, Input, Fieldset, Box, Link, Strong, Stack, Textarea, CheckboxCard } from '@chakra-ui/react'
+import { Checkbox } from "@/components/ui/checkbox"
 
 import { findProperty } from '../../utils/functions'
 
@@ -170,6 +171,9 @@ const FormContainer = ({ formDataContex, handleChange }) => {
         const currentGroup = currentForm[0][currentSection - 1]
         return (
             <Fieldset.Root size={'lg'} maxW={'100%'} className='fieldset'>
+                <Fieldset.Legend>
+                    <span className='h3'>{currentGroup.name}</span>
+                </Fieldset.Legend>
                 {currentGroup.fields.hasOwnProperty('text') ? <InputTextComponent
                     group={group[0]}
                     data={currentGroup.fields.text}
@@ -191,6 +195,23 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                     handleChange={handleChange}
                     formDataContex={formDataContex}
                 /> : ''}
+                {currentGroup.fields.hasOwnProperty('textArea') ? <InputTextArea
+                    group={group[0]}
+                    data={currentGroup.fields.textArea}
+                    formDataContex={formDataContex}
+                    name={currentGroup.name}
+                    handleChange={handleChange}
+
+                /> : ''}
+                {currentGroup.fields.hasOwnProperty('check') ? <InputCheckbox
+                    group={group[0]}
+                    data={currentGroup.fields.check}
+                    name={currentGroup.name}
+                    formDataContex={formDataContex}
+                    handleChange={handleChange}
+
+                /> : ''}
+
             </Fieldset.Root>
         )
     }
@@ -199,20 +220,20 @@ const FormContainer = ({ formDataContex, handleChange }) => {
     // Updates the form displayed on the screen
     const updateCurrentForm = (e) => {
         e.preventDefault()
-        const requiredInputs = document.querySelectorAll('.required')
-        let isValid = true
-        let field
-        requiredInputs.forEach(i => {
-            if (i.value.trim() === '') {
-                isValid = false
-                field = i
-            }
-        })
-        setIsValidated(isValid)
-        if (!isValid) {
-            console.log('hay campos requeridos')
-            return;
-        }
+        // const requiredInputs = document.querySelectorAll('.required')
+        // let isValid = true
+        // let field
+        // requiredInputs.forEach(i => {
+        //     if (i.value.trim() === '') {
+        //         isValid = false
+        //         field = i
+        //     }
+        // })
+        // setIsValidated(isValid)
+        // if (!isValid) {
+        //     console.log('hay campos requeridos')
+        //     return;
+        // }
         if (e.target.name === 'last') {
             if (currentSection == 1) null
             else setCurrentSection(currentSection - 1)
@@ -304,12 +325,9 @@ function InputSelect({ data, formDataContex, handleChange, group }) {
 //shows inputs of type Text
 function InputTextComponent({ data, name, handleChange, formDataContex, group }) {
     const obj = formDataContex[group].PDFTextField2
-
     return (
         <Stack gap={5}>
-            <Fieldset.Legend>
-                <span className='h3'>{name}</span>
-            </Fieldset.Legend>
+
             {data.map((field) => {
                 if (!field.isShow) {
                     const property = findProperty(obj, field.name)
@@ -347,7 +365,7 @@ function InputTextComponent({ data, name, handleChange, formDataContex, group })
 }
 
 // shows inputs of type Radio
-function InputRadio({ data, handleChange, formDataContex }) {
+function InputRadio({ data, handleChange, formDataContex, name }) {
     const { formGroups, currentStep } = useContext(StepsContext)
     const group2 = Object.keys(formGroups[currentStep])
     const q = data.map((group) => {
@@ -356,6 +374,7 @@ function InputRadio({ data, handleChange, formDataContex }) {
             const property = findProperty(formDataContex[group2].PDFRadioGroup2, key)
             return (
                 <section key={key}>
+
                     <span className='h6 opacity'>{property.label}</span>
                     {group[key].map((value) => {
                         return (
@@ -381,5 +400,82 @@ function InputRadio({ data, handleChange, formDataContex }) {
         <div>
             {q}
         </div>
+    )
+}
+
+function InputCheckbox({ group,
+    data,
+    name,
+    formDataContex,
+    handleChange }) {
+
+    const obj = formDataContex[group].PDFCheckBox2
+    return (
+        <Stack>
+            {data.map(field => {
+                // console.log(field)
+                const property = findProperty(obj, field.name)
+                const x = <span className='h6 helpTip'>{property.explanation}</span>
+                return (
+                    <Field key={field.name}>
+                        <Checkbox>{property.label}
+                            {property.explanation != '' ? <span>
+                                <ToggleTip content={x}>
+                                    <Button size="xs" variant="ghost">
+                                        <LuInfo />
+                                    </Button>
+                                </ToggleTip>
+                            </span> : ''}
+                        </Checkbox>
+                    </Field>
+                )
+            })}
+        </Stack>
+    )
+}
+
+function InputTextArea({ group, data, name, handleChange, formDataContex }) {
+    // console.log(handleChange)
+
+    const obj = formDataContex[group]
+
+    return (
+        <Stack>
+
+            {data.map(field => {
+                if (!field.isShow) {
+                    const property = findProperty(obj, field.name)
+                    const x = <span className='h6 helpTip'>{property.explanation}</span>
+                    return (
+                        <Field
+                            key={field.name}>
+                            <label className='h6 opacity' htmlFor={field}>{property.label}
+                                {field.required ? <span style={{ color: 'red' }}>*</span> : ''}
+                                {property.explanation != '' ? <span>
+                                    <ToggleTip content={x}>
+                                        <Button size="xs" variant="ghost">
+                                            <LuInfo />
+                                        </Button>
+                                    </ToggleTip>
+                                </span> : ''}
+                            </label>
+                            <Textarea
+                                className={field.required ? 'p-large required' : 'p-large'}
+                                variant={'subtle'}
+                                name={field}
+                                type='text'
+                                id={field}
+                                // value={property.value !== 'N/A' ? property.value : ''}
+                                onChange={handleChange}
+                                required={field.required ? true : false}
+                                size={'lg'}
+                                resize={'vertical'}
+                            />
+                        </Field >
+
+                    )
+                }
+            })}
+        </Stack>
     )
 }
