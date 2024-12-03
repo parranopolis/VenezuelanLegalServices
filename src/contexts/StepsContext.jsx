@@ -6,16 +6,22 @@ import {
     aplicantPart_A_II_Children,
     aplicantPart_A_III_Background,
     aplicantPart_B_I,
-    aplicantPart_C_I
-} from '../utils/steps.js'
+    aplicantPart_C_I,
+    Children
+} from '../utils/steps.jsx'
 import { LuTrendingUp } from "react-icons/lu";
 
 
 export const StepsContext = createContext()
 
 export const StepsProvider = ({ children }) => {
-    const [currentStep, setCurrentStep] = useState(0)
-    const [isStepsVisible, setIsStepsVisible] = useState(true)
+
+    const [currentStep, setCurrentStep] = useState(2)
+    const [totalChildren, setTotalChildren] = useState(0)
+    const [isStepsVisible, setIsStepsVisible] = useState(false)
+    const [childrenNames, setChildrenNames] = useState(['0'])
+    Children(childrenNames)
+
     const formGroups = [
         { 'Applicant': aplicantPart_A_I },
         { 'Spouse': aplicantPart_A_II_Spouse },
@@ -32,6 +38,8 @@ export const StepsProvider = ({ children }) => {
         setIsStepsVisible(false)
     }
 
+
+
     const handleFormSubmit = () => {
         if (currentGroup < formGroups.length - 1) {
             // setCurrentGroup((prev) => prev + 1)
@@ -42,9 +50,7 @@ export const StepsProvider = ({ children }) => {
         }
     }
 
-    useEffect(() => {
-        // console.log(formGroups[currentStep])
-    })
+
 
     return <StepsContext.Provider value={{
         currentStep,
@@ -59,7 +65,8 @@ export const StepsProvider = ({ children }) => {
         setCurrentGroup,
 
         handleStepClick,
-        handleFormSubmit
+        handleFormSubmit,
+        totalChildren, setTotalChildren
     }}>
         {children}
     </StepsContext.Provider>

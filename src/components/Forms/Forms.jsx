@@ -14,6 +14,7 @@ import './Forms.css'
 
 import { Field } from "@/components/ui/field"
 import { Alert } from "@/components/ui/alert"
+import { SegmentedControl } from "@/components/ui/segmented-control"
 import {
     NativeSelectField,
     NativeSelectRoot,
@@ -163,21 +164,67 @@ export function Forms({ onSubmit }) {
 
 //base form
 const FormContainer = ({ formDataContex, handleChange }) => {
-    const [currentSection, setCurrentSection] = useState(1)
-    const { handleFormSubmit, formGroups, currentStep } = useContext(StepsContext)
+    // Current Group of Forms
+    const [currentSection, setCurrentSection] = useState(2)
+    //context 
+    const { handleFormSubmit, formGroups, currentStep, totalChildren } = useContext(StepsContext)
+
+    // Handle the Hidden Forms -> isShow : true / false
+    const [hiddenForm, setHiddenForm] = useState(0)
+
+    //Array of Total groups from the context
     const currentForm = Object.values(formGroups[currentStep])
+
+    //Array with the name of the group in question coming from the context
+    const group = Object.keys(formGroups[currentStep])
+
+    //Object with data from the group of forms currently displayed on the screen
+    const currentGroup = currentForm[0][currentSection - 1]
+
+    //State that controls 'SegmentedControl' as active value
+    const [activeFormValue, setActiveFormValue] = useState()
+
+    useEffect(() => {
+        if (currentGroup.hasOwnProperty('extra')) {
+            setActiveFormValue(currentGroup.extra.SegmentedControlMessage)
+        }
+    })
+    let segmentIsShow = []
+    if (currentGroup.fields.hasOwnProperty('text')) {
+        currentGroup.fields.text.map(i => {
+            if (i.segment === hiddenForm) {
+                segmentIsShow.push(i)
+            }
+        })
+    }
+
+    const handleHiddenForms = (e) => {
+        setActiveFormValue(e.value)
+
+        setHiddenForm(currentGroup.extra.SegmentedControlMessage.indexOf(e.value))
+    }
     const renderSection = () => {
-        const group = Object.keys(formGroups[currentStep])
-        const currentGroup = currentForm[0][currentSection - 1]
+
         return (
             <Fieldset.Root size={'lg'} maxW={'100%'} className='fieldset'>
                 <Fieldset.Legend>
                     <span className='h3'>{currentGroup.name}</span>
                 </Fieldset.Legend>
+                {currentGroup.extra != undefined ? <div>
+                    <span className='h5' >{currentGroup.extra.message}</span>
+                    <div>
+                        <SegmentedControl
+                            // value={activeFormValue}
+                            items={currentGroup.extra.SegmentedControlMessage}
+                            onValueChange={handleHiddenForms}
+                        />
+
+                    </div>
+                    {/* <Button onClick={() => handleHiddenForms(extra.fields.text)}>{extra.extra.message}</Button> */}
+                </div> : ''}
                 {currentGroup.fields.hasOwnProperty('text') ? <InputTextComponent
                     group={group[0]}
-                    data={currentGroup.fields.text}
-                    name={currentGroup.name}
+                    data={segmentIsShow.length == 0 ? currentGroup.fields.text : segmentIsShow}
                     handleChange={handleChange}
                     formDataContex={formDataContex}
                 /> : ''}
@@ -288,6 +335,15 @@ const FormContainer = ({ formDataContex, handleChange }) => {
 }
 function InputSelect({ data, formDataContex, handleChange, group }) {
     const obj = formDataContex[group].PDFTextField2
+    const { totalChildren, setTotalChildren } = useContext(StepsContext)
+
+    const handleTwoFunctuons = (e, field) => {
+        // handleChange(e)
+        if (field === 'Children_Total') {
+            setTotalChildren(parseInt(e.target.value))
+            RegularInputs(totalChildren)
+        }
+    }
     return (
         <>
             {data.map((group) => {
@@ -300,7 +356,7 @@ function InputSelect({ data, formDataContex, handleChange, group }) {
                                 id={key}
                                 name={key}
                                 // value={property.value !== 'N/A' ? property.value : ''}
-                                onChange={handleChange}
+                                onChange={(e) => handleTwoFunctuons(e, key)}
                             >
                                 <NativeSelectField>
                                     <option value="">Seleccione una opción</option>
@@ -323,11 +379,23 @@ function InputSelect({ data, formDataContex, handleChange, group }) {
 }
 
 //shows inputs of type Text
-function InputTextComponent({ data, name, handleChange, formDataContex, group }) {
+function InputTextComponent({ data, handleChange, formDataContex, group, q }) {
     const obj = formDataContex[group].PDFTextField2
+    const { totalChildren, setTotalChildren } = useContext(StepsContext)
+    const handleTwoFunctuons = (e, field) => {
+        // handleChange(e)
+
+        // if (field.name === 'Children_Total') {
+        //     setTotalChildren(parseInt(e.target.value))
+        //     RegularInputs(totalChildren)
+        // }
+    }
+
+    useEffect(() => {
+        // console.log(totalChildren)
+    }, [handleTwoFunctuons])
     return (
         <Stack gap={5}>
-
             {data.map((field) => {
                 if (!field.isShow) {
                     const property = findProperty(obj, field.name)
@@ -352,7 +420,7 @@ function InputTextComponent({ data, name, handleChange, formDataContex, group })
                                 type='text'
                                 id={field}
                                 // value={property.value !== 'N/A' ? property.value : ''}
-                                onChange={handleChange}
+                                onChange={(e) => handleTwoFunctuons(e, field)}
                                 required={field.required ? true : false}
                             />
                         </Field >
@@ -364,6 +432,9 @@ function InputTextComponent({ data, name, handleChange, formDataContex, group })
     )
 }
 
+function RegularInputs(q) {
+
+}
 // shows inputs of type Radio
 function InputRadio({ data, handleChange, formDataContex, name }) {
     const { formGroups, currentStep } = useContext(StepsContext)
