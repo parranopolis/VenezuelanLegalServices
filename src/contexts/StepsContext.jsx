@@ -7,7 +7,8 @@ import {
     aplicantPart_A_III_Background,
     aplicantPart_B_I,
     aplicantPart_C_I,
-    Children
+    Children,
+    FilterChildrenFormData
 } from '../utils/steps.jsx'
 import { LuTrendingUp } from "react-icons/lu";
 
@@ -21,6 +22,8 @@ export const StepsProvider = ({ children }) => {
     const [isStepsVisible, setIsStepsVisible] = useState(false)
     const [childrenNames, setChildrenNames] = useState(['0'])
     Children(childrenNames)
+
+    FilterChildrenFormData(totalChildren)
 
     const formGroups = [
         { 'Applicant': aplicantPart_A_I },
@@ -38,8 +41,6 @@ export const StepsProvider = ({ children }) => {
         setIsStepsVisible(false)
     }
 
-
-
     const handleFormSubmit = () => {
         if (currentGroup < formGroups.length - 1) {
             // setCurrentGroup((prev) => prev + 1)
@@ -49,8 +50,6 @@ export const StepsProvider = ({ children }) => {
             setIsStepsVisible(true)
         }
     }
-
-
 
     return <StepsContext.Provider value={{
         currentStep,

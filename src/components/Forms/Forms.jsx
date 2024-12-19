@@ -20,6 +20,7 @@ import {
     NativeSelectRoot,
 } from "@/components/ui/native-select"
 import { StepsContext } from '../../contexts/StepsContext'
+import { Children } from '../../utils/steps'
 
 const statusMapping = {
     'Entregado en La frontera | No expira': 'EWI',
@@ -165,12 +166,10 @@ export function Forms({ onSubmit }) {
 //base form
 const FormContainer = ({ formDataContex, handleChange }) => {
     // Current Group of Forms
-    const [currentSection, setCurrentSection] = useState(2)
+    const [currentSection, setCurrentSection] = useState(1)
+
     //context 
     const { handleFormSubmit, formGroups, currentStep, totalChildren } = useContext(StepsContext)
-
-    // Handle the Hidden Forms -> isShow : true / false
-    const [hiddenForm, setHiddenForm] = useState(0)
 
     //Array of Total groups from the context
     const currentForm = Object.values(formGroups[currentStep])
@@ -181,28 +180,6 @@ const FormContainer = ({ formDataContex, handleChange }) => {
     //Object with data from the group of forms currently displayed on the screen
     const currentGroup = currentForm[0][currentSection - 1]
 
-    //State that controls 'SegmentedControl' as active value
-    const [activeFormValue, setActiveFormValue] = useState()
-
-    useEffect(() => {
-        if (currentGroup.hasOwnProperty('extra')) {
-            setActiveFormValue(currentGroup.extra.SegmentedControlMessage)
-        }
-    })
-    let segmentIsShow = []
-    if (currentGroup.fields.hasOwnProperty('text')) {
-        currentGroup.fields.text.map(i => {
-            if (i.segment === hiddenForm) {
-                segmentIsShow.push(i)
-            }
-        })
-    }
-
-    const handleHiddenForms = (e) => {
-        setActiveFormValue(e.value)
-
-        setHiddenForm(currentGroup.extra.SegmentedControlMessage.indexOf(e.value))
-    }
     const renderSection = () => {
 
         return (
@@ -210,21 +187,10 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                 <Fieldset.Legend>
                     <span className='h3'>{currentGroup.name}</span>
                 </Fieldset.Legend>
-                {currentGroup.extra != undefined ? <div>
-                    <span className='h5' >{currentGroup.extra.message}</span>
-                    <div>
-                        <SegmentedControl
-                            // value={activeFormValue}
-                            items={currentGroup.extra.SegmentedControlMessage}
-                            onValueChange={handleHiddenForms}
-                        />
 
-                    </div>
-                    {/* <Button onClick={() => handleHiddenForms(extra.fields.text)}>{extra.extra.message}</Button> */}
-                </div> : ''}
                 {currentGroup.fields.hasOwnProperty('text') ? <InputTextComponent
                     group={group[0]}
-                    data={segmentIsShow.length == 0 ? currentGroup.fields.text : segmentIsShow}
+                    data={currentGroup.fields.text}
                     handleChange={handleChange}
                     formDataContex={formDataContex}
                 /> : ''}
@@ -293,6 +259,7 @@ const FormContainer = ({ formDataContex, handleChange }) => {
 
 
     }
+    // console.log(totalChildren)
     return (
         <article>
             <section>
@@ -336,14 +303,19 @@ const FormContainer = ({ formDataContex, handleChange }) => {
 function InputSelect({ data, formDataContex, handleChange, group }) {
     const obj = formDataContex[group].PDFTextField2
     const { totalChildren, setTotalChildren } = useContext(StepsContext)
-
     const handleTwoFunctuons = (e, field) => {
         // handleChange(e)
-        if (field === 'Children_Total') {
+        if (e.target.name === 'Children_Total') {
+            // console.log(e.target.value)
             setTotalChildren(parseInt(e.target.value))
-            RegularInputs(totalChildren)
+            // RegularInputs(totalChildren)
         }
     }
+
+    useEffect(() => {
+        // console.log(totalChildren)
+        Children(totalChildren)
+    })
     return (
         <>
             {data.map((group) => {
@@ -358,7 +330,7 @@ function InputSelect({ data, formDataContex, handleChange, group }) {
                                 // value={property.value !== 'N/A' ? property.value : ''}
                                 onChange={(e) => handleTwoFunctuons(e, key)}
                             >
-                                <NativeSelectField>
+                                <NativeSelectField name={key}>
                                     <option value="">Seleccione una opción</option>
                                     {group[key].map((option) => (
                                         <option key={option} value={option}>
@@ -372,7 +344,6 @@ function InputSelect({ data, formDataContex, handleChange, group }) {
                     );
                 });
             })
-
             }
         </>
     )

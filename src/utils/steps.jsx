@@ -1,9 +1,20 @@
+import { appendBezierCurve } from "pdf-lib"
 import { useEffect } from "react"
 
-export function Children(arrayChildren) {
+export const Children = (w) => {
+    let array = []
+    for (let index = 1; index <= w; index++) {
+        array.push(`Hijo ${index}`)
 
-    let q = ['hijo 1']
-    return q
+    }
+    // console.log(array)
+    let q = ['hijo']
+    if (array.length == 0 || array[0] == 0) {
+        return q
+    }
+    else return array
+    // return q
+    // return array
 }
 
 
@@ -232,7 +243,9 @@ export const aplicantPart_A_II_Spouse = [
     },
 
 ]
-export const aplicantPart_A_II_Children = [
+
+
+export const childrenBase = [
     {
         name: 'Hijos',
         fields: {
@@ -244,13 +257,13 @@ export const aplicantPart_A_II_Children = [
                 { name: 'Children_Total', required: true, isShow: false },
             ],
             select: [
-                { 'Children_Total': [1, 2, 3, 4, 5, 6] },
+                { 'Children_Total': [0, 1, 2, 3, 4, 5, 6] },
 
             ]
         }
     },
     {
-        name: 'Identificacion del hijo',
+        name: 'Identificacion del hijo 1',
         extra: {
             message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
             SegmentedControlMessage: Children()
@@ -262,42 +275,14 @@ export const aplicantPart_A_II_Children = [
                 { name: 'Children_SSN', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_of_Birth', required: true, isShow: false, segment: 0 },
 
-                { name: 'Children_Alien_Number1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_Passport_Number1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_SSN1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_Date_of_Birth1', required: true, isShow: false, segment: 1 },
-
-                { name: 'Children_Alien_Number2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_Passport_Number2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_SSN2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_Date_of_Birth2', required: true, isShow: false, segment: 2 },
-
-                { name: 'Children_Alien_Number3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_Passport_Number3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_SSN3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_Date_of_Birth3', required: true, isShow: false, segment: 3 },
-
-                { name: 'Children_Alien_Number4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_Passport_Number4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_SSN4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_Date_of_Birth4', required: true, isShow: false, segment: 4 },
-
-                { name: 'Children_Alien_Number5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_Passport_Number5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_SSN5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_Date_of_Birth5', required: true, isShow: false, segment: 5 },
             ],
             select: [
                 { 'Children_Marital_Status': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] },
-                { 'Children_Marital_Status1': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] },
-                { 'Children_Marital_Status2': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] },
-                { 'Children_Marital_Status3': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] },
-                { 'Children_Marital_Status4': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] },
             ]
         }
     },
     {
-        name: 'Nombres del Hijo',
+        name: 'Nombres del Hijo 1',
         extra: {
             message: 'Por favor ingrese el nombre de cada uno de sus hijos',
             SegmentedControlMessage: Children()
@@ -309,25 +294,7 @@ export const aplicantPart_A_II_Children = [
                 { name: 'Children_First_Name', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Middle_Name', required: true, isShow: false, segment: 0 },
 
-                { name: 'Children_Complete_Last_Name1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_First_Name1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_Middle_Name1', required: true, isShow: false, segment: 1 },
 
-                { name: 'Children_Complete_Last_Name2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_First_Name2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_Middle_Name2', required: true, isShow: false, segment: 2 },
-
-                { name: 'Children_Complete_Last_Name3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_First_Name3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_Middle_Name3', required: true, isShow: false, segment: 3 },
-
-                { name: 'Children_Complete_Last_Name4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_First_Name4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_Middle_Name4', required: true, isShow: false, segment: 4 },
-
-                { name: 'Children_Complete_Last_Name5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_First_Name5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_Middle_Name5', required: true, isShow: false, segment: 5 },
             ],
             radio: [
                 { 'Children_Gender': ['Female', 'Male'] }
@@ -335,41 +302,22 @@ export const aplicantPart_A_II_Children = [
         }
     },
     {
-        name: 'Demografia',
+        name: 'Demografia Del Hijo 1 ',
         extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
         fields: {
             text: [
                 { name: 'Children_City_Country_of_Birth', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Nationality', required: true, isShow: false, segment: 0 },
 
-                { name: 'Children_City_Country_of_Birth1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_Nationality1', required: true, isShow: false, segment: 1 },
-
-                { name: 'Children_City_Country_of_Birth2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_Nationality2', required: true, isShow: false, segment: 2 },
-
-                { name: 'Children_City_Country_of_Birth3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_Nationality3', required: true, isShow: false, segment: 3 },
-
-                { name: 'Children_City_Country_of_Birth4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_Nationality4', required: true, isShow: false, segment: 4 },
-
-                { name: 'Children_City_Country_of_Birth5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_Nationality5', required: true, isShow: false, segment: 5 },
 
             ],
             select: [
                 { 'Children_Race': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
-                { 'Children_Race1': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
-                { 'Children_Race2': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
-                { 'Children_Race3': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
-                { 'Children_Race4': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
-                { 'Children_Race5': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
             ]
         }
     },
     {
-        name: 'Ubicación actual de Niño',
+        name: 'Ubicación actual de Hijo 1',
         extra: {
             message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
             SegmentedControlMessage: Children()
@@ -387,62 +335,6 @@ export const aplicantPart_A_II_Children = [
                 { name: 'Children_Current_Status', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Expiration_Day_Stay', required: true, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
-
-
-                //en "Children_Location" si marca que no, solo debe aparecer esta:
-                { name: 'Children_Specify_Location1', required: true, isShow: false, segment: 1 },
-                //pero si marca que Si, debe mostrar los siguientes formularios
-                { name: 'Children_Place_Last_Entry1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_Date_Last_Entry1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_I-94_Number1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_Status_Last_Admitted1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_Current_Status1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_Expiration_Day_Stay1', required: true, isShow: false, segment: 1 },
-                // 'Children_Previous_arrival'
-
-                //en "Children_Location" si marca que no, solo debe aparecer esta:
-                { name: 'Children_Specify_Location2', required: true, isShow: false, segment: 2 },
-                //pero si marca que Si, debe mostrar los siguientes formularios
-                { name: 'Children_Place_Last_Entry2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_Date_Last_Entry2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_I-94_Number2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_Status_Last_Admitted2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_Current_Status2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_Expiration_Day_Stay2', required: true, isShow: false, segment: 2 },
-                // 'Children_Previous_arrival'
-
-                //en "Children_Location" si marca que no, solo debe aparecer esta:
-                { name: 'Children_Specify_Location3', required: true, isShow: false, segment: 3 },
-                //pero si marca que Si, debe mostrar los siguientes formularios
-                { name: 'Children_Place_Last_Entry3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_Date_Last_Entry3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_I-94_Number3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_Status_Last_Admitted3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_Current_Status3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_Expiration_Day_Stay3', required: true, isShow: false, segment: 3 },
-                // 'Children_Previous_arrival'
-
-                //en "Children_Location" si marca que no, solo debe aparecer esta:
-                { name: 'Children_Specify_Location4', required: true, isShow: false, segment: 4 },
-                //pero si marca que Si, debe mostrar los siguientes formularios
-                { name: 'Children_Place_Last_Entry4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_Date_Last_Entry4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_I-94_Number4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_Status_Last_Admitted4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_Current_Status4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_Expiration_Day_Stay4', required: true, isShow: false, segment: 4 },
-                // 'Children_Previous_arrival'
-
-                //en "Children_Location" si marca que no, solo debe aparecer esta:
-                { name: 'Children_Specify_Location5', required: true, isShow: false, segment: 5 },
-                //pero si marca que Si, debe mostrar los siguientes formularios
-                { name: 'Children_Place_Last_Entry5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_Date_Last_Entry5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_I-94_Number5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_Status_Last_Admitted5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_Current_Status5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_Expiration_Day_Stay5', required: true, isShow: false, segment: 5 },
-                // 'Children_Previous_arrival'
             ],
             // select: [
             //     {
@@ -453,51 +345,560 @@ export const aplicantPart_A_II_Children = [
             radio: [
                 { 'Children_Location': ['Yes', 'No'] },
                 { 'Children_Court': ['Yes', 'No'] },
-
-                { 'Children_Location1': ['Yes', 'No'] },
-                { 'Children_Court1': ['Yes', 'No'] },
-
-                { 'Children_Location2': ['Yes', 'No'] },
-                { 'Children_Court2': ['Yes', 'No'] },
-
-                { 'Children_Location3': ['Yes', 'No'] },
-                { 'Children_Court3': ['Yes', 'No'] },
-
-                { 'Children_Location4': ['Yes', 'No'] },
-                { 'Children_Court4': ['Yes', 'No'] },
-
-                { 'Children_Location5': ['Yes', 'No'] },
-                { 'Children_Court5': ['Yes', 'No'] }
             ]
         },
     },
     {
-        name: 'Inclusion',
+        name: 'Inclusion Hijo 1',
         extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
 
         fields: {
             radio: [
                 { 'Children_Included': ['Yes', 'No'] },
-                { 'Children_Included1': ['Yes', 'No'] },
-                { 'Children_Included2': ['Yes', 'No'] },
-                { 'Children_Included3': ['Yes', 'No'] },
-                { 'Children_Included4': ['Yes', 'No'] },
-                { 'Children_Included5': ['Yes', 'No'] },
+
             ],
             //modificar esto
             text: [
                 { name: 'Children_Nationality', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Nationality1', required: true, isShow: false, segment: 1 },
-                { name: 'Children_Nationality2', required: true, isShow: false, segment: 2 },
-                { name: 'Children_Nationality3', required: true, isShow: false, segment: 3 },
-                { name: 'Children_Nationality4', required: true, isShow: false, segment: 4 },
-                { name: 'Children_Nationality5', required: true, isShow: false, segment: 5 },
-                { name: 'Children_Nationality6', required: true, isShow: false, segment: 6 },
+
             ]
         }
     },
+    {
+        name: 'Identificacion del hijo 2',
+        extra: {
+            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+            SegmentedControlMessage: Children()
+        },
+        fields: {
+            text: [
+                { name: 'Children_Alien_Number1', required: true, isShow: false, },
+                { name: 'Children_Passport_Number1', required: true, isShow: false, },
+                { name: 'Children_SSN1', required: true, isShow: false, },
+                { name: 'Children_Date_of_Birth1', required: true, isShow: false, },
+            ],
+            select: [
+                { 'Children_Marital_Status1': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] },
 
+            ]
+        }
+    },
+    {
+        name: 'Nombres del Hijo 2',
+        extra: {
+            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+            SegmentedControlMessage: Children()
+        },
+
+        fields: {
+            text: [
+                { name: 'Children_Complete_Last_Name1', required: true, isShow: false },
+                { name: 'Children_First_Name1', required: true, isShow: false },
+                { name: 'Children_Middle_Name1', required: true, isShow: false },
+
+
+            ],
+            radio: [
+                { 'Children_Gender1': ['Female', 'Male'] }
+            ]
+        }
+    },
+    {
+        name: 'Demografia Del Hijo 2',
+        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        fields: {
+            text: [
+                { name: 'Children_City_Country_of_Birth1', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Nationality1', required: true, isShow: false, segment: 0 },
+
+            ],
+            select: [
+                { 'Children_Race1': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+            ]
+        }
+    },
+    {
+        name: 'Ubicación actual de Hijo 2',
+        extra: {
+            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+            SegmentedControlMessage: Children()
+        },
+        fields: {
+
+            text: [
+                //en "Children_Location" si marca que no, solo debe aparecer esta:
+                { name: 'Children_Specify_Location1', required: true, isShow: false, segment: 0 },
+                //pero si marca que Si, debe mostrar los siguientes formularios
+                { name: 'Children_Place_Last_Entry1', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Date_Last_Entry1', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number1', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admitted1', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Current_Status1', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay1', required: true, isShow: false, segment: 0 },
+                // 'Children_Previous_arrival'
+            ],
+            // select: [
+            //     {
+            //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
+            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //     }
+            // ],
+            radio: [
+                { 'Children_Location1': ['Yes', 'No'] },
+                { 'Children_Court1': ['Yes', 'No'] },
+            ]
+        },
+    },
+    {
+        name: 'Inclusion Hijo 2',
+        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+
+        fields: {
+            radio: [
+                { 'Children_Included1': ['Yes', 'No'] },
+
+            ],
+            //modificar esto
+            text: [
+                { name: 'Children_Nationality1', required: true, isShow: false, segment: 0 },
+
+            ]
+        }
+    },
+    {
+        name: 'Identificacion del hijo 3',
+        extra: {
+            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+            SegmentedControlMessage: Children()
+        },
+        fields: {
+            text: [
+                { name: 'Children_Alien_Number2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Passport_Number2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_SSN2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Date_of_Birth2', required: true, isShow: false, segment: 0 },
+
+            ],
+            select: [
+                { 'Children_Marital_Status2': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] },
+            ]
+        }
+    },
+    {
+        name: 'Nombres del Hijo 3',
+        extra: {
+            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+            SegmentedControlMessage: Children()
+        },
+
+        fields: {
+            text: [
+                { name: 'Children_Complete_Last_Name2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_First_Name2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Middle_Name2', required: true, isShow: false, segment: 0 },
+
+
+            ],
+            radio: [
+                { 'Children_Gender2': ['Female', 'Male'] }
+            ]
+        }
+    },
+    {
+        name: 'Demografia Del Hijo 3',
+        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        fields: {
+            text: [
+                { name: 'Children_City_Country_of_Birth2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Nationality2', required: true, isShow: false, segment: 0 },
+
+
+            ],
+            select: [
+                { 'Children_Race2': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+            ]
+        }
+    },
+    {
+        name: 'Ubicación actual de Hijo 3',
+        extra: {
+            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+            SegmentedControlMessage: Children()
+        },
+        fields: {
+
+            text: [
+                //en "Children_Location" si marca que no, solo debe aparecer esta:
+                { name: 'Children_Specify_Location2', required: true, isShow: false, segment: 0 },
+                //pero si marca que Si, debe mostrar los siguientes formularios
+                { name: 'Children_Place_Last_Entry2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Date_Last_Entry2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admitted2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Current_Status2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay2', required: true, isShow: false, segment: 0 },
+                // 'Children_Previous_arrival'
+            ],
+            // select: [
+            //     {
+            //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
+            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //     }
+            // ],
+            radio: [
+                { 'Children_Location2': ['Yes', 'No'] },
+                { 'Children_Court2': ['Yes', 'No'] },
+            ]
+        },
+    },
+    {
+        name: 'Inclusion Hijo 3',
+        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+
+        fields: {
+            radio: [
+                { 'Children_Included2': ['Yes', 'No'] },
+
+            ],
+            //modificar esto
+            text: [
+                { name: 'Children_Nationality2', required: true, isShow: false, segment: 0 },
+
+            ]
+        }
+    },
+    {
+        name: 'Identificacion del hijo 4',
+        extra: {
+            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+            SegmentedControlMessage: Children()
+        },
+        fields: {
+            text: [
+                { name: 'Children_Alien_Number3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Passport_Number3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_SSN3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Date_of_Birth3', required: true, isShow: false, segment: 0 },
+
+            ],
+            select: [
+                { 'Children_Marital_Status3': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] },
+            ]
+        }
+    },
+    {
+        name: 'Nombres del Hijo 4',
+        extra: {
+            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+            SegmentedControlMessage: Children()
+        },
+
+        fields: {
+            text: [
+                { name: 'Children_Complete_Last_Name3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_First_Name3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Middle_Name3', required: true, isShow: false, segment: 0 },
+
+
+            ],
+            radio: [
+                { 'Children_Gender3': ['Female', 'Male'] }
+            ]
+        }
+    },
+    {
+        name: 'Demografia Del Hijo 4',
+        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        fields: {
+            text: [
+                { name: 'Children_City_Country_of_Birth3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Nationality3', required: true, isShow: false, segment: 0 },
+
+
+            ],
+            select: [
+                { 'Children_Race3': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+            ]
+        }
+    },
+    {
+        name: 'Ubicación actual de Hijo 4',
+        extra: {
+            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+            SegmentedControlMessage: Children()
+        },
+        fields: {
+
+            text: [
+                //en "Children_Location" si marca que no, solo debe aparecer esta:
+                { name: 'Children_Specify_Location3', required: true, isShow: false, segment: 0 },
+                //pero si marca que Si, debe mostrar los siguientes formularios
+                { name: 'Children_Place_Last_Entry3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Date_Last_Entry3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admitted3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Current_Status3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay3', required: true, isShow: false, segment: 0 },
+                // 'Children_Previous_arrival'
+            ],
+            // select: [
+            //     {
+            //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
+            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //     }
+            // ],
+            radio: [
+                { 'Children_Location3': ['Yes', 'No'] },
+                { 'Children_Court3': ['Yes', 'No'] },
+            ]
+        },
+    },
+    {
+        name: 'Inclusion Hijo 4',
+        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+
+        fields: {
+            radio: [
+                { 'Children_Included3': ['Yes', 'No'] },
+
+            ],
+            //modificar esto
+            text: [
+                { name: 'Children_Nationality3', required: true, isShow: false, segment: 0 },
+
+            ]
+        }
+    },
+    {
+        name: 'Identificacion del hijo 5',
+        extra: {
+            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+            SegmentedControlMessage: Children()
+        },
+        fields: {
+            text: [
+                { name: 'Children_Alien_Number4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Passport_Number4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_SSN4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Date_of_Birth4', required: true, isShow: false, segment: 0 },
+
+            ],
+            select: [
+                { 'Children_Marital_Status4': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] },
+            ]
+        }
+    },
+    {
+        name: 'Nombres del Hijo 5',
+        extra: {
+            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+            SegmentedControlMessage: Children()
+        },
+
+        fields: {
+            text: [
+                { name: 'Children_Complete_Last_Name4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_First_Name4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Middle_Name4', required: true, isShow: false, segment: 0 },
+
+
+            ],
+            radio: [
+                { 'Children_Gender4': ['Female', 'Male'] }
+            ]
+        }
+    },
+    {
+        name: 'Demografia Del Hijo 5',
+        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        fields: {
+            text: [
+                { name: 'Children_City_Country_of_Birth4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Nationality4', required: true, isShow: false, segment: 0 },
+
+
+            ],
+            select: [
+                { 'Children_Race4': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+            ]
+        }
+    },
+    {
+        name: 'Ubicación actual de Hijo 5',
+        extra: {
+            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+            SegmentedControlMessage: Children()
+        },
+        fields: {
+
+            text: [
+                //en "Children_Location" si marca que no, solo debe aparecer esta:
+                { name: 'Children_Specify_Location4', required: true, isShow: false, segment: 0 },
+                //pero si marca que Si, debe mostrar los siguientes formularios
+                { name: 'Children_Place_Last_Entry4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Date_Last_Entry4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admitted4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Current_Status4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay4', required: true, isShow: false, segment: 0 },
+                // 'Children_Previous_arrival'
+            ],
+            // select: [
+            //     {
+            //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
+            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //     }
+            // ],
+            radio: [
+                { 'Children_Location4': ['Yes', 'No'] },
+                { 'Children_Court4': ['Yes', 'No'] },
+            ]
+        },
+    },
+    {
+        name: 'Inclusion Hijo 5',
+        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+
+        fields: {
+            radio: [
+                { 'Children_Included4': ['Yes', 'No'] },
+
+            ],
+            //modificar esto
+            text: [
+                { name: 'Children_Nationality4', required: true, isShow: false, segment: 0 },
+
+            ]
+        }
+    },
+    {
+        name: 'Identificacion del hijo 6',
+        extra: {
+            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+            SegmentedControlMessage: Children()
+        },
+        fields: {
+            text: [
+                { name: 'Children_Alien_Number5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Passport_Number5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_SSN5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Date_of_Birth5', required: true, isShow: false, segment: 0 },
+
+            ],
+            select: [
+                { 'Children_Marital_Status5': ['Casado', 'Soltero', 'Divorciado', 'Viudo'] },
+            ]
+        }
+    },
+    {
+        name: 'Nombres del Hijo 6',
+        extra: {
+            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+            SegmentedControlMessage: Children()
+        },
+
+        fields: {
+            text: [
+                { name: 'Children_Complete_Last_Name5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_First_Name5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Middle_Name5', required: true, isShow: false, segment: 0 },
+
+
+            ],
+            radio: [
+                { 'Children_Gender5': ['Female', 'Male'] }
+            ]
+        }
+    },
+    {
+        name: 'Demografia Del Hijo 6',
+        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        fields: {
+            text: [
+                { name: 'Children_City_Country_of_Birth5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Nationality5', required: true, isShow: false, segment: 0 },
+
+
+            ],
+            select: [
+                { 'Children_Race5': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+            ]
+        }
+    },
+    {
+        name: 'Ubicación actual de Hijo 6',
+        extra: {
+            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+            SegmentedControlMessage: Children()
+        },
+        fields: {
+
+            text: [
+                //en "Children_Location" si marca que no, solo debe aparecer esta:
+                { name: 'Children_Specify_Location5', required: true, isShow: false, segment: 0 },
+                //pero si marca que Si, debe mostrar los siguientes formularios
+                { name: 'Children_Place_Last_Entry5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Date_Last_Entry5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admitted5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Current_Status5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay5', required: true, isShow: false, segment: 0 },
+                // 'Children_Previous_arrival'
+            ],
+            // select: [
+            //     {
+            //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
+            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //     }
+            // ],
+            radio: [
+                { 'Children_Location5': ['Yes', 'No'] },
+                { 'Children_Court5': ['Yes', 'No'] },
+            ]
+        },
+    },
+    {
+        name: 'Inclusion Hijo 6',
+        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+
+        fields: {
+            radio: [
+                { 'Children_Included5': ['Yes', 'No'] },
+
+            ],
+            //modificar esto
+            text: [
+                { name: 'Children_Nationality5', required: true, isShow: false, segment: 0 },
+
+            ]
+        }
+    },
 ]
+
+export let aplicantPart_A_II_Children = []
+
+export function FilterChildrenFormData(total) {
+
+    // depending on the number of children, a certain number of Forms must be displayed
+    // A maximum of 6 children can be displayed
+    const childrenFormDictionary = [0, 6, 11, 16, 21, 26, 31]
+
+    // We reset the form group to the initial state
+    aplicantPart_A_II_Children = [
+        childrenBase[0]
+    ]
+
+    // Filter the selected number of forms based on the "total passed"
+    const portionOfTheDataDisplayed = childrenBase.slice(1, childrenFormDictionary[total])
+
+    // adds to the dictionary "applicantPart_A_II_Children" the selected data that will be displayed in the Form component
+    portionOfTheDataDisplayed.forEach(i => {
+        aplicantPart_A_II_Children.push(i)
+    })
+
+    return aplicantPart_A_II_Children
+}
+
 export const aplicantPart_A_III_Background = [
     {
         name: 'Liste donde vivio antes de venir a los Estados Unidos',
@@ -650,6 +1051,7 @@ export const aplicantPart_A_III_Background = [
         }
     },
 ]
+
 export const aplicantPart_B_I = [
     {
         name: 'Marque lar razones por las que esta aplicando asilo. (todas las que apliquen)',
@@ -828,5 +1230,3 @@ export const aplicantPart_C_I = [
         }
     },
 ];
-
-
