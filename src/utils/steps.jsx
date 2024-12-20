@@ -7,18 +7,35 @@ export const Children = (w) => {
         array.push(`Hijo ${index}`)
 
     }
-    // console.log(array)
     let q = ['hijo']
     if (array.length == 0 || array[0] == 0) {
         return q
     }
     else return array
-    // return q
-    // return array
 }
 
 
+export function FilterChildrenFormData(total) {
 
+    // depending on the number of children, a certain number of Forms must be displayed
+    // A maximum of 6 children can be displayed
+    const childrenFormDictionary = [0, 6, 11, 16, 21, 26, 31]
+
+    // We reset the form group to the initial state
+    aplicantPart_A_II_Children = [
+        childrenBase[0]
+    ]
+
+    // Filter the selected number of forms based on the "total passed"
+    const portionOfTheDataDisplayed = childrenBase.slice(1, childrenFormDictionary[total])
+
+    // adds to the dictionary "applicantPart_A_II_Children" the selected data that will be displayed in the Form component
+    portionOfTheDataDisplayed.forEach(i => {
+        aplicantPart_A_II_Children.push(i)
+    })
+
+    return aplicantPart_A_II_Children
+}
 
 //dictionary to segment the fields and their different types that should be displayed together
 
@@ -120,14 +137,14 @@ export const aplicantPart_A_I = [
         fields: {
             text: [
                 { name: 'Leave_Your_Country', required: true, isShow: false, segment: 0 },
-                { name: 'I-94_Number', required: true, isShow: false, segment: 0 },
+                { name: 'I-94_Number', required: false, isShow: false, segment: 0 },
                 { name: 'Each_Entry_Date_1', required: true, isShow: false, segment: 0 },
                 { name: 'Each_Entry_Place_1', required: true, isShow: false, segment: 0 },
                 { name: 'Each_Entry_Date_2', required: true, isShow: false, segment: 1 },
                 { name: 'Each_Entry_Place_2', required: true, isShow: false, segment: 1 },
                 { name: 'Each_Entry_Date_3', required: true, isShow: false, segment: 2 },
                 { name: 'Each_Entry_Place_3', required: true, isShow: false, segment: 2 },
-                { name: 'Each_Entry_Date_Expires', required: true, isShow: false, segment: 0 },
+                { name: 'Each_Entry_Date_Expires', required: false, isShow: false, segment: 0 },
             ],
             select: [
                 {
@@ -141,11 +158,11 @@ export const aplicantPart_A_I = [
         name: 'Documento de Viaje',
         fields: {
             text: [
-                { name: 'Passport_Country', required: true, isShow: false },
-                { name: 'Passport_Number', required: true, isShow: false },
-                { name: 'Passport_Expiration_Day', required: true, isShow: false },
+                { name: 'Passport_Country', required: false, isShow: false },
+                { name: 'Passport_Number', required: false, isShow: false },
+                { name: 'Passport_Expiration_Day', required: false, isShow: false },
                 { name: 'Native_Language', required: true, isShow: false },
-                { name: 'Other_Language', required: true, isShow: false },
+                { name: 'Other_Language', required: false, isShow: false },
             ],
             radio: [
                 {
@@ -161,8 +178,8 @@ export const aplicantPart_A_II_Spouse = [
         fields: {
             text: [
                 { name: 'Spouse_Alien_Number', required: true, isShow: false },
-                { name: 'Spouse_Passport_Number', required: true, isShow: false },
-                { name: 'Spouse_SSN', required: true, isShow: false },
+                { name: 'Spouse_Passport_Number', required: false, isShow: false },
+                { name: 'Spouse_SSN', required: false, isShow: false },
                 { name: 'Spouse_Date_of_Birth', required: true, isShow: false },],
         }
     }, {
@@ -171,8 +188,8 @@ export const aplicantPart_A_II_Spouse = [
             text: [
                 { name: 'Spouse_Complete_Last_Name', required: true, isShow: false },
                 { name: 'Spouse_First_Name', required: true, isShow: false },
-                { name: 'Spouse_Middle_Name', required: true, isShow: false },
-                { name: 'Spouse_Other_Names', required: true, isShow: false },]
+                { name: 'Spouse_Middle_Name', required: false, isShow: false },
+                { name: 'Spouse_Other_Names', required: false, isShow: false },]
         }
     },
     {
@@ -214,11 +231,11 @@ export const aplicantPart_A_II_Spouse = [
                 //pero si marca que Si, debe mostrar los siguientes formularios
                 { name: 'Spouse_Last_Entry', required: true, isShow: false },
                 { name: 'Spouse_Date_Last_Entry', required: true, isShow: false },
-                { name: 'Spouse_I-94_Number', required: true, isShow: false },
-                { name: 'Spouse_Status_Last_Admitted', required: true, isShow: false },
+                { name: 'Spouse_I-94_Number', required: false, isShow: false },
+                { name: 'Spouse_Status_Last_Admitted', required: false, isShow: false },
                 { name: 'Spouse_Current_Status', required: true, isShow: false },
-                { name: 'Spouse_Expiration_Date_Stay', required: true, isShow: false },
-                { name: 'Spouse_Previous_arrival', required: true, isShow: false },
+                { name: 'Spouse_Expiration_Date_Stay', required: false, isShow: false },
+                { name: 'Spouse_Previous_arrival', required: false, isShow: false },
             ],
             // select: [
             //     {
@@ -243,8 +260,6 @@ export const aplicantPart_A_II_Spouse = [
     },
 
 ]
-
-
 export const childrenBase = [
     {
         name: 'Hijos',
@@ -270,9 +285,9 @@ export const childrenBase = [
         },
         fields: {
             text: [
-                { name: 'Children_Alien_Number', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Passport_Number', required: true, isShow: false, segment: 0 },
-                { name: 'Children_SSN', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Alien_Number', required: false, isShow: false, segment: 0 },
+                { name: 'Children_Passport_Number', required: false, isShow: false, segment: 0 },
+                { name: 'Children_SSN', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Date_of_Birth', required: true, isShow: false, segment: 0 },
 
             ],
@@ -292,7 +307,7 @@ export const childrenBase = [
             text: [
                 { name: 'Children_Complete_Last_Name', required: true, isShow: false, segment: 0 },
                 { name: 'Children_First_Name', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Middle_Name', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Middle_Name', required: false, isShow: false, segment: 0 },
 
 
             ],
@@ -330,10 +345,10 @@ export const childrenBase = [
                 //pero si marca que Si, debe mostrar los siguientes formularios
                 { name: 'Children_Place_Last_Entry', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry', required: true, isShow: false, segment: 0 },
-                { name: 'Children_I-94_Number', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number', required: true, false: false, segment: 0 },
                 { name: 'Children_Status_Last_Admitted', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Expiration_Day_Stay', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
             ],
             // select: [
@@ -372,9 +387,9 @@ export const childrenBase = [
         },
         fields: {
             text: [
-                { name: 'Children_Alien_Number1', required: true, isShow: false, },
-                { name: 'Children_Passport_Number1', required: true, isShow: false, },
-                { name: 'Children_SSN1', required: true, isShow: false, },
+                { name: 'Children_Alien_Number1', required: false, isShow: false, },
+                { name: 'Children_Passport_Number1', required: false, isShow: false, },
+                { name: 'Children_SSN1', required: false, isShow: false, },
                 { name: 'Children_Date_of_Birth1', required: true, isShow: false, },
             ],
             select: [
@@ -394,7 +409,7 @@ export const childrenBase = [
             text: [
                 { name: 'Children_Complete_Last_Name1', required: true, isShow: false },
                 { name: 'Children_First_Name1', required: true, isShow: false },
-                { name: 'Children_Middle_Name1', required: true, isShow: false },
+                { name: 'Children_Middle_Name1', required: false, isShow: false },
 
 
             ],
@@ -431,10 +446,10 @@ export const childrenBase = [
                 //pero si marca que Si, debe mostrar los siguientes formularios
                 { name: 'Children_Place_Last_Entry1', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry1', required: true, isShow: false, segment: 0 },
-                { name: 'Children_I-94_Number1', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number1', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Status_Last_Admitted1', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status1', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Expiration_Day_Stay1', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay1', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
             ],
             // select: [
@@ -473,9 +488,9 @@ export const childrenBase = [
         },
         fields: {
             text: [
-                { name: 'Children_Alien_Number2', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Passport_Number2', required: true, isShow: false, segment: 0 },
-                { name: 'Children_SSN2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Alien_Number2', required: false, isShow: false, segment: 0 },
+                { name: 'Children_Passport_Number2', required: false, isShow: false, segment: 0 },
+                { name: 'Children_SSN2', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Date_of_Birth2', required: true, isShow: false, segment: 0 },
 
             ],
@@ -495,7 +510,7 @@ export const childrenBase = [
             text: [
                 { name: 'Children_Complete_Last_Name2', required: true, isShow: false, segment: 0 },
                 { name: 'Children_First_Name2', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Middle_Name2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Middle_Name2', required: false, isShow: false, segment: 0 },
 
 
             ],
@@ -533,10 +548,10 @@ export const childrenBase = [
                 //pero si marca que Si, debe mostrar los siguientes formularios
                 { name: 'Children_Place_Last_Entry2', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry2', required: true, isShow: false, segment: 0 },
-                { name: 'Children_I-94_Number2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number2', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Status_Last_Admitted2', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status2', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Expiration_Day_Stay2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay2', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
             ],
             // select: [
@@ -575,9 +590,9 @@ export const childrenBase = [
         },
         fields: {
             text: [
-                { name: 'Children_Alien_Number3', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Passport_Number3', required: true, isShow: false, segment: 0 },
-                { name: 'Children_SSN3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Alien_Number3', required: false, isShow: false, segment: 0 },
+                { name: 'Children_Passport_Number3', required: false, isShow: false, segment: 0 },
+                { name: 'Children_SSN3', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Date_of_Birth3', required: true, isShow: false, segment: 0 },
 
             ],
@@ -597,7 +612,7 @@ export const childrenBase = [
             text: [
                 { name: 'Children_Complete_Last_Name3', required: true, isShow: false, segment: 0 },
                 { name: 'Children_First_Name3', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Middle_Name3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Middle_Name3', required: false, isShow: false, segment: 0 },
 
 
             ],
@@ -635,10 +650,10 @@ export const childrenBase = [
                 //pero si marca que Si, debe mostrar los siguientes formularios
                 { name: 'Children_Place_Last_Entry3', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry3', required: true, isShow: false, segment: 0 },
-                { name: 'Children_I-94_Number3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number3', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Status_Last_Admitted3', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status3', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Expiration_Day_Stay3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay3', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
             ],
             // select: [
@@ -677,9 +692,9 @@ export const childrenBase = [
         },
         fields: {
             text: [
-                { name: 'Children_Alien_Number4', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Passport_Number4', required: true, isShow: false, segment: 0 },
-                { name: 'Children_SSN4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Alien_Number4', required: false, isShow: false, segment: 0 },
+                { name: 'Children_Passport_Number4', required: false, isShow: false, segment: 0 },
+                { name: 'Children_SSN4', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Date_of_Birth4', required: true, isShow: false, segment: 0 },
 
             ],
@@ -699,7 +714,7 @@ export const childrenBase = [
             text: [
                 { name: 'Children_Complete_Last_Name4', required: true, isShow: false, segment: 0 },
                 { name: 'Children_First_Name4', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Middle_Name4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Middle_Name4', required: false, isShow: false, segment: 0 },
 
 
             ],
@@ -737,10 +752,10 @@ export const childrenBase = [
                 //pero si marca que Si, debe mostrar los siguientes formularios
                 { name: 'Children_Place_Last_Entry4', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry4', required: true, isShow: false, segment: 0 },
-                { name: 'Children_I-94_Number4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number4', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Status_Last_Admitted4', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status4', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Expiration_Day_Stay4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay4', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
             ],
             // select: [
@@ -779,9 +794,9 @@ export const childrenBase = [
         },
         fields: {
             text: [
-                { name: 'Children_Alien_Number5', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Passport_Number5', required: true, isShow: false, segment: 0 },
-                { name: 'Children_SSN5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Alien_Number5', required: false, isShow: false, segment: 0 },
+                { name: 'Children_Passport_Number5', required: false, isShow: false, segment: 0 },
+                { name: 'Children_SSN5', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Date_of_Birth5', required: true, isShow: false, segment: 0 },
 
             ],
@@ -801,7 +816,7 @@ export const childrenBase = [
             text: [
                 { name: 'Children_Complete_Last_Name5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_First_Name5', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Middle_Name5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Middle_Name5', required: false, isShow: false, segment: 0 },
 
 
             ],
@@ -817,8 +832,6 @@ export const childrenBase = [
             text: [
                 { name: 'Children_City_Country_of_Birth5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Nationality5', required: true, isShow: false, segment: 0 },
-
-
             ],
             select: [
                 { 'Children_Race5': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
@@ -839,10 +852,10 @@ export const childrenBase = [
                 //pero si marca que Si, debe mostrar los siguientes formularios
                 { name: 'Children_Place_Last_Entry5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry5', required: true, isShow: false, segment: 0 },
-                { name: 'Children_I-94_Number5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number5', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Status_Last_Admitted5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status5', required: true, isShow: false, segment: 0 },
-                { name: 'Children_Expiration_Day_Stay5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Expiration_Day_Stay5', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
             ],
             // select: [
@@ -874,31 +887,7 @@ export const childrenBase = [
         }
     },
 ]
-
 export let aplicantPart_A_II_Children = []
-
-export function FilterChildrenFormData(total) {
-
-    // depending on the number of children, a certain number of Forms must be displayed
-    // A maximum of 6 children can be displayed
-    const childrenFormDictionary = [0, 6, 11, 16, 21, 26, 31]
-
-    // We reset the form group to the initial state
-    aplicantPart_A_II_Children = [
-        childrenBase[0]
-    ]
-
-    // Filter the selected number of forms based on the "total passed"
-    const portionOfTheDataDisplayed = childrenBase.slice(1, childrenFormDictionary[total])
-
-    // adds to the dictionary "applicantPart_A_II_Children" the selected data that will be displayed in the Form component
-    portionOfTheDataDisplayed.forEach(i => {
-        aplicantPart_A_II_Children.push(i)
-    })
-
-    return aplicantPart_A_II_Children
-}
-
 export const aplicantPart_A_III_Background = [
     {
         name: 'Liste donde vivio antes de venir a los Estados Unidos',
@@ -1156,7 +1145,7 @@ export const aplicantPart_C_I = [
         name: '¿Usted, su cónyuge, sus hijos, sus padres o sus hermanos han solicitado alguna vez al Gobierno de los Estados Unidos el estatus de refugiado, asilo o la suspensión de deportación?',
         fields: {
             textArea: [
-                { name: 'Family_Applied_asylum_Explanation', required: false, isShow: false }
+                { name: 'Family_Applied_asylum_Explanation', required: true, isShow: false }
             ],
             radio: [
                 { 'Family_Applied_asylum': ['Yes', 'No'] }
@@ -1168,7 +1157,7 @@ export const aplicantPart_C_I = [
         fields: {
             textArea: [
 
-                { name: 'Stay_and_Legal_Status_Other_Countries_Explanation', required: false, isShow: false }
+                { name: 'Stay_and_Legal_Status_Other_Countries_Explanation', required: true, isShow: false }
 
             ],
             radio: [
@@ -1182,7 +1171,7 @@ export const aplicantPart_C_I = [
         fields: {
             textArea: [
 
-                { name: 'Discriminatory_Actions_Against_Others_Explanation', required: false, isShow: false }
+                { name: 'Discriminatory_Actions_Against_Others_Explanation', required: true, isShow: false }
 
             ],
             radio: [
@@ -1195,7 +1184,7 @@ export const aplicantPart_C_I = [
         fields: {
             textArea: [
 
-                { name: 'Return_Country__you_Fear_Explanation', required: false, isShow: false }
+                { name: 'Return_Country__you_Fear_Explanation', required: true, isShow: false }
 
             ],
             radio: [
@@ -1208,7 +1197,7 @@ export const aplicantPart_C_I = [
         fields: {
             textArea: [
 
-                { name: 'Expire_Time_Asaylum_Applicat_Explanation', required: false, isShow: false }
+                { name: 'Expire_Time_Asaylum_Applicat_Explanation', required: true, isShow: false }
 
             ],
             radio: [
@@ -1221,7 +1210,7 @@ export const aplicantPart_C_I = [
         fields: {
             textArea: [
 
-                { name: 'Crimes_In_USA_Explanation', required: false, isShow: false }
+                { name: 'Crimes_In_USA_Explanation', required: true, isShow: false }
 
             ],
             radio: [

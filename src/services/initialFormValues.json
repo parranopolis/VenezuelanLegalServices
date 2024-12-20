@@ -516,12 +516,12 @@
             },
             "Spouse_Previous_arrival": {
                 "value": "N/A",
-                "label": "Si estuvo en USA antes, ?Cúal fue su ultima entrada?",
+                "label": "Si estuvo en USA antes? Cúal fue su ultima entrada?",
                 "explanation": ""
             },
             "Spouse_Specific_Location": {
                 "value": "N/A",
-                "label": "Expecifique donde",
+                "label": "Donde se encuentra ubicado actualmente?",
                 "explanation": ""
             }
         },
@@ -647,452 +647,452 @@
             },
             "Children_Alien_Number1": {
                 "value": "N/A",
-                "label": "Children_Alien_Number1",
+                "label": "Numero A",
                 "explanation": ""
             },
             "Children_Passport_Number1": {
                 "value": "N/A",
-                "label": "Children_Passport_Number1",
+                "label": "Numero de Pasaporte",
                 "explanation": ""
             },
             "Children_Marital_Status1": {
                 "value": "N/A",
-                "label": "Children_Marital_Status1",
+                "label": "Estado Civil",
                 "explanation": ""
             },
             "Children_SSN1": {
                 "value": "N/A",
-                "label": "Children_SSN1",
+                "label": " Numero de Seguro Social (si lo tiene)",
                 "explanation": ""
             },
             "Children_Complete_Last_Name1": {
                 "value": "N/A",
-                "label": "Children_Complete_Last_Name1",
+                "label": "Apellidos (Todos)",
                 "explanation": ""
             },
             "Children_City_Country_of_Birth1": {
                 "value": "N/A",
-                "label": "Children_City_Country_of_Birth1",
-                "explanation": ""
+                "label": "Ciudad donde Nació",
+                "explanation": "Prueba de Explicacion"
             },
             "Children_Place_Last_Entry1": {
                 "value": "N/A",
-                "label": "Children_Place_Last_Entry1",
+                "label": "Lugar de la ultima entrada",
                 "explanation": ""
             },
             "Children_Current_Status1": {
                 "value": "N/A",
-                "label": "Children_Current_Status1",
+                "label": "Estatus Actual",
                 "explanation": ""
             },
             "Children_Expiration_Day_Stay1": {
                 "value": "N/A",
-                "label": "Children_Expiration_Day_Stay1",
-                "explanation": ""
+                "label": "Día que se vence su estancia",
+                "explanation": "Si su estatus es: Ewi (Entregado en la frontera) no tiene una fecha de vencimientos"
             },
             "Children_First_Name1": {
                 "value": "N/A",
-                "label": "Children_First_Name1",
+                "label": "Primer Nombre",
                 "explanation": ""
             },
             "Children_Nationality1": {
                 "value": "N/A",
-                "label": "Children_Nationality1",
+                "label": "Nacionalidad al Nacer",
                 "explanation": ""
             },
             "Children_Date_Last_Entry1": {
                 "value": "N/A",
-                "label": "Children_Date_Last_Entry1",
+                "label": "Fecha de la ultima entrada",
                 "explanation": ""
             },
             "Children_Middle_Name1": {
                 "value": "N/A",
-                "label": "Children_Middle_Name1",
+                "label": "Segundo Nombre",
                 "explanation": ""
             },
             "Children_Race1": {
                 "value": "N/A",
-                "label": "Children_Race1",
+                "label": "Raza | Tribu | Grupo",
                 "explanation": ""
             },
             "Children_Date_of_Birth1": {
                 "value": "N/A",
-                "label": "Children_Date_of_Birth1",
+                "label": "Fecha de Nacimiento (mes/día/año)",
                 "explanation": ""
             },
             "Children_I-94_Number1": {
                 "value": "N/A",
-                "label": "Children_I-94_Number1",
+                "label": "Numero de I-94 (si lo tiene)",
                 "explanation": ""
             },
             "Children_Status_Last_Admitted1": {
                 "value": "N/A",
-                "label": "Children_Status_Last_Admitted1",
+                "label": "Estatus al entrar",
                 "explanation": ""
             },
             "Children_Specify_Location1": {
                 "value": "N/A",
-                "label": "Children_Specify_Location1",
+                "label": "Donde se encuentra ubicado actualmente?",
                 "explanation": ""
             },
             "Children_Alien_Number2": {
                 "value": "N/A",
-                "label": "Children_Alien_Number2",
+                "label": "Numero A",
                 "explanation": ""
             },
             "Children_Passport_Number2": {
                 "value": "N/A",
-                "label": "Children_Passport_Number2",
+                "label": "Numero de Pasaporte",
                 "explanation": ""
             },
             "Children_Marital_Status2": {
                 "value": "N/A",
-                "label": "Children_Marital_Status2",
+                "label": "Estado Civil",
                 "explanation": ""
             },
             "Children_SSN2": {
                 "value": "N/A",
-                "label": "Children_SSN2",
+                "label": " Numero de Seguro Social (si lo tiene)",
                 "explanation": ""
             },
             "Children_Complete_Last_Name2": {
                 "value": "N/A",
-                "label": "Children_Complete_Last_Name2",
+                "label": "Apellidos (Todos)",
                 "explanation": ""
             },
             "Children_City_Country_of_Birth2": {
                 "value": "N/A",
-                "label": "Children_City_Country_of_Birth2",
+                "label": "Ciudad donde Nació",
                 "explanation": ""
             },
             "Children_Place_Last_Entry2": {
                 "value": "N/A",
-                "label": "Children_Place_Last_Entry2",
+                "label": "Lugar de la ultima entrada",
                 "explanation": ""
             },
             "Children_Current_Status2": {
                 "value": "N/A",
-                "label": "Children_Current_Status2",
+                "label": "Estatus Actual",
                 "explanation": ""
             },
             "Children_Expiration_Day_Stay2": {
                 "value": "N/A",
-                "label": "Children_Expiration_Day_Stay2",
-                "explanation": ""
+                "label": "Día que se vence su estancia",
+                "explanation": "Si su estatus es: Ewi (Entregado en la frontera) no tiene una fecha de vencimientos"
             },
             "Children_First_Name2": {
                 "value": "N/A",
-                "label": "Children_First_Name2",
+                "label": "Primer Nombre",
                 "explanation": ""
             },
             "Children_Nationality2": {
                 "value": "N/A",
-                "label": "Children_Nationality2",
+                "label": "Nacionalidad al Nacer",
                 "explanation": ""
             },
             "Children_Date_Last_Entry2": {
                 "value": "N/A",
-                "label": "Children_Date_Last_Entry2",
+                "label": "Fecha de la ultima entrada",
                 "explanation": ""
             },
             "Children_Middle_Name2": {
                 "value": "N/A",
-                "label": "Children_Middle_Name2",
+                "label": "Segundo Nombre",
                 "explanation": ""
             },
             "Children_Race2": {
                 "value": "N/A",
-                "label": "Children_Race2",
+                "label": "Raza | Tribu | Grupo",
                 "explanation": ""
             },
             "Children_Date_of_Birth2": {
                 "value": "N/A",
-                "label": "Children_Date_of_Birth2",
+                "label": "Fecha de Nacimiento (mes/día/año)",
                 "explanation": ""
             },
             "Children_I-94_Number2": {
                 "value": "N/A",
-                "label": "Children_I-94_Number2",
+                "label": "Numero de I-94 (si lo tiene)",
                 "explanation": ""
             },
             "Children_Status_Last_Admitted2": {
                 "value": "N/A",
-                "label": "Children_Status_Last_Admitted2",
+                "label": "Estatus al entrar",
                 "explanation": ""
             },
             "Children_Specify_Location2": {
                 "value": "N/A",
-                "label": "Children_Specify_Location2",
+                "label": "Donde se encuentra ubicado actualmente?",
                 "explanation": ""
             },
             "Children_Alien_Number3": {
                 "value": "N/A",
-                "label": "Children_Alien_Number3",
+                "label": "Numero A",
                 "explanation": ""
             },
             "Children_Passport_Number3": {
                 "value": "N/A",
-                "label": "Children_Passport_Number3",
+                "label": "Numero de Pasaporte",
                 "explanation": ""
             },
             "Children_Marital_Status3": {
                 "value": "N/A",
-                "label": "Children_Marital_Status3",
+                "label": "Estado Civil",
                 "explanation": ""
             },
             "Children_SSN3": {
                 "value": "N/A",
-                "label": "Children_SSN3",
+                "label": " Numero de Seguro Social (si lo tiene)",
                 "explanation": ""
             },
             "Children_Complete_Last_Name3": {
                 "value": "N/A",
-                "label": "Children_Complete_Last_Name3",
+                "label": "Apellidos (Todos)",
                 "explanation": ""
             },
             "Children_City_Country_of_Birth3": {
                 "value": "N/A",
-                "label": "Children_City_Country_of_Birth3",
+                "label": "Ciudad donde Nació",
                 "explanation": ""
             },
             "Children_Place_Last_Entry3": {
                 "value": "N/A",
-                "label": "Children_Place_Last_Entry3",
+                "label": "Lugar de la ultima entrada",
                 "explanation": ""
             },
             "Children_Current_Status3": {
                 "value": "N/A",
-                "label": "Children_Current_Status3",
+                "label": "Estatus Actual",
                 "explanation": ""
             },
             "Children_Expiration_Day_Stay3": {
                 "value": "N/A",
-                "label": "Children_Expiration_Day_Stay3",
-                "explanation": ""
+                "label": "Día que se vence su estancia",
+                "explanation": "Si su estatus es: Ewi (Entregado en la frontera) no tiene una fecha de vencimientos"
             },
             "Children_First_Name3": {
                 "value": "N/A",
-                "label": "Children_First_Name3",
+                "label": "Primer Nombre",
                 "explanation": ""
             },
             "Children_Nationality3": {
                 "value": "N/A",
-                "label": "Children_Nationality3",
+                "label": "Nacionalidad al Nacer",
                 "explanation": ""
             },
             "Children_Date_Last_Entry3": {
                 "value": "N/A",
-                "label": "Children_Date_Last_Entry3",
+                "label": "Fecha de la ultima entrada",
                 "explanation": ""
             },
             "Children_Middle_Name3": {
                 "value": "N/A",
-                "label": "Children_Middle_Name3",
+                "label": "Segundo Nombre",
                 "explanation": ""
             },
             "Children_Race3": {
                 "value": "N/A",
-                "label": "Children_Race3",
+                "label": "Raza | Tribu | Grupo",
                 "explanation": ""
             },
             "Children_Date_of_Birth3": {
                 "value": "N/A",
-                "label": "Children_Date_of_Birth3",
+                "label": "Fecha de Nacimiento (mes/día/año)",
                 "explanation": ""
             },
             "Children_I-94_Number3": {
                 "value": "N/A",
-                "label": "Children_I-94_Number3",
+                "label": "Numero de I-94 (si lo tiene)",
                 "explanation": ""
             },
             "Children_Status_Last_Admitted3": {
                 "value": "N/A",
-                "label": "Children_Status_Last_Admitted3",
+                "label": "Estatus al entrar",
                 "explanation": ""
             },
             "Children_Specify_Location3": {
                 "value": "N/A",
-                "label": "Children_Specify_Location3",
+                "label": "Donde se encuentra ubicado actualmente?",
                 "explanation": ""
             },
             "Children_Alien_Number4": {
                 "value": "N/A",
-                "label": "Children_Alien_Number4",
+                "label": "Numero A",
                 "explanation": ""
             },
             "Children_Passport_Number4": {
                 "value": "N/A",
-                "label": "Children_Passport_Number4",
+                "label": "Numero de Pasaporte",
                 "explanation": ""
             },
             "Children_Marital_Status4": {
                 "value": "N/A",
-                "label": "Children_Marital_Status4",
+                "label": "Estado Civil",
                 "explanation": ""
             },
             "Children_SSN4": {
                 "value": "N/A",
-                "label": "Children_SSN4",
+                "label": " Numero de Seguro Social (si lo tiene)",
                 "explanation": ""
             },
             "Children_Complete_Last_Name4": {
                 "value": "N/A",
-                "label": "Children_Complete_Last_Name4",
+                "label": "Apellidos (Todos)",
                 "explanation": ""
             },
             "Children_City_Country_of_Birth4": {
                 "value": "N/A",
-                "label": "Children_City_Country_of_Birth4",
+                "label": "Ciudad donde Nació",
                 "explanation": ""
             },
             "Children_Place_Last_Entry4": {
                 "value": "N/A",
-                "label": "Children_Place_Last_Entry4",
+                "label": "Lugar de la ultima entrada",
                 "explanation": ""
             },
             "Children_Current_Status4": {
                 "value": "N/A",
-                "label": "Children_Current_Status4",
+                "label": "Estatus Actual",
                 "explanation": ""
             },
             "Children_Expiration_Day_Stay4": {
                 "value": "N/A",
-                "label": "Children_Expiration_Day_Stay4",
-                "explanation": ""
+                "label": "Día que se vence su estancia",
+                "explanation": "Si su estatus es: Ewi (Entregado en la frontera) no tiene una fecha de vencimientos"
             },
             "Children_First_Name4": {
                 "value": "N/A",
-                "label": "Children_First_Name4",
+                "label": "Primer Nombre",
                 "explanation": ""
             },
             "Children_Nationality4": {
                 "value": "N/A",
-                "label": "Children_Nationality4",
+                "label": "Nacionalidad al Nacer",
                 "explanation": ""
             },
             "Children_Date_Last_Entry4": {
                 "value": "N/A",
-                "label": "Children_Date_Last_Entry4",
+                "label": "Fecha de la ultima entrada",
                 "explanation": ""
             },
             "Children_Middle_Name4": {
                 "value": "N/A",
-                "label": "Children_Middle_Name4",
+                "label": "Segundo Nombre",
                 "explanation": ""
             },
             "Children_Race4": {
                 "value": "N/A",
-                "label": "Children_Race4",
+                "label": "Raza | Tribu | Grupo",
                 "explanation": ""
             },
             "Children_Date_of_Birth4": {
                 "value": "N/A",
-                "label": "Children_Date_of_Birth4",
+                "label": "Fecha de Nacimiento (mes/día/año)",
                 "explanation": ""
             },
             "Children_I-94_Number4": {
                 "value": "N/A",
-                "label": "Children_I-94_Number4",
+                "label": "Numero de I-94 (si lo tiene)",
                 "explanation": ""
             },
             "Children_Status_Last_Admitted4": {
                 "value": "N/A",
-                "label": "Children_Status_Last_Admitted4",
+                "label": "Estatus al entrar",
                 "explanation": ""
             },
             "Children_Specify_Location4": {
                 "value": "N/A",
-                "label": "Children_Specify_Location4",
+                "label": "Donde se encuentra ubicado actualmente?",
                 "explanation": ""
             },
             "Children_Alien_Number5": {
                 "value": "N/A",
-                "label": "Children_Alien_Number5",
+                "label": "Numero A",
                 "explanation": ""
             },
             "Children_Passport_Number5": {
                 "value": "N/A",
-                "label": "Children_Passport_Number5",
+                "label": "Numero de Pasaporte",
                 "explanation": ""
             },
             "Children_Marital_Status5": {
                 "value": "N/A",
-                "label": "Children_Marital_Status5",
+                "label": "Estado Civil",
                 "explanation": ""
             },
             "Children_SSN5": {
                 "value": "N/A",
-                "label": "Children_SSN5",
+                "label": " Numero de Seguro Social (si lo tiene)",
                 "explanation": ""
             },
             "Children_Complete_Last_Name5": {
                 "value": "N/A",
-                "label": "Children_Complete_Last_Name5",
+                "label": "Apellidos (Todos)",
                 "explanation": ""
             },
             "Children_City_Country_of_Birth5": {
                 "value": "N/A",
-                "label": "Children_City_Country_of_Birth5",
+                "label": "Ciudad donde Nació",
                 "explanation": ""
             },
             "Children_Place_Last_Entry5": {
                 "value": "N/A",
-                "label": "Children_Place_Last_Entry5",
+                "label": "Lugar de la ultima entrada",
                 "explanation": ""
             },
             "Children_Current_Status5": {
                 "value": "N/A",
-                "label": "Children_Current_Status5",
+                "label": "Estatus Actual",
                 "explanation": ""
             },
             "Children_Expiration_Day_Stay5": {
                 "value": "N/A",
-                "label": "Children_Expiration_Day_Stay5",
-                "explanation": ""
+                "label": "Día que se vence su estancia",
+                "explanation": "Si su estatus es: Ewi (Entregado en la frontera) no tiene una fecha de vencimientos"
             },
             "Children_First_Name5": {
                 "value": "N/A",
-                "label": "Children_First_Name5",
+                "label": "Primer Nombre",
                 "explanation": ""
             },
             "Children_Nationality5": {
                 "value": "N/A",
-                "label": "Children_Nationality5",
+                "label": "Nacionalidad al Nacer",
                 "explanation": ""
             },
             "Children_Date_Last_Entry5": {
                 "value": "N/A",
-                "label": "Children_Date_Last_Entry5",
+                "label": "Fecha de la ultima entrada",
                 "explanation": ""
             },
             "Children_Middle_Name5": {
                 "value": "N/A",
-                "label": "Children_Middle_Name5",
+                "label": "Segundo Nombre",
                 "explanation": ""
             },
             "Children_Race5": {
                 "value": "N/A",
-                "label": "Children_Race5",
+                "label": "Raza | Tribu | Grupo",
                 "explanation": ""
             },
             "Children_Date_of_Birth5": {
                 "value": "N/A",
-                "label": "Children_Date_of_Birth5",
+                "label": "Fecha de Nacimiento (mes/día/año)",
                 "explanation": ""
             },
             "Children_I-94_Number5": {
                 "value": "N/A",
-                "label": "Children_I-94_Number5",
+                "label": "Numero de I-94 (si lo tiene)",
                 "explanation": ""
             },
             "Children_Status_Last_Admitted5": {
                 "value": "N/A",
-                "label": "Children_Status_Last_Admitted5",
+                "label": "Estatus al entrar",
                 "explanation": ""
             },
             "Children_Specify_Location5": {
                 "value": "N/A",
-                "label": "Children_Specify_Location5",
+                "label": "Donde se encuentra ubicado actualmente?",
                 "explanation": ""
             }
         },
@@ -1124,102 +1124,102 @@
             },
             "Children_Court1": {
                 "value": null,
-                "label": "Children_Court1",
+                "label": "Esta esta persona de procesos de corte?",
                 "explanation": ""
             },
             "Children_Included1": {
                 "value": null,
-                "label": "Children_Included1",
+                "label": "Sera Incluido en este proceso?",
                 "explanation": ""
             },
             "Children_Location1": {
                 "value": null,
-                "label": "Children_Location1",
+                "label": "Se encuentra este hijo en USA",
                 "explanation": ""
             },
             "Children_Gender1": {
                 "value": null,
-                "label": "Children_Gender1",
+                "label": "Sexo",
                 "explanation": ""
             },
             "Children_Court2": {
                 "value": null,
-                "label": "Children_Court2",
+                "label": "Esta esta persona de procesos de corte?",
                 "explanation": ""
             },
             "Children_Included2": {
                 "value": null,
-                "label": "Children_Included2",
+                "label": "Sera Incluido en este proceso?",
                 "explanation": ""
             },
             "Children_Gender2": {
                 "value": null,
-                "label": "Children_Gender2",
+                "label": "Sexo",
                 "explanation": ""
             },
             "Children_Location2": {
                 "value": null,
-                "label": "Children_Location2",
+                "label": "Se encuentra este hijo en USA",
                 "explanation": ""
             },
             "Children_Court3": {
                 "value": null,
-                "label": "Children_Court3",
+                "label": "Esta esta persona de procesos de corte?",
                 "explanation": ""
             },
             "Children_Included3": {
                 "value": null,
-                "label": "Children_Included3",
+                "label": "Sera Incluido en este proceso?",
                 "explanation": ""
             },
             "Children_Location3": {
                 "value": null,
-                "label": "Children_Location3",
+                "label": "Se encuentra este hijo en USA",
                 "explanation": ""
             },
             "Children_Gender3": {
                 "value": null,
-                "label": "Children_Gender3",
+                "label": "Sexo",
                 "explanation": ""
             },
             "Children_Court4": {
                 "value": null,
-                "label": "Children_Court4",
+                "label": "Esta esta persona de procesos de corte?",
                 "explanation": ""
             },
             "Children_Included4": {
                 "value": null,
-                "label": "Children_Included4",
+                "label": "Sera Incluido en este proceso?",
                 "explanation": ""
             },
             "Children_Location4": {
                 "value": null,
-                "label": "Children_Location4",
+                "label": "Se encuentra este hijo en USA",
                 "explanation": ""
             },
             "Children_Gender4": {
                 "value": null,
-                "label": "Children_Gender4",
+                "label": "Sexo",
                 "explanation": ""
             },
             "Children_Court5": {
                 "value": null,
-                "label": "Children_Court5",
+                "label": "Esta esta persona de procesos de corte?",
                 "explanation": ""
             },
             "Children_Included5": {
                 "value": null,
-                "label": "Children_Included5",
+                "label": "Sera Incluido en este proceso?",
                 "explanation": ""
             },
             "Children_Location5": {
                 "value": null,
-                "label": "Children_Location5",
+                "label": "Se encuentra este hijo en USA",
                 "explanation": ""
             },
             "Children_Gender5": {
                 "value": null,
-                "label": "Children_Gender5",
+                "label": "Sexo",
                 "explanation": ""
             }
         }
