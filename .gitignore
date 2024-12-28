@@ -26,3 +26,7 @@ dist-ssr
 # Firebase Cache
 
 .firebase/
+
+# Quokkar File
+.babelrc
+quokka.js

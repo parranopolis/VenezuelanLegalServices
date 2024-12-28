@@ -18,3 +18,27 @@
     line-height: 1.5rem;
     text-align: center;
 }
+
+
+.formContainer>* {
+    flex: 1 1 calc(50% - 1rem);
+    min-width: 200px;
+}
+
+.formContainer {
+    display: grid;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.DocumentodeViaje {
+    /* grid-template-rows: [row1-start] 25% [row1-end] 25%[row2-start] 25% [row2-end]; */
+
+    /* flex-direction: column; */
+    flex-direction: row-reverse;
+    border: 1px solid black;
+}
+
+.DocumentodeViaje div:first-child {
+    /* background-color: red; */
+}

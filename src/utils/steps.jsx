@@ -14,7 +14,6 @@ export const Children = (w) => {
     else return array
 }
 
-
 export function FilterChildrenFormData(total) {
 
     // depending on the number of children, a certain number of Forms must be displayed
@@ -38,7 +37,6 @@ export function FilterChildrenFormData(total) {
 }
 
 //dictionary to segment the fields and their different types that should be displayed together
-
 export const aplicantPart_A_I = [
     {
         name: 'Identificación',
@@ -64,22 +62,27 @@ export const aplicantPart_A_I = [
     },
     {
         name: 'Dirección',
-        extra: { type: 'multiple', message: 'Si no tiene una direccion segura donde recibir documentos puede usar nuestra direccion ', SegmentedControlMessage: ['Direccion Propia', 'Direccion de la empresa que esta contratando'], },
+        extra: {
+            type: 'multiple',
+            message: 'Si no tiene una direccion segura donde recibir documentos puede usar nuestra direccion ',
+            SegmentedControlMessage: ['Direccion Propia', 'Direccion de la Empresa'],
+            sliceSize: [[0, 6], [6, 13]]
+        },
         fields: {
             text: [
-                { name: 'Street_Number_and_Name', required: true, isShow: false, segment: 0 },
-                { name: 'Apt_Number', required: true, isShow: false, segment: 0 },
-                { name: 'City', required: true, isShow: false, segment: 0 },
-                { name: 'State', required: true, isShow: false, segment: 0 },
-                { name: 'Zip_Code', required: true, isShow: false, segment: 0 },
-                { name: 'phone_Number_1', required: true, isShow: false, segment: 0 },
-                { name: 'In_Care_of', required: true, isShow: false, segment: 1 },
-                { name: 'phone_Number_2', required: true, isShow: false, segment: 1 },
-                { name: 'Street_Number_and_Name_POX', required: true, isShow: false, segment: 1 },
-                { name: 'Apt_Number_POX', required: true, isShow: false, segment: 1 },
-                { name: 'City_POX', required: true, isShow: false, segment: 1 },
-                { name: 'State_POX', required: true, isShow: false, segment: 1 },
-                { name: 'Zip_Code_POX', required: true, isShow: false, segment: 1 },
+                { name: 'Street_Number_and_Name', required: false, isShow: false, segment: 0 },
+                { name: 'Apt_Number', required: false, isShow: false, segment: 0 },
+                { name: 'City', required: false, isShow: false, segment: 0 },
+                { name: 'State', required: false, isShow: false, segment: 0 },
+                { name: 'Zip_Code', required: false, isShow: false, segment: 0 },
+                { name: 'phone_Number_1', required: false, isShow: false, segment: 0 },
+                { name: 'In_Care_of', required: false, isShow: false, segment: 1 },
+                { name: 'phone_Number_2', required: false, isShow: false, segment: 1 },
+                { name: 'Street_Number_and_Name_POX', required: false, isShow: false, segment: 1 },
+                { name: 'Apt_Number_POX', required: false, isShow: false, segment: 1 },
+                { name: 'City_POX', required: false, isShow: false, segment: 1 },
+                { name: 'State_POX', required: false, isShow: false, segment: 1 },
+                { name: 'Zip_Code_POX', required: false, isShow: false, segment: 1 },
             ],
         }
     },
@@ -132,19 +135,25 @@ export const aplicantPart_A_I = [
         }
     },
     {
-        name: 'Informacion de Viaje',
-        extra: { type: 'multiple', message: 'Liste cada una de las entradas empezando por la mas reciente', SegmentedControlMessage: ['Entrada 1', 'Entrada 2', 'Entrada 3'], },
+        name: 'Por favor ingrese la informacion de su viaje a los Estados Unidos',
+        extra: {
+            type: 'multiple',
+            message: 'Si necesita registrar mas de un viaje, por favor haga click en el boton de abajo',
+            SegmentedControlMessage: ['Viaje 1', 'Viaje 2', 'Viaje 3'],
+            sliceSize: [[0, 5], [5, 7], [7, 9]]
+        },
+
         fields: {
             text: [
                 { name: 'Leave_Your_Country', required: true, isShow: false, segment: 0 },
                 { name: 'I-94_Number', required: false, isShow: false, segment: 0 },
                 { name: 'Each_Entry_Date_1', required: true, isShow: false, segment: 0 },
                 { name: 'Each_Entry_Place_1', required: true, isShow: false, segment: 0 },
+                { name: 'Each_Entry_Date_Expires', required: false, isShow: false, segment: 0 },
                 { name: 'Each_Entry_Date_2', required: true, isShow: false, segment: 1 },
                 { name: 'Each_Entry_Place_2', required: true, isShow: false, segment: 1 },
                 { name: 'Each_Entry_Date_3', required: true, isShow: false, segment: 2 },
                 { name: 'Each_Entry_Place_3', required: true, isShow: false, segment: 2 },
-                { name: 'Each_Entry_Date_Expires', required: false, isShow: false, segment: 0 },
             ],
             select: [
                 {
@@ -157,19 +166,21 @@ export const aplicantPart_A_I = [
     }, {
         name: 'Documento de Viaje',
         fields: {
+
+            radio: [
+                {
+                    'English': ['Yes', 'No']
+                }
+            ],
             text: [
                 { name: 'Passport_Country', required: false, isShow: false },
                 { name: 'Passport_Number', required: false, isShow: false },
                 { name: 'Passport_Expiration_Day', required: false, isShow: false },
                 { name: 'Native_Language', required: true, isShow: false },
+                // aqui debe ir el raido English [yes, no]
                 { name: 'Other_Language', required: false, isShow: false },
             ],
-            radio: [
-                {
-                    'English': ['Yes', 'No']
-                }
-            ]
-        }
+        },
     }
 ]
 export const aplicantPart_A_II_Spouse = [
@@ -1040,7 +1051,6 @@ export const aplicantPart_A_III_Background = [
         }
     },
 ]
-
 export const aplicantPart_B_I = [
     {
         name: 'Marque lar razones por las que esta aplicando asilo. (todas las que apliquen)',

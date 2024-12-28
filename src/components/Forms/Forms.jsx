@@ -146,7 +146,7 @@ export function Forms({ onSubmit }) {
     return (
         <>
             <form className='form center'>
-                <FormContainer onSubmit={onSubmit} formDataContex={formData} handleChange={handleChange} modifyPDF={modifyPDF} />
+                <FormContainer formDataContex={formData} handleChange={handleChange} />
             </form>
             {PDFUrl ? (
                 <div>
@@ -163,10 +163,35 @@ export function Forms({ onSubmit }) {
     )
 }
 
+function FilterSegmentData(data, onState = data.extra.SegmentedControlMessage[0]) {
+
+    // Value of the SegmentedControl -> actualSegmentedControl
+    // Data to show in the form -> text
+    // Data to show in the select => select
+    let actualSegmentedControl, text, select = [], index = 0, result
+
+    data.extra.SegmentedControlMessage.forEach((item, i) => {
+        if (data.extra.SegmentedControlMessage[i] === onState) {
+            actualSegmentedControl = data.extra.SegmentedControlMessage[i]
+            index = i
+        }
+    })
+    if (data.fields.select) {
+        Object.entries(data.fields.select[0]).forEach(([key, value], i) => {
+            if (i === index) {
+                select.push({ [key]: value })
+            }
+        })
+
+    }
+    text = data.fields.text.slice(data.extra.sliceSize[index][0], data.extra.sliceSize[index][1])
+    return result = [actualSegmentedControl, text, select]
+}
+
 //base form
 const FormContainer = ({ formDataContex, handleChange }) => {
     // Current Group of Forms
-    const [currentSection, setCurrentSection] = useState(1)
+    const [currentSection, setCurrentSection] = useState(5)
 
     //context 
     const { handleFormSubmit, formGroups, currentStep, totalChildren } = useContext(StepsContext)
@@ -180,52 +205,92 @@ const FormContainer = ({ formDataContex, handleChange }) => {
     //Object with data from the group of forms currently displayed on the screen
     const currentGroup = currentForm[0][currentSection - 1]
 
+    // Value of the SegmentedControl
+    const [value, setValue] = useState(currentGroup.hasOwnProperty('extra') ? currentGroup.extra.SegmentedControlMessage[0] : '')
+
+    // Data to show in the form
+    const [dataShow, setDataShow] = useState([])
+
+    // Data to show in the select
+    const [dataShowSelect, setDataShowSelect] = useState([])
+    useEffect(() => {
+        if (currentGroup?.extra) {
+            const filteredSegmentData = FilterSegmentData(currentGroup, value)
+            setDataShow(filteredSegmentData[1])
+            setValue(filteredSegmentData[0])
+            setDataShowSelect(filteredSegmentData[2])
+        } else {
+            setDataShow([])
+            setValue('')
+            setDataShowSelect([])
+        }
+    }, [value, currentGroup])
     const renderSection = () => {
-
         return (
-            <Fieldset.Root size={'lg'} maxW={'100%'} className='fieldset'>
-                <Fieldset.Legend>
-                    <span className='h3'>{currentGroup.name}</span>
-                </Fieldset.Legend>
+            <div className='formGroup'>
+                <Fieldset.Root size={'lg'} maxW={'100%'} className='fieldset'>
+                    <Fieldset.Legend>
+                        <span className='h3'>{currentGroup.name}</span>
+                        {currentGroup.hasOwnProperty('extra') === true ?
+                            <div>
+                                <span className='h5'>{currentGroup.extra.message}</span>
+                                <br />
+                                <SegmentedControl
+                                    value={value}
+                                    onValueChange={(e) => {
+                                        setValue(e.value)
+                                    }}
+                                    items={currentGroup.extra.SegmentedControlMessage}
+                                />
+                            </div>
+                            : ''}
+                    </Fieldset.Legend>
+                    <div className={`formContainer`}>
 
-                {currentGroup.fields.hasOwnProperty('text') ? <InputTextComponent
-                    group={group[0]}
-                    data={currentGroup.fields.text}
-                    handleChange={handleChange}
-                    formDataContex={formDataContex}
-                /> : ''}
-                {currentGroup.fields.hasOwnProperty('radio') ? <InputRadio
-                    group={group[0]}
-                    data={currentGroup.fields.radio}
-                    name={currentGroup.name}
-                    handleChange={handleChange}
-                    formDataContex={formDataContex}
-                /> : ''}
-                {currentGroup.fields.hasOwnProperty('select') ? <InputSelect
-                    group={group[0]}
-                    data={currentGroup.fields.select}
-                    name={currentGroup.name}
-                    handleChange={handleChange}
-                    formDataContex={formDataContex}
-                /> : ''}
-                {currentGroup.fields.hasOwnProperty('textArea') ? <InputTextArea
-                    group={group[0]}
-                    data={currentGroup.fields.textArea}
-                    formDataContex={formDataContex}
-                    name={currentGroup.name}
-                    handleChange={handleChange}
+                        {currentGroup.fields.hasOwnProperty('radio') ? <InputRadio
+                            className='InputRadio'
+                            group={group[0]}
+                            data={currentGroup.fields.radio}
+                            name={currentGroup.name}
+                            handleChange={handleChange}
+                            formDataContex={formDataContex}
+                        /> : ''}
+                        {currentGroup.fields.hasOwnProperty('text') ? <InputTextComponent
+                            className='InputTextComponent'
+                            group={group[0]}
+                            // data={currentGroup.fields.text}
+                            data={dataShow.length != 0 ? dataShow : currentGroup.fields.text}
+                            handleChange={handleChange}
+                            formDataContex={formDataContex}
+                        /> : ''}
+                        {currentGroup.fields.hasOwnProperty('select') ? <InputSelect
+                            className='InputSelect'
+                            group={group[0]}
+                            data={dataShow.length != 0 ? dataShowSelect : currentGroup.fields.select}
+                            name={currentGroup.name}
+                            handleChange={handleChange}
+                            formDataContex={formDataContex}
+                        /> : ''}
+                        {currentGroup.fields.hasOwnProperty('textArea') ? <InputTextArea
+                            className='InputTextArea'
+                            group={group[0]}
+                            data={currentGroup.fields.textArea}
+                            formDataContex={formDataContex}
+                            name={currentGroup.name}
+                            handleChange={handleChange}
+                        /> : ''}
+                        {currentGroup.fields.hasOwnProperty('check') ? <InputCheckbox
+                            group={group[0]}
+                            data={currentGroup.fields.check}
+                            name={currentGroup.name}
+                            formDataContex={formDataContex}
+                            handleChange={handleChange}
+                        />
+                            : ''}
+                    </div>
+                </Fieldset.Root>
+            </div>
 
-                /> : ''}
-                {currentGroup.fields.hasOwnProperty('check') ? <InputCheckbox
-                    group={group[0]}
-                    data={currentGroup.fields.check}
-                    name={currentGroup.name}
-                    formDataContex={formDataContex}
-                    handleChange={handleChange}
-
-                /> : ''}
-
-            </Fieldset.Root>
         )
     }
 
@@ -361,7 +426,6 @@ function InputTextComponent({ data, handleChange, formDataContex, group, q }) {
         //     RegularInputs(totalChildren)
         // }
     }
-
     useEffect(() => {
         // console.log(totalChildren)
     }, [handleTwoFunctuons])
