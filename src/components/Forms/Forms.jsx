@@ -30,30 +30,33 @@ const statusMapping = {
     'Parole Humanitario': 'Humanitarian Parole',
 };
 
+export function Final() {
+    return <h1>Final</h1>
+}
+
 // Form Page
 export function Forms({ onSubmit }) {
     // console.log(onSubmit)
     const { formData, setFormData } = useContext(initialFormValues)
     const [PDFUrl, setPDFUrl] = useState(null)
 
-    const handleChange = (e) => {
+    const handleChange = (e, group) => {
         const { name, value, type } = e.target
-
         setFormData((prevFormData) => {
             let updatedValue = value
+
             if (name == 'Each_Entry_Status_1' || name === 'Each_Entry_Status_2' || name === 'Each_Entry_Status_3') {
                 updatedValue = statusMapping[value] || value
             }
-
             if (type === 'radio') {
                 return {
                     ...prevFormData,
-                    Spouse: {
-                        ...prevFormData.Spouse,
+                    [group]: {
+                        ...prevFormData[group],
                         PDFRadioGroup2: {
-                            ...prevFormData.Spouse.PDFRadioGroup2,
+                            ...prevFormData[group].PDFRadioGroup2,
                             [name]: {
-                                ...prevFormData.Spouse.PDFRadioGroup2[name],
+                                ...prevFormData[group].PDFRadioGroup2[name],
                                 value: value
                             }
                         }
@@ -62,20 +65,37 @@ export function Forms({ onSubmit }) {
             } else if (type === 'text' || type == 'select-one') {
                 return {
                     ...prevFormData,
-                    Spouse: {
-                        ...prevFormData.Spouse,
+                    [group]: {
+                        ...prevFormData[group],
                         PDFTextField2: {
-                            ...prevFormData.Spouse.PDFTextField2,
+                            ...prevFormData[group].PDFTextField2,
                             [name]: {
-                                ...prevFormData.Spouse.PDFTextField2[name],
+                                ...prevFormData[group].PDFTextField2[name],
+                                value: updatedValue
+                            }
+                        }
+                    }
+                }
+            }
+            else if (type === 'checkbox') {
+                return {
+                    ...prevFormData,
+                    [group]: {
+                        ...prevFormData[group],
+                        PDFCheckBox2: {
+                            ...prevFormData[group].PDFCheckBox2,
+                            [name]: {
+                                ...prevFormData[group].PDFCheckBox2[name],
                                 value: value
                             }
                         }
                     }
                 }
             }
+
             return prevFormData
         })
+
     }
 
     const downloadBlob = (data, filename, mimeType) => {
@@ -140,12 +160,12 @@ export function Forms({ onSubmit }) {
             console.error('Error modifying the PDF:', error);
             alert('Hubo un error al modificar el PDF. Verifica la consola para más detalles.');
         }
-
     }
 
     return (
         <>
             <form className='form center'>
+                {/* {console.log(formData.Applicant.PDFTextField2)} */}
                 <FormContainer formDataContex={formData} handleChange={handleChange} />
             </form>
             {PDFUrl ? (
@@ -169,23 +189,34 @@ function FilterSegmentData(data, onState = data.extra.SegmentedControlMessage[0]
     // Data to show in the form -> text
     // Data to show in the select => select
     let actualSegmentedControl, text, select = [], index = 0, result
-
+    // Filter the data to show in the form
     data.extra.SegmentedControlMessage.forEach((item, i) => {
         if (data.extra.SegmentedControlMessage[i] === onState) {
             actualSegmentedControl = data.extra.SegmentedControlMessage[i]
             index = i
         }
     })
+    text = data.fields.text.slice(data.extra.sliceSize[index][0], data.extra.sliceSize[index][1])
+
+    //  Filter the data to show in the select
     if (data.fields.select) {
         Object.entries(data.fields.select[0]).forEach(([key, value], i) => {
             if (i === index) {
                 select.push({ [key]: value })
             }
         })
-
     }
-    text = data.fields.text.slice(data.extra.sliceSize[index][0], data.extra.sliceSize[index][1])
     return result = [actualSegmentedControl, text, select]
+}
+
+const getCheckedFields = (data, check) => {
+    const { inputType, No, Yes } = data.extra
+    const fields = data.fields[inputType]
+    if (!check) return fields.slice(No[0], No[1])
+
+    if (check.checked && check.value === 'Yes') return fields.slice(Yes[0], Yes[1])
+
+    return fields.slice(No[0], No[1])
 }
 
 //base form
@@ -194,7 +225,7 @@ const FormContainer = ({ formDataContex, handleChange }) => {
     const [currentSection, setCurrentSection] = useState(5)
 
     //context 
-    const { handleFormSubmit, formGroups, currentStep, totalChildren } = useContext(StepsContext)
+    const { handleFormSubmit, formGroups, currentStep, RadioChecked, setRadioChecked } = useContext(StepsContext)
 
     //Array of Total groups from the context
     const currentForm = Object.values(formGroups[currentStep])
@@ -206,32 +237,47 @@ const FormContainer = ({ formDataContex, handleChange }) => {
     const currentGroup = currentForm[0][currentSection - 1]
 
     // Value of the SegmentedControl
-    const [value, setValue] = useState(currentGroup.hasOwnProperty('extra') ? currentGroup.extra.SegmentedControlMessage[0] : '')
+    const [value, setValue] = useState(currentGroup?.extra?.type === 'multiple' ? currentGroup.extra.SegmentedControlMessage[0] : '')
 
     // Data to show in the form
     const [dataShow, setDataShow] = useState([])
 
     // Data to show in the select
     const [dataShowSelect, setDataShowSelect] = useState([])
+
     useEffect(() => {
-        if (currentGroup?.extra) {
+        setDataShow([])
+        setValue('')
+        setDataShowSelect([])
+        console.log(currentGroup)
+        if (currentGroup?.extra?.type === 'multiple') {
             const filteredSegmentData = FilterSegmentData(currentGroup, value)
             setDataShow(filteredSegmentData[1])
             setValue(filteredSegmentData[0])
             setDataShowSelect(filteredSegmentData[2])
-        } else {
-            setDataShow([])
-            setValue('')
-            setDataShowSelect([])
         }
-    }, [value, currentGroup])
+        if (currentGroup?.extra?.type === 'conditional') {
+            if (!RadioChecked) {
+                if (currentGroup.extra.No[0] === 0 && currentGroup.extra.No[1] === 0) {
+                    setDataShow([])
+                }
+                else {
+                    setDataShow(currentGroup.fields.text.slice(currentGroup.extra.No[0], currentGroup.extra.No[1]))
+                }
+            }
+            else {
+                const filteredInputForms = getCheckedFields(currentGroup, RadioChecked)
+                setDataShow(filteredInputForms)
+            }
+        }
+    }, [value, currentGroup, RadioChecked])
     const renderSection = () => {
         return (
             <div className='formGroup'>
                 <Fieldset.Root size={'lg'} maxW={'100%'} className='fieldset'>
                     <Fieldset.Legend>
                         <span className='h3'>{currentGroup.name}</span>
-                        {currentGroup.hasOwnProperty('extra') === true ?
+                        {currentGroup?.extra?.type === 'multiple' ?
                             <div>
                                 <span className='h5'>{currentGroup.extra.message}</span>
                                 <br />
@@ -249,7 +295,8 @@ const FormContainer = ({ formDataContex, handleChange }) => {
 
                         {currentGroup.fields.hasOwnProperty('radio') ? <InputRadio
                             className='InputRadio'
-                            group={group[0]}
+                            person={group}
+                            extra={currentGroup.extra}
                             data={currentGroup.fields.radio}
                             name={currentGroup.name}
                             handleChange={handleChange}
@@ -258,7 +305,7 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                         {currentGroup.fields.hasOwnProperty('text') ? <InputTextComponent
                             className='InputTextComponent'
                             group={group[0]}
-                            // data={currentGroup.fields.text}
+                            // data={dataShow}
                             data={dataShow.length != 0 ? dataShow : currentGroup.fields.text}
                             handleChange={handleChange}
                             formDataContex={formDataContex}
@@ -273,8 +320,10 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                         /> : ''}
                         {currentGroup.fields.hasOwnProperty('textArea') ? <InputTextArea
                             className='InputTextArea'
-                            group={group[0]}
-                            data={currentGroup.fields.textArea}
+                            group={group}
+                            // data={currentGroup.fields.textArea}
+                            // data={dataShow.length != 0 ? dataShow : currentGroup.fields.textArea}
+                            data={dataShow}
                             formDataContex={formDataContex}
                             name={currentGroup.name}
                             handleChange={handleChange}
@@ -368,17 +417,16 @@ const FormContainer = ({ formDataContex, handleChange }) => {
 function InputSelect({ data, formDataContex, handleChange, group }) {
     const obj = formDataContex[group].PDFTextField2
     const { totalChildren, setTotalChildren } = useContext(StepsContext)
+    const personGroup = group
+
     const handleTwoFunctuons = (e, field) => {
         // handleChange(e)
         if (e.target.name === 'Children_Total') {
-            // console.log(e.target.value)
             setTotalChildren(parseInt(e.target.value))
-            // RegularInputs(totalChildren)
         }
     }
 
     useEffect(() => {
-        // console.log(totalChildren)
         Children(totalChildren)
     })
     return (
@@ -393,7 +441,11 @@ function InputSelect({ data, formDataContex, handleChange, group }) {
                                 id={key}
                                 name={key}
                                 // value={property.value !== 'N/A' ? property.value : ''}
-                                onChange={(e) => handleTwoFunctuons(e, key)}
+                                onChange={(e) => {
+                                    handleTwoFunctuons(e, key)
+                                    handleChange(e, personGroup)
+                                }
+                                }
                             >
                                 <NativeSelectField name={key}>
                                     <option value="">Seleccione una opción</option>
@@ -417,18 +469,9 @@ function InputSelect({ data, formDataContex, handleChange, group }) {
 //shows inputs of type Text
 function InputTextComponent({ data, handleChange, formDataContex, group, q }) {
     const obj = formDataContex[group].PDFTextField2
-    const { totalChildren, setTotalChildren } = useContext(StepsContext)
-    const handleTwoFunctuons = (e, field) => {
-        // handleChange(e)
-
-        // if (field.name === 'Children_Total') {
-        //     setTotalChildren(parseInt(e.target.value))
-        //     RegularInputs(totalChildren)
-        // }
+    const handleTwoFunctuons = (e, field, group) => {
+        console.log(group)
     }
-    useEffect(() => {
-        // console.log(totalChildren)
-    }, [handleTwoFunctuons])
     return (
         <Stack gap={5}>
             {data.map((field) => {
@@ -451,11 +494,11 @@ function InputTextComponent({ data, handleChange, formDataContex, group, q }) {
                             <Input
                                 className={field.required ? 'p-large required' : 'p-large'}
                                 variant={'subtle'}
-                                name={field}
+                                name={field.name}
                                 type='text'
                                 id={field}
                                 // value={property.value !== 'N/A' ? property.value : ''}
-                                onChange={(e) => handleTwoFunctuons(e, field)}
+                                onChange={(e) => handleChange(e, group)}
                                 required={field.required ? true : false}
                             />
                         </Field >
@@ -471,27 +514,28 @@ function RegularInputs(q) {
 
 }
 // shows inputs of type Radio
-function InputRadio({ data, handleChange, formDataContex, name }) {
-    const { formGroups, currentStep } = useContext(StepsContext)
-    const group2 = Object.keys(formGroups[currentStep])
-    const q = data.map((group) => {
+function InputRadio({ data, handleChange, formDataContex, person, extra }) {
+    const { setRadioChecked } = useContext(StepsContext)
+    const q = data.map((group, index) => {
         const w = Object.keys(group).map((key) => {
-
-            const property = findProperty(formDataContex[group2].PDFRadioGroup2, key)
+            const property = findProperty(formDataContex[person].PDFRadioGroup2, key)
             return (
-                <section key={key}>
-
+                <section key={key} className={index == 0 ? "SpecialRadioInputContainer" : ''}>
                     <span className='h6 opacity'>{property.label}</span>
                     {group[key].map((value) => {
                         return (
-                            <section className='radioOptions' key={value}>
+                            <section className={extra?.question == index ? 'SpecialRadioInput radioOptions' : 'radioOptions'} key={value}>
                                 <input
                                     type="radio"
                                     id={`${key}_${value}`}
                                     name={key}
                                     value={value}
                                     checked={property.value === value}
-                                    onChange={handleChange}
+                                    onChange={(e) => {
+                                        handleChange(e, person[0])
+                                        e.target.parentNode.classList.contains('SpecialRadioInput') ? setRadioChecked(e.target,) : setRadioChecked(null)
+                                    }}
+                                    className='InputRadioType'
                                 />
                                 <label className='p-large' htmlFor={`${key}_${value}`}>{value}</label>
                             </section>
@@ -511,20 +555,17 @@ function InputRadio({ data, handleChange, formDataContex, name }) {
 
 function InputCheckbox({ group,
     data,
-    name,
     formDataContex,
     handleChange }) {
-
     const obj = formDataContex[group].PDFCheckBox2
     return (
         <Stack>
             {data.map(field => {
-                // console.log(field)
                 const property = findProperty(obj, field.name)
                 const x = <span className='h6 helpTip'>{property.explanation}</span>
                 return (
                     <Field key={field.name}>
-                        <Checkbox>{property.label}
+                        <Checkbox name={field.name} onChange={(e) => handleChange(e, group)}>{property.label}
                             {property.explanation != '' ? <span>
                                 <ToggleTip content={x}>
                                     <Button size="xs" variant="ghost">
@@ -574,8 +615,9 @@ function InputTextArea({ group, data, name, handleChange, formDataContex }) {
                                 // value={property.value !== 'N/A' ? property.value : ''}
                                 onChange={handleChange}
                                 required={field.required ? true : false}
-                                size={'lg'}
+                                size={'xl'}
                                 resize={'vertical'}
+                                autoresize
                             />
                         </Field >
 

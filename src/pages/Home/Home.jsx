@@ -5,7 +5,10 @@ export function Home() {
 
     return (
         <>
-            <EditDocument />
+            <section className='test'>
+
+                <EditDocument />
+            </section>
         </>
     )
 }

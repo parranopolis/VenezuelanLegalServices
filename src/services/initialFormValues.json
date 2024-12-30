@@ -336,7 +336,7 @@
                 "explanation": ""
             },
             "Obligatorio": {
-                "value": false,
+                "value": "on",
                 "label": "Campo Obligatorio",
                 "explanation": ""
             },

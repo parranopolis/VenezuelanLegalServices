@@ -11,15 +11,19 @@ import {
     StepsRoot,
 } from "@/components/ui/steps"
 
+import './Steps.css'
 import { useContext } from "react"
 import { StepsContext } from "../../contexts/StepsContext"
 
+import { Link } from 'react-router-dom'
 export function Steps() {
 
     const { handleStepClick, currentStep, formGroups } = useContext(StepsContext)
     return (
         <>
-            <Stack>
+            <Stack className="Stack">
+                <span className="h3">Pasos para llenar el Asilo </span>
+                <span className="h4">Forma I-589</span>
                 <StepsRoot count={formGroups.length} height="700px" step={currentStep} orientation="vertical">
                     <StepsList>
                         <StepsItem index={0} title="Informacion Personal" description='Parte A-1' />
@@ -51,9 +55,10 @@ export function Steps() {
                                 Next
                             </Button>
                         </StepsNextTrigger>
-                        {currentStep == formGroups.length ? <Button>Crear PDF</Button> : ''}
+                        {currentStep == formGroups.length ? <Button><Link to={'/filed'}>Crear PDF</Link></Button> : ''}
                     </Group>
                 </StepsRoot>
-            </Stack></>
+            </Stack>
+        </>
     )
 }

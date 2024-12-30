@@ -5,6 +5,7 @@ import { Home } from './pages/Home/Home'
 import { InitialFormValuesProvider } from './contexts/InitialValueContext'
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react"
 import { StepsContext, StepsProvider } from './contexts/StepsContext'
+import { Filed } from './pages/EndProces/FIled'
 
 
 const root = createRoot(document.getElementById('root'))
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />
+  },
+  {
+    path: 'filed',
+    element: <Filed />
   }
 ],
   {

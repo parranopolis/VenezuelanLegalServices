@@ -65,7 +65,7 @@ export const aplicantPart_A_I = [
         extra: {
             type: 'multiple',
             message: 'Si no tiene una direccion segura donde recibir documentos puede usar nuestra direccion ',
-            SegmentedControlMessage: ['Direccion Propia', 'Direccion de la Empresa'],
+            SegmentedControlMessage: ['Direccion #Propia', 'Direccion de la Empresa'],
             sliceSize: [[0, 6], [6, 13]]
         },
         fields: {
@@ -230,8 +230,14 @@ export const aplicantPart_A_II_Spouse = [
     },
     {
         name: 'Ubicación actual de Conyugue',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 7],
+            No: [0, 1],
+            question: [0],
+            inputType: 'text'
+        },
         fields: {
-            extra: {},
             radio: [
                 { 'Spouse_Location_US': ['Yes', 'No'] },
                 { 'Spouse_Court': ['Yes', 'No'] }
@@ -278,13 +284,12 @@ export const childrenBase = [
             radio: [
                 { 'Children': ['Yes', 'No'] }
             ],
-            text: [
-                //si en children se marca que si, debe mostrarse este campo pero en formato Select
-                { name: 'Children_Total', required: true, isShow: false },
-            ],
+            // text: [
+            // si en children se marca que si, debe mostrarse este campo pero en formato Select
+            // { name: 'Children_Total', required: true, isShow: false },
+            // ],
             select: [
                 { 'Children_Total': [0, 1, 2, 3, 4, 5, 6] },
-
             ]
         }
     },
@@ -346,7 +351,12 @@ export const childrenBase = [
         name: 'Ubicación actual de Hijo 1',
         extra: {
             message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
-            SegmentedControlMessage: Children()
+            SegmentedControlMessage: Children(),
+            type: 'conditional',
+            Yes: [0, 7],
+            No: [0, 1],
+            question: [0],
+            inputType: 'text'
         },
         fields: {
 
@@ -445,9 +455,15 @@ export const childrenBase = [
     },
     {
         name: 'Ubicación actual de Hijo 2',
+
         extra: {
             message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
-            SegmentedControlMessage: Children()
+            SegmentedControlMessage: Children(),
+            type: 'conditional',
+            Yes: [0, 7],
+            No: [0, 1],
+            question: [0],
+            inputType: 'text'
         },
         fields: {
 
@@ -547,9 +563,15 @@ export const childrenBase = [
     },
     {
         name: 'Ubicación actual de Hijo 3',
+
         extra: {
             message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
-            SegmentedControlMessage: Children()
+            SegmentedControlMessage: Children(),
+            type: 'conditional',
+            Yes: [0, 7],
+            No: [0, 1],
+            question: [0],
+            inputType: 'text'
         },
         fields: {
 
@@ -649,9 +671,15 @@ export const childrenBase = [
     },
     {
         name: 'Ubicación actual de Hijo 4',
+
         extra: {
             message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
-            SegmentedControlMessage: Children()
+            SegmentedControlMessage: Children(),
+            type: 'conditional',
+            Yes: [0, 7],
+            No: [0, 1],
+            question: [0],
+            inputType: 'text'
         },
         fields: {
 
@@ -751,9 +779,15 @@ export const childrenBase = [
     },
     {
         name: 'Ubicación actual de Hijo 5',
+
         extra: {
             message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
-            SegmentedControlMessage: Children()
+            SegmentedControlMessage: Children(),
+            type: 'conditional',
+            Yes: [0, 7],
+            No: [0, 1],
+            question: [0],
+            inputType: 'text'
         },
         fields: {
 
@@ -851,9 +885,15 @@ export const childrenBase = [
     },
     {
         name: 'Ubicación actual de Hijo 6',
+
         extra: {
             message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
-            SegmentedControlMessage: Children()
+            SegmentedControlMessage: Children(),
+            type: 'conditional',
+            Yes: [0, 7],
+            No: [0, 1],
+            question: [0],
+            inputType: 'text'
         },
         fields: {
 
@@ -902,6 +942,12 @@ export let aplicantPart_A_II_Children = []
 export const aplicantPart_A_III_Background = [
     {
         name: 'Liste donde vivio antes de venir a los Estados Unidos',
+        extra: {
+            type: 'multiple',
+            message: 'Si necesita registrar mas de 1 direccion use este menu',
+            SegmentedControlMessage: ['Direccion #1', 'Direccion #2'],
+            sliceSize: [[0, 6], [6, 12]]
+        },
         fields: {
             text: [
                 { name: 'BG_Number_Street', required: true, isShow: false },
@@ -911,17 +957,23 @@ export const aplicantPart_A_III_Background = [
                 { name: 'BG_Date_From', required: true, isShow: false },
                 { name: 'BG_Date_To', required: true, isShow: false },
 
-                { name: 'BG_Number_Street1', required: true, isShow: true },
-                { name: 'BG_City2', required: true, isShow: true },
-                { name: 'BG_State2', required: true, isShow: true },
-                { name: 'BG_Country2', required: true, isShow: true },
-                { name: 'BG_Date_From2', required: true, isShow: true },
-                { name: 'BG_Date_To2', required: true, isShow: true },
+                { name: 'BG_Number_Street1', required: true, isShow: false },
+                { name: 'BG_City2', required: true, isShow: false },
+                { name: 'BG_State2', required: true, isShow: false },
+                { name: 'BG_Country2', required: true, isShow: false },
+                { name: 'BG_Date_From2', required: true, isShow: false },
+                { name: 'BG_Date_To2', required: true, isShow: false },
             ]
         }
     },
     {
         name: 'Indique sus direcciones de los ultimos 5 años empezando por la mas actual',
+        extra: {
+            type: 'multiple',
+            message: 'Si necesita registrar mas de 1 direccion use este menu',
+            SegmentedControlMessage: ['Direccion #1', 'Direccion #2', 'Direccion #3', 'Direccion #4', 'Direccion #5'],
+            sliceSize: [[0, 6], [6, 12], [12, 18], [18, 24], [24, 30]]
+        },
         fields: {
             text: [
                 { name: 'BG_Number_Street_5Y', required: true, isShow: false },
@@ -932,38 +984,44 @@ export const aplicantPart_A_III_Background = [
                 { name: 'BG_Date_To_5Y', required: true, isShow: false },
 
 
-                { name: 'BG_Number_Street_5Y-1', required: true, isShow: true },
-                { name: 'BG_City_5Y-1', required: true, isShow: true },
-                { name: 'BG_State_5Y-1', required: true, isShow: true },
-                { name: 'BG_Country_5Y-1', required: true, isShow: true },
-                { name: 'BG_Date_From_5Y1', required: true, isShow: true },
-                { name: 'BG_Date_To_5Y1', required: true, isShow: true },
+                { name: 'BG_Number_Street_5Y-1', required: true, isShow: false },
+                { name: 'BG_City_5Y-1', required: true, isShow: false },
+                { name: 'BG_State_5Y-1', required: true, isShow: false },
+                { name: 'BG_Country_5Y-1', required: true, isShow: false },
+                { name: 'BG_Date_From_5Y1', required: true, isShow: false },
+                { name: 'BG_Date_To_5Y1', required: true, isShow: false },
 
-                { name: 'BG_Number_Street_5Y-2', required: true, isShow: true },
-                { name: 'BG_City_5Y-2', required: true, isShow: true },
-                { name: 'BG_State_5Y-2', required: true, isShow: true },
-                { name: 'BG_Country_5Y-2', required: true, isShow: true },
-                { name: 'BG_Date_From_5Y2', required: true, isShow: true },
-                { name: 'BG_Date_To_5Y2', required: true, isShow: true },
+                { name: 'BG_Number_Street_5Y-2', required: true, isShow: false },
+                { name: 'BG_City_5Y-2', required: true, isShow: false },
+                { name: 'BG_State_5Y-2', required: true, isShow: false },
+                { name: 'BG_Country_5Y-2', required: true, isShow: false },
+                { name: 'BG_Date_From_5Y2', required: true, isShow: false },
+                { name: 'BG_Date_To_5Y2', required: true, isShow: false },
 
-                { name: 'BG_Number_Street_5Y-3', required: true, isShow: true },
-                { name: 'BG_City_5Y-3', required: true, isShow: true },
-                { name: 'BG_State_5Y-3', required: true, isShow: true },
-                { name: 'BG_Country_5Y-3', required: true, isShow: true },
-                { name: 'BG_Date_From_5Y3', required: true, isShow: true },
-                { name: 'BG_Date_To_5Y3', required: true, isShow: true },
+                { name: 'BG_Number_Street_5Y-3', required: true, isShow: false },
+                { name: 'BG_City_5Y-3', required: true, isShow: false },
+                { name: 'BG_State_5Y-3', required: true, isShow: false },
+                { name: 'BG_Country_5Y-3', required: true, isShow: false },
+                { name: 'BG_Date_From_5Y3', required: true, isShow: false },
+                { name: 'BG_Date_To_5Y3', required: true, isShow: false },
 
-                { name: 'BG_Number_Street_5Y-4', required: true, isShow: true },
-                { name: 'BG_City_5Y-4', required: true, isShow: true },
-                { name: 'BG_State_5Y-4', required: true, isShow: true },
-                { name: 'BG_Country_5Y-4', required: true, isShow: true },
-                { name: 'BG_Date_From_5Y4', required: true, isShow: true },
-                { name: 'BG_Date_To_5Y4', required: true, isShow: true },
+                { name: 'BG_Number_Street_5Y-4', required: true, isShow: false },
+                { name: 'BG_City_5Y-4', required: true, isShow: false },
+                { name: 'BG_State_5Y-4', required: true, isShow: false },
+                { name: 'BG_Country_5Y-4', required: true, isShow: false },
+                { name: 'BG_Date_From_5Y4', required: true, isShow: false },
+                { name: 'BG_Date_To_5Y4', required: true, isShow: false },
             ]
         }
     },
     {
         name: 'Informacion sobre su educación',
+        extra: {
+            type: 'multiple',
+            message: 'Si necesita registrar mas informacion use este menu',
+            SegmentedControlMessage: ['Slot #1', 'Slot #2', 'Slot #3'],
+            sliceSize: [[0, 5], [5, 10], [10, 15], [15, 20]]
+        },
         fields: {
             text: [
                 { name: 'BG_School', required: true, isShow: false },
@@ -972,28 +1030,34 @@ export const aplicantPart_A_III_Background = [
                 { name: 'BG_Education_From', required: true, isShow: false },
                 { name: 'BG_Education_To', required: true, isShow: false },
 
-                { name: 'BG_School2', required: true, isShow: true },
-                { name: 'BG_Type_School2', required: true, isShow: true },
-                { name: 'BG_Location2', required: true, isShow: true },
-                { name: 'BG_Education_From-1', required: true, isShow: true },
-                { name: 'BG_Education_To-1', required: true, isShow: true },
+                { name: 'BG_School2', required: true, isShow: false },
+                { name: 'BG_Type_School2', required: true, isShow: false },
+                { name: 'BG_Location2', required: true, isShow: false },
+                { name: 'BG_Education_From-1', required: true, isShow: false },
+                { name: 'BG_Education_To-1', required: true, isShow: false },
 
-                { name: 'BG_School3', required: true, isShow: true },
-                { name: 'BG_Type_School3', required: true, isShow: true },
-                { name: 'BG_Location3', required: true, isShow: true },
-                { name: 'BG_Education_From-2', required: true, isShow: true },
-                { name: 'BG_Education_To-2', required: true, isShow: true },
+                { name: 'BG_School3', required: true, isShow: false },
+                { name: 'BG_Type_School3', required: true, isShow: false },
+                { name: 'BG_Location3', required: true, isShow: false },
+                { name: 'BG_Education_From-2', required: true, isShow: false },
+                { name: 'BG_Education_To-2', required: true, isShow: false },
 
-                { name: 'BG_School4', required: true, isShow: true },
-                { name: 'BG_Type_School4', required: true, isShow: true },
-                { name: 'BG_Location4', required: true, isShow: true },
-                { name: 'BG_Education_From-3', required: true, isShow: true },
-                { name: 'BG_Education_To-3', required: true, isShow: true },
+                { name: 'BG_School4', required: true, isShow: false },
+                { name: 'BG_Type_School4', required: true, isShow: false },
+                { name: 'BG_Location4', required: true, isShow: false },
+                { name: 'BG_Education_From-3', required: true, isShow: false },
+                { name: 'BG_Education_To-3', required: true, isShow: false },
             ]
         }
     },
     {
         name: 'Información de su empleo durante los ultimos 5 años. El mas reciente PRIMERO',
+        extra: {
+            type: 'multiple',
+            message: 'Si necesita registrar mas informacion use este menu',
+            SegmentedControlMessage: ['Empleo #1', 'Empleo #2', 'Empleo #3'],
+            sliceSize: [[0, 4], [4, 8], [8, 12]]
+        },
         fields: {
             text: [
                 { name: 'BG_Employment_Addres', required: true, isShow: false },
@@ -1001,21 +1065,21 @@ export const aplicantPart_A_III_Background = [
                 { name: 'BG_Employment_Date_From', required: true, isShow: false },
                 { name: 'BG_Employment_Date_To', required: true, isShow: false },
 
-                { name: 'BG_Employment_Addres1', required: true, isShow: true },
-                { name: 'BG_Employment_Occupation1', required: true, isShow: true },
-                { name: 'BG_Employment_Date_From1', required: true, isShow: true },
-                { name: 'BG_Employment_Date_To1', required: true, isShow: true },
+                { name: 'BG_Employment_Addres1', required: true, isShow: false },
+                { name: 'BG_Employment_Occupation1', required: true, isShow: false },
+                { name: 'BG_Employment_Date_From1', required: true, isShow: false },
+                { name: 'BG_Employment_Date_To1', required: true, isShow: false },
 
-                { name: 'BG_Employment_Addres2', required: true, isShow: true },
-                { name: 'BG_Employment_Occupation2', required: true, isShow: true },
-                { name: 'BG_Employment_Date_From2', required: true, isShow: true },
-                { name: 'BG_Employment_Date_To2', required: true, isShow: true },
+                { name: 'BG_Employment_Addres2', required: true, isShow: false },
+                { name: 'BG_Employment_Occupation2', required: true, isShow: false },
+                { name: 'BG_Employment_Date_From2', required: true, isShow: false },
+                { name: 'BG_Employment_Date_To2', required: true, isShow: false },
 
             ]
         }
     },
     {
-        name: "Información de sus padres y hermanos",
+        name: "Información de sus padres",
         fields: {
             text: [
                 { name: 'Parents_Mother', required: true, isShow: false },
@@ -1025,24 +1089,40 @@ export const aplicantPart_A_III_Background = [
                 { name: 'Parents_Father', required: true, isShow: false },
                 { name: 'Parent_Father_Address', required: true, isShow: false },
                 { name: 'Parent_Father_Current_Location', required: true, isShow: false },
-
-                { name: 'Sibling', required: true, isShow: false },
-                { name: 'Sibling_Address', required: true, isShow: false },
-                { name: 'Sibling_Current_Location', required: true, isShow: false },
-
-                { name: 'Sibling1', required: true, isShow: true },
-                { name: 'Sibling_Address1', required: true, isShow: true },
-                { name: 'Sibling_Current_Location1', required: true, isShow: true },
-                { name: 'Sibling2', required: true, isShow: true },
-                { name: 'Sibling_Address2', required: true, isShow: true },
-                { name: 'Sibling_Current_Location2', required: true, isShow: true },
-                { name: 'Sibling3', required: true, isShow: true },
-                { name: 'Sibling_Address3', required: true, isShow: true },
-                { name: 'Sibling_Current_Location3', required: true, isShow: true },
             ],
             check: [
                 { name: 'Parent_Mother_Deceased', required: true, isShow: true },
                 { name: 'Parent_Father_Deceased', required: true, isShow: true },
+            ]
+        }
+    },
+    {
+        name: "Información de sus hermanos",
+        extra: {
+            type: 'multiple',
+            message: 'Si necesita registrar mas informacion use este menu',
+            SegmentedControlMessage: ['Hermano #1', 'Hermano #2', 'Hermano #3', 'Hermano #4'],
+            sliceSize: [[0, 3], [3, 6], [6, 9], [9, 13]]
+        },
+        fields: {
+            text: [
+                { name: 'Sibling', required: true, isShow: false },
+                { name: 'Sibling_Address', required: true, isShow: false },
+                { name: 'Sibling_Current_Location', required: true, isShow: false },
+
+                { name: 'Sibling1', required: true, isShow: false },
+                { name: 'Sibling_Address1', required: true, isShow: false },
+                { name: 'Sibling_Current_Location1', required: true, isShow: false },
+
+                { name: 'Sibling2', required: true, isShow: false },
+                { name: 'Sibling_Address2', required: true, isShow: false },
+                { name: 'Sibling_Current_Location2', required: true, isShow: false },
+
+                { name: 'Sibling3', required: true, isShow: false },
+                { name: 'Sibling_Address3', required: true, isShow: false },
+                { name: 'Sibling_Current_Location3', required: true, isShow: false },
+            ],
+            check: [
                 { name: 'Sibling_Deceased', required: true, isShow: true },
                 { name: 'Sibling_Deceased1', required: true, isShow: true },
                 { name: 'Sibling_Deceased2', required: true, isShow: true },
@@ -1063,17 +1143,20 @@ export const aplicantPart_B_I = [
                 { name: "WYA_Member_Particular_Group", required: true, isShow: false },
                 { name: "WYA_Torture", required: true, isShow: false },
             ],
-            // textArea: [
-            //     { name: 'Mistreatment_Explenation', required: true, isShow: false },
-            // ],
         }
     },
     {
         name: '¿Usted, su familia, sus amigos cercanos o sus colegas han sufrido alguna vez daño, maltrato o amenazas en el pasado por parte de alguien?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
                 { name: 'Mistreatment_Explenation', required: true, isShow: false },
-
             ],
             radio: [
                 {
@@ -1084,6 +1167,13 @@ export const aplicantPart_B_I = [
     },
     {
         name: '¿Teme sufrir daño o maltrato si regresa a su país de origen?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
                 { name: 'fear_mistreatment_Explanation', required: true, isShow: false },
@@ -1098,10 +1188,16 @@ export const aplicantPart_B_I = [
     },
     {
         name: '¿Alguna vez usted o algún miembro de su familia ha sido acusado, imputado, arrestado, detenido, interrogado, condenado y sentenciado, o encarcelado en algúnpaís que no sea Estados Unidos (incluso por una violación de la ley de inmigración)?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
                 { name: 'Family_Crimes_Explanation', required: true, isShow: false },
-
             ],
             radio: [
                 {
@@ -1112,6 +1208,13 @@ export const aplicantPart_B_I = [
     },
     {
         name: '¿Usted o algún miembro de su familia alguna vez ha pertenecido o ha estado asociado con alguna organización o grupo en su país de origen, como, pero no limitado a, un partido político, grupo estudiantil, sindicato, organización religiosa, grupo militar o paramilitar, patrulla civil, organización guerrillera, grupo étnico, grupo de derechos humanos, o la prensa o medios de comunicación?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
                 { name: 'Family_Group_Link_Explanation', required: true, isShow: false },
@@ -1125,6 +1228,13 @@ export const aplicantPart_B_I = [
     },
     {
         name: '¿Usted o sus familiares continúan participando de alguna manera en estas organizaciones o grupos?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
                 { name: 'Family_Group_Link_isActive_Explanation', required: true, isShow: false },
@@ -1138,6 +1248,13 @@ export const aplicantPart_B_I = [
     },
     {
         name: 'Are you afraid of being subjected to torture in your home country or any other country to which you may be returned?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
                 { name: 'Afraid_of_Torture_Explanation', required: true, isShow: false },
@@ -1153,6 +1270,13 @@ export const aplicantPart_B_I = [
 export const aplicantPart_C_I = [
     {
         name: '¿Usted, su cónyuge, sus hijos, sus padres o sus hermanos han solicitado alguna vez al Gobierno de los Estados Unidos el estatus de refugiado, asilo o la suspensión de deportación?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
                 { name: 'Family_Applied_asylum_Explanation', required: true, isShow: false }
@@ -1164,6 +1288,13 @@ export const aplicantPart_C_I = [
     },
     {
         name: 'Después de salir del país del cual solicita asilo, ¿usted o su cónyuge o hijo(s) que ahora están en los Estados Unidos viajaron o residieron en algún otro país antes de ingresar a los Estados Unidos?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
 
@@ -1178,6 +1309,13 @@ export const aplicantPart_C_I = [
     },
     {
         name: '¿Usted, su cónyuge o sus hijos alguna vez han ordenado, incitado, ayudado o participado de otro modo en causar daño o sufrimiento a alguna persona debido a su raza, religión, nacionalidad, pertenencia a un grupo social particular o creencia en una opinión política particular?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
 
@@ -1191,6 +1329,13 @@ export const aplicantPart_C_I = [
     },
     {
         name: 'Después de salir del país donde sufrió daño o teme sufrir daño, ¿regresó a ese país?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
 
@@ -1204,7 +1349,14 @@ export const aplicantPart_C_I = [
     },
     {
         name: '¿Está presentando esta solicitud más de 1 año después de su última llegada a los Estados Unidos?',
-        fields: {
+
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        }, fields: {
             textArea: [
 
                 { name: 'Expire_Time_Asaylum_Applicat_Explanation', required: true, isShow: false }
@@ -1217,6 +1369,13 @@ export const aplicantPart_C_I = [
     },
     {
         name: '¿Usted o algún miembro de su familia incluido en la solicitud ha cometido alguna vez algún delito y/o ha sido arrestado, acusado, condenado o sentenciado por algún delito en los Estados Unidos (incluso por una violación de la ley de inmigración)?',
+        extra: {
+            type: 'conditional',
+            Yes: [0, 1],
+            No: [0, 0],
+            question: [0],
+            inputType: 'textArea'
+        },
         fields: {
             textArea: [
 

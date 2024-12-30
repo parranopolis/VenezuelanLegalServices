@@ -11,16 +11,17 @@ import {
     FilterChildrenFormData
 } from '../utils/steps.jsx'
 import { LuTrendingUp } from "react-icons/lu";
-
+import { Final } from "../components/Forms/Forms.jsx";
 
 export const StepsContext = createContext()
 
 export const StepsProvider = ({ children }) => {
 
-    const [currentStep, setCurrentStep] = useState(0)
+    const [currentStep, setCurrentStep] = useState(5)
     const [totalChildren, setTotalChildren] = useState(0)
     const [isStepsVisible, setIsStepsVisible] = useState(false)
     const [childrenNames, setChildrenNames] = useState(['0'])
+    const [RadioChecked, setRadioChecked] = useState(null)
     Children(childrenNames)
 
     FilterChildrenFormData(totalChildren)
@@ -65,7 +66,8 @@ export const StepsProvider = ({ children }) => {
 
         handleStepClick,
         handleFormSubmit,
-        totalChildren, setTotalChildren
+        totalChildren, setTotalChildren,
+        RadioChecked, setRadioChecked
     }}>
         {children}
     </StepsContext.Provider>
