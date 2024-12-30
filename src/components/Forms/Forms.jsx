@@ -222,7 +222,7 @@ const getCheckedFields = (data, check) => {
 //base form
 const FormContainer = ({ formDataContex, handleChange }) => {
     // Current Group of Forms
-    const [currentSection, setCurrentSection] = useState(5)
+    const [currentSection, setCurrentSection] = useState(1)
 
     //context 
     const { handleFormSubmit, formGroups, currentStep, RadioChecked, setRadioChecked } = useContext(StepsContext)

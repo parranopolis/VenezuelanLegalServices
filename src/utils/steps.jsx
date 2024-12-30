@@ -65,7 +65,7 @@ export const aplicantPart_A_I = [
         extra: {
             type: 'multiple',
             message: 'Si no tiene una direccion segura donde recibir documentos puede usar nuestra direccion ',
-            SegmentedControlMessage: ['Direccion #Propia', 'Direccion de la Empresa'],
+            SegmentedControlMessage: ['Direccion Propia', 'Direccion de la Empresa'],
             sliceSize: [[0, 6], [6, 13]]
         },
         fields: {
