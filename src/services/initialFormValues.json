@@ -1724,32 +1724,32 @@
         "PDFTextField2": {
             "Mistreatment_Explenation": {
                 "value": "N/A",
-                "label": "Si la respuesta es 'Si', explique en detalle: 1. Qué sucedió 2. Cuándo se produjo el daño, el maltrato o las amenazas 3. Quién causó el daño, el maltrato o las amenazas 4. Por qué cree que se produjo el daño, el maltrato o las amenazas.;",
+                "label": "Explique qué sucedió, cuándo ocurrió el daño, maltrato o amenazas, quién fue el responsable y por qué cree que se produjeron.",
                 "explanation": ""
             },
             "fear_mistreatment_Explanation": {
                 "value": "N/A",
-                "label": "Si la respuesta es 'Sí', explique en detalle: 1. Qué daño o maltrato teme; 2. Quién cree que le haría daño o le haría mal; y 3. Por qué cree que le harían o podrían hacerle daño o hacerle maltrato.",
+                "label": "Explique qué daño o maltrato teme, quién cree que podría causárselo y por qué considera que lo harían.",
                 "explanation": ""
             },
             "Family_Crimes_Explanation": {
                 "value": "N/A",
-                "label": "En caso afirmativo, explique las circunstancias y los motivos de la acción.",
+                "label": "Explique las circunstancias y los motivos de la acción.",
                 "explanation": ""
             },
             "Family_Group_Link_Explanation": {
                 "value": "N/A",
-                "label": "Si es 'Sí', describa para cada persona el nivel de participación, cualquier puesto de liderazgo u otros puestos desempeñados y el tiempo que usted o los miembros de su familia estuvieron involucrados en cada organización o actividad.",
+                "label": "Describa cada persona, el nivel de participación, los puestos de liderazgo y el tiempo que usted o su familia estuvieron involucrados en cada organización o actividad.",
                 "explanation": ""
             },
             "Family_Group_Link_isActive_Explanation": {
                 "value": "N/A",
-                "label": "Si responde 'Sí', describa para cada persona su nivel actual de participación o el de los miembros de su familia, cualquier puesto de liderazgo u otro puesto que usted o los miembros de su familia ocupan actualmente y el tiempo que usted o los miembros de su familia han estado involucrados en cada organización o grupo.",
+                "label": "Describa el nivel de participación, los puestos de liderazgo y el tiempo que usted o sus familiares han estado involucrados en cada organización o grupo.",
                 "explanation": ""
             },
             "Afraid_of_Torture_Explanation": {
                 "value": "N/A",
-                "label": "Si es así, explique por qué tiene miedo y describa la naturaleza de la tortura que teme, quién la realizaría y por qué sería infligida.",
+                "label": "Explique por qué tiene miedo y describa la naturaleza de la tortura que teme, quién la realizaría y por qué sería infligida.",
                 "explanation": ""
             }
         },
@@ -1822,32 +1822,32 @@
         "PDFTextField2": {
             "Family_Applied_asylum_Explanation": {
                 "value": "N/A",
-                "label": "Si la respuesta es 'Sí', explique la decisión y qué sucedió con el estatus que usted, su cónyuge, sus hijos, sus padres o sus hermanos recibieron como resultado de esa decisión. Indique si usted fue incluido o no en la solicitud de uno de sus padres o cónyuge. De ser así, incluya el número A de su padre o cónyuge en su respuesta. Si un juez de inmigración o la Junta de Apelaciones de Inmigración le ha negado el asilo, describa cualquier cambio en las condiciones en su país o en sus propias circunstancias personales desde la fecha de la negación que pueda afectar su elegibilidad para el asilo.",
+                "label": "Explique la decisión y el estatus que usted o sus familiares recibieron. Indique si fue incluido en la solicitud de algún padre o cónyuge e incluya su número \"A\". Si se le negó el asilo, describa los cambios en su país o en sus circunstancias personales que puedan afectar su elegibilidad.",
                 "explanation": ""
             },
             "Stay_and_Legal_Status_Other_Countries_Explanation": {
                 "value": "N/A",
-                "label": "Si responde Sí a una o ambas preguntas (2A y/o 2B), proporcione para cada persona lo siguiente: el nombre de cada país y la duración de la estadía, el estatus de la persona mientras estuvo allí, las razones para partir, si la persona tiene o no derecho a regresar para fines de residencia legal y si la persona solicitó el estatus de refugiado o asilo mientras estuvo allí y, de no ser así, por qué no lo hizo.",
+                "label": "Si responde que si a cualqueira de las 2 preguntas, para cada persona, indique el país y la duración de su estadía, su estatus durante ese tiempo, las razones para partir, si tiene derecho a regresar legalmente y si solicitó refugio o asilo, explicando por qué no lo hizo si no lo hizo.",
                 "explanation": ""
             },
             "Discriminatory_Actions_Against_Others_Explanation": {
                 "value": "N/A",
-                "label": "Si responde 'Sí', describa en detalle cada uno de esos incidentes y su propia participación, la de su cónyuge o la de sus hijos.",
+                "label": "Describa en detalle cada uno de esos incidentes y su propia participación, la de su cónyuge o la de sus hijos.",
                 "explanation": ""
             },
             "Return_Country__you_Fear_Explanation": {
                 "value": "N/A",
-                "label": "Si responde 'Sí', describa en detalle las circunstancias de su(s) visita(s) (por ejemplo, la(s) fecha(s) del(de los) viaje(s), el(los) propósito(s) del(de los) viaje(s) y el tiempo que permaneció en ese país para la(s) visita(s).)",
+                "label": "Describa las circunstancias de sus visitas, incluyendo fechas, propósitos y duración en el país.",
                 "explanation": ""
             },
             "Expire_Time_Asaylum_Applicat_Explanation": {
                 "value": "N/A",
-                "label": "Si la respuesta es 'Sí', explique por qué no presentó su solicitud de asilo dentro del primer año después de su llegada. Debe estar preparado para explicar en su entrevista o audiencia por qué no presentó su solicitud de asilo dentro del primer año después de su llegada. Para obtener orientación sobre cómo responder a esta pregunta, consulte las Instrucciones, Parte 1: Instrucciones para la presentación, Sección V. 'Cómo completar el formulario', Parte C.",
+                "label": "Explique por qué no solicitó asilo dentro del primer año de su llegada.",
                 "explanation": ""
             },
             "Crimes_In_USA_Explanation": {
                 "value": "N/A",
-                "label": "Si la respuesta es 'Sí', especifique en cada caso lo que ocurrió y las circunstancias, las fechas, la duración de la condena, el lugar, la duración de la detención o prisión, los motivos de la detención o condena, los cargos formales que se presentaron contra usted o sus familiares incluidos en su solicitud y los motivos de su liberación. Adjunte documentos que hagan referencia a estos incidentes, si están disponibles, o una explicación de por qué no están disponibles.",
+                "label": "Para cada caso describa qué ocurrió, las circunstancias, fechas, duración y motivos de la condena o detención, los cargos formales contra usted o sus familiares incluidos en la solicitud, y los motivos de su liberación. Tenga a la mano documentos relacionados si están disponibles o explique por qué no lo están.",
                 "explanation": ""
             }
         },
@@ -1864,7 +1864,7 @@
             },
             "Legal_Status_Other_Coutries": {
                 "value": null,
-                "label": "¿Usted, su cónyuge, sus hijos u otros miembros de su familia, como sus padres o hermanos, alguna vez han solicitado o recibido algún estatus legal en algún país distinto de aquel del cual ahora solicita asilo?",
+                "label": "¿Usted o sus familiares solicitaron o recibieron estatus legal en un país distinto al que ahora solicita asilo?",
                 "explanation": ""
             },
             "Discriminatory_Actions_Against_Others": {

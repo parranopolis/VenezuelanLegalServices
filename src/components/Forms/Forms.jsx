@@ -249,7 +249,6 @@ const FormContainer = ({ formDataContex, handleChange }) => {
         setDataShow([])
         setValue('')
         setDataShowSelect([])
-        console.log(currentGroup)
         if (currentGroup?.extra?.type === 'multiple') {
             const filteredSegmentData = FilterSegmentData(currentGroup, value)
             setDataShow(filteredSegmentData[1])
@@ -305,7 +304,6 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                         {currentGroup.fields.hasOwnProperty('text') ? <InputTextComponent
                             className='InputTextComponent'
                             group={group[0]}
-                            // data={dataShow}
                             data={dataShow.length != 0 ? dataShow : currentGroup.fields.text}
                             handleChange={handleChange}
                             formDataContex={formDataContex}

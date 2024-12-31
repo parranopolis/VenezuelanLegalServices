@@ -1146,7 +1146,7 @@ export const aplicantPart_B_I = [
         }
     },
     {
-        name: '¿Usted, su familia, sus amigos cercanos o sus colegas han sufrido alguna vez daño, maltrato o amenazas en el pasado por parte de alguien?',
+        name: '¿Alguna vez usted, su familia, amigos o colegas han sufrido daño, maltrato o amenazas?',
         extra: {
             type: 'conditional',
             Yes: [0, 1],
@@ -1187,7 +1187,7 @@ export const aplicantPart_B_I = [
         }
     },
     {
-        name: '¿Alguna vez usted o algún miembro de su familia ha sido acusado, imputado, arrestado, detenido, interrogado, condenado y sentenciado, o encarcelado en algúnpaís que no sea Estados Unidos (incluso por una violación de la ley de inmigración)?',
+        name: '¿Alguna vez usted o su familia fueron acusados, detenidos, interrogados, o torturads en otro país (incluso por infracciones migratorias)?',
         extra: {
             type: 'conditional',
             Yes: [0, 1],
@@ -1207,7 +1207,7 @@ export const aplicantPart_B_I = [
         }
     },
     {
-        name: '¿Usted o algún miembro de su familia alguna vez ha pertenecido o ha estado asociado con alguna organización o grupo en su país de origen, como, pero no limitado a, un partido político, grupo estudiantil, sindicato, organización religiosa, grupo militar o paramilitar, patrulla civil, organización guerrillera, grupo étnico, grupo de derechos humanos, o la prensa o medios de comunicación?',
+        name: '¿Usted o algún familiar ha pertenecido o estado ligado a alguna agrupación en su país por ejemplo, partido político, sindicato, grupo religioso, paramilitar o guerrilla?',
         extra: {
             type: 'conditional',
             Yes: [0, 1],
@@ -1247,7 +1247,7 @@ export const aplicantPart_B_I = [
         }
     },
     {
-        name: 'Are you afraid of being subjected to torture in your home country or any other country to which you may be returned?',
+        name: '¿Tiene usted miedo de ser sometido a tortura en su país de origen o en cualquier otro país al que pueda ser devuelto?',
         extra: {
             type: 'conditional',
             Yes: [0, 1],
@@ -1269,7 +1269,7 @@ export const aplicantPart_B_I = [
 ]
 export const aplicantPart_C_I = [
     {
-        name: '¿Usted, su cónyuge, sus hijos, sus padres o sus hermanos han solicitado alguna vez al Gobierno de los Estados Unidos el estatus de refugiado, asilo o la suspensión de deportación?',
+        name: 'A  solicitado usted o algun familiar al Gobierno de EE. UU. estatus de refugiado, asilo o suspensión de deportación?',
         extra: {
             type: 'conditional',
             Yes: [0, 1],
@@ -1287,7 +1287,7 @@ export const aplicantPart_C_I = [
         }
     },
     {
-        name: 'Después de salir del país del cual solicita asilo, ¿usted o su cónyuge o hijo(s) que ahora están en los Estados Unidos viajaron o residieron en algún otro país antes de ingresar a los Estados Unidos?',
+        name: '¿Tras salir del país del que solicita asilo, usted, su cónyuge o hijos residieron o viajaron a otro país antes de ingresar a EE. UU.?',
         extra: {
             type: 'conditional',
             Yes: [0, 1],
@@ -1308,7 +1308,7 @@ export const aplicantPart_C_I = [
         }
     },
     {
-        name: '¿Usted, su cónyuge o sus hijos alguna vez han ordenado, incitado, ayudado o participado de otro modo en causar daño o sufrimiento a alguna persona debido a su raza, religión, nacionalidad, pertenencia a un grupo social particular o creencia en una opinión política particular?',
+        name: '¿Alguna vez usted, su cónyuge o hijos han dañado o ayudado a dañar a alguien por su raza, religión, nacionalidad, grupo social u opinión política?',
         extra: {
             type: 'conditional',
             Yes: [0, 1],
@@ -1368,7 +1368,7 @@ export const aplicantPart_C_I = [
         }
     },
     {
-        name: '¿Usted o algún miembro de su familia incluido en la solicitud ha cometido alguna vez algún delito y/o ha sido arrestado, acusado, condenado o sentenciado por algún delito en los Estados Unidos (incluso por una violación de la ley de inmigración)?',
+        name: '¿Alguna vez usted o su familia han cometido un delito o sido arrestados, acusados, condenados o sentenciados en EEUU.?',
         extra: {
             type: 'conditional',
             Yes: [0, 1],
