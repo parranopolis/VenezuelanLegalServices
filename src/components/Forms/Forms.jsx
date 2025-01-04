@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { initialFormValues } from '../../contexts/InitialValueContext'
 import i589 from './../../assets/PDF/i-589.pdf'
 import { PDFCheckBox, PDFDocument, PDFRadioGroup, PDFTextField } from 'pdf-lib'
-import { Button, Input, Fieldset, Box, Link, Strong, Stack, Textarea, CheckboxCard } from '@chakra-ui/react'
+import { Button, Input, Fieldset, Box, Link, Strong, Stack, Textarea, CheckboxCard, Group } from '@chakra-ui/react'
 import { Checkbox } from "@/components/ui/checkbox"
 
 import { findProperty } from '../../utils/functions'
@@ -34,6 +34,82 @@ export function Final() {
     return <h1>Final</h1>
 }
 
+export const downloadBlob = (data, mimeType) => {
+    let blob, url
+    blob = new Blob([data], {
+        type: mimeType
+    })
+    url = window.URL.createObjectURL(blob)
+    // downloadURL(url, filename)
+    // setTimeout(function () {
+    //     return window.URL.revokeObjectURL(url)
+    // }, 1000)
+    return url
+
+}
+
+export const downloadURL = (data) => {
+    let a
+    a = document.createElement('a')
+    a.href = data
+    a.download = 'output.pdf'
+    document.body.appendChild(a)
+    a.style = 'display:none'
+    // a.click()
+    a.remove()
+    // setPDFUrl(a)
+    return a
+}
+
+export const modifyPDF = async (formData) => {
+    const q = Object.keys(formData)
+    try {
+        const url = i589
+        const existstingPdfBytes = await fetch(url).then((res) => res.arrayBuffer())
+
+        const pdfDoc = await PDFDocument.load(existstingPdfBytes)
+        const form = pdfDoc.getForm()
+
+        q.forEach(group => {
+
+            // Modify text fields
+            const textFields = formData[group].PDFTextField2;
+            Object.keys(textFields).forEach((key) => {
+                const field = form.getTextField(key);
+                if (field) {
+                    field.setText(textFields[key].value);
+                }
+            });
+
+            // Modify Radio fields
+            const radioFields = formData[group].PDFRadioGroup2;
+            radioFields ? Object.keys(radioFields).forEach((key) => {
+                const field = form.getRadioGroup(key);
+                if (field && radioFields[key] && radioFields[key].value) {
+                    // Solo selecciona si hay un valor válido
+                    field.select(radioFields[key].value);
+                }
+            }) : null
+
+            // Modify Check fields
+            const checkBoxFields = formData[group].PDFCheckBox2;
+            checkBoxFields ? Object.keys(checkBoxFields).forEach((key) => {
+                const field = form.getCheckBox(key);
+                if (field && checkBoxFields[key] && checkBoxFields[key].value) {
+                    field.check();
+                }
+            }) : null
+        })
+
+        // Save the PDF
+
+        const pdfBytes = await pdfDoc.save()
+        return pdfBytes
+    } catch (error) {
+        console.error('Error modifying the PDF:', error);
+    }
+    return null
+}
 // Form Page
 export function Forms({ onSubmit }) {
     // console.log(onSubmit)
@@ -44,10 +120,10 @@ export function Forms({ onSubmit }) {
         const { name, value, type } = e.target
         setFormData((prevFormData) => {
             let updatedValue = value
-
             if (name == 'Each_Entry_Status_1' || name === 'Each_Entry_Status_2' || name === 'Each_Entry_Status_3') {
                 updatedValue = statusMapping[value] || value
             }
+
             if (type === 'radio') {
                 return {
                     ...prevFormData,
@@ -62,7 +138,7 @@ export function Forms({ onSubmit }) {
                         }
                     }
                 }
-            } else if (type === 'text' || type == 'select-one') {
+            } else if (type === 'text' || type == 'select-one' || type === 'textarea') {
                 return {
                     ...prevFormData,
                     [group]: {
@@ -95,71 +171,6 @@ export function Forms({ onSubmit }) {
 
             return prevFormData
         })
-
-    }
-
-    const downloadBlob = (data, filename, mimeType) => {
-        let blob, url
-        blob = new Blob([data], {
-            type: mimeType
-        })
-        url = window.URL.createObjectURL(blob)
-        downloadURL(url, filename)
-        setTimeout(function () {
-            return window.URL.revokeObjectURL(url)
-        }, 1000)
-
-    }
-
-    const downloadURL = (data, filename) => {
-        let a
-        a = document.createElement('a')
-        a.href = data
-        a.download = filename
-        document.body.appendChild(a)
-        a.style = 'display:none'
-        // a.click()
-        a.remove()
-        setPDFUrl(a)
-    }
-
-    const modifyPDF = async () => {
-
-        try {
-
-            const url = i589
-            const existstingPdfBytes = await fetch(url).then((res) => res.arrayBuffer())
-
-            const pdfDoc = await PDFDocument.load(existstingPdfBytes)
-            const form = pdfDoc.getForm()
-
-            // Modify text fields
-            const textFields = formData.Children.PDFTextField2;
-            Object.keys(textFields).forEach((key) => {
-                const field = form.getTextField(key);
-                if (field) {
-                    field.setText(textFields[key].value);
-                }
-            });
-
-            // Modify Radio fields
-            const radioFields = formData.Children.PDFRadioGroup2;
-            Object.keys(radioFields).forEach((key) => {
-                const field = form.getRadioGroup(key);
-                if (field && radioFields[key] && radioFields[key].value) {
-                    // Solo selecciona si hay un valor válido
-                    field.select(radioFields[key].value);
-                }
-            });
-
-            // Save the PDF
-
-            const pdfBytes = await pdfDoc.save()
-            downloadBlob(pdfBytes, 'output.pdf', 'application/pdf')
-        } catch (error) {
-            console.error('Error modifying the PDF:', error);
-            alert('Hubo un error al modificar el PDF. Verifica la consola para más detalles.');
-        }
     }
 
     return (
@@ -214,7 +225,7 @@ const getCheckedFields = (data, check) => {
     const fields = data.fields[inputType]
     if (!check) return fields.slice(No[0], No[1])
 
-    if (check.checked && check.value === 'Yes') return fields.slice(Yes[0], Yes[1])
+    if (check.checked && check.value === 'Si') return fields.slice(Yes[0], Yes[1])
 
     return fields.slice(No[0], No[1])
 }
@@ -224,9 +235,10 @@ const FormContainer = ({ formDataContex, handleChange }) => {
     // Current Group of Forms
     const [currentSection, setCurrentSection] = useState(1)
 
+    const { formData, setFormData } = useContext(initialFormValues)
+
     //context 
     const { handleFormSubmit, formGroups, currentStep, RadioChecked, setRadioChecked } = useContext(StepsContext)
-
     //Array of Total groups from the context
     const currentForm = Object.values(formGroups[currentStep])
 
@@ -372,8 +384,37 @@ const FormContainer = ({ formDataContex, handleChange }) => {
 
     }
     // console.log(totalChildren)
+    const createPDF = async (e, data) => {
+        e.preventDefault()
+        try {
+
+            const q = await modifyPDF(data, group[0])
+            const w = downloadBlob(q, 'application/pdf')
+            const e = downloadURL(w)
+            console.log(e)
+
+            return setSpan(e)
+            // window.open(e, '_blank')
+        } catch (error) {
+            console.log(error)
+        }
+        return null
+    }
+
+    const [span, setSpan] = useState(null)
+
     return (
         <article>
+            {span ? (
+                <div>
+                    <h3>PDF Modificado</h3>
+                    <a href={span} download="modified_form.pdf">Descarga una copia aqui</a>
+
+                    <object data={span} type="application/pdf" width='100%' height='810vh' >
+
+                    </object>
+                </div>
+            ) : null}
             <section>
                 {isValidated
                     ? ''
@@ -407,7 +448,11 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                             name='next' onClick={updateCurrentForm}>Siguiente</Button>
                     }
                 </div>
+                <div>
+                    <button onClick={(e) => createPDF(e, formData)}>Create PDF</button>
+                </div>
             </section>
+
         </article>
 
     )
@@ -438,7 +483,7 @@ function InputSelect({ data, formDataContex, handleChange, group }) {
                             <NativeSelectRoot
                                 id={key}
                                 name={key}
-                                // value={property.value !== 'N/A' ? property.value : ''}
+                                value={property.value === 'N/A' ? '' : property.value}
                                 onChange={(e) => {
                                     handleTwoFunctuons(e, key)
                                     handleChange(e, personGroup)
@@ -495,7 +540,7 @@ function InputTextComponent({ data, handleChange, formDataContex, group, q }) {
                                 name={field.name}
                                 type='text'
                                 id={field}
-                                // value={property.value !== 'N/A' ? property.value : ''}
+                                value={property.value === 'N/A' ? '' : property.value}
                                 onChange={(e) => handleChange(e, group)}
                                 required={field.required ? true : false}
                             />
@@ -528,7 +573,7 @@ function InputRadio({ data, handleChange, formDataContex, person, extra }) {
                                     id={`${key}_${value}`}
                                     name={key}
                                     value={value}
-                                    checked={property.value === value}
+                                    checked={property.value == value}
                                     onChange={(e) => {
                                         handleChange(e, person[0])
                                         e.target.parentNode.classList.contains('SpecialRadioInput') ? setRadioChecked(e.target,) : setRadioChecked(null)
@@ -580,10 +625,7 @@ function InputCheckbox({ group,
 }
 
 function InputTextArea({ group, data, name, handleChange, formDataContex }) {
-    // console.log(handleChange)
-
     const obj = formDataContex[group]
-
     return (
         <Stack>
 
@@ -607,11 +649,11 @@ function InputTextArea({ group, data, name, handleChange, formDataContex }) {
                             <Textarea
                                 className={field.required ? 'p-large required' : 'p-large'}
                                 variant={'subtle'}
-                                name={field}
+                                name={field.name}
                                 type='text'
                                 id={field}
                                 // value={property.value !== 'N/A' ? property.value : ''}
-                                onChange={handleChange}
+                                onChange={(e) => handleChange(e, group[0])}
                                 required={field.required ? true : false}
                                 size={'xl'}
                                 resize={'vertical'}

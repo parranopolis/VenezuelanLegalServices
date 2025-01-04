@@ -320,99 +320,9 @@
             }
         },
         "PDFCheckBox2": {
-            "dieciocho": {
-                "value": false,
-                "label": "Es Mayor de 18 Años",
-                "explanation": ""
-            },
-            "dieciocho_3": {
-                "value": false,
-                "label": "Marcador Alternativo",
-                "explanation": ""
-            },
-            "dieciocho_2": {
-                "value": false,
-                "label": "Marcador de Consentimiento",
-                "explanation": ""
-            },
             "Obligatorio": {
                 "value": "on",
                 "label": "Campo Obligatorio",
-                "explanation": ""
-            },
-            "marital_Status": {
-                "value": false,
-                "label": "Estado Civil Confirmado",
-                "explanation": ""
-            },
-            "Parent_Mother_Deceased": {
-                "value": false,
-                "label": "Madre Fallecida",
-                "explanation": ""
-            },
-            "Parent_Father_Deceased": {
-                "value": false,
-                "label": "Padre Fallecido",
-                "explanation": ""
-            },
-            "Sibling_Deceased": {
-                "value": false,
-                "label": "Hermano/a Fallecido/a",
-                "explanation": ""
-            },
-            "Sibling_Deceased1": {
-                "value": false,
-                "label": "Segundo Hermano/a Fallecido/a",
-                "explanation": ""
-            },
-            "Sibling_Deceased2": {
-                "value": false,
-                "label": "Tercer Hermano/a Fallecido/a",
-                "explanation": ""
-            },
-            "Sibling_Deceased3": {
-                "value": false,
-                "label": "Cuarto Hermano/a Fallecido/a",
-                "explanation": ""
-            },
-            "WYA_Race": {
-                "value": false,
-                "label": "Pertenencia a Raza",
-                "explanation": ""
-            },
-            "WYA_Religion": {
-                "value": false,
-                "label": "Pertenencia a Religión",
-                "explanation": ""
-            },
-            "WYA_Nationality": {
-                "value": false,
-                "label": "Pertenencia a Nacionalidad",
-                "explanation": ""
-            },
-            "WYA_Political_Opinion": {
-                "value": false,
-                "label": "Opinión Política",
-                "explanation": ""
-            },
-            "WYA_Member_Particular_Group": {
-                "value": false,
-                "label": "Miembro de un Grupo Particular",
-                "explanation": ""
-            },
-            "WYA_Torture": {
-                "value": false,
-                "label": "Víctima de Tortura",
-                "explanation": ""
-            },
-            "Checkbox_39": {
-                "value": false,
-                "label": "Checkbox 39",
-                "explanation": ""
-            },
-            "Checkbox_40": {
-                "value": false,
-                "label": "Checkbox 40",
                 "explanation": ""
             }
         }
@@ -1030,7 +940,7 @@
                 "label": "Apellidos (Todos)",
                 "explanation": ""
             },
-            "Children_City_Country_of_Birth5": {
+            "Children_City_Country_of_Birt5": {
                 "value": "N/A",
                 "label": "Ciudad donde Nació",
                 "explanation": ""
@@ -1085,7 +995,7 @@
                 "label": "Numero de I-94 (si lo tiene)",
                 "explanation": ""
             },
-            "Children_Status_Last_Admitted5": {
+            "Children_Status_Last_Admittedchildren5": {
                 "value": "N/A",
                 "label": "Estatus al entrar",
                 "explanation": ""

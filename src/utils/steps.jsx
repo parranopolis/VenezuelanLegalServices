@@ -91,7 +91,7 @@ export const aplicantPart_A_I = [
         fields: {
             radio: [
                 {
-                    'Gender': ['Male', 'Female'],
+                    'Gender': ['Masculino', 'Femenino'],
 
                     'Marital_Status': ['Soltero -> Nunca Casado',
                         'Casado Legalmente',
@@ -109,7 +109,7 @@ export const aplicantPart_A_I = [
         fields: {
             select: [
                 {
-                    'Race_Ethnic_Tribal_Group': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico']
+                    'Race_Ethnic_Tribal_Group': ['Hispano', 'Afroamericano', 'Negro', 'Indigena', 'Asiatico']
                 }
             ],
             text: [
@@ -169,7 +169,7 @@ export const aplicantPart_A_I = [
 
             radio: [
                 {
-                    'English': ['Yes', 'No']
+                    'English': ['Si', 'No']
                 }
             ],
             text: [
@@ -177,7 +177,6 @@ export const aplicantPart_A_I = [
                 { name: 'Passport_Number', required: false, isShow: false },
                 { name: 'Passport_Expiration_Day', required: false, isShow: false },
                 { name: 'Native_Language', required: true, isShow: false },
-                // aqui debe ir el raido English [yes, no]
                 { name: 'Other_Language', required: false, isShow: false },
             ],
         },
@@ -221,10 +220,10 @@ export const aplicantPart_A_II_Spouse = [
             ],
             select: [
                 {
-                    'Spouse_Race': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico']
+                    'Spouse_Race': ['Hispano', 'Afroamericano', 'Negro', 'Indigena', 'Asiatico']
                 }],
             radio: [
-                { 'Spouse_Gender': ['Mujer', 'Hombre'] }
+                { 'Spouse_Gender': ['Femenino', 'Masculino'] }
             ]
         },
     },
@@ -239,8 +238,8 @@ export const aplicantPart_A_II_Spouse = [
         },
         fields: {
             radio: [
-                { 'Spouse_Location_US': ['Yes', 'No'] },
-                { 'Spouse_Court': ['Yes', 'No'] }
+                { 'Spouse_Location_US': ['Si', 'No'] },
+                { 'Spouse_Court': ['Si', 'No'] }
             ],
             text: [
                 //en "Spouse_Location_US" si marca que no, solo debe aparecer esta:
@@ -267,7 +266,7 @@ export const aplicantPart_A_II_Spouse = [
         name: 'Inclusion',
         fields: {
             radio: [
-                { 'Spouse_Include_Application': ['Yes', 'No'] }
+                { 'Spouse_Include_Application': ['Si', 'No'] }
             ],
             //modificar esto
             text: [
@@ -282,7 +281,7 @@ export const childrenBase = [
         name: 'Hijos',
         fields: {
             radio: [
-                { 'Children': ['Yes', 'No'] }
+                { 'Children': ['Si', 'No'] }
             ],
             // text: [
             // si en children se marca que si, debe mostrarse este campo pero en formato Select
@@ -343,7 +342,7 @@ export const childrenBase = [
 
             ],
             select: [
-                { 'Children_Race': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+                { 'Children_Race': ['Hispano', 'Afroamericano', 'Negro', 'Indigena', 'Asiatico'] },
             ]
         }
     },
@@ -379,8 +378,8 @@ export const childrenBase = [
             //     }
             // ],
             radio: [
-                { 'Children_Location': ['Yes', 'No'] },
-                { 'Children_Court': ['Yes', 'No'] },
+                { 'Children_Location': ['Si', 'No'] },
+                { 'Children_Court': ['Si', 'No'] },
             ]
         },
     },
@@ -390,7 +389,7 @@ export const childrenBase = [
 
         fields: {
             radio: [
-                { 'Children_Included': ['Yes', 'No'] },
+                { 'Children_Included': ['Si', 'No'] },
 
             ],
             //modificar esto
@@ -449,7 +448,7 @@ export const childrenBase = [
 
             ],
             select: [
-                { 'Children_Race1': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+                { 'Children_Race1': ['Hispano', 'Afroamericano', 'Negro', 'Indigena', 'Asiatico'] },
             ]
         }
     },
@@ -486,8 +485,8 @@ export const childrenBase = [
             //     }
             // ],
             radio: [
-                { 'Children_Location1': ['Yes', 'No'] },
-                { 'Children_Court1': ['Yes', 'No'] },
+                { 'Children_Location1': ['Si', 'No'] },
+                { 'Children_Court1': ['Si', 'No'] },
             ]
         },
     },
@@ -497,7 +496,7 @@ export const childrenBase = [
 
         fields: {
             radio: [
-                { 'Children_Included1': ['Yes', 'No'] },
+                { 'Children_Included1': ['Si', 'No'] },
 
             ],
             //modificar esto
@@ -557,7 +556,7 @@ export const childrenBase = [
 
             ],
             select: [
-                { 'Children_Race2': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+                { 'Children_Race2': ['Hispano', 'Afroamericano', 'Negro', 'Indigena', 'Asiatico'] },
             ]
         }
     },
@@ -594,8 +593,8 @@ export const childrenBase = [
             //     }
             // ],
             radio: [
-                { 'Children_Location2': ['Yes', 'No'] },
-                { 'Children_Court2': ['Yes', 'No'] },
+                { 'Children_Location2': ['Si', 'No'] },
+                { 'Children_Court2': ['Si', 'No'] },
             ]
         },
     },
@@ -605,7 +604,7 @@ export const childrenBase = [
 
         fields: {
             radio: [
-                { 'Children_Included2': ['Yes', 'No'] },
+                { 'Children_Included2': ['Si', 'No'] },
 
             ],
             //modificar esto
@@ -665,7 +664,7 @@ export const childrenBase = [
 
             ],
             select: [
-                { 'Children_Race3': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+                { 'Children_Race3': ['Hispano', 'Afroamericano', 'Negro', 'Indigena', 'Asiatico'] },
             ]
         }
     },
@@ -702,8 +701,8 @@ export const childrenBase = [
             //     }
             // ],
             radio: [
-                { 'Children_Location3': ['Yes', 'No'] },
-                { 'Children_Court3': ['Yes', 'No'] },
+                { 'Children_Location3': ['Si', 'No'] },
+                { 'Children_Court3': ['Si', 'No'] },
             ]
         },
     },
@@ -713,7 +712,7 @@ export const childrenBase = [
 
         fields: {
             radio: [
-                { 'Children_Included3': ['Yes', 'No'] },
+                { 'Children_Included3': ['Si', 'No'] },
 
             ],
             //modificar esto
@@ -773,7 +772,7 @@ export const childrenBase = [
 
             ],
             select: [
-                { 'Children_Race4': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+                { 'Children_Race4': ['Hispano', 'Afroamericano', 'Negro', 'Indigena', 'Asiatico'] },
             ]
         }
     },
@@ -810,8 +809,8 @@ export const childrenBase = [
             //     }
             // ],
             radio: [
-                { 'Children_Location4': ['Yes', 'No'] },
-                { 'Children_Court4': ['Yes', 'No'] },
+                { 'Children_Location4': ['Si', 'No'] },
+                { 'Children_Court4': ['Si', 'No'] },
             ]
         },
     },
@@ -821,7 +820,7 @@ export const childrenBase = [
 
         fields: {
             radio: [
-                { 'Children_Included4': ['Yes', 'No'] },
+                { 'Children_Included4': ['Si', 'No'] },
 
             ],
             //modificar esto
@@ -875,11 +874,11 @@ export const childrenBase = [
         extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
         fields: {
             text: [
-                { name: 'Children_City_Country_of_Birth5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_City_Country_of_Birt5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Nationality5', required: true, isShow: false, segment: 0 },
             ],
             select: [
-                { 'Children_Race5': ['Hispano', 'AfroAmericano', 'Negro', 'Indigena', 'Asiatico'] },
+                { 'Children_Race5': ['Hispano', 'Afroamericano', 'Negro', 'Indigena', 'Asiatico'] },
             ]
         }
     },
@@ -904,7 +903,7 @@ export const childrenBase = [
                 { name: 'Children_Place_Last_Entry5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_I-94_Number5', required: false, isShow: false, segment: 0 },
-                { name: 'Children_Status_Last_Admitted5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admittedchildren5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Expiration_Day_Stay5', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
@@ -916,8 +915,8 @@ export const childrenBase = [
             //     }
             // ],
             radio: [
-                { 'Children_Location5': ['Yes', 'No'] },
-                { 'Children_Court5': ['Yes', 'No'] },
+                { 'Children_Location5': ['Si', 'No'] },
+                { 'Children_Court5': ['Si', 'No'] },
             ]
         },
     },
@@ -927,7 +926,7 @@ export const childrenBase = [
 
         fields: {
             radio: [
-                { 'Children_Included5': ['Yes', 'No'] },
+                { 'Children_Included5': ['Si', 'No'] },
 
             ],
             //modificar esto
@@ -1160,7 +1159,7 @@ export const aplicantPart_B_I = [
             ],
             radio: [
                 {
-                    "Mistreatment": ['Yes', 'No']
+                    "Mistreatment": ['Si', 'No']
                 }
             ]
         }
@@ -1181,7 +1180,7 @@ export const aplicantPart_B_I = [
             ],
             radio: [
                 {
-                    "fear_mistreatment": ['Yes', 'No']
+                    "fear_mistreatment": ['Si', 'No']
                 }
             ]
         }
@@ -1201,7 +1200,7 @@ export const aplicantPart_B_I = [
             ],
             radio: [
                 {
-                    "Family_Crimes": ['Yes', 'No']
+                    "Family_Crimes": ['Si', 'No']
                 }
             ]
         }
@@ -1221,7 +1220,7 @@ export const aplicantPart_B_I = [
             ],
             radio: [
                 {
-                    "Family_Group_Link": ['Yes', 'No']
+                    "Family_Group_Link": ['Si', 'No']
                 }
             ]
         }
@@ -1241,7 +1240,7 @@ export const aplicantPart_B_I = [
             ],
             radio: [
                 {
-                    "Family_Group_Link_isActive": ['Yes', 'No']
+                    "Family_Group_Link_isActive": ['Si', 'No']
                 }
             ]
         }
@@ -1261,7 +1260,7 @@ export const aplicantPart_B_I = [
             ],
             radio: [
                 {
-                    "Afraid_of_Torture": ['Yes', 'No']
+                    "Afraid_of_Torture": ['Si', 'No']
                 }
             ]
         }
@@ -1282,7 +1281,7 @@ export const aplicantPart_C_I = [
                 { name: 'Family_Applied_asylum_Explanation', required: true, isShow: false }
             ],
             radio: [
-                { 'Family_Applied_asylum': ['Yes', 'No'] }
+                { 'Family_Applied_asylum': ['Si', 'No'] }
             ]
         }
     },
@@ -1302,8 +1301,8 @@ export const aplicantPart_C_I = [
 
             ],
             radio: [
-                { 'Stay_Other_Countries': ['Yes', 'No'] },
-                { 'Legal_Status_Other_Coutries': ['Yes', 'No'] }
+                { 'Stay_Other_Countries': ['Si', 'No'] },
+                { 'Legal_Status_Other_Coutries': ['Si', 'No'] }
             ]
         }
     },
@@ -1323,7 +1322,7 @@ export const aplicantPart_C_I = [
 
             ],
             radio: [
-                { 'Discriminatory_Actions_Against_Others': ['Yes', 'No'] },
+                { 'Discriminatory_Actions_Against_Others': ['Si', 'No'] },
             ]
         }
     },
@@ -1343,7 +1342,7 @@ export const aplicantPart_C_I = [
 
             ],
             radio: [
-                { 'Return_Country__you_Fear': ['Yes', 'No'] },
+                { 'Return_Country__you_Fear': ['Si', 'No'] },
             ]
         }
     },
@@ -1363,7 +1362,7 @@ export const aplicantPart_C_I = [
 
             ],
             radio: [
-                { 'Expire_Time_Asaylum_Applicat': ['Yes', 'No'] },
+                { 'Expire_Time_Asaylum_Applicat': ['Si', 'No'] },
             ]
         }
     },
@@ -1383,7 +1382,7 @@ export const aplicantPart_C_I = [
 
             ],
             radio: [
-                { 'Crimes_In_USA': ['Yes', 'No'] },
+                { 'Crimes_In_USA': ['Si', 'No'] },
             ]
         }
     },
