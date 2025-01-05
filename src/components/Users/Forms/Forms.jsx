@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
-import { initialFormValues } from '../../contexts/InitialValueContext'
-import i589 from './../../assets/PDF/i-589.pdf'
+import { initialFormValues } from '../../../contexts/InitialValueContext'
+import i589 from './../../../assets/PDF/i-589.pdf'
 import { PDFCheckBox, PDFDocument, PDFRadioGroup, PDFTextField } from 'pdf-lib'
 import { Button, Input, Fieldset, Box, Link, Strong, Stack, Textarea, CheckboxCard, Group } from '@chakra-ui/react'
 import { Checkbox } from "@/components/ui/checkbox"
 
-import { findProperty } from '../../utils/functions'
+import { findProperty } from '../../../utils/functions'
 
 import { ToggleTip } from "@/components/ui/toggle-tip"
 import { LuInfo } from "react-icons/lu"
@@ -19,8 +19,8 @@ import {
     NativeSelectField,
     NativeSelectRoot,
 } from "@/components/ui/native-select"
-import { StepsContext } from '../../contexts/StepsContext'
-import { Children } from '../../utils/steps'
+import { StepsContext } from '../../../contexts/StepsContext'
+import { Children } from '../../../utils/steps'
 
 const statusMapping = {
     'Entregado en La frontera | No expira': 'EWI',

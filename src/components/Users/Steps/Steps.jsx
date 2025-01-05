@@ -12,14 +12,14 @@ import {
 } from "@/components/ui/steps"
 import './Steps.css'
 import { useContext, useState, navigate } from "react"
-import { StepsContext } from "../../contexts/StepsContext"
+import { StepsContext } from "../../../contexts/StepsContext"
 
 import { Link, useNavigate } from 'react-router-dom'
-import { initialFormValues } from "../../contexts/InitialValueContext"
+import { initialFormValues } from "../../../contexts/InitialValueContext"
 import { modifyPDF, downloadBlob, downloadURL } from "../Forms/Forms"
 
 import { addDoc, collection, query, where, getDocs } from 'firebase/firestore'
-import { firestore } from '../../../firebase-config'
+import { db } from '../../../firebase/firebase-config'
 
 export function Steps() {
 
@@ -133,8 +133,8 @@ export function Steps() {
                                 Next
                             </Button>
                         </StepsNextTrigger>
-                        {currentStep == formGroups.length ? <div><Button onClick={(e) => createPDF(e)}>Crear PDF</Button></div> : ''}
-                        {/* <div><Button onClick={(e) => createPDF(e)}>Crear PDF</Button></div> */}
+                        {/* {currentStep == formGroups.length ? <div><Button onClick={(e) => createPDF(e)}>Crear PDF</Button></div> : ''} */}
+                        <div><Button onClick={(e) => createPDF(e)}>Crear PDF</Button></div>
                     </Group>
                 </StepsRoot>
             </Stack>

@@ -11,13 +11,13 @@ import {
     FilterChildrenFormData
 } from '../utils/steps.jsx'
 import { LuTrendingUp } from "react-icons/lu";
-import { Final } from "../components/Forms/Forms.jsx";
+import { Final } from "../components/Users/Forms/Forms.jsx";
 
 export const StepsContext = createContext()
 
 export const StepsProvider = ({ children }) => {
 
-    const [currentStep, setCurrentStep] = useState(0)
+    const [currentStep, setCurrentStep] = useState(2)
     const [totalChildren, setTotalChildren] = useState(0)
     const [isStepsVisible, setIsStepsVisible] = useState(true)
     const [childrenNames, setChildrenNames] = useState(['0'])

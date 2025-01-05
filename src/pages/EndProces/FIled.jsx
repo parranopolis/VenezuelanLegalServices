@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom"
-import { firestore } from "../../../firebase-config"
+import { db } from "../../firebase/firebase-config"
 import { getDoc, doc } from 'firebase/firestore'
 import { useEffect, useState } from "react"
-import { modifyPDF, downloadBlob, downloadURL } from "../../components/Forms/Forms"
+import { modifyPDF, downloadBlob, downloadURL } from "../../components/Users/Forms/Forms"
 import { Button } from "@chakra-ui/react"
 export function Filed() {
 
