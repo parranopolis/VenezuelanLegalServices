@@ -4,7 +4,7 @@ import { EditDocument } from "../Edit Document/EditDocument"
 export function UserFormPage() {
 
     const goToNewDocPage = () => {
-        console.log('asdasd')
+        // console.log('asdasd')
         // return <Navigate to='/' />
     }
 
@@ -12,9 +12,7 @@ export function UserFormPage() {
         <>
             <span className="h1">User Form Page</span>
             <div>
-                <Link to={'/'}> <button onClick={goToNewDocPage}>Create a New PDF</button></Link>
-
-
+                <Link to={'/newdocument'}> <Button onClick={goToNewDocPage}>Create a New PDF</Button></Link>
             </div>
             <div>
                 <Button>Update</Button>

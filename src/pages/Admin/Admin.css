@@ -1,0 +1,30 @@
+section {
+    /* border: 1px solid red; */
+
+}
+
+.adminDashboard {
+    height: 100vh;
+}
+
+
+.footer {
+    height: 13%;
+    background-color: rgb(23, 22, 22);
+    color: white;
+}
+
+.content {
+    height: 80%;
+}
+
+.content {
+    display: grid;
+    /* flex-direction: row; */
+    grid-template-columns: 20% 80%;
+}
+
+.blackLine {
+    border: 1px solid black;
+
+}

@@ -21,7 +21,7 @@ export function HomePage() {
 
                     </div>
                     <div>
-                        <Link to='/accesCode'>
+                        <Link to='/form'>
                             <span className='h4'>Soy Usuario</span>
                         </Link>
 

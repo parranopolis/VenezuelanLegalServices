@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Navigate, useNavigate } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 export function AdminLogin() {
     // cuando se haga el login hay que ir a AdminDashBoard
     // en el proceso se validara si el usuario es administrador 
@@ -99,6 +100,8 @@ export function AdminLogin() {
                     {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
                 </button>
             </form>
+            <br />
+            <Link to={'/'}>Volver al inicio</Link>
         </div>
     );
 };

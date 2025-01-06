@@ -8,6 +8,8 @@ import { AdminDashBoard } from '../pages/Admin/AdminDashBoard'
 import { Filed } from '../pages/EndProces/Filed'
 import { AccessCode } from "../pages/User/AccessCode";
 import { AdminLogin } from "../pages/Admin/AdminLogin";
+import { CreateAccessCode } from "../pages/Admin/CreateAccessCode";
+import { EditDocument } from "../pages/Edit Document/EditDocument";
 export const router = createBrowserRouter([
     // public Routes
     {
@@ -42,6 +44,14 @@ export const router = createBrowserRouter([
                 path: '/form/filed',
                 element: <Filed />
             },
+            {
+                path: '/createaccesscode',
+                element: <CreateAccessCode />
+            },
+            {
+                path: '/newdocument',
+                element: <EditDocument />
+            }
         ]
     }
 ],

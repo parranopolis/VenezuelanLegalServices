@@ -37,10 +37,10 @@ export function Steps() {
         let newId;
 
         while (!unique) {
-            newId = Math.floor(100000 + Math.random() * 900000); // Generar un número de 6 dígitos
+            newId = Math.floor(1000 + Math.random() * 9000); // Generar un número de 6 dígitos
 
             // Verificar si el ID ya existe
-            const q = query(collection(firestore, "cases"), where("numericId", "==", newId));
+            const q = query(collection(db, "cases"), where("numericId", "==", newId));
             const querySnapshot = await getDocs(q);
             unique = querySnapshot.empty; // Si no hay resultados, es único
         }
@@ -68,7 +68,9 @@ export function Steps() {
             const jsonDoc = await addDoc(jsonRef, {
                 numericId,
                 jsonData: parsedData,
-                timestamp: new Date()
+                timestamp: new Date(),
+                status: 'created',
+                name: `${parsedData.Applicant.PDFTextField2.Complete_Last_Name.value} ${parsedData.Applicant.PDFTextField2.First_Name.value}`
             })
 
 
@@ -78,10 +80,10 @@ export function Steps() {
             // console.log(pdfBlob)
             // return setSpan(pdf)
 
-            navigate('/filed', { state: { message: 'Formulario enviado con exito', id: jsonDoc.id, numericID: numericId } })
+            navigate('/form/filed', { state: { message: 'Formulario enviado con exito', id: jsonDoc.id, numericID: numericId, name: name } })
         } catch (error) {
             console.log(error)
-            navigate('/filed', { state: { message: 'Hubo un problema al enviar el formulario. Intente nuevamente.' } });
+            navigate('/form/filed', { state: { message: 'Hubo un problema al enviar el formulario. Intente nuevamente.' } });
         }
 
     }
