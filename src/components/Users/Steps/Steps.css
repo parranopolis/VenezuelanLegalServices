@@ -1,0 +1,15 @@
+.controlButtons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+}
+
+.controlButtons section {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    text-align: center;
+}

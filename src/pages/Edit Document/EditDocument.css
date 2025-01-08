@@ -1,0 +1,11 @@
+.pathRoute {
+    /* width: 100%; */
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.formsComponent,
+.pathRoute {
+    max-width: 800px;
+}

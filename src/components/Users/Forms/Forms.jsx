@@ -54,7 +54,7 @@ export const downloadURL = (data) => {
     a.href = data
     a.download = 'output.pdf'
     document.body.appendChild(a)
-    a.style = 'display:none'
+    // a.style = 'display:none'
     // a.click()
     a.remove()
     // setPDFUrl(a)
@@ -280,7 +280,8 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                 const filteredInputForms = getCheckedFields(currentGroup, RadioChecked)
                 setDataShow(filteredInputForms)
             }
-        }
+        } if (currentGroup?.extra?.type === 'special') setDataShow(currentGroup.fields.textArea)
+
     }, [value, currentGroup, RadioChecked])
     const renderSection = () => {
         return (
@@ -288,19 +289,30 @@ const FormContainer = ({ formDataContex, handleChange }) => {
                 <Fieldset.Root size={'lg'} maxW={'100%'} className='fieldset'>
                     <Fieldset.Legend>
                         <span className='h3'>{currentGroup.name}</span>
-                        {currentGroup?.extra?.type === 'multiple' ?
+                        {/* {currentGroup.extra.type === 'Conditional' ? div} */}
+                        {currentGroup?.extra?.type ?
+                            currentGroup.extra.type === 'multiple' ?
+                                <div>
+                                    <span className='h5'>{currentGroup.extra.message}</span>
+                                    <br />
+                                    <div className='Test'>
+
+                                        <SegmentedControl
+                                            value={value}
+                                            onValueChange={(e) => {
+                                                setValue(e.value)
+                                            }}
+                                            items={currentGroup.extra.SegmentedControlMessage}
+                                        />
+                                    </div>
+                                </div> :
+                                <div>
+                                    <span className='h5'>{currentGroup.extra.message}</span>
+                                </div>
+                            :
                             <div>
-                                <span className='h5'>{currentGroup.extra.message}</span>
-                                <br />
-                                <SegmentedControl
-                                    value={value}
-                                    onValueChange={(e) => {
-                                        setValue(e.value)
-                                    }}
-                                    items={currentGroup.extra.SegmentedControlMessage}
-                                />
-                            </div>
-                            : ''}
+                                <span className='h5'>{currentGroup?.extra?.message}</span>
+                            </div>}
                     </Fieldset.Legend>
                     <div className={`formContainer`}>
 
@@ -357,20 +369,20 @@ const FormContainer = ({ formDataContex, handleChange }) => {
     // Updates the form displayed on the screen
     const updateCurrentForm = (e) => {
         e.preventDefault()
-        // const requiredInputs = document.querySelectorAll('.required')
-        // let isValid = true
-        // let field
-        // requiredInputs.forEach(i => {
-        //     if (i.value.trim() === '') {
-        //         isValid = false
-        //         field = i
-        //     }
-        // })
-        // setIsValidated(isValid)
-        // if (!isValid) {
-        //     console.log('hay campos requeridos')
-        //     return;
-        // }
+        const requiredInputs = document.querySelectorAll('.required')
+        let isValid = true
+        let field
+        requiredInputs.forEach(i => {
+            if (i.value.trim() === '') {
+                isValid = false
+                field = i
+            }
+        })
+        setIsValidated(isValid)
+        if (!isValid) {
+            console.log('hay campos requeridos')
+            return;
+        }
         if (e.target.name === 'last') {
             if (currentSection == 1) null
             else setCurrentSection(currentSection - 1)
@@ -418,8 +430,8 @@ const FormContainer = ({ formDataContex, handleChange }) => {
             <section>
                 {isValidated
                     ? ''
-                    : <Alert status="error" title="Invalid Fields">
-                        Your form has some errors. Please fix them and try again.
+                    : <Alert status="error" title="Campos Obligatorios">
+                        Por favor llenar los campos obligatorios marcados con un <strong>*</strong>.
                     </Alert>
                 }
             </section>
@@ -558,6 +570,8 @@ function RegularInputs(q) {
 }
 // shows inputs of type Radio
 function InputRadio({ data, handleChange, formDataContex, person, extra }) {
+
+
     const { setRadioChecked } = useContext(StepsContext)
     const q = data.map((group, index) => {
         const w = Object.keys(group).map((key) => {
@@ -565,6 +579,7 @@ function InputRadio({ data, handleChange, formDataContex, person, extra }) {
             return (
                 <section key={key} className={index == 0 ? "SpecialRadioInputContainer" : ''}>
                     <span className='h6 opacity'>{property.label}</span>
+
                     {group[key].map((value) => {
                         return (
                             <section className={extra?.question == index ? 'SpecialRadioInput radioOptions' : 'radioOptions'} key={value}>
@@ -576,7 +591,7 @@ function InputRadio({ data, handleChange, formDataContex, person, extra }) {
                                     checked={property.value == value}
                                     onChange={(e) => {
                                         handleChange(e, person[0])
-                                        e.target.parentNode.classList.contains('SpecialRadioInput') ? setRadioChecked(e.target,) : setRadioChecked(null)
+                                        if (e.target.parentNode.parentNode.classList.contains('SpecialRadioInputContainer')) setRadioChecked(e.target,)
                                     }}
                                     className='InputRadioType'
                                 />

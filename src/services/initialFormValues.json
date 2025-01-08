@@ -1009,7 +1009,7 @@
         "PDFRadioGroup2": {
             "Children_Court": {
                 "value": null,
-                "label": "Procedimiento Judicial del Hijo",
+                "label": "Este Hijo esta en proceso de la corte de Inmigración?",
                 "explanation": ""
             },
             "Children_Included": {
@@ -1034,7 +1034,7 @@
             },
             "Children_Court1": {
                 "value": null,
-                "label": "Esta esta persona de procesos de corte?",
+                "label": "Este Hijo esta en proceso de la corte de Inmigración?",
                 "explanation": ""
             },
             "Children_Included1": {
@@ -1054,7 +1054,7 @@
             },
             "Children_Court2": {
                 "value": null,
-                "label": "Esta esta persona de procesos de corte?",
+                "label": "Este Hijo esta en proceso de la corte de Inmigración?",
                 "explanation": ""
             },
             "Children_Included2": {
@@ -1074,7 +1074,7 @@
             },
             "Children_Court3": {
                 "value": null,
-                "label": "Esta esta persona de procesos de corte?",
+                "label": "Este Hijo esta en proceso de la corte de Inmigración?",
                 "explanation": ""
             },
             "Children_Included3": {
@@ -1094,7 +1094,7 @@
             },
             "Children_Court4": {
                 "value": null,
-                "label": "Esta esta persona de procesos de corte?",
+                "label": "Este Hijo esta en proceso de la corte de Inmigración?",
                 "explanation": ""
             },
             "Children_Included4": {
@@ -1114,7 +1114,7 @@
             },
             "Children_Court5": {
                 "value": null,
-                "label": "Esta esta persona de procesos de corte?",
+                "label": "Este Hijo esta en proceso de la corte de Inmigración?",
                 "explanation": ""
             },
             "Children_Included5": {

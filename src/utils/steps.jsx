@@ -231,7 +231,7 @@ export const aplicantPart_A_II_Spouse = [
         name: 'Ubicación actual de Conyugue',
         extra: {
             type: 'conditional',
-            Yes: [0, 7],
+            Yes: [1, 7],
             No: [0, 1],
             question: [0],
             inputType: 'text'
@@ -295,7 +295,7 @@ export const childrenBase = [
     {
         name: 'Identificacion del hijo 1',
         extra: {
-            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+
             SegmentedControlMessage: Children()
         },
         fields: {
@@ -314,7 +314,7 @@ export const childrenBase = [
     {
         name: 'Nombres del Hijo 1',
         extra: {
-            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+
             SegmentedControlMessage: Children()
         },
 
@@ -333,7 +333,7 @@ export const childrenBase = [
     },
     {
         name: 'Demografia Del Hijo 1 ',
-        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        extra: { SegmentedControlMessage: Children() },
         fields: {
             text: [
                 { name: 'Children_City_Country_of_Birth', required: true, isShow: false, segment: 0 },
@@ -349,10 +349,10 @@ export const childrenBase = [
     {
         name: 'Ubicación actual de Hijo 1',
         extra: {
-            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+
             SegmentedControlMessage: Children(),
             type: 'conditional',
-            Yes: [0, 7],
+            Yes: [1, 7],
             No: [0, 1],
             question: [0],
             inputType: 'text'
@@ -365,8 +365,8 @@ export const childrenBase = [
                 //pero si marca que Si, debe mostrar los siguientes formularios
                 { name: 'Children_Place_Last_Entry', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry', required: true, isShow: false, segment: 0 },
-                { name: 'Children_I-94_Number', required: true, false: false, segment: 0 },
-                { name: 'Children_Status_Last_Admitted', required: true, isShow: false, segment: 0 },
+                { name: 'Children_I-94_Number', required: false, false: false, segment: 0 },
+                { name: 'Children_Status_Last_Admitted', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Expiration_Day_Stay', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
@@ -374,7 +374,7 @@ export const childrenBase = [
             // select: [
             //     {
             //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
-            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //         'Children_Status_Last_Admitted': ['Entregado false La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
             //     }
             // ],
             radio: [
@@ -385,7 +385,10 @@ export const childrenBase = [
     },
     {
         name: 'Inclusion Hijo 1',
-        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+        extra: {
+            SegmentedControlMessage: Children(),
+            message: 'Solo será incluido si tiene su misma corte, fecha de ingreso o es menor de 21 años'
+        },
 
         fields: {
             radio: [
@@ -402,7 +405,7 @@ export const childrenBase = [
     {
         name: 'Identificacion del hijo 2',
         extra: {
-            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+
             SegmentedControlMessage: Children()
         },
         fields: {
@@ -421,7 +424,7 @@ export const childrenBase = [
     {
         name: 'Nombres del Hijo 2',
         extra: {
-            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+
             SegmentedControlMessage: Children()
         },
 
@@ -440,7 +443,7 @@ export const childrenBase = [
     },
     {
         name: 'Demografia Del Hijo 2',
-        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        extra: { SegmentedControlMessage: Children() },
         fields: {
             text: [
                 { name: 'Children_City_Country_of_Birth1', required: true, isShow: false, segment: 0 },
@@ -456,10 +459,10 @@ export const childrenBase = [
         name: 'Ubicación actual de Hijo 2',
 
         extra: {
-            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+
             SegmentedControlMessage: Children(),
             type: 'conditional',
-            Yes: [0, 7],
+            Yes: [1, 7],
             No: [0, 1],
             question: [0],
             inputType: 'text'
@@ -473,7 +476,7 @@ export const childrenBase = [
                 { name: 'Children_Place_Last_Entry1', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry1', required: true, isShow: false, segment: 0 },
                 { name: 'Children_I-94_Number1', required: false, isShow: false, segment: 0 },
-                { name: 'Children_Status_Last_Admitted1', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admitted1', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status1', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Expiration_Day_Stay1', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
@@ -481,7 +484,7 @@ export const childrenBase = [
             // select: [
             //     {
             //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
-            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //         'Children_Status_Last_Admitted': ['Entregado false La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
             //     }
             // ],
             radio: [
@@ -492,8 +495,11 @@ export const childrenBase = [
     },
     {
         name: 'Inclusion Hijo 2',
-        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+        extra: {
+            SegmentedControlMessage: Children(),
+            message: 'Solo será incluido si tiene su misma corte, fecha de ingreso o es menor de 21 años'
 
+        },
         fields: {
             radio: [
                 { 'Children_Included1': ['Si', 'No'] },
@@ -509,7 +515,7 @@ export const childrenBase = [
     {
         name: 'Identificacion del hijo 3',
         extra: {
-            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+
             SegmentedControlMessage: Children()
         },
         fields: {
@@ -528,7 +534,7 @@ export const childrenBase = [
     {
         name: 'Nombres del Hijo 3',
         extra: {
-            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+
             SegmentedControlMessage: Children()
         },
 
@@ -547,7 +553,7 @@ export const childrenBase = [
     },
     {
         name: 'Demografia Del Hijo 3',
-        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        extra: { SegmentedControlMessage: Children() },
         fields: {
             text: [
                 { name: 'Children_City_Country_of_Birth2', required: true, isShow: false, segment: 0 },
@@ -564,10 +570,10 @@ export const childrenBase = [
         name: 'Ubicación actual de Hijo 3',
 
         extra: {
-            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+
             SegmentedControlMessage: Children(),
             type: 'conditional',
-            Yes: [0, 7],
+            Yes: [1, 7],
             No: [0, 1],
             question: [0],
             inputType: 'text'
@@ -581,7 +587,7 @@ export const childrenBase = [
                 { name: 'Children_Place_Last_Entry2', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry2', required: true, isShow: false, segment: 0 },
                 { name: 'Children_I-94_Number2', required: false, isShow: false, segment: 0 },
-                { name: 'Children_Status_Last_Admitted2', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admitted2', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status2', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Expiration_Day_Stay2', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
@@ -589,7 +595,7 @@ export const childrenBase = [
             // select: [
             //     {
             //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
-            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //         'Children_Status_Last_Admitted': ['Entregado false La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
             //     }
             // ],
             radio: [
@@ -600,7 +606,11 @@ export const childrenBase = [
     },
     {
         name: 'Inclusion Hijo 3',
-        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+        extra: {
+            SegmentedControlMessage: Children(),
+
+            message: 'Solo será incluido si tiene su misma corte, fecha de ingreso o es menor de 21 años'
+        },
 
         fields: {
             radio: [
@@ -617,7 +627,7 @@ export const childrenBase = [
     {
         name: 'Identificacion del hijo 4',
         extra: {
-            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+
             SegmentedControlMessage: Children()
         },
         fields: {
@@ -636,7 +646,7 @@ export const childrenBase = [
     {
         name: 'Nombres del Hijo 4',
         extra: {
-            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+
             SegmentedControlMessage: Children()
         },
 
@@ -655,7 +665,7 @@ export const childrenBase = [
     },
     {
         name: 'Demografia Del Hijo 4',
-        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        extra: { SegmentedControlMessage: Children() },
         fields: {
             text: [
                 { name: 'Children_City_Country_of_Birth3', required: true, isShow: false, segment: 0 },
@@ -672,10 +682,10 @@ export const childrenBase = [
         name: 'Ubicación actual de Hijo 4',
 
         extra: {
-            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+
             SegmentedControlMessage: Children(),
             type: 'conditional',
-            Yes: [0, 7],
+            Yes: [1, 7],
             No: [0, 1],
             question: [0],
             inputType: 'text'
@@ -689,7 +699,7 @@ export const childrenBase = [
                 { name: 'Children_Place_Last_Entry3', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry3', required: true, isShow: false, segment: 0 },
                 { name: 'Children_I-94_Number3', required: false, isShow: false, segment: 0 },
-                { name: 'Children_Status_Last_Admitted3', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admitted3', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status3', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Expiration_Day_Stay3', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
@@ -697,7 +707,7 @@ export const childrenBase = [
             // select: [
             //     {
             //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
-            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //         'Children_Status_Last_Admitted': ['Entregado false La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
             //     }
             // ],
             radio: [
@@ -708,7 +718,11 @@ export const childrenBase = [
     },
     {
         name: 'Inclusion Hijo 4',
-        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+        extra: {
+            SegmentedControlMessage: Children(),
+            message: 'Solo será incluido si tiene su misma corte, fecha de ingreso o es menor de 21 años'
+
+        },
 
         fields: {
             radio: [
@@ -725,7 +739,7 @@ export const childrenBase = [
     {
         name: 'Identificacion del hijo 5',
         extra: {
-            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+
             SegmentedControlMessage: Children()
         },
         fields: {
@@ -744,7 +758,7 @@ export const childrenBase = [
     {
         name: 'Nombres del Hijo 5',
         extra: {
-            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+
             SegmentedControlMessage: Children()
         },
 
@@ -763,7 +777,7 @@ export const childrenBase = [
     },
     {
         name: 'Demografia Del Hijo 5',
-        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        extra: { SegmentedControlMessage: Children() },
         fields: {
             text: [
                 { name: 'Children_City_Country_of_Birth4', required: true, isShow: false, segment: 0 },
@@ -780,10 +794,10 @@ export const childrenBase = [
         name: 'Ubicación actual de Hijo 5',
 
         extra: {
-            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+
             SegmentedControlMessage: Children(),
             type: 'conditional',
-            Yes: [0, 7],
+            Yes: [1, 7],
             No: [0, 1],
             question: [0],
             inputType: 'text'
@@ -797,7 +811,7 @@ export const childrenBase = [
                 { name: 'Children_Place_Last_Entry4', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry4', required: true, isShow: false, segment: 0 },
                 { name: 'Children_I-94_Number4', required: false, isShow: false, segment: 0 },
-                { name: 'Children_Status_Last_Admitted4', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admitted4', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status4', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Expiration_Day_Stay4', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
@@ -805,7 +819,7 @@ export const childrenBase = [
             // select: [
             //     {
             //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
-            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //         'Children_Status_Last_Admitted': ['Entregado false La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
             //     }
             // ],
             radio: [
@@ -816,7 +830,11 @@ export const childrenBase = [
     },
     {
         name: 'Inclusion Hijo 5',
-        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+        extra: {
+            SegmentedControlMessage: Children(),
+            message: 'Solo será incluido si tiene su misma corte, fecha de ingreso o es menor de 21 años'
+
+        },
 
         fields: {
             radio: [
@@ -833,7 +851,7 @@ export const childrenBase = [
     {
         name: 'Identificacion del hijo 6',
         extra: {
-            message: 'Navegue entre las pestañas, cada una representa informacion de un hijo diferente',
+
             SegmentedControlMessage: Children()
         },
         fields: {
@@ -852,7 +870,7 @@ export const childrenBase = [
     {
         name: 'Nombres del Hijo 6',
         extra: {
-            message: 'Por favor ingrese el nombre de cada uno de sus hijos',
+
             SegmentedControlMessage: Children()
         },
 
@@ -871,7 +889,7 @@ export const childrenBase = [
     },
     {
         name: 'Demografia Del Hijo 6',
-        extra: { message: 'Por favor ingrese el nombre de cada uno de sus hijos', SegmentedControlMessage: Children() },
+        extra: { SegmentedControlMessage: Children() },
         fields: {
             text: [
                 { name: 'Children_City_Country_of_Birt5', required: true, isShow: false, segment: 0 },
@@ -886,10 +904,10 @@ export const childrenBase = [
         name: 'Ubicación actual de Hijo 6',
 
         extra: {
-            message: 'Por favor ingrese la ubicación actual de cada uno de sus hijos',
+
             SegmentedControlMessage: Children(),
             type: 'conditional',
-            Yes: [0, 7],
+            Yes: [1, 7],
             No: [0, 1],
             question: [0],
             inputType: 'text'
@@ -903,7 +921,7 @@ export const childrenBase = [
                 { name: 'Children_Place_Last_Entry5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Date_Last_Entry5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_I-94_Number5', required: false, isShow: false, segment: 0 },
-                { name: 'Children_Status_Last_Admittedchildren5', required: true, isShow: false, segment: 0 },
+                { name: 'Children_Status_Last_Admittedchildren5', required: false, isShow: false, segment: 0 },
                 { name: 'Children_Current_Status5', required: true, isShow: false, segment: 0 },
                 { name: 'Children_Expiration_Day_Stay5', required: false, isShow: false, segment: 0 },
                 // 'Children_Previous_arrival'
@@ -911,7 +929,7 @@ export const childrenBase = [
             // select: [
             //     {
             //         //debe ser mostrado con los demas campos si marco si en 'Children_Location_US'
-            //         'Children_Status_Last_Admitted': ['Entregado en La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
+            //         'Children_Status_Last_Admitted': ['Entregado false La frontera | No expira', 'CBP1', 'Visa de Turista', 'Visa de Estudiante', 'Parole Humanitario'],
             //     }
             // ],
             radio: [
@@ -922,7 +940,11 @@ export const childrenBase = [
     },
     {
         name: 'Inclusion Hijo 6',
-        extra: { message: 'Nacionalidad de Cada uno', SegmentedControlMessage: Children() },
+        extra: {
+            SegmentedControlMessage: Children(),
+            message: 'Solo será incluido si tiene su misma corte, fecha de ingreso o es menor de 21 años'
+
+        },
 
         fields: {
             radio: [
@@ -1288,11 +1310,7 @@ export const aplicantPart_C_I = [
     {
         name: '¿Tras salir del país del que solicita asilo, usted, su cónyuge o hijos residieron o viajaron a otro país antes de ingresar a EE. UU.?',
         extra: {
-            type: 'conditional',
-            Yes: [0, 1],
-            No: [0, 0],
-            question: [0],
-            inputType: 'textArea'
+            type: 'special',
         },
         fields: {
             textArea: [

@@ -64,7 +64,7 @@ export function Steps() {
 
 
             // Save the PDF in the Firestore
-            const jsonRef = collection(firestore, 'cases')
+            const jsonRef = collection(db, 'cases')
             const jsonDoc = await addDoc(jsonRef, {
                 numericId,
                 jsonData: parsedData,
@@ -80,15 +80,13 @@ export function Steps() {
             // console.log(pdfBlob)
             // return setSpan(pdf)
 
-            navigate('/form/filed', { state: { message: 'Formulario enviado con exito', id: jsonDoc.id, numericID: numericId, name: name } })
+            navigate('/filed', { state: { message: 'Formulario enviado con exito', id: jsonDoc.id, numericID: numericId, name: name } })
         } catch (error) {
             console.log(error)
-            navigate('/form/filed', { state: { message: 'Hubo un problema al enviar el formulario. Intente nuevamente.' } });
+            navigate('/error', { state: { message: 'Hubo un problema al enviar el formulario. Intente nuevamente.' } });
         }
 
     }
-
-
     return (
         <>
             {/* {span ? (
@@ -105,6 +103,7 @@ export function Steps() {
                 <span className="h3">Pasos para llenar el Asilo </span>
                 <span className="h4">Forma I-589</span>
                 <StepsRoot count={formGroups.length} height="700px" step={currentStep} orientation="vertical">
+
                     <StepsList>
                         <StepsItem index={0} title="Informacion Personal" description='Parte A-1' />
                         <StepsItem index={1} title="Pareja" description='Parte A-2' />
@@ -113,30 +112,39 @@ export function Steps() {
                         <StepsItem index={4} title="Información de su Aplicación" description='Parte B-1' />
                         <StepsItem index={5} title="Información Adicional de su Aplicación" description='Parte C-1' />
                     </StepsList>
-
-                    <StepsContent index={0}>Informacion Personal</StepsContent>
-                    <StepsContent index={1}>Pareja</StepsContent>
-                    <StepsContent index={2}>Hijos</StepsContent>
-                    <StepsContent index={3}>Información de su historial</StepsContent>
-                    <StepsContent index={4}>Información sobre su Aplicación</StepsContent>
-                    <StepsContent index={5}>Información Adicional de su Aplicación</StepsContent>
-                    <StepsCompletedContent>
-                        All steps are complete!
-                    </StepsCompletedContent>
-
                     <Group>
-                        <StepsPrevTrigger asChild>
-                            <Button variant="outline" size="sm" onClick={() => handleStepClick(Math.max(currentStep - 1, 2))} name='Prev'>
-                                Prev
-                            </Button>
-                        </StepsPrevTrigger>
-                        <StepsNextTrigger asChild>
-                            <Button variant="outline" size="sm" onClick={() => handleStepClick(Math.min(currentStep + 1, 2))} name='Next'>
-                                Next
-                            </Button>
-                        </StepsNextTrigger>
-                        {/* {currentStep == formGroups.length ? <div><Button onClick={(e) => createPDF(e)}>Crear PDF</Button></div> : ''} */}
-                        <div><Button onClick={(e) => createPDF(e)}>Crear PDF</Button></div>
+                        <article className="controlButtons">
+                            <section>
+                                <StepsContent index={0}><span className="h5">Informacion Personal</span></StepsContent>
+                                <StepsContent index={1}><span className="h5">Pareja</span></StepsContent>
+                                <StepsContent index={2}><span className="h5">Hijos</span></StepsContent>
+                                <StepsContent index={3}><span className="h6">Información de su historial</span></StepsContent>
+                                <StepsContent index={4}><span className="h6">Información sobre su Aplicación</span></StepsContent>
+                                <StepsContent index={5}><span className="h6">Información Adicional de su Aplicación</span></StepsContent>
+                            </section>
+                            <section className="">
+                                <StepsCompletedContent>
+                                    <span className="h5">
+                                        All steps are complete!
+                                    </span>
+                                </StepsCompletedContent>
+                            </section>
+                            <section>
+                                <StepsPrevTrigger asChild>
+                                    <Button variant="outline" size="sm" onClick={() => handleStepClick(Math.max(currentStep - 1, 2))} name='Prev'>
+                                        Prev
+                                    </Button>
+                                </StepsPrevTrigger>
+                                <StepsNextTrigger asChild>
+                                    <Button variant="outline" size="sm" onClick={() => handleStepClick(Math.min(currentStep + 1, 2))} name='Next'>
+                                        Next
+                                    </Button>
+                                </StepsNextTrigger>
+                            </section>
+                            <section>
+                                {currentStep == formGroups.length ? <div><Button onClick={(e) => createPDF(e)}>Crear PDF</Button></div> : ''}
+                            </section>
+                        </article>
                     </Group>
                 </StepsRoot>
             </Stack>

@@ -10,6 +10,7 @@ import { AccessCode } from "../pages/User/AccessCode";
 import { AdminLogin } from "../pages/Admin/AdminLogin";
 import { CreateAccessCode } from "../pages/Admin/CreateAccessCode";
 import { EditDocument } from "../pages/Edit Document/EditDocument";
+import { ErrorPage } from "../pages/Shared/Error";
 export const router = createBrowserRouter([
     // public Routes
     {
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
                 element: <UserFormPage />
             },
             {
-                path: '/form/filed',
+                path: '/filed',
                 element: <Filed />
             },
             {
@@ -51,6 +52,11 @@ export const router = createBrowserRouter([
             {
                 path: '/newdocument',
                 element: <EditDocument />
+            },
+            {
+                path: 'error',
+                element: <ErrorPage />
+
             }
         ]
     }

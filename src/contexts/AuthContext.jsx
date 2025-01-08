@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
                     role
                 });
             } else {
-                console.log("No hay usuario autenticado");
+                // console.log("No hay usuario autenticado");
                 setUserInfo({
                     user: null,
                     userId: null,

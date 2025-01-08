@@ -7,15 +7,14 @@ import './EditDocument.css'
 export function EditDocument({ actualStep }) {
 
     const { isStepsVisible } = useContext(StepsContext)
-
     return (
-        <article className="container StepsMap">
+        <article className={isStepsVisible ? 'container pathRoute' : 'container formsComponent'}>
             {isStepsVisible ? (
                 <section>
                     <Steps />
                 </section>
             ) :
-                < section >
+                < section>
                     <Forms />
                 </section>
             }
