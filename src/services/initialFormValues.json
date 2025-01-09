@@ -448,7 +448,7 @@
             },
             "Spouse_Court": {
                 "value": null,
-                "label": "Su Conyuge se encuentra en porcesos de Corte?",
+                "label": "Su Conyuge esta en proceso de la corte de Inmigración?",
                 "explanation": ""
             },
             "Spouse_Include_Application": {

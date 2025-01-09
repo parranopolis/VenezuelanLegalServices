@@ -264,14 +264,17 @@ export const aplicantPart_A_II_Spouse = [
     },
     {
         name: 'Inclusion',
+        extra: {
+            message: 'Solo será incluido si tiene su misma corte o fecha de ingreso.'
+        },
         fields: {
             radio: [
                 { 'Spouse_Include_Application': ['Si', 'No'] }
             ],
             //modificar esto
-            text: [
-                { name: 'Spouse_Nationality', required: true, isShow: false }
-            ]
+            // text: [
+            //     { name: 'Spouse_Nationality', required: true, isShow: false }
+            // ]
         }
     },
 
@@ -396,10 +399,10 @@ export const childrenBase = [
 
             ],
             //modificar esto
-            text: [
-                { name: 'Children_Nationality', required: true, isShow: false, segment: 0 },
+            // text: [
+            //     { name: 'Children_Nationality', required: true, isShow: false, segment: 0 },
 
-            ]
+            // ]
         }
     },
     {
@@ -506,10 +509,10 @@ export const childrenBase = [
 
             ],
             //modificar esto
-            text: [
-                { name: 'Children_Nationality1', required: true, isShow: false, segment: 0 },
+            // text: [
+            //     { name: 'Children_Nationality1', required: true, isShow: false, segment: 0 },
 
-            ]
+            // ]
         }
     },
     {
@@ -618,10 +621,10 @@ export const childrenBase = [
 
             ],
             //modificar esto
-            text: [
-                { name: 'Children_Nationality2', required: true, isShow: false, segment: 0 },
+            // text: [
+            //     { name: 'Children_Nationality2', required: true, isShow: false, segment: 0 },
 
-            ]
+            // ]
         }
     },
     {
@@ -730,10 +733,10 @@ export const childrenBase = [
 
             ],
             //modificar esto
-            text: [
-                { name: 'Children_Nationality3', required: true, isShow: false, segment: 0 },
+            // text: [
+            //     { name: 'Children_Nationality3', required: true, isShow: false, segment: 0 },
 
-            ]
+            // ]
         }
     },
     {
@@ -842,10 +845,10 @@ export const childrenBase = [
 
             ],
             //modificar esto
-            text: [
-                { name: 'Children_Nationality4', required: true, isShow: false, segment: 0 },
+            // text: [
+            //     { name: 'Children_Nationality4', required: true, isShow: false, segment: 0 },
 
-            ]
+            // ]
         }
     },
     {
@@ -952,10 +955,10 @@ export const childrenBase = [
 
             ],
             //modificar esto
-            text: [
-                { name: 'Children_Nationality5', required: true, isShow: false, segment: 0 },
+            // text: [
+            //     { name: 'Children_Nationality5', required: true, isShow: false, segment: 0 },
 
-            ]
+            // ]
         }
     },
 ]
@@ -1315,7 +1318,7 @@ export const aplicantPart_C_I = [
         fields: {
             textArea: [
 
-                { name: 'Stay_and_Legal_Status_Other_Countries_Explanation', required: true, isShow: false }
+                { name: 'Stay_and_Legal_Status_Other_Countries_Explanation', required: false, isShow: false }
 
             ],
             radio: [

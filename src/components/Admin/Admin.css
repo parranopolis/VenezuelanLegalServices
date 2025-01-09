@@ -1,0 +1,69 @@
+/* AdminMainData */
+.itemTitle {
+    text-align: center;
+    width: 100%;
+}
+
+.itemList {
+    margin: auto;
+}
+
+.itemList ul {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 1.5rem;
+    width: 80%;
+    max-width: 600px;
+}
+
+.itemList ul li section {
+    /* border: 1px solid blue; */
+    /* width: 50%; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.itemList ul li {
+    width: 100%;
+    display: flex;
+
+    border-bottom: 1px solid black;
+}
+
+.status {
+    color: var(--third-color);
+    background-color: var(--highlight-color);
+    width: 5rem;
+    text-align: center;
+    border-radius: 10%;
+}
+
+.liBox1 {
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .2rem;
+}
+
+.liBox1 {
+    width: 60%;
+
+}
+
+.liBox2 {
+    display: flex;
+    /* justify-content: left; */
+    flex-direction: column;
+    width: 40%;
+}
+
+.liBox2 div {
+    display: flex;
+    justify-content: right;
+}
+
+.liBox2-Buttons>button {
+    margin: 0 .5rem;
+}

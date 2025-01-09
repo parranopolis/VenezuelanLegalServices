@@ -20,16 +20,16 @@ export function AdminDashBoard() {
     return (
         <>
             <div className="adminDashboard">
-                <Header title='Admin Dashboard' />
-                <section className="content">
-                    <article className="blackLine">
-                        <AdminOptionSide onPageChange={handlePageChange} />
-                    </article>
-                    <article className="blackLine">
-                        <ActualPage page={selectedPage} />
-                    </article>
-                </section>
-                <section className="footer">Footer</section>
+                <Header title='Panel de Control' />
+                {/* <section className="content"> */}
+                <article className="">
+                    {/* <AdminOptionSide onPageChange={handlePageChange} /> */}
+                </article>
+                <article className="">
+                    <ActualPage page={selectedPage} />
+                </article>
+                {/* </section> */}
+                {/* <section className="footer">Footer</section> */}
             </div>
         </>
     )

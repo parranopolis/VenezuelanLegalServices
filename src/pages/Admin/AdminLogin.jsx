@@ -10,8 +10,8 @@ export function AdminLogin() {
     // en el proceso se validara si el usuario es administrador 
 
 
-    const [email, setEmail] = useState("parranopolis00@gmail.com");
-    const [password, setPassword] = useState("Machobeta");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
