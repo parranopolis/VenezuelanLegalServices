@@ -17,9 +17,9 @@ export const StepsContext = createContext()
 
 export const StepsProvider = ({ children }) => {
 
-    const [currentStep, setCurrentStep] = useState(1)
+    const [currentStep, setCurrentStep] = useState(0)
     const [totalChildren, setTotalChildren] = useState(0)
-    const [isStepsVisible, setIsStepsVisible] = useState(false)
+    const [isStepsVisible, setIsStepsVisible] = useState(true)
     const [childrenNames, setChildrenNames] = useState(['0'])
     const [RadioChecked, setRadioChecked] = useState(null)
     Children(childrenNames)

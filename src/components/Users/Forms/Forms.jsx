@@ -233,7 +233,7 @@ const getCheckedFields = (data, check) => {
 //base form
 const FormContainer = ({ formDataContex, handleChange }) => {
     // Current Group of Forms
-    const [currentSection, setCurrentSection] = useState(4)
+    const [currentSection, setCurrentSection] = useState(1)
 
     const { formData, setFormData } = useContext(initialFormValues)
 
