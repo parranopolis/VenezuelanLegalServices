@@ -11,6 +11,7 @@ import { AdminLogin } from "../pages/Admin/AdminLogin";
 import { CreateAccessCode } from "../pages/Admin/CreateAccessCode";
 import { EditDocument } from "../pages/Edit Document/EditDocument";
 import { ErrorPage } from "../pages/Shared/Error";
+import { ConfirmData } from "../components/Users/ComfirmData";
 export const router = createBrowserRouter([
     // public Routes
     {
@@ -26,29 +27,31 @@ export const router = createBrowserRouter([
         element: <AdminLogin />
     },
     {
+        path: '/form',
+        element: <UserFormPage />
+    },
+    {
         element: <AdminRoutes />,
         children: [
             {
                 path: '/dashboard',
                 element: <AdminDashBoard />
-            }
-        ]
-    },
-    {
-        element: <UserRoutes />,
-        children: [
-            {
-                path: '/form',
-                element: <UserFormPage />
-            },
-            {
-                path: '/filed',
-                element: <Filed />
             },
             {
                 path: '/createaccesscode',
                 element: <CreateAccessCode />
             },
+        ]
+    },
+    {
+        element: <UserRoutes />,
+        children: [
+
+            {
+                path: '/filed',
+                element: <Filed />
+            },
+
             {
                 path: '/newdocument',
                 element: <EditDocument />
@@ -57,6 +60,10 @@ export const router = createBrowserRouter([
                 path: 'error',
                 element: <ErrorPage />
 
+            },
+            {
+                path: 'confirmInfo',
+                element: <ConfirmData />
             }
         ]
     }

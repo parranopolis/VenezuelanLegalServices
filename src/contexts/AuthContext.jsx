@@ -10,6 +10,15 @@ const UID = auth
 export const AuthProvider = ({ children }) => {
     const [userId, setUserId] = useState(null)
     const [userName, setUserName] = useState(null)
+    const [access, setAccess] = useState(sessionStorage.getItem('access') || 'deny')
+
+    useEffect(() => {
+        sessionStorage.setItem('access', access)
+    }, [access])
+
+
+    const login = () => setAccess('allow')
+    const logout = () => setAccess('deny')
 
     const [userInfo, setUserInfo] = useState({
         user: null,
@@ -22,7 +31,6 @@ export const AuthProvider = ({ children }) => {
 
     const actualUser = auth.currentUser
     useEffect(() => {
-
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             let role
 
@@ -54,7 +62,7 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ userInfo }}>
+        <AuthContext.Provider value={{ userInfo, access, login, logout }}>
             {children}
         </AuthContext.Provider>
     )

@@ -1,13 +1,14 @@
 import React from "react";
 
 import { Navigate, Outlet } from "react-router-dom";
-// import {useAuthContext} from 
+import { useAuthContext } from "../contexts/AuthContext";
 
 export const UserRoutes = () => {
-    // const {user, role}= useAuthContext()
-    // if(!user || role !== 'admin'){
-    //     return <Navigate to=''/>
-    // }
+    const { access } = useAuthContext()
+    if (access == 'allow') {
+        return <Outlet />
+    } else {
+        return <Navigate to={'/'} />
+    }
 
-    return <Outlet />
 }

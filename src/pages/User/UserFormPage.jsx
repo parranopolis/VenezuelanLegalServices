@@ -13,7 +13,8 @@ export function UserFormPage() {
             <Header title='Escoge una Acción' />
 
             <section className="container userActions">
-                <Button><Link to={'/newdocument'}>Crear un Nuevo Documento</Link></Button>
+                <Button><Link to='/accesCode' state={{ link: 'newDocument' }}
+                >Crear un Nuevo Documento</Link></Button>
 
 
                 <Button onClick={onProcess}><Link>Actualizar documento existente</Link></Button>

@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react"
 import { Input } from "@chakra-ui/react"
 import { Field } from "@/components/ui/field"
-import { getDocs, query, collection, where } from 'firebase/firestore'
-import { db } from "../../firebase/firebase-config"
+import { getDocs, query, where, doc, getDoc, collection } from 'firebase/firestore'
 import { Button } from "@chakra-ui/react"
 import { CreateAccessCode } from "../../pages/Admin/CreateAccessCode"
+
+import { db } from "../../firebase/firebase-config"
 import './Admin.css'
+import { downloadBlob, downloadURL, modifyPDF } from "../Users/Forms/Forms"
 export function AdminMainData() {
 
     const [cases, setCases] = useState([])
+    const [pdfData, setPdfData] = useState(null)
     // const dicRef = doc(db, 'cases')
     useEffect(() => {
 
@@ -29,6 +32,25 @@ export function AdminMainData() {
         fetchData()
     }, [db])
 
+    const seeDocument = async (e) => {
+        const id = '0TnHZoUrYa3vSXaUd90o'
+        const q = doc(db, 'cases', e.target.id)
+        const w = await getDoc(q)
+        if (w.exists()) {
+            const getData = w.data()
+            const data = getData.jsonData
+
+            const pdfBytes = await modifyPDF(data)
+            const pdfBlob = downloadBlob(pdfBytes, 'applicantion/pdf')
+            const pdfURL = downloadURL(pdfBlob)
+            return setPdfData(pdfURL)
+
+        }
+
+
+    }
+
+
     return (
         <>
             <section>
@@ -43,6 +65,20 @@ export function AdminMainData() {
                 </article> */}
             </section>
             <section>
+                {pdfData ? (
+                    <>
+                        <iframe
+                            src={pdfData}
+                            width={'100%'}
+                            height={'800px'}
+                            title="PDF View"
+                            style={{ border: 'none' }}
+                        />
+                        {/* <Button size='xl'>
+                            <a href={pdfData} target="_blank">click aqui</a>
+                        </Button> */}
+                    </>
+                ) : null}
                 <div className="itemTitle">
                     <span className="h4">Lista de documentos</span>
                 </div>
@@ -73,7 +109,7 @@ export function AdminMainData() {
                                         </span>
                                     </div>
                                     <div className="liBox2-Buttons">
-                                        <Button>Ver</Button>
+                                        <Button onClick={seeDocument} id={item.id}>Ver</Button>
                                         <Button>Borrar</Button>
                                     </div>
 

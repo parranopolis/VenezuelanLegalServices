@@ -44,12 +44,12 @@ export function Filed() {
                 </section>
                 {span ? (
                     <section>
-                        <span className="h4">Su documento ha sido guardado, puede verlo o descargarlo con el siguiente boton</span>
-                        <br />
+                        <span className="h4">Su documento ha sido guardado</span>
+                        {/* <br />
                         <br />
                         <Button size='xl'>
                             <a href={span} target="_blank">click aqui</a>
-                        </Button>
+                        </Button> */}
                     </section>
                 ) : null}
             </article>

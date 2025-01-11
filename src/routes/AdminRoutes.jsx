@@ -8,8 +8,6 @@ import { auth } from "../firebase/firebase-config";
 export const AdminRoutes = () => {
     const { userInfo, role, userId } = useAuthContext()
 
-    console.log(userInfo.role)
-
     const navigate = useNavigate()
 
     useEffect(() => {

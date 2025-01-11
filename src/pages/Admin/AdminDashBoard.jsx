@@ -8,11 +8,16 @@ import { CreateAccessCode } from "./CreateAccessCode";
 import './Admin.css'
 import { useState } from "react";
 import { Header } from "../../components/Shared/Header";
+import { useNavigate } from "react-router-dom";
 export function AdminDashBoard() {
 
 
     const [selectedPage, setSelectedPage] = useState("default")
 
+    const navigate = useNavigate()
+    const goToCreateAccessCode = () => {
+        return navigate('/createaccesscode')
+    }
     const handlePageChange = (page) => {
         setSelectedPage(page)
     }
@@ -22,6 +27,11 @@ export function AdminDashBoard() {
             <div className="adminDashboard">
                 <Header title='Panel de Control' />
                 {/* <section className="content"> */}
+                <div>
+                    <Button colorPalette={'green'} variant={'surface'} onClick={goToCreateAccessCode}>
+                        <span className="h5">Crear Codigo de Acceso</span>
+                    </Button>
+                </div>
                 <article className="">
                     {/* <AdminOptionSide onPageChange={handlePageChange} /> */}
                 </article>

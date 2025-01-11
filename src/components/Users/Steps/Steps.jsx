@@ -59,34 +59,31 @@ export function Steps() {
             // Modify the PDF
             const pdfBytes = await modifyPDF(parsedData)
             const pdfBlob = downloadBlob(pdfBytes, 'application/pdf')
-            const numericId = await generateUniqueId()
+            // const numericId = await generateUniqueId()
             // const pdfBlob = new Blob([pdfBytes], { type: 'application/pdf' })
 
 
             // Save the PDF in the Firestore
             const jsonRef = collection(db, 'cases')
             const jsonDoc = await addDoc(jsonRef, {
-                numericId,
+                // numericId,
                 jsonData: parsedData,
                 timestamp: new Date(),
                 status: 'created',
                 name: `${parsedData.Applicant.PDFTextField2.Complete_Last_Name.value} ${parsedData.Applicant.PDFTextField2.First_Name.value}`
             })
 
-
-            // const pdfRef = ref()
-
-            // const pdf = downloadURL(pdfBlob)
-            // console.log(pdfBlob)
-            // return setSpan(pdf)
-
-            navigate('/filed', { state: { message: 'Formulario enviado con exito', id: jsonDoc.id, numericID: numericId, name: name } })
+            navigate('/filed', { state: { message: 'Formulario enviado con exito', id: jsonDoc.id, name: name } })
         } catch (error) {
             console.log(error)
             navigate('/error', { state: { message: 'Hubo un problema al enviar el formulario. Intente nuevamente.' } });
         }
 
     }
+    const checkInfoCrated = (e) => {
+        navigate('/confirmInfo')
+    }
+
     return (
         <>
             {/* {span ? (
@@ -142,7 +139,8 @@ export function Steps() {
                                 </StepsNextTrigger>
                             </section>
                             <section>
-                                {currentStep == formGroups.length ? <div><Button onClick={(e) => createPDF(e)}>Crear PDF</Button></div> : ''}
+                                {currentStep == formGroups.length ? <div><Button onClick={(e) => createPDF(e)}>Guardar Info</Button></div> : ''}
+                                {/* {currentStep == formGroups.length ? <div><Button onClick={(e) => checkInfoCrated(e)}>Revisar Inforamción</Button></div> : ''} */}
                             </section>
                         </article>
                     </Group>
