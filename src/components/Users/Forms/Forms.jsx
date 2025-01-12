@@ -233,7 +233,7 @@ const getCheckedFields = (data, check) => {
 //base form
 const FormContainer = ({ formDataContex, handleChange }) => {
     // Current Group of Forms
-    const [currentSection, setCurrentSection] = useState(2)
+    const [currentSection, setCurrentSection] = useState(1)
 
     const { formData, setFormData } = useContext(initialFormValues)
 
@@ -369,20 +369,20 @@ const FormContainer = ({ formDataContex, handleChange }) => {
     // Updates the form displayed on the screen
     const updateCurrentForm = (e) => {
         e.preventDefault()
-        // const requiredInputs = document.querySelectorAll('.required')
-        // let isValid = true
-        // let field
-        // requiredInputs.forEach(i => {
-        //     if (i.value.trim() === '') {
-        //         isValid = false
-        //         field = i
-        //     }
-        // })
-        // setIsValidated(isValid)
-        // if (!isValid) {
-        //     console.log('hay campos requeridos')
-        //     return;
-        // }
+        const requiredInputs = document.querySelectorAll('.required')
+        let isValid = true
+        let field
+        requiredInputs.forEach(i => {
+            if (i.value.trim() === '') {
+                isValid = false
+                field = i
+            }
+        })
+        setIsValidated(isValid)
+        if (!isValid) {
+            console.log('hay campos requeridos')
+            return;
+        }
         if (e.target.name === 'last') {
             if (currentSection == 1) null
             else setCurrentSection(currentSection - 1)

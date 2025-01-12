@@ -19,9 +19,9 @@ export const StepsProvider = ({ children }) => {
     // "BG_City_5Y
     // BG_Number_Street_5Y
     // BG_State_5Y
-    const [currentStep, setCurrentStep] = useState(3)
+    const [currentStep, setCurrentStep] = useState(0)
     const [totalChildren, setTotalChildren] = useState(0)
-    const [isStepsVisible, setIsStepsVisible] = useState(false)
+    const [isStepsVisible, setIsStepsVisible] = useState(true)
     const [childrenNames, setChildrenNames] = useState(['0'])
     const [RadioChecked, setRadioChecked] = useState(null)
     Children(childrenNames)
