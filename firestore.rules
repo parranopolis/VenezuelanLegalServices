@@ -1,40 +1,25 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Reglas para la colección "codes"
-    match /codes/{codeId} {
-      // El administrador tiene acceso completo a los códigos
-      allow read, write: if request.auth != null &&
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
 
-      // Los usuarios regulares pueden leer para verificar códigos
-      allow read: if true;
-
-      // Escritura no permitida para usuarios regulares
-      allow write: if false;
-    }
-
-    // Reglas para la colección "cases"
+    // Permitir acceso completo a la colección "cases"
     match /cases/{caseId} {
-      // El administrador tiene acceso completo a los casos
-      allow read, write: if request.auth != null &&
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
-
-      // Usuarios regulares pueden escribir si cumplen los requisitos del código
-      // allow write: if request.resource.data.code != null && 
-      //   get(/databases/$(database)/documents/codes/$(request.resource.data.code)).exists &&
-      //   !get(/databases/$(database)/documents/codes/$(request.resource.data.code)).data.used;
-
-      // Los usuarios regulares pueden leer los casos creados
-      allow read: if true;
+      allow read, write: if true;
     }
 
-    // Reglas para la colección "users"
+    // Permitir acceso completo a la colección "codes"
+    match /codes/{codeId} {
+      allow read, write: if true;
+    }
+
+    // Permitir acceso completo a la colección "users"
     match /users/{userId} {
-      // Solo el administrador puede leer y escribir en la colección "users"
-      allow read, write: if request.auth != null &&
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+      allow read, write: if true;
+    }
+
+    // Permitir acceso completo a la colección "accessCode"
+    match /accessCode/{codeId} {
+      allow read, write: if true; // Permitir acceso completo a esta colección
     }
   }
 }

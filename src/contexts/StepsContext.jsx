@@ -16,10 +16,12 @@ import { Final } from "../components/Users/Forms/Forms.jsx";
 export const StepsContext = createContext()
 
 export const StepsProvider = ({ children }) => {
-
-    const [currentStep, setCurrentStep] = useState(0)
+    // "BG_City_5Y
+    // BG_Number_Street_5Y
+    // BG_State_5Y
+    const [currentStep, setCurrentStep] = useState(3)
     const [totalChildren, setTotalChildren] = useState(0)
-    const [isStepsVisible, setIsStepsVisible] = useState(true)
+    const [isStepsVisible, setIsStepsVisible] = useState(false)
     const [childrenNames, setChildrenNames] = useState(['0'])
     const [RadioChecked, setRadioChecked] = useState(null)
     Children(childrenNames)
@@ -34,6 +36,23 @@ export const StepsProvider = ({ children }) => {
         { 'Application_Information': aplicantPart_B_I },
         { 'Application_Aditional_Information': aplicantPart_C_I },
     ]
+
+    const w = sessionStorage.getItem('formData')
+    if (w) {
+        const q = JSON.parse(w)
+        const spouse = q.Applicant.PDFRadioGroup2.Marital_Status.value === 'Casado Legalmente'
+        if (spouse) {
+            formGroups.splice(1, 1)
+            console.log(q.Applicant.PDFCheckBox2.marital_Status)
+            q.Applicant.PDFCheckBox2.marital_Status.value = 'on'
+            sessionStorage.setItem('formData', JSON.stringify(q))
+            console.log(q.Applicant.PDFCheckBox2.marital_Status)
+            // sessionStorage.setItem('formData', )
+            // console.log(q.Applicant.PDFRadioGroup2.Marital_Status)
+        }
+    }
+
+
     const [currentGroup, setCurrentGroup] = useState(0)
 
     const handleStepClick = (stepIndex) => {

@@ -28,22 +28,55 @@ export function Steps() {
                 <StepsRoot count={formGroups.length} height="700px" step={currentStep} orientation="vertical">
 
                     <StepsList>
-                        <StepsItem index={0} title="Informacion Personal" description='Parte A-1' />
-                        <StepsItem index={1} title="Pareja" description='Parte A-2' />
-                        <StepsItem index={2} title="Hijos" description='Parte A-3' />
-                        <StepsItem index={3} title="Historial" description='Parte A-4' />
-                        <StepsItem index={4} title="Información de su Aplicación" description='Parte B-1' />
-                        <StepsItem index={5} title="Información Adicional de su Aplicación" description='Parte C-1' />
+                        {/* <StepsItem index={0} title="Informacion Personal" description='Parte A-1' />
+                        {formGroups.length === 5 ? '' : <StepsItem index={1} title="Pareja" description='Parte A-2' />}
+                        <StepsItem index={1} title="Hijos" description='Parte A-3' />
+                        <StepsItem index={2} title="Historial" description='Parte A-4' />
+                        <StepsItem index={3} title="Información de su Aplicación" description='Parte B-1' />
+                        <StepsItem index={4} title="Información Adicional de su Aplicación" description='Parte C-1' /> */}
+
+                        {formGroups.length === 5 ? (
+                            <>
+                                <StepsItem index={0} title="Informacion Personal" description='Parte A-1' />
+                                <StepsItem index={1} title="Hijos" description="Parte A-3" />
+                                <StepsItem index={2} title="Historial" description="Parte A-4" />
+                                <StepsItem index={3} title="Información de su Aplicación" description="Parte B-1" />
+                                <StepsItem index={4} title="Información Adicional de su Aplicación" description="Parte C-1" />
+                            </>
+                        ) : (
+                            <>
+                                <StepsItem index={0} title="Informacion Personal" description='Parte A-1' />
+                                <StepsItem index={1} title="Pareja" description="Parte A-2" />
+                                <StepsItem index={2} title="Hijos" description="Parte A-3" />
+                                <StepsItem index={3} title="Historial" description="Parte A-4" />
+                                <StepsItem index={4} title="Información de su Aplicación" description="Parte B-1" />
+                                <StepsItem index={5} title="Información Adicional de su Aplicación" description="Parte C-1" />
+                            </>
+                        )}
+
                     </StepsList>
                     <Group>
                         <article className="controlButtons">
                             <section>
-                                <StepsContent index={0}><span className="h5">Informacion Personal</span></StepsContent>
-                                <StepsContent index={1}><span className="h5">Pareja</span></StepsContent>
-                                <StepsContent index={2}><span className="h5">Hijos</span></StepsContent>
-                                <StepsContent index={3}><span className="h6">Información de su historial</span></StepsContent>
-                                <StepsContent index={4}><span className="h6">Información sobre su Aplicación</span></StepsContent>
-                                <StepsContent index={5}><span className="h6">Información Adicional de su Aplicación</span></StepsContent>
+
+                                {formGroups.length === 5 ?
+                                    <>
+                                        <StepsContent index={0}><span className="h5">Informacion Personal</span></StepsContent>
+                                        <StepsContent index={1}><span className="h5">Hijos</span></StepsContent>
+                                        <StepsContent index={2}><span className="h6">Información de su historial</span></StepsContent>
+                                        <StepsContent index={3}><span className="h6">Información sobre su Aplicación</span></StepsContent>
+                                        <StepsContent index={4}><span className="h6">Información Adicional de su Aplicación</span></StepsContent>
+                                    </>
+                                    : <>
+                                        <StepsContent index={0}><span className="h5">Informacion Personal</span></StepsContent>
+                                        <StepsContent index={1}><span className="h5">Pareja</span></StepsContent>
+                                        <StepsContent index={2}><span className="h5">Hijos</span></StepsContent>
+                                        <StepsContent index={3}><span className="h6">Información de su historial</span></StepsContent>
+                                        <StepsContent index={4}><span className="h6">Información sobre su Aplicación</span></StepsContent>
+                                        <StepsContent index={5}><span className="h6">Información Adicional de su Aplicación</span></StepsContent>
+                                    </>}
+
+
                             </section>
                             <section className="">
                                 <StepsCompletedContent>

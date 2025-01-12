@@ -16,16 +16,16 @@ const root = createRoot(document.getElementById('root'))
 
 root.render(
   <ChakraProvider value={defaultSystem}>
-    <InitialFormValuesProvider>
-      <AuthProvider>
+    <AuthProvider>
 
-        <StepsProvider>
+      <StepsProvider>
+        <InitialFormValuesProvider>
           <RouterProvider
             router={router}
             future={{ v7_startTransition: true, }}
           />
-        </StepsProvider>
-      </AuthProvider>
-    </InitialFormValuesProvider>
+        </InitialFormValuesProvider>
+      </StepsProvider>
+    </AuthProvider>
   </ChakraProvider>
 )

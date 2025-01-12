@@ -233,7 +233,7 @@ const getCheckedFields = (data, check) => {
 //base form
 const FormContainer = ({ formDataContex, handleChange }) => {
     // Current Group of Forms
-    const [currentSection, setCurrentSection] = useState(1)
+    const [currentSection, setCurrentSection] = useState(2)
 
     const { formData, setFormData } = useContext(initialFormValues)
 
@@ -369,20 +369,20 @@ const FormContainer = ({ formDataContex, handleChange }) => {
     // Updates the form displayed on the screen
     const updateCurrentForm = (e) => {
         e.preventDefault()
-        const requiredInputs = document.querySelectorAll('.required')
-        let isValid = true
-        let field
-        requiredInputs.forEach(i => {
-            if (i.value.trim() === '') {
-                isValid = false
-                field = i
-            }
-        })
-        setIsValidated(isValid)
-        if (!isValid) {
-            console.log('hay campos requeridos')
-            return;
-        }
+        // const requiredInputs = document.querySelectorAll('.required')
+        // let isValid = true
+        // let field
+        // requiredInputs.forEach(i => {
+        //     if (i.value.trim() === '') {
+        //         isValid = false
+        //         field = i
+        //     }
+        // })
+        // setIsValidated(isValid)
+        // if (!isValid) {
+        //     console.log('hay campos requeridos')
+        //     return;
+        // }
         if (e.target.name === 'last') {
             if (currentSection == 1) null
             else setCurrentSection(currentSection - 1)
@@ -571,7 +571,9 @@ function RegularInputs(q) {
 // shows inputs of type Radio
 function InputRadio({ data, handleChange, formDataContex, person, extra }) {
 
-
+    const p = (e) => {
+        console.log(e.target)
+    }
     const { setRadioChecked } = useContext(StepsContext)
     const q = data.map((group, index) => {
         const w = Object.keys(group).map((key) => {
@@ -592,6 +594,7 @@ function InputRadio({ data, handleChange, formDataContex, person, extra }) {
                                     onChange={(e) => {
                                         handleChange(e, person[0])
                                         if (e.target.parentNode.parentNode.classList.contains('SpecialRadioInputContainer')) setRadioChecked(e.target,)
+                                        p(e)
                                     }}
                                     className='InputRadioType'
                                 />
