@@ -11,91 +11,17 @@ import {
     StepsRoot,
 } from "@/components/ui/steps"
 import './Steps.css'
-import { useContext, useState, navigate } from "react"
+import { useContext } from "react"
 import { StepsContext } from "../../../contexts/StepsContext"
 
-import { Link, useNavigate } from 'react-router-dom'
-import { initialFormValues } from "../../../contexts/InitialValueContext"
-import { modifyPDF, downloadBlob, downloadURL } from "../Forms/Forms"
-
-import { addDoc, collection, query, where, getDocs } from 'firebase/firestore'
-import { db } from '../../../firebase/firebase-config'
+import { Link } from 'react-router-dom'
 
 export function Steps() {
 
     const { handleStepClick, currentStep, formGroups, from } = useContext(StepsContext)
-    const { formData } = useContext(initialFormValues)
-    const [span, setSpan] = useState(null)
-    // const savedData = localStorage.getItem('formData')
-    const q = sessionStorage.getItem('formData')
-    const w = JSON.parse(q)
-
-    const navigate = useNavigate()
-
-    const generateUniqueId = async () => {
-        let unique = false;
-        let newId;
-
-        while (!unique) {
-            newId = Math.floor(1000 + Math.random() * 9000); // Generar un número de 6 dígitos
-
-            // Verificar si el ID ya existe
-            const q = query(collection(db, "cases"), where("numericId", "==", newId));
-            const querySnapshot = await getDocs(q);
-            unique = querySnapshot.empty; // Si no hay resultados, es único
-        }
-
-        return newId;
-    };
-
-
-
-    const createPDF = async (e) => {
-        e.preventDefault()
-        const sessionStoragedData = sessionStorage.getItem('formData')
-        const parsedData = JSON.parse(sessionStoragedData)
-        try {
-
-            // Modify the PDF
-            const pdfBytes = await modifyPDF(parsedData)
-            const pdfBlob = downloadBlob(pdfBytes, 'application/pdf')
-            // const numericId = await generateUniqueId()
-            // const pdfBlob = new Blob([pdfBytes], { type: 'application/pdf' })
-
-
-            // Save the PDF in the Firestore
-            const jsonRef = collection(db, 'cases')
-            const jsonDoc = await addDoc(jsonRef, {
-                // numericId,
-                jsonData: parsedData,
-                timestamp: new Date(),
-                status: 'created',
-                name: `${parsedData.Applicant.PDFTextField2.Complete_Last_Name.value} ${parsedData.Applicant.PDFTextField2.First_Name.value}`
-            })
-
-            navigate('/filed', { state: { message: 'Formulario enviado con exito', id: jsonDoc.id, name: name } })
-        } catch (error) {
-            console.log(error)
-            navigate('/error', { state: { message: 'Hubo un problema al enviar el formulario. Intente nuevamente.' } });
-        }
-
-    }
-    const checkInfoCrated = (e) => {
-        navigate('/confirmInfo')
-    }
 
     return (
         <>
-            {/* {span ? (
-                <div>
-                    <h3>PDF Modificado</h3>
-                    <a href={span} download="modified_form.pdf">Descarga una copia aqui</a>
-
-                    <object data={span} type="application/pdf" width='100%' height='810vh' >
-
-                    </object>
-                </div>
-            ) : null} */}
             <Stack className="Stack">
                 <span className="h3">Pasos para llenar el Asilo </span>
                 <span className="h4">Forma I-589</span>
@@ -139,13 +65,39 @@ export function Steps() {
                                 </StepsNextTrigger>
                             </section>
                             <section>
-                                {currentStep == formGroups.length ? <div><Button onClick={(e) => createPDF(e)}>Guardar Info</Button></div> : ''}
-                                {/* {currentStep == formGroups.length ? <div><Button onClick={(e) => checkInfoCrated(e)}>Revisar Inforamción</Button></div> : ''} */}
+                                {currentStep == formGroups.length ? <div>
+                                    <Link to={'/confirminfo'}>
+                                        <Button>
+                                            Revisar Inforamción
+                                        </Button>
+                                    </Link>
+                                </div> : ''}
                             </section>
                         </article>
                     </Group>
                 </StepsRoot>
             </Stack>
+
+
         </>
     )
 }
+
+
+// const generateUniqueId = async () => {
+//     let unique = false;
+//     let newId;
+
+//     while (!unique) {
+//         newId = Math.floor(1000 + Math.random() * 9000); // Generar un número de 6 dígitos
+
+//         // Verificar si el ID ya existe
+//         const q = query(collection(db, "cases"), where("numericId", "==", newId));
+//         const querySnapshot = await getDocs(q);
+//         unique = querySnapshot.empty; // Si no hay resultados, es único
+//     }
+
+//     return newId;
+// };
+
+

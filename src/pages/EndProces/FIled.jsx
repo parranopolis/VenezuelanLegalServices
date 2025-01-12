@@ -13,7 +13,7 @@ export function Filed() {
     const location = useLocation()
     const message = location.state.message
     const id = location.state.id
-    const number = location.state.numericID
+    const number = location.state.code
     useEffect(() => {
 
 
@@ -45,9 +45,9 @@ export function Filed() {
                 {span ? (
                     <section>
                         <span className="h4">Su documento ha sido guardado</span>
-                        {/* <br />
                         <br />
-                        <Button size='xl'>
+                        <br />
+                        {/* <Button size='xl'>
                             <a href={span} target="_blank">click aqui</a>
                         </Button> */}
                     </section>

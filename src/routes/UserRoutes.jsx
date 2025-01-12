@@ -8,7 +8,7 @@ export const UserRoutes = () => {
     if (access == 'allow') {
         return <Outlet />
     } else {
-        return <Navigate to={'/'} />
+        return <Navigate to={'/form'} />
     }
 
 }

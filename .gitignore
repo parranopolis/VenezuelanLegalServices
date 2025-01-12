@@ -30,3 +30,6 @@ dist-ssr
 # Quokkar File
 .babelrc
 quokka.js
+
+# env
+.env

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Input } from "@chakra-ui/react"
 import { Field } from "@/components/ui/field"
-import { getDocs, query, where, doc, getDoc, collection } from 'firebase/firestore'
+import { getDocs, query, where, doc, getDoc, collection, deleteDoc } from 'firebase/firestore'
 import { Button } from "@chakra-ui/react"
 import { CreateAccessCode } from "../../pages/Admin/CreateAccessCode"
 
@@ -12,7 +12,31 @@ export function AdminMainData() {
 
     const [cases, setCases] = useState([])
     const [pdfData, setPdfData] = useState(null)
-    // const dicRef = doc(db, 'cases')
+    const deleteDocument = async (e) => {
+        try {
+            const docRef = doc(db, 'cases', e.target.id)
+            const caseDoc = await getDoc(docRef)
+
+            if (caseDoc.exists) {
+                const numericId = parseInt(caseDoc.data().numericId)
+
+                const accessCodeQuery = query(collection(db, "accessCode"), where('code', '==', numericId))
+                const accessCodeSnapshot = await getDocs(accessCodeQuery)
+                if (!accessCodeSnapshot.empty) {
+                    accessCodeSnapshot.forEach(async (docSnap) => {
+                        const accessCodeRef = doc(db, 'accessCode', docSnap.id)
+                        const w = await getDoc(accessCodeRef)
+                        await deleteDoc(accessCodeRef)
+                        await deleteDoc(docRef)
+                    })
+                } else console.log('no se encontro el ID')
+            } else {
+                console.log('El docuemtno no existe')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     useEffect(() => {
 
         const fetchData = async () => {
@@ -30,10 +54,9 @@ export function AdminMainData() {
 
         }
         fetchData()
-    }, [db])
+    }, [db, deleteDocument])
 
     const seeDocument = async (e) => {
-        const id = '0TnHZoUrYa3vSXaUd90o'
         const q = doc(db, 'cases', e.target.id)
         const w = await getDoc(q)
         if (w.exists()) {
@@ -41,16 +64,15 @@ export function AdminMainData() {
             const data = getData.jsonData
 
             const pdfBytes = await modifyPDF(data)
-            const pdfBlob = downloadBlob(pdfBytes, 'applicantion/pdf')
+            const pdfBlob = downloadBlob(pdfBytes, 'application/pdf')
             const pdfURL = downloadURL(pdfBlob)
+            console.log(pdfURL)
             return setPdfData(pdfURL)
 
         }
 
 
     }
-
-
     return (
         <>
             <section>
@@ -67,16 +89,9 @@ export function AdminMainData() {
             <section>
                 {pdfData ? (
                     <>
-                        <iframe
-                            src={pdfData}
-                            width={'100%'}
-                            height={'800px'}
-                            title="PDF View"
-                            style={{ border: 'none' }}
-                        />
-                        {/* <Button size='xl'>
+                        <Button size='xl'>
                             <a href={pdfData} target="_blank">click aqui</a>
-                        </Button> */}
+                        </Button>
                     </>
                 ) : null}
                 <div className="itemTitle">
@@ -110,7 +125,7 @@ export function AdminMainData() {
                                     </div>
                                     <div className="liBox2-Buttons">
                                         <Button onClick={seeDocument} id={item.id}>Ver</Button>
-                                        <Button>Borrar</Button>
+                                        <Button onClick={deleteDocument} id={item.id}>Borrar</Button>
                                     </div>
 
                                 </section>
