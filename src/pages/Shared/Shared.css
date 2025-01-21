@@ -5,3 +5,244 @@
     margin-top: 2rem;
     flex-direction: column;
 }
+
+/* Home Header */
+
+.homeHeader ul {
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+}
+
+/* Home Page */
+
+/* .homeTitle {
+    display: flex;
+    align-items: center;
+    /* justify-content: center;
+    flex-direction: column;
+    font-weight: 600;
+    gap: 1.5rem;
+    padding: 5rem ;
+    font-size: var(--h2);
+} */
+
+/* .homeTitle h2 {} */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f4f4f4;
+    position: relative;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+header nav ul.nav-links {
+    /* display: none; */
+    /* Ocultar menú en pantallas pequeñas */
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+header .auth a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+}
+
+.needHelp {
+    text-align: center;
+    padding: 15vh 0;
+    /* background-color: #ececec; */
+    background: url('./../../assets/img/vzla_flag.jpg') no-repeat;
+    background-position: center;
+    /* background-position-y: 2rem; */
+    background-size: cover;
+    font-size: var(--h1);
+    /* background-color: #e9ecef; */
+}
+
+.needHelp h1 {
+    font-weight: 600;
+    color: white;
+    padding: 0rem 1.5rem;
+    padding-bottom: 1rem;
+    width: 80%;
+    margin: auto;
+}
+
+.needHelp button {
+    background-color: #007BFF;
+}
+
+.mainPage section button {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    /* width: 10rem; */
+
+}
+
+.form button {
+    background-color: var(--secondary-color);
+}
+
+.fillForm button {
+    background-color: var(--secondary-color);
+}
+
+.actions {
+    margin: 2rem auto;
+}
+
+.actions div {
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    gap: 2rem;
+    /* padding: 1rem; */
+    flex-wrap: wrap;
+    font-size: var(--h4);
+}
+
+.actions button {
+    width: 7rem;
+}
+
+.fillForm {
+    text-align: center;
+    height: 25rem;
+    padding: 2rem;
+    background: #e7f6f8;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.fillForm h3 {
+    /* background-color: #f5f5f5; */
+    font-size: var(--h3);
+    margin-bottom: 1rem;
+}
+
+footer {
+    padding: 1rem;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+footer .help-options a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+
+    .needHelp h1 {
+        font-size: var(--h4);
+        width: 100%;
+    }
+
+    .menu-toggle {
+        /* grid-area: menu-toggle; */
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .logo {
+        grid-area: logo;
+        order: 1;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .auth {
+        grid-area: auth;
+        display: flex;
+        justify-content: end;
+    }
+
+    nav ul.nav-links {
+        display: flex;
+        flex-direction: column;
+        background-color: #f4f4f4;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        gap: 1rem;
+        text-align: center;
+        display: none;
+        /* Ocultar por defecto */
+    }
+
+    nav ul.nav-links.active {
+        display: flex;
+    }
+
+    header {
+        display: grid;
+        grid-template-columns: [menu-toggle] 25% [logo] auto [auth] 25%;
+        grid-template-areas: 'menu-toggle logo auth ';
+    }
+
+}
+
+.none {
+    position: absolute;
+}

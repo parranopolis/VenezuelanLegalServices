@@ -79,12 +79,12 @@ html {
     box-shadow: 4px 9px 22px var(--dark-color);
 }
 
-.logo {
+/* .logo {
     width: 3.5rem;
     height: 3.5rem;
     background-color: red;
     margin-bottom: 2rem;
-}
+} */
 
 .opacity {
     opacity: .6;
@@ -108,4 +108,9 @@ html {
 .buttons {
     margin-top: 1rem;
     margin-block-end: 1rem;
+}
+
+/* display */
+.textCenter {
+    text-align: center;
 }

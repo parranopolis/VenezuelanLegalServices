@@ -63,15 +63,20 @@ export function AccessCode() {
     return (
         <>
             <Header title='Codigo de Acceso' />
-            {alert}
-            <span className="h5">Por Favor ingrese el codigo proporcionado por el administrador</span>
-            <span className="h5">{usedCode}</span>
-            <PinInput
-                value={pin}
-                colorPalette='blue'
-                autoFocus={true}
-                onValueComplete={(e) => handlePinComplete(e)}
-                size='lg' />
+            <article className="container">
+
+                {alert}
+                <span className="h5">Por Favor ingrese el codigo proporcionado por el administrador</span>
+                <span className="h5">{usedCode}</span>
+                <section className="pinCodeInput">
+                    <PinInput
+                        value={pin}
+                        colorPalette='blue'
+                        autoFocus={true}
+                        onValueComplete={(e) => handlePinComplete(e)}
+                        size='lg' />
+                </section>
+            </article>
         </>
 
     )
